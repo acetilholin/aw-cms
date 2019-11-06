@@ -2,11 +2,13 @@ import Calculation from "./components/Calculation";
 import Contact from "./components/Contact";
 import EnCalculation from "./components/EnCalculation";
 import EnContact from "./components/EnContact";
+import Add from "./components/Add";
 
 require('./bootstrap');
 window.Vue = require('vue');
 
-Vue.config.silent = true  /* Suppress all Vue logs and warnings */
+Vue.config.silent = true; /* Suppress all Vue logs and warnings */
+Vue.config.productionTip = false /* development mode notice t*/
 
 const app = new Vue({
     el: '#app',
@@ -35,3 +37,11 @@ const enc = new Vue({
         encontact: EnContact
     }
 });
+
+const modaladd = new Vue({
+    el: '#modaladd',
+    components: {
+        add: Add
+    }
+});
+
