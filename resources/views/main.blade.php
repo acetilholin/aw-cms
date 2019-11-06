@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-style.css') }}" >
+
     <title>Avto Welt d.o.o.</title>
 </head>
 <body>
@@ -94,36 +95,8 @@
                 <h5 class="modal-title" id="exampleModalLabel">Nov vnos</h5>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('add') }}" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Model</label>
-                        <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Vnesite model" name="title">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Oznaka</label>
-                        <input type="text" class="form-control" id="subtitle" aria-describedby="emailHelp" placeholder="Vnesite oznako" name="subtitle">
-                    </div>
-                    <div class="form-group">
-                        <label for="priceInEuros">Cena</label>
-                        <small id="text-muted" class="form-text text-muted">Format e.g. 21.000</small>
-                        <input type="text" class="form-control" id="price"  aria-describedby="emailHelp" placeholder="Vnesite ceno" name="price">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Opis</label>
-                        <textarea class="form-control" id="description"  rows="2" name="description"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" id="new" type="checkbox" value="checked" name="new">
-                            <label class="form-check-label" for="gridCheck">
-                                Novo vozilo
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Slika</label>
-                        <input type="file" class="form-control-file" name="file" id="file">
-                    </div>
+                <form method="POST" action="{{ route('add') }}" enctype="multipart/form-data" id="modaladd">
+                    <add></add>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-gray">Shrani</button>
@@ -141,28 +114,28 @@
                 <h5 class="modal-title" id="exampleModalLabel">Uredi vnos</h5>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('update') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('update') }}" enctype="multipart/form-data" id="modalupdate">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Model</label>
+                        <label for="update-title">Model</label>
                         <input type="text" class="form-control" id="update-title" aria-describedby="emailHelp" placeholder="Vnesite model" name="title">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Oznaka</label>
+                        <label for="update-subtitle">Oznaka</label>
                         <input type="text" class="form-control" id="update-subtitle" aria-describedby="emailHelp" placeholder="Vnesite oznako" name="subtitle">
                     </div>
                     <div class="form-group">
-                        <label for="priceInEuros">Cena</label>
+                        <label for="update-price">Cena</label>
                         <small id="text-muted" class="form-text text-muted">Format e.g. 21.000</small>
                         <input type="text" class="form-control" id="update-price"  aria-describedby="emailHelp" placeholder="Vnesite ceno" name="price">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Opis</label>
+                        <label for="update-description">Opis</label>
                         <textarea class="form-control" id="update-description"  rows="2" name="description"></textarea>
                     </div>
                     <div class="form-group">
                         <div class="form-check">
                             <input class="form-check-input" id="update-new" type="checkbox" value="checked" name="new">
-                            <label class="form-check-label" for="gridCheck">
+                            <label class="form-check-label" for="update-new">
                                 Novo vozilo
                             </label>
                         </div>
@@ -183,6 +156,7 @@
 </div>
 </body>
 </html>
+
 <script>
     $(function() {
         $("#message").fadeTo(2000, 500).slideUp(500, function () {
@@ -201,7 +175,6 @@
             data: { id: id },
             dataType: "json",
             success: function(data){
-                console.log(data)
                 $('#update-title').val(data.title);
                 $('#update-subtitle').val(data.subtitle);
                 $('#update-price').val(data.price);
@@ -218,6 +191,10 @@
         })
     })
 </script>
+
+<!-- Vue src file -->
+<script src="{!! asset('js/app.js') !!}"></script>
+
 <style>
     .button-margin {
         margin: 1rem auto;
