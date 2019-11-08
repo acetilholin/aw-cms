@@ -41,23 +41,21 @@ return [
 
     'debug' => env('APP_DEBUG', false),
 
-    'debug_blacklist' => env(
-        '_ENV',[
-        'APP_KEY',
-        'DB_PASSWORD',
-        'REDIS_PASSWORD',
-        'MAIL_PASSWORD',
-        'PUSHER_APP_KEY',
-        'PUSHER_APP_SECRET',
+    'debug_blacklist' => [
+        '_ENV' => [
+            'APP_KEY',
+            'DB_PASSWORD',
+        ],
+
+        '_SERVER' => [
+            'APP_KEY',
+            'DB_PASSWORD',
+        ],
+
+        '_POST' => [
+            'password',
+        ],
     ],
-        '_SERVER',[
-        'APP_KEY',
-        'DB_PASSWORD',
-        'REDIS_PASSWORD',
-        'MAIL_PASSWORD',
-        'PUSHER_APP_KEY',
-        'PUSHER_APP_SECRET',
-    ]),
 
     /*
     |--------------------------------------------------------------------------

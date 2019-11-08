@@ -46,7 +46,8 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return response()->view('errors.custom');
+        return parent::render($request, $exception);
+        /*return response()->view('errors.custom');*/
         /**
          * return parent::render($request, $exception);
          * custom error page is displayed
