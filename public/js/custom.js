@@ -42,6 +42,12 @@ $(document).ready(function(){
     });
 });
 
+$(document).ready(function () {
+    $('.second-button').on('click', function () {
+        $('.animated-icon2').toggleClass('open');
+    });
+});
+
 $(function() {
     $("#message").fadeTo(4000, 500).slideUp(500, function () {
         $("#message").slideUp(500);

@@ -35,9 +35,15 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="{{ asset('pictures/logo-1.png') }}"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                <span class="custom-toggler-icon"><i class="fas fa-bars"></i></span>
+            <button class="navbar-toggler second-button" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarSupportedContent23" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="animated-icon2"><span></span><span></span><span></span><span></span></div>
             </button>
+
+
+           {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="custom-toggler-icon"><i class="fas fa-bars"></i></span>
+            </button>--}}
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
