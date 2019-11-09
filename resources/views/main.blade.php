@@ -11,17 +11,14 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-style.css') }}" >
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-style.css') }}">
 
     <title>Avto Welt d.o.o.</title>
 </head>
 <body>
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -77,8 +74,21 @@
                         </td>
                         <td><img src="../{{ $car->image }}" width="80px" height="50px"></td>
                         <td>
-                            <a href="#" class="edit" id="{{ $car->id }}"><i class="far fa-edit edit-style" style="font-size: 1.3rem; cursor: pointer" title="Uredi"></i></a>
-                            <a href="{{ route('delete', $car->id) }}"><i class="far fa-trash-alt remove" style="font-size: 1.3rem; cursor: pointer" title="Izbriši"></i></a>
+                            <div class="btn-group dropright">
+                                <button type="button" class="btn btn-white dropdown-toggle dropdown-toggle-split" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {!! Html::image('icons/settings.svg') !!}
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                                    <a href="#" class="edit dropdown-item" id="{{ $car->id }}">
+                                        <i class="far fa-edit edit-style" style="font-size: 1.3rem; cursor: pointer" title="Uredi"></i>
+                                        Uredi
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="{{ route('delete', $car->id) }}" class="dropdown-item"><i class="far fa-trash-alt remove" style="font-size: 1.3rem; cursor: pointer" title="Odstrani"></i>
+                                        Odstrani
+                                    </a>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                     @endforeach
@@ -157,6 +167,12 @@
 </body>
 </html>
 
+<!-- Vue src file -->
+<script src="{!! asset('js/app.js') !!}"></script>
+
+<!-- Bootstrap min js -->
+<script src="{!! asset('js/bootstrap.min.js') !!}"></script>
+
 <script>
     $(function() {
         $("#message").fadeTo(2000, 500).slideUp(500, function () {
@@ -192,8 +208,7 @@
     })
 </script>
 
-<!-- Vue src file -->
-<script src="{!! asset('js/app.js') !!}"></script>
+
 
 <style>
     .button-margin {
@@ -222,6 +237,17 @@
     }
     .edit-style:hover {
         color: #444c53;
+    }
+    .dropdown-menu {
+        background-color: white;
+        border: 1px solid lightgray !important;
+    }
+    .btn-white {
+        border: 1px solid #ed1c24;
+    }
+    .btn-white:focus {
+        border-color: #ed1c24;
+        box-shadow: 0 0 0 0.2rem rgba(237, 28, 36, 0.25);
     }
 
 </style>
