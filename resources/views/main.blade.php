@@ -31,6 +31,7 @@
             </li>
         </ul>
         <div class="form-inline my-2 my-lg-0">
+            <span class="m-item"><a href="{{ route('users') }}"><i class="fas fa-users"></i></a></span>
             <form action="{{ route('logout') }}">
                 <button class="btn btn-gray btn-sm" type="submit" style="margin: 0">Odjava</button>
             </form>
@@ -43,9 +44,9 @@
             <div class="button-margin">
                 <button type="submit" class="btn btn-red btn-sm" style="margin: 0" data-toggle="modal" data-target="#add">Dodaj</button>
             </div>
-            @include('messages.main')
+            @include('messages.info')
             @yield('content')
-            <table class="table table-font">
+            <table class="table table-font text-center">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -70,7 +71,7 @@
                         <td>
                             @if($car->new == 'true' )
                                 {!! Html::image('icons/check.svg') !!}
-                                @endif
+                            @endif
                         </td>
                         <td><img src="../{{ $car->image }}" width="80px" height="50px"></td>
                         <td>

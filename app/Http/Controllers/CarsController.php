@@ -45,7 +45,8 @@ class CarsController extends Controller
 
         $allCars = $cars->getAll();
         return view('main', [
-            'cars' => $allCars
+            'cars' => $allCars,
+            'info' =>  trans('messages.carIsAdded')
         ]);
     }
 
@@ -74,7 +75,8 @@ class CarsController extends Controller
         $cars->updateCar($id, $title, $subtitle, $price, $description, $new, $imgPath);
         $allCars = $cars->getAll();
         return view('main', [
-            'cars' => $allCars
+            'cars' => $allCars,
+            'info' =>  trans('messages.carIsUpdated')
         ]);
     }
 
@@ -84,7 +86,8 @@ class CarsController extends Controller
         $delete = $cars->deleteCar($id);
         $allCars = $cars->getAll();
         return view('main', [
-            'cars' => $allCars
+            'cars' => $allCars,
+            'info' =>  trans('messages.carIsDeleted')
         ]);
     }
 

@@ -19,3 +19,6 @@ img {
 .page-links {
     color: #505962 !important;
 }
+.page-links:hover {
+    color: #090c11 !important;
+}

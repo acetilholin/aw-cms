@@ -41,6 +41,10 @@ Route::get('/delete/{id}', ['as' => 'delete', 'uses' => 'CarsController@delete']
 Route::get('/load', ['as' => 'loadCar', 'uses' => 'CarsController@loadCar']);
 Route::get('/contact', ['as' => 'contactForm', 'uses' => 'ContactController@sendContactEmail']);
 Route::get('/contact-en', ['as' => 'contactFormEn', 'uses' => 'ContactController@sendContactEmailEnglish']);
+Route::get('/users', ['as' => 'users', 'uses' => 'UserController@index']);
+Route::get('/lock/{id}', ['as' => 'lock', 'uses' => 'UserController@lockUser']);
+Route::get('/unlock/{id}', ['as' => 'unlock', 'uses' => 'UserController@unlockUser']);
+Route::get('/delete-user/{id}', ['as' => 'deleteUser', 'uses' => 'UserController@deleteUser']);
 
 /*Logout*/
 Route::get('logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
