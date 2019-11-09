@@ -7,12 +7,11 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class newPassword extends Mailable
+class NewPassword extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $token;
-    public $email;
 
     /**
      * Create a new message instance.

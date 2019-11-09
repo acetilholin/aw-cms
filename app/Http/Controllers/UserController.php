@@ -100,7 +100,7 @@ class UserController extends Controller
         if ($approvedEmailExists) {
             $token = $this->generateStringToken();
             $user->insertResetPasswordToken($token, $email);
-            \Mail::to($email)->send(new newPassword($token));
+            \Mail::to($email)->send(new NewPassword($token));
             return redirect('token')->with('success', 'Žeton je poslan na vaš email');
         } else {
             return back()->with('error', 'Račun ni potrjen');
