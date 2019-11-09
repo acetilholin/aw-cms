@@ -8,16 +8,32 @@ use App\Mail\NewPassword;
 use App\Mail\NewUser;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class UserController extends Controller
 {
+    function index(Request $request)
+    {
+        if (Auth::guest()) {
+            return redirect('/login');
+        }
+
+        $user = new User();
+        $users = $user->getUsers();
+        $onlineUsers = $this->onlineUsers();
+
+        return view('users', [
+            'users' => $users,
+            'onlineUsers' => $onlineUsers,
+        ]);
+    }
 
     function authenticate($email, $password)
     {
         Auth::attempt(['email' => $email, 'password' => $password]);
     }
-
 
     function login(Request $request)
     {
@@ -34,6 +50,8 @@ class UserController extends Controller
                 $passwordMatch = $user->login($email, $password);
                 if ($passwordMatch) {
                     $this->authenticate($email, $password);
+                    $dateTime = Carbon::now("Europe/Ljubljana");
+                    $seen = $user->lastSeen($email, $dateTime);
                     $allCars = $cars->getAll();
                     return view('main', [
                         'cars' => $allCars
@@ -156,6 +174,82 @@ class UserController extends Controller
         $minutes = ($datetime2 - $datetime1) / 60;
 
         return $minutes < 60 ? false : true;
+    }
+
+    function deleteUser($id)
+    {
+        $adminEmail = env('ADMIN_EMAIL');
+        $user = new User();
+        $usersEmail = $user->getUsersEmail($id);
+        $onlineUsers = $this->onlineUsers();
+
+        if ($usersEmail != $adminEmail) {
+            $delete = $user->deleteUser($id);
+            $info = trans('messages.userIsRemoved');
+        } else {
+            $info = trans('messages.cannotDeleteAdmin');
+        }
+
+        $users = $user->getUsers();
+
+        return view('users', [
+            'users' => $users,
+            'info' => $info,
+            'onlineUsers' => $onlineUsers
+        ]);
+    }
+
+    function lockUser($id)
+    {
+        $adminEmail = env('ADMIN_EMAIL');
+        $user = new User();
+        $usersEmail = $user->getUsersEmail($id);
+        $onlineUsers = $this->onlineUsers();
+
+        if ($usersEmail != $adminEmail) {
+            $lock = $user->lockUser($id);
+            $info = trans('messages.userIsLocked');
+        } else {
+            $info = trans('messages.cannotLockAdmin');
+        }
+
+        $users = $user->getUsers();
+
+        return view('users', [
+            'users' => $users,
+            'info' => $info,
+            'onlineUsers' => $onlineUsers
+        ]);
+    }
+
+    function unLockUser($id)
+    {
+        $user = new User();
+
+        $unlock = $user->unLockUser($id);
+        $users = $user->getUsers();
+        $onlineUsers = $this->onlineUsers();
+
+        return view('users', [
+            'info' => trans('messages.userIsUnlocked'),
+            'users' => $users,
+            'onlineUsers' => $onlineUsers,
+        ]);
+    }
+
+    function onlineUsers()
+    {
+        $user = new User();
+        $allUserIds = $user->allUserIds();
+
+        for ($i = 0; $i < sizeof($allUserIds); $i++) {
+            if (Cache::has('user-is-online-' . $allUserIds[$i]) == true) {
+                $userStatus[$i] = 'online';
+            } else {
+                $userStatus[$i] = 'offline';
+            }
+        }
+        return $userStatus;
     }
 
     function generateStringToken()

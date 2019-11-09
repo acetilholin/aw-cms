@@ -172,6 +172,29 @@ select.form-control.language:focus {
 .custom-item {
     margin-top: -1rem !important;
 }
+.m-item {
+    margin-right: 2rem;
+    font-size: 1.3rem;
+}
+.fa-users,.fa-car {
+    color: #505962 !important;
+}
+.fa-users:hover {
+    color: #ed1c24 !important;
+}
+.fa-car:hover {
+    color: #ed1c24 !important;
+}
+
+/* users page */
+.green-dot{
+    height: 10px;
+    width: 10px;
+    background-color: #009300;
+    border-radius: 50%;
+    display: inline-block;
+}
+
 
 /* Landing page */
 .home-inner {
