@@ -39,11 +39,6 @@
                     aria-controls="navbarSupportedContent23" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="animated-icon2"><span></span><span></span><span></span><span></span></div>
             </button>
-
-
-           {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                <span class="custom-toggler-icon"><i class="fas fa-bars"></i></span>
-            </button>--}}
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
