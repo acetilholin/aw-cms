@@ -413,6 +413,11 @@ footer .form-check-input {
     border-top: 3px solid #8F0808;
 }
 
+/* main - cars table */
+.table-font {
+    font-size: .9rem;
+}
+
 /* new car form */
 .form-check-input {
     width: 1rem !important;

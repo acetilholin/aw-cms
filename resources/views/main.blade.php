@@ -48,7 +48,7 @@
             </div>
             @include('messages.main')
             @yield('content')
-            <table class="table">
+            <table class="table table-font">
                 <thead>
                 <tr>
                     <th scope="col">#</th>

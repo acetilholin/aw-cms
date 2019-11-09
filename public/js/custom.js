@@ -42,6 +42,11 @@ $(document).ready(function(){
     });
 });
 
+$(function() {
+    $("#message").fadeTo(4000, 500).slideUp(500, function () {
+        $("#message").slideUp(500);
+    });
+});
 
 $(document).ready(function(){
     $(window).scroll(function(){

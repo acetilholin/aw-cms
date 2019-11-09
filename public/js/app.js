@@ -1889,8 +1889,8 @@ __webpack_require__.r(__webpack_exports__);
       subtitle: '',
       price: '',
       titleLen: 20,
-      subtitleLen: 30,
-      descriptionLen: 85,
+      subtitleLen: 45,
+      descriptionLen: 100,
       description: '',
       vTitleColor: {
         color: ''
@@ -38155,7 +38155,7 @@ var render = function() {
           type: "text",
           id: "price",
           "aria-describedby": "emailHelp",
-          placeholder: "Vnesite ceno",
+          placeholder: "Vnesite ceno brez znaka za €",
           name: "price",
           required: ""
         },

@@ -17,7 +17,7 @@
         <div class="form-group">
             <label for="price">Cena</label>
             <small id="text-muted" class="form-text text-muted">Format e.g. 21.000</small>
-            <input type="text" class="form-control" id="price" aria-describedby="emailHelp" placeholder="Vnesite ceno" name="price" v-model="price" required>
+            <input type="text" class="form-control" id="price" aria-describedby="emailHelp" placeholder="Vnesite ceno brez znaka za €" name="price" v-model="price" required>
         </div>
         <div class="form-group">
             <label for="description">Opis</label>
@@ -48,7 +48,7 @@
         data() {
             return {
                 title: '', subtitle: '', price: '',
-                titleLen: 20, subtitleLen: 30, descriptionLen: 85,
+                titleLen: 20, subtitleLen: 45, descriptionLen: 100,
                 description: '',
                 vTitleColor:{
                     color:''
