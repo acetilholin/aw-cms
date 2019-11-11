@@ -537,12 +537,12 @@ and (orientation : portrait) {
         font-size: 27px !important;
     }
     .navbar-nav .nav-link {
-        color: #ed1c24;
+        color: white;
         padding-top: .8rem;
     }
     .navbar-nav .nav-link.active,
     .navbar-nav .nav-link:hover {
-        color: #586168;
+        color: #ed1c24;
     }
     .main-title {
         font-size: 40px !important;
@@ -584,12 +584,12 @@ and (orientation : portrait) {
         font-size: 27px !important;
     }
     .navbar-nav .nav-link {
-        color: #ed1c24;
+        color: white;
         padding-top: .8rem;
     }
     .navbar-nav .nav-link.active,
     .navbar-nav .nav-link:hover {
-        color: #586168;
+        color: #ed1c24;
     }
     .main-title {
         font-size: 40px !important;
@@ -630,7 +630,7 @@ and (orientation: portrait) {
         font-size: 27px !important;
     }
     .navbar-nav .nav-link {
-        color: #ed1c24;
+        color: white;
         padding-top: .8rem;
     }
     .justify {
@@ -638,7 +638,7 @@ and (orientation: portrait) {
     }
     .navbar-nav .nav-link.active,
     .navbar-nav .nav-link:hover {
-        color: #586168;
+        color: #ed1c24;
     }
     .main-title {
         font-size: 40px !important;

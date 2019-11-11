@@ -2,280 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="683ee3bd-9800-463e-a565-5d8f78a4a3a0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/LogLastUserActivity.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ad.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ae.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/af.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ag.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ai.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/al.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/am.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ao.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/aq.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ar.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/as.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/at.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/au.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/aw.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ax.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/az.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ba.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/bb.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/bd.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/be.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/bf.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/bg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/bh.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/bi.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/bj.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/bl.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/bm.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/bn.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/bo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/bq.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/br.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/bs.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/bt.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/bv.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/bw.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/by.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/bz.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ca.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/cc.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/cd.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/cf.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/cg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ch.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ci.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ck.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/cl.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/cm.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/cn.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/co.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/cr.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/cu.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/cv.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/cw.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/cx.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/cy.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/cz.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/de.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/dj.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/dk.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/dm.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/do.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/dz.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ec.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ee.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/eg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/eh.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/er.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/es-ca.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/es.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/et.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/eu.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/fi.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/fj.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/fk.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/fm.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/fo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/fr.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ga.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gb-eng.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gb-nir.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gb-sct.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gb-wls.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gb.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gd.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ge.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gf.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gh.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gi.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gl.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gm.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gn.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gp.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gq.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gr.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gs.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gt.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gu.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gw.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/gy.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/hk.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/hm.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/hn.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/hr.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ht.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/hu.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/id.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ie.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/il.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/im.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/in.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/io.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/iq.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ir.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/is.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/it.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/je.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/jm.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/jo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/jp.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ke.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/kg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/kh.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ki.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/km.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/kn.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/kp.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/kr.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/kw.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ky.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/kz.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/la.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/lb.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/lc.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/li.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/lk.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/lr.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ls.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/lt.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/lu.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/lv.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ly.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ma.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/mc.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/md.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/me.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/mf.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/mg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/mh.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/mk.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ml.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/mm.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/mn.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/mo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/mp.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/mq.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/mr.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ms.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/mt.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/mu.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/mv.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/mw.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/mx.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/my.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/mz.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/na.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/nc.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ne.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/nf.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ng.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ni.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/nl.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/no.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/np.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/nr.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/nu.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/nz.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/om.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/pa.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/pe.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/pf.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/pg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ph.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/pk.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/pl.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/pm.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/pn.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/pr.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ps.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/pt.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/pw.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/py.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/qa.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/re.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ro.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/rs.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ru.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/rw.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/sa.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/sb.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/sc.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/sd.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/se.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/sg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/sh.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/si.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/sj.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/sk.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/sl.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/sm.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/sn.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/so.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/sr.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ss.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/st.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/sv.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/sx.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/sy.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/sz.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/tc.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/td.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/tf.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/tg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/th.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/tj.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/tk.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/tl.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/tm.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/tn.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/to.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/tr.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/tt.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/tv.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/tw.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/tz.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ua.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ug.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/um.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/un.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/us.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/uy.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/uz.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/va.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/vc.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ve.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/vg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/vi.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/vn.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/vu.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/wf.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ws.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/xk.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/ye.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/yt.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/za.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/zm.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/countries/zw.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/icons/x.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/lang/si/messages.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/messages/info.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/users.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CarsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CarsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/custom-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/custom-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/forms.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/english.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/english.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -409,7 +143,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/icons" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -478,6 +212,9 @@
       <workItem from="1573236279859" duration="1126000" />
       <workItem from="1573239387131" duration="5994000" />
       <workItem from="1573295288600" duration="28443000" />
+      <workItem from="1573383172576" duration="2292000" />
+      <workItem from="1573419165516" duration="1011000" />
+      <workItem from="1573481615174" duration="243000" />
     </task>
     <servers />
   </component>

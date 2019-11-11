@@ -50,7 +50,7 @@
                     <th scope="col">Email</th>
                     <th scope="col">Potrjen</th>
                     <th scope="col">Zadnja prijava</th>
-                    <th scope="col">Država <i class="fas fa-info-circle" style="color: lightgray" data-toggle="country" title="Država iz katere se je uporabnik prijavil." data-placement="top"></i></th>
+                    <th scope="col">Država <i class="fas fa-info-circle" style="color: lightgray" data-toggle="country" title="Država iz katere se je uporabnik nazadnje prijavil." data-placement="top"></i></th>
                     <th scope="col">Online <i class="fas fa-info-circle" style="color: lightgray" data-toggle="online" title="Prisotni uporabniki zadnjih 5 minut." data-placement="top"></i></th>
                     <th scope="col">Uredi</th>
                 </tr>

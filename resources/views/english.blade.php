@@ -5,6 +5,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Avto Welt d.o.o. Koper - Premium selection & fair price">
+
     <link rel="shortcut icon" type="image/png" href="{{ asset('favicon.ico') }}">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -37,8 +39,9 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="{{ asset('pictures/logo-1.png') }}"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                <span class="custom-toggler-icon"><i class="fas fa-bars"></i></span>
+            <button class="navbar-toggler second-button" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarSupportedContent23" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="animated-icon2"><span></span><span></span><span></span><span></span></div>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
