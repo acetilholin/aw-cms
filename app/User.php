@@ -21,11 +21,23 @@ class User extends Authenticatable
     {
         $sql = DB::select("SELECT password FROM users WHERE email ='" . $email . "'");
         $hashedPassword = $sql[0]->password;
+
         if (Hash::check($password, $hashedPassword)) {
             return true;
         } else {
             return false;
         }
+    }
+
+    function updatePassword($email, $password)
+    {
+        $hashedPassword = Hash::make($password);
+        $update = DB::table('users')
+            ->where('email', $email)
+            ->update([
+                'password' => $hashedPassword
+            ]);
+        return $update;
     }
 
     function loginApproved($email)

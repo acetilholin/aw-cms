@@ -196,6 +196,7 @@ class UserController extends Controller
                             return back()->with('error', trans('messages.passwordTooShort'));
                             break;
                         default:
+                            $updatePassword = $user->updatePassword($email, $password1);
                             return redirect('/login')->with('success', trans('messages.passwordChanged'));
                     }
                 }
