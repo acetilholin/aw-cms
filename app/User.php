@@ -46,11 +46,26 @@ class User extends Authenticatable
         return $sql[0]->email;
     }
 
+    function getUserName($email)
+    {
+        $sql = DB::select("SELECT name FROM users WHERE email ='" . $email . "'");
+        return $sql[0]->name;
+    }
+
     function countryByIP()
     {
         $ip = $_SERVER['REMOTE_ADDR'];
         $country = json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip));
         return $country->geoplugin_countryCode;
+    }
+
+    function checkTokenMatch($email, $loginToken)
+    {
+        if (!$this->emailExists($email)) {
+            return false;
+        }
+        $sql = DB::select("SELECT login_token FROM users WHERE email ='" . $email . "'");
+        return $sql[0]->login_token == $loginToken ? true : false;
     }
 
     function allUserIds()
@@ -64,7 +79,7 @@ class User extends Authenticatable
         return $all;
     }
 
-    function register($email, $password)
+    function register($email, $name, $password)
     {
         $hashedPassword = Hash::make($password);
         $dateTime = Carbon::now("Europe/Ljubljana");
@@ -72,12 +87,23 @@ class User extends Authenticatable
 
         $values = array(
             'email' => $email,
+            'name' => $name,
             'password' => $hashedPassword,
             'approved' => false,
             'last_seen' => $dateTime,
             'country' => $country
         );
         return $result = DB::table('users')->insert($values);
+    }
+
+    function insertLoginToken($token, $email)
+    {
+        $update = DB::table('users')
+            ->where('email', $email)
+            ->update([
+                'login_token' => $token
+            ]);
+        return $update;
     }
 
     function insertResetPasswordToken($token, $email)

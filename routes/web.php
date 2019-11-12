@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/login', function () {
-    return view('login');
-});
 Route::get('/register', function () {
     return view('register');
 });
@@ -23,6 +20,7 @@ Route::get('/change-password', function () {
 Route::get('/token', function () {
     return view('token');
 });
+
 
 /* POST */
 Route::post('/login-user', ['as' => 'loginUser', 'uses' => 'UserController@login']);
@@ -35,6 +33,7 @@ Route::post('/update', ['as' => 'update', 'uses' => 'CarsController@updateCar'])
 /* GET */
 Route::get('/', ['as' => 'welcome', 'uses' => 'WelcomePageController@index']);
 Route::get('/en', ['as' => 'english', 'uses' => 'WelcomePageController@indexEN']);
+Route::get('/login', ['as' => 'login', 'uses' => 'UserController@checkCookie']);
 Route::get('/main', ['as' => 'main', 'uses' => 'CarsController@index']);
 Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'CarsController@edit']);
 Route::get('/delete/{id}', ['as' => 'delete', 'uses' => 'CarsController@delete']);
