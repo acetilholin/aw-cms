@@ -12,6 +12,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Session;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -36,6 +37,46 @@ class UserController extends Controller
         Auth::attempt(['email' => $email, 'password' => $password]);
     }
 
+    function createLoginCookie($email)
+    {
+        $user = new User();
+        $cookieName = 'Login';
+        $token = Hash::make($this->generateStringToken());
+        $data = [
+            'email' => $email,
+            'token' => $token
+        ];
+        $user->insertLoginToken($token, $email);
+        setcookie($cookieName, json_encode($data), time() + 86400 * 365);
+    }
+
+    function checkCookie(Request $request)
+    {
+        $user = new User();
+        $cars = new Cars();
+
+        if (isset($_COOKIE['Login'])) {
+            $cookieValue = json_decode($_COOKIE['Login']);
+            $email = $cookieValue->email;
+            $loginToken = $cookieValue->token;
+
+            $match = $user->checkTokenMatch($email, $loginToken);
+
+            if ($match) {
+                $email = $cookieValue->email;
+                $name = $user->getUserName($email);
+                return view('login', [
+                    'email' => $email,
+                    'name' => $name
+                ]);
+            } else {
+                return view('login');
+            }
+        } else {
+            return view('login');
+        }
+    }
+
     function login(Request $request)
     {
         $email = $request->input('email');
@@ -54,24 +95,26 @@ class UserController extends Controller
                     $this->authenticate($email, $password);
                     $dateTime = Carbon::now("Europe/Ljubljana");
                     $seen = $user->lastSeen($email, $dateTime);
+                    $this->createLoginCookie($email);
                     $allCars = $cars->getAll();
                     return view('main', [
                         'cars' => $allCars
                     ]);
                 } else {
-                    return back()->with('error', 'Napačno geslo');
+                    return back()->with('error', trans('messages.wrongPassword'));
                 }
             } else {
-                return back()->with('error', 'Prijava ni mogoča');
+                return back()->with('error', trans('messages.cannotLogin'));
             }
         } else {
-            return back()->with('error', 'Email ne obstaja');
+            return back()->with('error', trans('messages.emailNotExists'));
         }
     }
 
     function register(Request $request)
     {
         $email = $request->input('email');
+        $name = $request->input('name');
         $password1 = $request->input('password1');
         $password2 = $request->input('password2');
 
@@ -82,24 +125,24 @@ class UserController extends Controller
 
         switch (true) {
             case ($password1 != $password2):
-                return back()->with('error', 'Gesli se ne ujemata');
+                return back()->with('error', trans('messages.passwordMissmatch'));
                 break;
             case (strlen($password1) < 6):
-                return back()->with('error', 'Geslo je prekratko');
+                return back()->with('error', trans('messages.passwordTooShort'));
                 break;
             default:
                 if ($emailExists) {
-                    return back()->with('error', 'Email že obstaja');
+                    return back()->with('error', trans('messages.emailAlreadyExists'));
                 } else {
-                    $register = $user->register($email, $password2);
+                    $register = $user->register($email, $name, $password2);
                     if ($register) {
                         $adminEmail = env('ADMIN_EMAIL');
                         $allCars = $cars->getAll();
                         \Mail::to($email)->send(new NewUser($email));
                         \Mail::to($adminEmail)->send(new NewAccount($email));
-                        return redirect('/login')->with('success', 'Registracija je uspela');
+                        return redirect('/login')->with('success', trans('messages.registrationSuccessful'));
                     } else {
-                        return back()->with('error', 'Račun ni potrjen');
+                        return back()->with('error', trans('messages.accountNotConfirmed'));
                     }
                 }
         }
@@ -112,7 +155,7 @@ class UserController extends Controller
 
         $emailExists = $user->emailExists($email);
         if (!$emailExists) {
-            return back()->with('error', 'Email ne obstaja');
+            return back()->with('error', trans('messages.emailNotExists'));
         }
 
         $approvedEmailExists = $user->loginApproved($email);
@@ -121,9 +164,9 @@ class UserController extends Controller
             $token = $this->generateStringToken();
             $user->insertResetPasswordToken($token, $email);
             \Mail::to($email)->send(new NewPassword($token));
-            return redirect('token')->with('success', 'Žeton je poslan na vaš email');
+            return redirect('token')->with('success', trans('messages.tokenSent'));
         } else {
-            return back()->with('error', 'Račun ni potrjen');
+            return back()->with('error', trans('messages.accountNotConfirmed'));
         }
     }
 
@@ -143,24 +186,24 @@ class UserController extends Controller
             if ($emailAndTokenMatch) {
                 $tokenHasExpired = $this->checkTokenExpirationTime($token, $email);
                 if ($tokenHasExpired) {
-                    return back()->with('error', 'Žeton je potekel');
+                    return back()->with('error', trans('messages.tokenExpired'));
                 } else {
                     switch (true) {
                         case ($password1 != $password2):
-                            return back()->with('error', 'Gesli se ne ujemata');
+                            return back()->with('error', trans('messages.passwordMissmatch'));
                             break;
                         case (strlen($password1) < 6):
-                            return back()->with('error', 'Geslo je prekratko');
+                            return back()->with('error', trans('messages.passwordTooShort'));
                             break;
                         default:
-                            return redirect('/login')->with('success', 'Geslo je spremenjeno');
+                            return redirect('/login')->with('success', trans('messages.passwordChanged'));
                     }
                 }
             } else {
-                return back()->with('error', 'Napačen žeton');
+                return back()->with('error', trans('messages.wrongToken'));
             }
         } else {
-            return back()->with('error', 'Email ne obstaja');
+            return back()->with('error', trans('messages.emailNotExists'));
         }
     }
 
