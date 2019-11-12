@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Session;
 
 class UserController extends Controller
 {
@@ -49,6 +50,7 @@ class UserController extends Controller
             if ($approved) {
                 $passwordMatch = $user->login($email, $password);
                 if ($passwordMatch) {
+                    session(['email' => $email]);
                     $this->authenticate($email, $password);
                     $dateTime = Carbon::now("Europe/Ljubljana");
                     $seen = $user->lastSeen($email, $dateTime);
@@ -176,18 +178,22 @@ class UserController extends Controller
         return $minutes < 60 ? false : true;
     }
 
-    function deleteUser($id)
+    function deleteUser(Request $request, $id)
     {
         $adminEmail = env('ADMIN_EMAIL');
         $user = new User();
         $usersEmail = $user->getUsersEmail($id);
         $onlineUsers = $this->onlineUsers();
 
-        if ($usersEmail != $adminEmail) {
+        $currentEmail = $request->session()->get('email');
+
+        if ($usersEmail == $adminEmail) {
+            $info = trans('messages.cannotRemoveAdmin');
+        } else if ($usersEmail == $currentEmail) {
+            $info = trans('messages.selfDelete');
+        } else {
             $delete = $user->deleteUser($id);
             $info = trans('messages.userIsRemoved');
-        } else {
-            $info = trans('messages.cannotDeleteAdmin');
         }
 
         $users = $user->getUsers();
@@ -199,18 +205,22 @@ class UserController extends Controller
         ]);
     }
 
-    function lockUser($id)
+    function lockUser(Request $request, $id)
     {
         $adminEmail = env('ADMIN_EMAIL');
         $user = new User();
         $usersEmail = $user->getUsersEmail($id);
         $onlineUsers = $this->onlineUsers();
 
-        if ($usersEmail != $adminEmail) {
-            $lock = $user->lockUser($id);
-            $info = trans('messages.userIsLocked');
-        } else {
+        $currentEmail = $request->session()->get('email');
+
+        if ($usersEmail == $adminEmail) {
             $info = trans('messages.cannotLockAdmin');
+        } else if ($usersEmail == $currentEmail) {
+            $info = trans('messages.selfUnlock');
+        } else {
+            $delete = $user->deleteUser($id);
+            $info = trans('messages.userIsLocked');
         }
 
         $users = $user->getUsers();

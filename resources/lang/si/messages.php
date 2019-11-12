@@ -7,6 +7,8 @@ return [
     'carIsDeleted' => 'Vozilo je odstranjeno',
     'carIsUpdated' => 'Vozilo je posodobljeno',
     'userIsRemoved' => 'Uporabnik je odstranjen',
-    'cannotDeleteAdmin' => 'Skrbnika ni mogoče izbrisati',
-    'cannotLockAdmin' => 'Skrbnika ni mogoče zakleniti'
+    'selfUnlock' => 'Ne morete se zakleniti',
+    'selfDelete' => 'Ne morete se izbrisati',
+    'cannotLockAdmin' => 'Skrbnika ni mogoče zakleniti',
+    'cannotRemoveAdmin' => 'Skrbnika ni mogoče odstraniti'
 ];
