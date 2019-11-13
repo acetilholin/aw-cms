@@ -657,8 +657,8 @@ and (orientation: portrait) {
         bottom: 0 !important;
         margin: 5px 35% !important;
     }
-    .navbar-nav .nav-link {
-        padding-top: .1rem !important;
+    .nav-link {
+        padding: .1rem 1rem !important;
     }
     .lang-m-hide {
         display: none;
