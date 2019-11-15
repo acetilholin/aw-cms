@@ -157,6 +157,8 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Slika</label>
+                        <br>
+                        <small class="text-muted">Slika bo avtomatsko zmanjšana na primerno velikost.</small>
                         <input type="file" class="form-control-file" name="file" id="file">
                     </div>
                     <input type="hidden" name="id" id="id">

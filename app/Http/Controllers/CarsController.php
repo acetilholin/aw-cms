@@ -6,6 +6,8 @@ use App\Cars;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Intervention\Image\Facades\Image;
+
 
 class CarsController extends Controller
 {
@@ -33,10 +35,10 @@ class CarsController extends Controller
         $new = $new === 'checked' ? 'true' : 'false';
 
         if ($request->file('file') !== null) {
-            $name = $request->file('file')->getClientOriginalName();
+            $imageName = $this->generateImageName(). ".jpg";
+            $imgPath = "pictures/cars/{$imageName}";
             $file = Input::file('file');
-            $file->move('pictures/cars', $name);
-            $imgPath = "pictures/cars/{$name}";
+            $img = Image::make($file)->resize(2048, 1536)->save("pictures/cars/{$imageName}");
         } else {
             $imgPath = "pictures/cars/noimage.png";
         }
@@ -66,10 +68,10 @@ class CarsController extends Controller
         if($request->file('file') === null) {
             $imgPath = $data->image;
         } else {
-            $name = $request->file('file')->getClientOriginalName();
+            $imageName = $this->generateImageName(). ".jpg";
+            $imgPath = "pictures/cars/{$imageName}";
             $file = Input::file('file');
-            $file->move('pictures/cars', $name);
-            $imgPath = "pictures/cars/{$name}";
+            $img = Image::make($file)->resize(2048, 1536)->save("pictures/cars/{$imageName}");
         }
 
         $cars->updateCar($id, $title, $subtitle, $price, $description, $new, $imgPath);
@@ -97,5 +99,10 @@ class CarsController extends Controller
         $cars = new Cars();
         $data = $cars->getCarDataById($id);
         return json_encode($data);
+    }
+
+    function generateImageName()
+    {
+        return substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10 / strlen($x)))), 1, 7);
     }
 }

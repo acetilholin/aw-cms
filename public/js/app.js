@@ -1881,6 +1881,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Add",
   data: function data() {
@@ -38244,6 +38246,12 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
       _c("label", { attrs: { for: "file" } }, [_vm._v("Slika")]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("small", { staticClass: "text-muted" }, [
+        _vm._v("Slika bo avtomatsko zmanjšana na primerno velikost.")
+      ]),
       _vm._v(" "),
       _c("input", {
         staticClass: "form-control-file",
