@@ -14,7 +14,11 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
+    <!-- Sweet Alerts -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom-style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/main.css') }}" >
 
     <title>Avto Welt d.o.o.</title>
 </head>
@@ -85,7 +89,7 @@
                                         Uredi
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a href="{{ route('delete', $car->id) }}" class="dropdown-item"><i class="far fa-trash-alt remove" style="font-size: 1.3rem; cursor: pointer" title="Odstrani"></i>
+                                    <a href="{{ route('delete', $car->id) }}" id="{{ $car->id }}" class="dropdown-item delete"><i class="far fa-trash-alt remove" style="font-size: 1.3rem; cursor: pointer" title="Odstrani"></i>
                                         Odstrani
                                     </a>
                                 </ul>
@@ -206,49 +210,20 @@
                 $('#update').modal('show');
             }
         })
-    })
+    });
+
+    $('.delete').on('click',function(e) {
+        e.preventDefault();
+        var id = $(this).attr("id");
+        return swal({
+            title: "Želite izbrisati vnos?",
+            icon: "warning",
+            buttons: "Izbriši",
+            textColor: "#212529"
+        }).then(response => {
+            if (response) {
+                window.location.href = "/delete/" + id;
+            }
+        })
+    });
 </script>
-
-
-
-<style>
-    .button-margin {
-        margin: 1rem auto;
-    }
-    .btn-edit {
-        border: 1px solid #ed1c24;
-        border-radius: 0;
-    }
-    .btn-red:focus {
-        border-color: #ed1c24;
-        box-shadow: 0 0 0 0.2rem rgba(237, 28, 36, 0.25);
-    }
-    .btn-edit:focus {
-        border-color: #ed1c24;
-        box-shadow: 0 0 0 0.2rem rgba(237, 28, 36, 0.25);
-    }
-    .remove {
-        color: #ed1c24;
-    }
-    .remove:hover {
-        color: #c4191e;
-    }
-    .edit-style {
-        color: #586168;
-    }
-    .edit-style:hover {
-        color: #444c53;
-    }
-    .dropdown-menu {
-        background-color: white;
-        border: 1px solid lightgray !important;
-    }
-    .btn-white {
-        border: 1px solid #ed1c24;
-    }
-    .btn-white:focus {
-        border-color: #ed1c24;
-        box-shadow: 0 0 0 0.2rem rgba(237, 28, 36, 0.25);
-    }
-
-</style>
