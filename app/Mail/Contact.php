@@ -36,11 +36,13 @@ class Contact extends Mailable
     public function build()
     {
         $timeNow = date('Y-m-d H:i');
-        return $this->view('emails.contact', [
-            'email' => $this->email,
-            'fullname' => $this->fullname,
-            'msg' => $this->msg,
-            'datetime' => $timeNow
-        ]);
+
+        return $this->from($this->email)
+            ->view('emails.contact', [
+                'email' => $this->email,
+                'fullname' => $this->fullname,
+                'msg' => $this->msg,
+                'datetime' => $timeNow
+            ]);
     }
 }

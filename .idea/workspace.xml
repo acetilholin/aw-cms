@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="683ee3bd-9800-463e-a565-5d8f78a4a3a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Add.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/Contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/Contact.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -142,7 +141,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../predracuni" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -220,7 +219,8 @@
       <workItem from="1573578345820" duration="13016000" />
       <workItem from="1573643616383" duration="2168000" />
       <workItem from="1573834532497" duration="11979000" />
-      <workItem from="1573850171034" duration="121000" />
+      <workItem from="1573850171034" duration="460000" />
+      <workItem from="1574276358943" duration="1284000" />
     </task>
     <servers />
   </component>
