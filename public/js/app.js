@@ -1892,7 +1892,7 @@ __webpack_require__.r(__webpack_exports__);
       price: '',
       titleLen: 20,
       subtitleLen: 45,
-      descriptionLen: 100,
+      descriptionLen: 140,
       description: '',
       vTitleColor: {
         color: ''
@@ -38140,7 +38140,7 @@ var render = function() {
       _c(
         "small",
         { staticClass: "form-text text-muted", attrs: { id: "text-muted" } },
-        [_vm._v("Format e.g. 21.000")]
+        [_vm._v("Format e.g. 21.000, brez znaka za €")]
       ),
       _vm._v(" "),
       _c("input", {
@@ -38157,7 +38157,7 @@ var render = function() {
           type: "text",
           id: "price",
           "aria-describedby": "emailHelp",
-          placeholder: "Vnesite ceno brez znaka za €",
+          placeholder: "Vnesite ceno",
           name: "price",
           required: ""
         },
@@ -38188,7 +38188,7 @@ var render = function() {
         staticClass: "form-control",
         attrs: {
           id: "description",
-          rows: "2",
+          rows: "4",
           name: "description",
           required: ""
         },

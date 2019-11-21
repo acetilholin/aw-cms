@@ -140,12 +140,12 @@
                     </div>
                     <div class="form-group">
                         <label for="update-price">Cena</label>
-                        <small id="text-muted" class="form-text text-muted">Format e.g. 21.000</small>
+                        <small id="text-muted" class="form-text text-muted">Format e.g. 21.000, brez znaka za €</small>
                         <input type="text" class="form-control" id="update-price"  aria-describedby="emailHelp" placeholder="Vnesite ceno" name="price">
                     </div>
                     <div class="form-group">
                         <label for="update-description">Opis</label>
-                        <textarea class="form-control" id="update-description"  rows="2" name="description"></textarea>
+                        <textarea class="form-control" id="update-description" rows="4" name="description"></textarea>
                     </div>
                     <div class="form-group">
                         <div class="form-check">

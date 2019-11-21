@@ -11,7 +11,7 @@ use Intervention\Image\Facades\Image;
 
 class CarsController extends Controller
 {
-    function index(Request $request)
+    function index()
     {
         if (Auth::guest()) {
             return redirect('/login');
@@ -35,10 +35,10 @@ class CarsController extends Controller
         $new = $new === 'checked' ? 'true' : 'false';
 
         if ($request->file('file') !== null) {
-            $imageName = $this->generateImageName(). ".jpg";
+            $imageName = $this->generateImageName(). ".jpeg";
             $imgPath = "pictures/cars/{$imageName}";
             $file = Input::file('file');
-            $img = Image::make($file)->resize(2048, 1536)->save("pictures/cars/{$imageName}");
+            Image::make($file)->resize(2048, 1536)->save("pictures/cars/{$imageName}");
         } else {
             $imgPath = "pictures/cars/noimage.png";
         }
@@ -68,10 +68,10 @@ class CarsController extends Controller
         if($request->file('file') === null) {
             $imgPath = $data->image;
         } else {
-            $imageName = $this->generateImageName(). ".jpg";
+            $imageName = $this->generateImageName(). ".jpeg";
             $imgPath = "pictures/cars/{$imageName}";
             $file = Input::file('file');
-            $img = Image::make($file)->resize(2048, 1536)->save("pictures/cars/{$imageName}");
+            Image::make($file)->resize(2048, 1536)->save("pictures/cars/{$imageName}");
         }
 
         $cars->updateCar($id, $title, $subtitle, $price, $description, $new, $imgPath);
@@ -85,7 +85,7 @@ class CarsController extends Controller
     function delete($id)
     {
         $cars = new Cars();
-        $delete = $cars->deleteCar($id);
+        $cars->deleteCar($id);
         $allCars = $cars->getAll();
         return view('main', [
             'cars' => $allCars,

@@ -16,12 +16,12 @@
         </div>
         <div class="form-group">
             <label for="price">Cena</label>
-            <small id="text-muted" class="form-text text-muted">Format e.g. 21.000</small>
-            <input type="text" class="form-control" id="price" aria-describedby="emailHelp" placeholder="Vnesite ceno brez znaka za €" name="price" v-model="price" required>
+            <small id="text-muted" class="form-text text-muted">Format e.g. 21.000, brez znaka za €</small>
+            <input type="text" class="form-control" id="price" aria-describedby="emailHelp" placeholder="Vnesite ceno" name="price" v-model="price" required>
         </div>
         <div class="form-group">
             <label for="description">Opis</label>
-            <textarea class="form-control" id="description" rows="2" name="description" v-model="description" @keydown="vDescription" required></textarea>
+            <textarea class="form-control" id="description" rows="4" name="description" v-model="description" @keydown="vDescription" required></textarea>
             <span>
                   <small v-bind:style="vDescriptionColor">Še {{ this.descriptionLen - description.length}} znakov</small>
             </span>
@@ -50,7 +50,7 @@
         data() {
             return {
                 title: '', subtitle: '', price: '',
-                titleLen: 20, subtitleLen: 45, descriptionLen: 100,
+                titleLen: 20, subtitleLen: 45, descriptionLen: 140,
                 description: '',
                 vTitleColor:{
                     color:''
