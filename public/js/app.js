@@ -1883,6 +1883,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Add",
   data: function data() {
@@ -1892,7 +1898,7 @@ __webpack_require__.r(__webpack_exports__);
       price: '',
       titleLen: 20,
       subtitleLen: 45,
-      descriptionLen: 140,
+      descriptionLen: 170,
       description: '',
       vTitleColor: {
         color: ''
@@ -38158,8 +38164,7 @@ var render = function() {
           id: "price",
           "aria-describedby": "emailHelp",
           placeholder: "Vnesite ceno",
-          name: "price",
-          required: ""
+          name: "price"
         },
         domProps: { value: _vm.price },
         on: {
@@ -38170,7 +38175,9 @@ var render = function() {
             _vm.price = $event.target.value
           }
         }
-      })
+      }),
+      _vm._v(" "),
+      _vm._m(0)
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
@@ -38215,12 +38222,27 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(0),
+    _vm._m(1),
     _vm._v(" "),
-    _vm._m(1)
+    _vm._m(2)
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-check" }, [
+      _c("input", {
+        staticClass: "form-check-input",
+        attrs: { id: "cfp", type: "checkbox", value: "checked", name: "cfp" }
+      }),
+      _vm._v(" "),
+      _c("label", { staticClass: "form-check-label", attrs: { for: "cfp" } }, [
+        _vm._v("\n                Pokličite za ceno\n            ")
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

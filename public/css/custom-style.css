@@ -331,8 +331,7 @@ h3.heading {
 }
 .card p {
     border-top: .1rem solid rgba(0,0,0,.1);
-    padding: 1rem;
-    margin: 1rem 0 1.5rem;
+    padding-top: .5rem;
     color: #586168;
 }
 .shade:hover {

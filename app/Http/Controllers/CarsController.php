@@ -30,12 +30,14 @@ class CarsController extends Controller
         $title = $request->input('title');
         $subtitle = $request->input('subtitle');
         $price = $request->input('price');
+        $callForPrice = $request->input('cfp');
         $description = $request->input('description');
         $new = $request->input('new');
         $new = $new === 'checked' ? 'true' : 'false';
+        $price = $callForPrice === 'checked' ? trans('messages.CFP') : $price;
 
         if ($request->file('file') !== null) {
-            $imageName = $this->generateImageName(). ".jpeg";
+            $imageName = $this->generateImageName() . ".jpeg";
             $imgPath = "pictures/cars/{$imageName}";
             $file = Input::file('file');
             Image::make($file)->resize(2048, 1536)->save("pictures/cars/{$imageName}");
@@ -43,12 +45,12 @@ class CarsController extends Controller
             $imgPath = "pictures/cars/noimage.png";
         }
 
-       $cars->insertCar($title, $subtitle, $price, $description, $new, $imgPath);
+        $cars->insertCar($title, $subtitle, $price, $description, $new, $imgPath);
 
         $allCars = $cars->getAll();
         return view('main', [
             'cars' => $allCars,
-            'info' =>  trans('messages.carIsAdded')
+            'info' => trans('messages.carIsAdded')
         ]);
     }
 
@@ -59,16 +61,19 @@ class CarsController extends Controller
         $title = $request->input('title');
         $subtitle = $request->input('subtitle');
         $price = $request->input('price');
+        $callForPrice = $request->input('cfp');
         $description = $request->input('description');
         $new = $request->input('new');
         $new = $new === 'checked' ? 'true' : 'false';
 
+        $price = $callForPrice === 'checked' ? trans('messages.CFP') : $price;
+
         $data = $cars->getCarDataById($id);
 
-        if($request->file('file') === null) {
+        if ($request->file('file') === null) {
             $imgPath = $data->image;
         } else {
-            $imageName = $this->generateImageName(). ".jpeg";
+            $imageName = $this->generateImageName() . ".jpeg";
             $imgPath = "pictures/cars/{$imageName}";
             $file = Input::file('file');
             Image::make($file)->resize(2048, 1536)->save("pictures/cars/{$imageName}");
@@ -78,7 +83,7 @@ class CarsController extends Controller
         $allCars = $cars->getAll();
         return view('main', [
             'cars' => $allCars,
-            'info' =>  trans('messages.carIsUpdated')
+            'info' => trans('messages.carIsUpdated')
         ]);
     }
 
@@ -89,7 +94,7 @@ class CarsController extends Controller
         $allCars = $cars->getAll();
         return view('main', [
             'cars' => $allCars,
-            'info' =>  trans('messages.carIsDeleted')
+            'info' => trans('messages.carIsDeleted')
         ]);
     }
 
