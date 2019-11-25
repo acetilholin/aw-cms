@@ -70,7 +70,13 @@
                         <th scope="row">{{ $number++ }}</th>
                         <td>{{ $car->title }}</td>
                         <td>{{ $car->subtitle }}</td>
-                        <td>{{ $car->price }}€</td>
+                        <td>
+                            @if($car->price === trans('messages.CFP'))
+                                {!! Html::image('icons/phone.svg', 'cfp', array('title' => 'Pokličite za ceno')) !!}
+                                @else
+                                {{ $car->price }}€
+                            @endif
+                        </td>
                         <td>{{ $car->description }}</td>
                         <td>
                             @if($car->new == 'true' )
@@ -142,6 +148,12 @@
                         <label for="update-price">Cena</label>
                         <small id="text-muted" class="form-text text-muted">Format e.g. 21.000, brez znaka za €</small>
                         <input type="text" class="form-control" id="update-price"  aria-describedby="emailHelp" placeholder="Vnesite ceno" name="price">
+                        <div class="form-check">
+                            <input class="form-check-input" id="update-cfp" type="checkbox" value="checked" name="cfp">
+                            <label class="form-check-label" for="update-cfp">
+                                Pokličite za ceno
+                            </label>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="update-description">Opis</label>
@@ -200,13 +212,19 @@
             success: function(data){
                 $('#update-title').val(data.title);
                 $('#update-subtitle').val(data.subtitle);
-                $('#update-price').val(data.price);
                 $('#update-description').val(data.description);
                 $('#id').val(data.id);
                 if(data.new === "true") {
                     $('#update-new').prop('checked', true);
                 } else {
                     $('#update-new').prop('checked', false);
+                }
+                if(data.price === 'CFP') {
+                    $('#update-cfp').prop('checked', true);
+                    $('#update-price').val(' ');
+                } else {
+                    $('#update-cfp').prop('checked', false);
+                    $('#update-price').val(data.price);
                 }
 
                 $('#update').modal('show');

@@ -206,7 +206,13 @@
                                             @endif
                                         <h4>{{ $car->title }}</h4>
                                         <h5>{{ $car->subtitle }}</h5>
-                                        <h5>{{ $car->price }}€</h5>
+                                        <h5>
+                                            @if($car->price === trans('messages.CFP'))
+                                                <span class="text-red">{{ trans('messages.cfp-blade') }}</span>
+                                                @else
+                                                {{ $car->price }}€
+                                            @endif
+                                        </h5>
                                         <p>{{ $car->description }}</p>
                                     </div>
                                 </div>

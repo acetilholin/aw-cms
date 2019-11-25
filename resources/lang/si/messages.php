@@ -22,7 +22,9 @@ return [
     'registrationSuccessful' => 'Registracija je uspela',
     'emailAlreadyExists' => 'Email že obstaja',
     'wrongPassword' => 'Napačno geslo',
-    'cannotLogin' => 'Prijava ni mogoča'
+    'cannotLogin' => 'Prijava ni mogoča',
+    'CFP' => 'CFP',
+    'cfp-blade' => 'pokličite za ceno'
 
 
 

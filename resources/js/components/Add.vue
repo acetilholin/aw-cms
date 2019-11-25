@@ -17,7 +17,13 @@
         <div class="form-group">
             <label for="price">Cena</label>
             <small id="text-muted" class="form-text text-muted">Format e.g. 21.000, brez znaka za €</small>
-            <input type="text" class="form-control" id="price" aria-describedby="emailHelp" placeholder="Vnesite ceno" name="price" v-model="price" required>
+            <input type="text" class="form-control" id="price" aria-describedby="emailHelp" placeholder="Vnesite ceno" name="price" v-model="price">
+            <div class="form-check">
+                <input class="form-check-input" id="cfp" type="checkbox" value="checked" name="cfp">
+                <label class="form-check-label" for="cfp">
+                    Pokličite za ceno
+                </label>
+            </div>
         </div>
         <div class="form-group">
             <label for="description">Opis</label>
@@ -50,7 +56,7 @@
         data() {
             return {
                 title: '', subtitle: '', price: '',
-                titleLen: 20, subtitleLen: 45, descriptionLen: 140,
+                titleLen: 20, subtitleLen: 45, descriptionLen: 170,
                 description: '',
                 vTitleColor:{
                     color:''
