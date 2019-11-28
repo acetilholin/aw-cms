@@ -43,7 +43,7 @@
         <div class="col-md-12">
             @include('messages.info')
             @yield('content')
-            <table class="table table-font text-center">
+            <table class="table table-font text-center table-hover">
                 <thead>
                 <tr>
                     <th scope="col">#</th>

@@ -10,7 +10,7 @@ class WelcomePageController extends Controller
     function index(Request $request)
     {
         $cars = new Cars();
-        $allCars = $cars->getAll();
+        $allCars = $cars->getAllFirstPage();
 
         return view('welcome', [
             'cars' => $allCars
@@ -20,7 +20,7 @@ class WelcomePageController extends Controller
     function indexEN(Request $request)
     {
         $cars = new Cars();
-        $allCars = $cars->getAll();
+        $allCars = $cars->getAllFirstPage();
 
         return view('english', [
             'cars' => $allCars

@@ -13,6 +13,12 @@ class Cars extends Model
         return $cars;
     }
 
+    function getAllFirstPage()
+    {
+        $cars = DB::select("SELECT * FROM cars order by new DESC");
+        return $cars;
+    }
+
     function insertCar($title, $subtitle, $price, $description, $new, $imgPath)
     {
         $values = array(
