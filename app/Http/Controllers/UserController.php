@@ -263,7 +263,7 @@ class UserController extends Controller
         } else if ($usersEmail == $currentEmail) {
             $info = trans('messages.selfUnlock');
         } else {
-            $delete = $user->deleteUser($id);
+            $delete = $user->lockUser($id);
             $info = trans('messages.userIsLocked');
         }
 
