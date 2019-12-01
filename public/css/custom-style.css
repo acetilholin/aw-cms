@@ -244,30 +244,61 @@ select.form-control.language:focus {
 
 .btn-red {
     border-width: medium;
-    background: #ed1c24;
+    background: transparent;
+    outline: 2px solid #ed1c24;
     border-radius: 0;
-    color: white;
+    color: #ed1c24;
     padding: .5rem 1.1rem;
     font-size: 1.2rem;
     margin: 1rem;
 }
+.btn-red:focus {
+    box-shadow: none !important;
+    outline: 2px solid #ed1c24;
+}
+.btn-red:hover {
+    color: white;
+    background-color: #ed1c24;
+}
+.btn-gray {
+    border-width: medium;
+    background: transparent;
+    border-radius: 0;
+    outline: 2px solid #586168;
+    color: #586168;
+    padding: .5rem 1.1rem;
+    font-size: 1.2rem;
+    margin: 1rem;
+}
+.btn-gray:hover {
+    color: white;
+    background-color: #586168;
+}
+.btn-gray:focus {
+    box-shadow: none !important;
+    outline: 2px solid #586168;
+}
+.btn-gray-costs:focus {
+    box-shadow: none !important;
+    outline: 2px solid #586168;
+}
 .btn-calculate {
     border-width: medium;
-    background: #ed1c24;
+    outline: 2px solid #ed1c24;
+    background: transparent;
     border-radius: 0;
-    color: white;
+    color: #ed1c24;
     padding: .5rem 1.1rem;
     font-size: 1.2rem;
     margin: 1rem 1rem 2rem 0;
 }
-.btn-gray {
-    border-width: medium;
-    background: #586168;
-    border-radius: 0;
+.btn-calculate:hover {
+    background: #ed1c24;
     color: white;
-    padding: .5rem 1.1rem;
-    font-size: 1.2rem;
-    margin: 1rem;
+}
+.btn-calculate:focus {
+    box-shadow: none !important;
+    outline: 2px solid #ed1c24;
 }
 .jumbotron {
     margin-bottom: 0;
@@ -367,12 +398,17 @@ h3.heading {
 }
 .btn-gray-costs {
     border-width: medium;
-    background: #586168;
+    background: transparent;
+    outline: 2px solid #586168;
     border-radius: 0;
-    color: white;
+    color: #586168;
     padding: .5rem 1.1rem;
     font-size: 1.2rem;
     margin: 1rem 1rem 2rem 0;
+}
+.btn-gray-costs:hover {
+    background: #586168;
+    color: white;
 }
 .form-control,.custom-select {
     border-radius: 0 !important;
