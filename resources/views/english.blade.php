@@ -194,14 +194,22 @@
                         <div id="cars-in-offer" class="owl-carousel owl-theme">
                             @foreach($cars as $car)
                                 <div class="card text-center">
-                                    <a href="https://www.avto.net/avtowelt/" target="_blank"><img class="card-img-top" src="../{{ $car->image }}" alt=""></a>
+                                    <a href="https://www.avto.net/avtowelt/" target="_blank">
+                                        <img class="card-img-top" src="../{{ $car->image }}" alt="">
+                                    </a>
                                     <div class="card-body">
                                         @if( $car->new === 'true')
                                             <div class="ribbon"><span>NOVO</span></div>
                                         @endif
                                         <h4>{{ $car->title }}</h4>
                                         <h5>{{ $car->subtitle }}</h5>
-                                        <h5>{{ $car->price }}€</h5>
+                                        <h5>
+                                            @if($car->price === trans('messages.CFP'))
+                                                <span class="text-red">{{ trans('messages.cfp-blade') }}</span>
+                                            @else
+                                                {{ $car->price }}€
+                                            @endif
+                                        </h5>
                                         <p>{{ $car->description }}</p>
                                     </div>
                                 </div>
