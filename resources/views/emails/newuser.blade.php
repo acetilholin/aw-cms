@@ -7,6 +7,6 @@
     </p>
     <small class="text-muted">Prijavite se lahko, ko bo vaš račun potrjen.</small>
     <div class="text-center">
-        <a href="http://avtowelt.com/token" class="custom-red">Prijava</a>
+        <a href="http://avtowelt.com/login" class="custom-red">Prijava</a>
     </div>
 @endsection

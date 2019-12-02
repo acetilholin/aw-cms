@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\User;
 
 class Contact extends Mailable
 {
@@ -15,17 +16,21 @@ class Contact extends Mailable
     public $email;
     public $fullname;
     public $msg;
+    public $country;
+    public $city;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($email, $fullname, $message)
+    public function __construct($email, $fullname, $message, $country, $city)
     {
         $this->email = $email;
         $this->fullname = $fullname;
         $this->msg = $message;
+        $this->city = $city;
+        $this->country = $country;
     }
 
     /**
@@ -42,7 +47,9 @@ class Contact extends Mailable
                 'email' => $this->email,
                 'fullname' => $this->fullname,
                 'msg' => $this->msg,
-                'datetime' => $timeNow
+                'datetime' => $timeNow,
+                'city' => $this->city,
+                'country' => $this->country
             ]);
     }
 }

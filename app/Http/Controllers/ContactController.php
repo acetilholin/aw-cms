@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\Contact;
 use Illuminate\Http\Request;
+use App\User;
 
 class ContactController extends Controller
 {
@@ -13,10 +14,13 @@ class ContactController extends Controller
         $fullname = $request->input('fullname');
         $message = $request->input('message');
 
+        $user = new User();
+        $geoData = $user->geoData();
+
         $recipient1 = env('RECIPIENT1');
         $recipient2 = env('RECIPIENT2');
 
-        \Mail::to($recipient1, $recipient2)->send(new Contact($email, $fullname, $message));
+        \Mail::to($recipient1, $recipient2)->send(new Contact($email, $fullname, $message, $geoData['country'], $geoData['city']));
 
         return [
             'resp' => 'Sporočilo je bilo poslano'
@@ -29,11 +33,13 @@ class ContactController extends Controller
         $fullname = $request->input('fullname');
         $message = $request->input('message');
 
+        $user = new User();
+        $geoData = $user->geoData();
+
         $recipient1 = env('RECIPIENT1');
         $recipient2 = env('RECIPIENT2');
 
-        \Mail::to($recipient1)->send(new Contact($email, $fullname, $message));
-        \Mail::to($recipient2)->send(new Contact($email, $fullname, $message));
+        \Mail::to($recipient1, $recipient2)->send(new Contact($email, $fullname, $message, $geoData['country'], $geoData['city']));
 
         return [
             'resp' => 'Message sent'

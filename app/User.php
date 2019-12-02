@@ -64,11 +64,15 @@ class User extends Authenticatable
         return $sql[0]->name;
     }
 
-    function countryByIP()
+    function geoData()
     {
         $ip = $_SERVER['REMOTE_ADDR'];
-        $country = json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip));
-        return $country->geoplugin_countryCode;
+        $data = json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip));
+        return $geoData = [
+            'code' => $data->geoplugin_countryCode,
+            'country' => $data->geoplugin_countryName,
+            'city' => $data->geoplugin_city
+        ];
     }
 
     function checkTokenMatch($email, $loginToken)
@@ -95,7 +99,8 @@ class User extends Authenticatable
     {
         $hashedPassword = Hash::make($password);
         $dateTime = Carbon::now("Europe/Ljubljana");
-        $country = $this->countryByIP() == null ? 'SI' : $this->countryByIP();
+        $country = $this->geoData();
+        $country = $country['code'] == null ? 'SI' : $country['code'];
 
         $values = array(
             'email' => $email,
@@ -152,7 +157,8 @@ class User extends Authenticatable
 
     function lastSeen($email, $dateTime)
     {
-        $country = $this->countryByIP() == null ? 'SI' : $this->countryByIP();
+        $country = $this->geoData();
+        $country = $country['code'] == null ? 'SI' : $country['code'];
         $update = DB::table('users')
             ->where('email', $email)
             ->update([

@@ -5,7 +5,11 @@
     <p style="padding-top: 1rem; text-align: left !important;">
         <b>Email:</b> {{ $email }} <br>
         <b>Pošiljatelj:</b> {{ $fullname }} <br>
-        <b>Sporočilo:</b> {{ $msg }}<br>
+        <b>Mesto</b>: {{ $city }}<br>
+        <b>Država</b>: {{ $country }}<br>
         <b>Čas:</b> {{ $datetime }} <br>
+        <br>
+        <br>
+        <b>Sporočilo:</b> {{ $msg }}<br>
     </p>
 @endsection

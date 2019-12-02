@@ -31,11 +31,12 @@ img {
     padding: 1rem;
 }
 .custom-red {
+    border-width: medium;
+    outline: 2px solid #ed1c24;
     text-decoration: none;
-    background: #ed1c24;
-    border: 1px solid transparent;
+    background: transparent;
     border-radius: 0;
-    color: white;
+    color: #ed1c24;
     padding: .5rem 1.1rem;
     font-size: 1.2rem;
     margin: 1rem;
@@ -52,6 +53,7 @@ img {
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .custom-red:hover {
-    color: #212529;
+    color: white;
+    background: #ed1c24;
     text-decoration: none;
 }
