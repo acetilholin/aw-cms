@@ -2,22 +2,22 @@
     <div>
         <div class="form-group">
             <label for="title">Model</label>
-            <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Vnesite model" name="title" v-model="title" @keydown="vTitle" required>
+            <input type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Vnesite model" name="title" v-model="title" @input="$v.title.$touch" required>
             <span>
-                  <small v-bind:style="vTitleColor">Še {{ this.titleLen - title.length}} znakov</small>
+                  <div class="small" :class="{invalid: $v.title.$error}">Še {{$v.title.$params.maxLength.max - title.length }} znakov</div>
             </span>
         </div>
         <div class="form-group">
             <label for="subtitle">Oznaka</label>
-            <input type="text" class="form-control" id="subtitle" aria-describedby="emailHelp" placeholder="Vnesite oznako" name="subtitle" v-model="subtitle" @keydown="vSubtitle" required>
+            <input type="text" class="form-control" id="subtitle" aria-describedby="emailHelp" placeholder="Vnesite oznako" name="subtitle" v-model="subtitle" @input="$v.subtitle.$touch" required>
             <span>
-                  <small v-bind:style="vSubtitleColor">Še {{ this.subtitleLen - subtitle.length}} znakov</small>
+                <div class="small" :class="{invalid: $v.subtitle.$error}">Še {{$v.subtitle.$params.maxLength.max - subtitle.length }} znakov</div>
             </span>
         </div>
         <div class="form-group">
             <label for="price">Cena</label>
             <small id="text-muted" class="form-text text-muted">Format e.g. 21.000, brez znaka za €</small>
-            <input type="text" class="form-control" id="price" aria-describedby="emailHelp" placeholder="Vnesite ceno" name="price" v-model="price">
+            <input type="text" class="form-control" id="price" aria-describedby="emailHelp" placeholder="Vnesite ceno" name="price" required>
             <div class="form-check">
                 <input class="form-check-input" id="cfp" type="checkbox" value="checked" name="cfp">
                 <label class="form-check-label" for="cfp">
@@ -27,9 +27,9 @@
         </div>
         <div class="form-group">
             <label for="description">Opis</label>
-            <textarea class="form-control" id="description" rows="4" name="description" v-model="description" @keydown="vDescription" required></textarea>
+            <textarea class="form-control" id="description" rows="4" name="description" v-model="description" @input="$v.description.$touch" required></textarea>
             <span>
-                  <small v-bind:style="vDescriptionColor">Še {{ this.descriptionLen - description.length}} znakov</small>
+                   <div class="small" :class="{invalid: $v.description.$error}">Še {{$v.description.$params.maxLength.max - description.length }} znakov</div>
             </span>
         </div>
         <div class="form-group">
@@ -51,34 +51,24 @@
 
 <script>
 
+    import { required, maxLength } from 'vuelidate/lib/validators'
+
     export default {
         name: "Add",
         data() {
             return {
-                title: '', subtitle: '', price: '',
-                titleLen: 20, subtitleLen: 45, descriptionLen: 170,
-                description: '',
-                vTitleColor:{
-                    color:''
-                },
-                vSubtitleColor:{
-                    color:''
-                },
-                vDescriptionColor:{
-                    color:''
-                },
-                gray: '#586168', red:'#ed1c24'
+                title: '', subtitle: '', description: ''
             }
         },
-        methods: {
-            vTitle() {
-                this.vTitleColor.color = this.titleLen - this.title.length > 0 ? this.gray : this.red;
+        validations: {
+            title: {
+                maxLength: maxLength(20)
             },
-            vSubtitle() {
-                this.vSubtitleColor.color = this.subtitleLen - this.subtitle.length > 0 ? this.gray : this.red;
+            subtitle: {
+                maxLength: maxLength(45)
             },
-            vDescription() {
-                this.vDescriptionColor.color = this.descriptionLen - this.description.length > 0 ? this.gray : this.red;
+            description: {
+                maxLength: maxLength(170)
             }
         }
     }

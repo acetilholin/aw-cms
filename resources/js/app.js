@@ -3,12 +3,14 @@ import Contact from "./components/Contact";
 import EnCalculation from "./components/EnCalculation";
 import EnContact from "./components/EnContact";
 import Add from "./components/Add";
+import Vuelidate from 'vuelidate';
 
 require('./bootstrap');
 window.Vue = require('vue');
 
 Vue.config.silent = true; /* Suppress all Vue logs and warnings */
-Vue.config.productionTip = false /* development mode notice t*/
+Vue.config.productionTip = false /* development mode notice */
+Vue.use(Vuelidate);
 
 const app = new Vue({
     el: '#app',

@@ -83,7 +83,7 @@
                                 {!! Html::image('icons/check.svg') !!}
                             @endif
                         </td>
-                        <td><img src="../{{ $car->image }}" width="80px" height="50px"></td>
+                        <td><img src="../{{ $car->image }}" class="open-image" width="80px" height="50px" id="{{ $car->id }}" style="cursor: zoom-in"></td>
                         <td>
                             <div class="btn-group dropright">
                                 <button type="button" class="btn btn-white dropdown-toggle dropdown-toggle-split" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -183,6 +183,14 @@
         </div>
     </div>
 </div>
+<!-- Modal image -->
+<div class="modal fade" id="image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-lg">
+            <img src="" id="car-img" style="height: 500px; width: 700px">
+        </div>
+    </div>
+</div>
 </body>
 </html>
 
@@ -228,6 +236,23 @@
                 }
 
                 $('#update').modal('show');
+            }
+        })
+    });
+
+    $(document).on('click','.open-image', function () {
+        var id = $(this).attr("id");
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url:'{{ url('/load-image') }}',
+            method: "GET",
+            data: { id: id },
+            dataType: "json",
+            success: function(data){
+                $('#car-img').attr({"src": data.image});
+                $('#image').modal('show');
             }
         })
     });

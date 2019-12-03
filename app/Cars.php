@@ -46,6 +46,12 @@ class Cars extends Model
             ]);
     }
 
+    function getCarImage($id)
+    {
+        $image = DB::select("SELECT image FROM cars WHERE id='" . $id . "'");
+        return $image[0];
+    }
+
     function deleteCar($id)
     {
         $request = DB::table('cars')->where('id', $id)->delete();

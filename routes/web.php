@@ -33,17 +33,20 @@ Route::post('/update', ['as' => 'update', 'uses' => 'CarsController@updateCar'])
 /* GET */
 Route::get('/', ['as' => 'welcome', 'uses' => 'WelcomePageController@index']);
 Route::get('/en', ['as' => 'english', 'uses' => 'WelcomePageController@indexEN']);
-Route::get('/login', ['as' => 'login', 'uses' => 'UserController@checkCookie']);
 Route::get('/main', ['as' => 'main', 'uses' => 'CarsController@index']);
 Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'CarsController@edit']);
 Route::get('/delete/{id}', ['as' => 'delete', 'uses' => 'CarsController@delete']);
 Route::get('/load', ['as' => 'loadCar', 'uses' => 'CarsController@loadCar']);
+Route::get('/load-image', ['as' => 'loadImage', 'uses' => 'CarsController@loadImage']);
 Route::get('/contact', ['as' => 'contactForm', 'uses' => 'ContactController@sendContactEmail']);
 Route::get('/contact-en', ['as' => 'contactFormEn', 'uses' => 'ContactController@sendContactEmailEnglish']);
 Route::get('/users', ['as' => 'users', 'uses' => 'UserController@index']);
+Route::get('/login', ['as' => 'login', 'uses' => 'UserController@checkCookie']);
 Route::get('/lock/{id}', ['as' => 'lock', 'uses' => 'UserController@lockUser']);
 Route::get('/unlock/{id}', ['as' => 'unlock', 'uses' => 'UserController@unlockUser']);
 Route::get('/delete-user/{id}', ['as' => 'deleteUser', 'uses' => 'UserController@deleteUser']);
+
+
 
 /*Logout*/
 Route::get('logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
