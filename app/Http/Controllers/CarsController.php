@@ -106,6 +106,15 @@ class CarsController extends Controller
         return json_encode($data);
     }
 
+    function loadImage(Request $request)
+    {
+        $id = $request->id;
+        $cars = new Cars();
+
+        $image = $cars->getCarImage($id);
+        return json_encode($image);
+    }
+
     function generateImageName()
     {
         return substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10 / strlen($x)))), 1, 7);
