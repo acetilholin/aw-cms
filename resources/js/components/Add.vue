@@ -68,13 +68,8 @@
                 maxLength: maxLength(45)
             },
             description: {
-                maxLength: maxLength(120)
+                maxLength: maxLength(170)
             }
         }
     }
 </script>
-<style>
-    .invalid {
-        color: #ed1c24;
-    }
-</style>
