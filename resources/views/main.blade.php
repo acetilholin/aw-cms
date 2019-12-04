@@ -35,6 +35,7 @@
             </li>
         </ul>
         <div class="form-inline my-2 my-lg-0">
+            <span class="m-item"><a href="{{ route('statistics') }}"><i class="fas fa-chart-line"></i></a></span>
             <span class="m-item"><a href="{{ route('users') }}"><i class="fas fa-users"></i></a></span>
             <form action="{{ route('logout') }}">
                 <button class="btn btn-gray btn-sm" type="submit" style="margin: 0">Odjava</button>
@@ -46,7 +47,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="button-margin">
-                <button type="submit" class="btn btn-red btn-sm" style="margin: 0" data-toggle="modal" data-target="#add">Dodaj</button>
+                <button type="submit" class="btn btn-calculate btn-sm" style="margin: 0" data-toggle="modal" data-target="#add">Dodaj</button>
             </div>
             @include('messages.info')
             @yield('content')

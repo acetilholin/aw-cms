@@ -35,6 +35,7 @@
             </li>
         </ul>
         <div class="form-inline my-2 my-lg-0">
+            <span class="m-item"><a href="{{ route('statistics') }}"><i class="fas fa-chart-line"></i></a></span>
             <span class="m-item"><a href="{{ route('main') }}"><i class="fas fa-car"></i></a></span>
             <form action="{{ route('logout') }}">
                 <button class="btn btn-gray btn-sm" type="submit" style="margin: 0">Odjava</button>
