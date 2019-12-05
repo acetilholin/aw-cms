@@ -1,7 +1,6 @@
-
-$(document).ready(function() {
-    $(window).scroll(function() {
-        if($(this).scrollTop() > 100) {
+$(document).ready(function () {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
             $('.navbar').addClass('solid');
         } else {
             $('.navbar').removeClass('solid');
@@ -16,6 +15,13 @@ $(document).ready(function() {
     });
 });
 
+$(window).on('load', function () {
+    if (!Cookies.get('modal')) {
+        $('#tesla-add').modal('show');
+        Cookies.set('modal', 'checked', {expires: 1})
+    }
+});
+
 $(document).ready(function () {
     $(document).click(function (event) {
         var clickover = $(event.target);
@@ -27,15 +33,15 @@ $(document).ready(function () {
 });
 
 
-$(document).ready(function(){
-    $("a").on('click', function(event) {
+$(document).ready(function () {
+    $("a").on('click', function (event) {
         if (this.hash !== "") {
             event.preventDefault();
             var hash = this.hash;
 
             $('html, body').animate({
                 scrollTop: $(hash).offset().top
-            }, 800, function(){
+            }, 800, function () {
                 window.location.hash = hash;
             });
         }
@@ -48,34 +54,34 @@ $(document).ready(function () {
     });
 });
 
-$(function() {
+$(function () {
     $("#message").fadeTo(4000, 500).slideUp(500, function () {
         $("#message").slideUp(500);
     });
 });
 
-$(document).ready(function(){
-    $(window).scroll(function(){
+$(document).ready(function () {
+    $(window).scroll(function () {
         $(".arrow").css("opacity", 1 - $(window).scrollTop() / 250);
     });
 });
 
 
-$(document).ready(function(){
+$(document).ready(function () {
     $("#cars-in-offer").owlCarousel({
-            items:3,
-            autoplay:true,
-            smartSpeed:900,
-            loop:true,
-            autoplayHoverPause:true,
-            responsive : {
-                0 : {
+            items: 3,
+            autoplay: true,
+            smartSpeed: 900,
+            loop: true,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
                     items: 1,
                 },
-                576 : {
+                576: {
                     items: 2,
                 },
-                768 : {
+                768: {
                     items: 3
                 }
             }
@@ -84,7 +90,7 @@ $(document).ready(function(){
 });
 
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('.counter').counterUp({
         delay: 10,
         time: 1800
@@ -92,19 +98,19 @@ $(document).ready(function() {
 });
 
 
-$(document).ready(function(){
+$(document).ready(function () {
     $("#cars-in-offer").owlCarousel({
-            items:3,
-            autoplay:true,
-            smartSpeed:1700,
-            loop:true,
-            autoplayHoverPause:true,
-            responsive : {
-                0 : {
+            items: 3,
+            autoplay: true,
+            smartSpeed: 1700,
+            loop: true,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
                     items: 1
                 },
 
-                576 : {
+                576: {
                     items: 2
                 },
                 768: {
@@ -115,8 +121,8 @@ $(document).ready(function(){
     );
 });
 
-$(document).ready(function() {
-    $(window).scroll(function() {
+$(document).ready(function () {
+    $(window).scroll(function () {
         if ($(this).scrollTop() > 500) {
             $('.top-scroll').fadeIn();
         } else {

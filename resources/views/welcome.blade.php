@@ -92,7 +92,7 @@
     <div class="video-background">
         <div class="video-wrap">
             <div id="video">
-                <video id="bgvid" playsinline autoplay muted loop>
+                <video id="bgvid" playsinline autoplay muted>
                     <source src="{{ asset('videos/video.mp4') }}" type="video/mp4">
                 </video>
             </div>
@@ -294,6 +294,18 @@
         </div>
     </footer>
 </div>
+<!-- Tesla Modal -->
+<div class="modal fade" id="tesla-add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <img class="img-fluid" src="{{ asset('pictures/tesla-modal.jpg') }}" height="370" width="100%">
+            <div class="text-center space-top-bottom">
+                <h3 class="mobile-size">Testna vožnja z <span class="text-red">novim</span> modelom Tesla 3 ?</h3>
+                <a href="#contact" class="btn btn-red" data-dismiss="modal">Prijavite se</a>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
 
@@ -303,6 +315,9 @@
 <!-- Bootstrap -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<!-- Cookies JS -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
 
 <!-- JS -->
 <script src="{!! asset('js/custom.js') !!}"></script>
