@@ -322,9 +322,5 @@
 <script src="{!! asset('js/jquery.counterup.js') !!}"></script>
 <script src="{!! asset('js/jquery.waypoints.min.js') !!}"></script>
 <script src="{!! asset('js/lightbox.js') !!}"></script>
-
-
 <script src="{!! asset('js/owl.carousel.min.js') !!}"></script>
-
-
 <script src="{!! asset('js/waypoints.js') !!}"></script>
