@@ -173,16 +173,19 @@ select.form-control.language:focus {
     margin-top: -1rem !important;
 }
 .m-item {
-    margin-right: 2rem;
+    margin-right: 1.5rem;
     font-size: 1.3rem;
 }
-.fa-users,.fa-car {
+.fa-users,.fa-car, .fa-chart-line {
     color: #505962 !important;
 }
 .fa-users:hover {
     color: #ed1c24 !important;
 }
 .fa-car:hover {
+    color: #ed1c24 !important;
+}
+.fa-chart-line:hover {
     color: #ed1c24 !important;
 }
 

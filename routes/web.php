@@ -21,7 +21,6 @@ Route::get('/token', function () {
     return view('token');
 });
 
-
 /* POST */
 Route::post('/login-user', ['as' => 'loginUser', 'uses' => 'UserController@login']);
 Route::post('/register-user', ['as' => 'registerUser', 'uses' => 'UserController@register']);
@@ -45,8 +44,8 @@ Route::get('/login', ['as' => 'login', 'uses' => 'UserController@checkCookie']);
 Route::get('/lock/{id}', ['as' => 'lock', 'uses' => 'UserController@lockUser']);
 Route::get('/unlock/{id}', ['as' => 'unlock', 'uses' => 'UserController@unlockUser']);
 Route::get('/delete-user/{id}', ['as' => 'deleteUser', 'uses' => 'UserController@deleteUser']);
-
-
+Route::get('/statistics', ['as' => 'statistics', 'uses' => 'StatisticsController@index']);
+Route::get('/load-statistics', ['as' => 'loadStatistics', 'uses' => 'StatisticsController@getData']);
 
 /*Logout*/
 Route::get('logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
