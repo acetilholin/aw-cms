@@ -666,6 +666,9 @@ and (orientation : portrait) {
     .lang-m-show {
         display: block;
     }
+    .mobile-size {
+        font-size: 1.3rem !important;
+    }
 }
 @media only screen /* Samsung galaxy S8 */
 and (min-width: 360px)
@@ -714,6 +717,9 @@ and (orientation: portrait) {
     }
     .lang-m-show {
         display: block;
+    }
+    .mobile-size {
+        font-size: 1.2rem !important;
     }
 }
 

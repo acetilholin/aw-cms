@@ -19,8 +19,9 @@ class ContactController extends Controller
 
         $recipient1 = env('RECIPIENT1');
         $recipient2 = env('RECIPIENT2');
+        $recipient3 = env('ADMIN_EMAIL');
 
-        \Mail::to($recipient1, $recipient2)->send(new Contact($email, $fullname, $message, $geoData['country'], $geoData['city']));
+        \Mail::to($recipient1, $recipient2, $recipient3)->send(new Contact($email, $fullname, $message, $geoData['country'], $geoData['city']));
 
         return [
             'resp' => 'Sporočilo je bilo poslano'
@@ -38,8 +39,9 @@ class ContactController extends Controller
 
         $recipient1 = env('RECIPIENT1');
         $recipient2 = env('RECIPIENT2');
+        $recipient3 = env('ADMIN_EMAIL');
 
-        \Mail::to($recipient1, $recipient2)->send(new Contact($email, $fullname, $message, $geoData['country'], $geoData['city']));
+        \Mail::to($recipient1, $recipient2, $recipient3)->send(new Contact($email, $fullname, $message, $geoData['country'], $geoData['city']));
 
         return [
             'resp' => 'Message sent'
