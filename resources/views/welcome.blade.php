@@ -28,14 +28,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Avto Welt d.o.o.</title>
     <!-- Styling files -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/custom-style.css') }}" >
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/animate.css') }}" >
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/arrow.css') }}" >
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/fixed.css') }}" >
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/lightbox.css') }}" >
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/owl.carousel.css') }}" >
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/owl.theme.default.css') }}" >
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/waypoints.css') }}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/custom-style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/arrow.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/fixed.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/lightbox.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/waypoints.css') }}">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -199,35 +199,33 @@
 <div id="cars" class="offset">
     <div class="fixed-background">
         <div class="row light">
-            <div class="col-12 os-animation" data-animation="fadeInUp">
+            <div class="os-animation" data-animation="fadeInUp">
                 <h3 class="heading">Vozila v ponudbi</h3>
                 <div class="heading-underline"></div>
-                <div class="col-md-12">
-                    <div class="os-animation" data-animation="fadeInUp">
-                        <div id="cars-in-offer" class="owl-carousel owl-theme">
-                           @foreach($cars as $car)
-                                <div class="card text-center">
-                                    <a href="https://www.avto.net/avtowelt/" target="_blank">
-                                        <img class="card-img-top" src="../{{ $car->image }}" alt="">
-                                    </a>
-                                    <div class="card-body">
-                                        @if( $car->new === 'true')
-                                            <div class="ribbon"><span>NOVO</span></div>
-                                            @endif
-                                        <h4>{{ $car->title }}</h4>
-                                        <h5>{{ $car->subtitle }}</h5>
-                                        <h5>
-                                            @if($car->price === trans('messages.CFP'))
-                                                <span class="text-red">{{ trans('messages.cfp-blade') }}</span>
-                                                @else
-                                                {{ $car->price }}€
-                                            @endif
-                                        </h5>
-                                        <p>{{ $car->description }}</p>
-                                    </div>
+                <div class="os-animation" data-animation="fadeInUp">
+                    <div id="cars-in-offer" class="owl-carousel owl-theme">
+                        @foreach($cars as $car)
+                            <div class="card text-center">
+                                <a href="https://www.avto.net/avtowelt/" target="_blank">
+                                    <img class="card-img-top" src="../{{ $car->image }}" alt="">
+                                </a>
+                                <div class="card-body">
+                                    @if( $car->new === 'true')
+                                        <div class="ribbon"><span>NOVO</span></div>
+                                    @endif
+                                    <h4>{{ $car->title }}</h4>
+                                    <h5>{{ $car->subtitle }}</h5>
+                                    <h5>
+                                        @if($car->price === trans('messages.CFP'))
+                                            <span class="text-red">{{ trans('messages.cfp-blade') }}</span>
+                                        @else
+                                            {{ $car->price }}€
+                                        @endif
+                                    </h5>
+                                    <p>{{ $car->description }}</p>
                                 </div>
-                           @endforeach
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -324,5 +322,5 @@
 <script src="{!! asset('js/jquery.counterup.js') !!}"></script>
 <script src="{!! asset('js/jquery.waypoints.min.js') !!}"></script>
 <script src="{!! asset('js/lightbox.js') !!}"></script>
-<script src="{!! asset('js/owl.carousel.js') !!}"></script>
+<script src="{!! asset('js/owl.carousel.min.js') !!}"></script>
 <script src="{!! asset('js/waypoints.js') !!}"></script>

@@ -600,7 +600,7 @@ and (orientation : portrait) {
         text-shadow: .1rem .1rem .8rem black;
     }
     .card {
-        min-height: 630px !important;
+        min-height: 640px !important;
     }
     .padding {
         position: absolute !important;
