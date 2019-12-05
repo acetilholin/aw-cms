@@ -550,6 +550,15 @@ footer .form-check-input {
     border-top: 3px solid #8F0808;
 }
 
+/* tesla modal */
+.modal-footer {
+    border-top: none !important;
+}
+.space-top-bottom {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
 /* main - cars table */
 .table-font {
     font-size: .9rem;
@@ -603,6 +612,9 @@ and (orientation : portrait) {
     }
     .lang-m-show {
         display: block;
+    }
+    .mobile-size {
+        font-size: 1.3rem;
     }
 }
 
