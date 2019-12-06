@@ -60,7 +60,7 @@ class CarsController extends Controller
         $id = $request->input('id');
         $title = $request->input('title');
         $subtitle = $request->input('subtitle');
-        $price = $request->input('price');
+        $price = $request->input('price') === null ? 0 : $request->input('price');
         $callForPrice = $request->input('cfp');
         $description = $request->input('description');
         $new = $request->input('new');
