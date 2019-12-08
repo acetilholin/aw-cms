@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Analytics\Period;
@@ -62,17 +63,21 @@ class StatisticsController extends Controller
     {
         $dateFrom = $request->datefrom;
         $dateTo = $request->dateto;
+        $substractDateTo = $request->dateto;
         $totalVisitors = 0;
         $days = round((strtotime($dateTo) - strtotime($dateFrom)) / (60 * 60 * 24));
 
+        $dateFrom = DateTime::createFromFormat('d.m.Y', $dateFrom);
+        $dateTo = DateTime::createFromFormat('d.m.Y', $dateTo);
+
         $substractDays = $days;
         $today = date("d.m.Y");
-        $data = \Analytics::fetchTotalVisitorsAndPageViews(Period::days($days));
+        $data = \Analytics::fetchTotalVisitorsAndPageViews(Period::create($dateFrom, $dateTo));
 
         foreach ($data as $dt) {
             $visitors[] = $dt['visitors'];
             $totalVisitors += $dt['visitors'];
-            $dates[] = date('d.m', (strtotime("-$substractDays day", strtotime($today))));
+            $dates[] = date('d.m', (strtotime("-$substractDays day", strtotime($substractDateTo))));
             $substractDays--;
         }
 
