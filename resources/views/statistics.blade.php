@@ -58,7 +58,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="form-row mb-2">
+            <div class="form-row mb-2 mt-1">
                 <div class="col-md-3 mb-2 form-group">
                     <input type="text" class="form-control" id="datepicker1" name="dateFrom" aria-describedby="emailHelp" placeholder="Datum od" required>
                 </div>
@@ -67,7 +67,12 @@
                 </div>
             </div>
             <button class="btn btn-calculate" id="getData"><i class="fas fa-search"></i></button>
-            <canvas id="myChart" height="40vh" width="100vw"></canvas>
+            <div class="text-center">
+                <span class="text-red">Vseh obiskov:</span>
+                <span id="total-visitors"></span>
+                <span id="visitors-hide">{{ $totalVisitors }}</span>
+            </div>
+            <canvas id="chartVisits" height="40vh" width="100vw"></canvas>
         </div>
     </div>
 </div>
@@ -84,6 +89,10 @@
     .btn-outline-secondary {
         border-radius: 0 !important;
     }
+    .visits-total {
+        color: red;
+        padding-bottom: 1rem;
+    }
 </style>
 
 <!-- Bootstrap min js -->
@@ -96,7 +105,7 @@
         var data = @json($visitors);
         var days = @json($days);
 
-        createGraph(labels, data, days)
+        createVisitsGraph(labels, data, days);
     });
 
     $(document).ready(function () {
@@ -126,14 +135,17 @@
               var labels = results.dates;
               var data = results.visitors;
               var days = results.days;
-              createGraph(labels,data, days);
+
+              $('#total-visitors').html(results.totalVisitors);
+              $('#visitors-hide').hide();
+                createVisitsGraph(labels,data, days);
             }
         })
     });
 
-    function createGraph(labels, data, days) {
+    function createVisitsGraph(labels, data, days) {
 
-        var ctx = document.getElementById("myChart");
+        var ctx = document.getElementById("chartVisits");
         if(window.bar !== undefined)
             window.bar.destroy();
         window.bar = new Chart(ctx, {
