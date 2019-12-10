@@ -2088,15 +2088,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Calculation',
   data: function data() {
     return {
       priceGross: 0,
       priceNett: 0,
-      provision: 490,
-      otherExpenses: 100,
+      provision: 590,
+      otherExpenses: 130,
       homologacija: 102,
       price: 0,
       endPrice: 0,
@@ -2226,16 +2225,17 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.endPrice = this.price;
-
-      if (this.priceType === false) {
-        this.endPrice = Math.round(parseInt(this.price) * 0.22 + parseInt(this.price), 0);
-      }
-
       this.stopnjaDavka = this.step3 + this.dizelTrdiDelci;
       this.znesekDavka = Math.round(this.stopnjaDavka / 100 * this.endPrice, 0);
       this.stopnjaPribitka = this.ccmPoints;
       this.znesekPribitka = Math.round(this.endPrice * (this.stopnjaPribitka / 100), 0);
-      this.skupajDavek = parseInt(this.endPrice) + this.znesekDavka + this.znesekPribitka + this.transportCosts + this.provision + this.homologacija + this.otherExpenses;
+
+      if (this.priceType === true) {
+        this.endPrice = Math.round(this.price / 1.19, 2);
+      }
+
+      this.skupajDavek = (parseInt(this.endPrice) + this.znesekDavka + this.znesekPribitka + this.transportCosts + this.homologacija) * 1.22;
+      this.skupajDavek += this.provision + this.otherExpenses;
       this.carPrice = this.price === 0;
       this.carFuel = this.fuel === '';
       this.carCCM = this.ccm === 0;
@@ -38795,13 +38795,13 @@ var render = function() {
               _vm._v(" "),
               _c("p", [
                 _vm._v(
-                  "\n                    Stopnja Davka: " +
+                  "\n                    Stopnja DMV: " +
                     _vm._s(_vm.stopnjaDavka) +
                     "%"
                 ),
                 _c("br"),
                 _vm._v(
-                  "\n                    Znesek davka: " +
+                  "\n                    Znesek DMV: " +
                     _vm._s(_vm.znesekDavka) +
                     "€"
                 ),
@@ -38829,12 +38829,7 @@ var render = function() {
                     _vm._s(_vm.homologacija) +
                     "€"
                 ),
-                _c("br"),
-                _vm._v(
-                  "\n                    Ostali stroški: " +
-                    _vm._s(_vm.otherExpenses) +
-                    "€\n                "
-                )
+                _c("br")
               ]),
               _vm._v(" "),
               _c("hr"),
