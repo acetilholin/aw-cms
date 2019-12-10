@@ -2506,15 +2506,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "EnCalculation",
   data: function data() {
     return {
       priceGross: 0,
       priceNett: 0,
-      provision: 490,
-      otherExpenses: 100,
+      provision: 590,
+      otherExpenses: 130,
       homologacija: 102,
       price: 0,
       endPrice: 0,
@@ -2644,16 +2643,17 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.endPrice = this.price;
-
-      if (this.priceType === false) {
-        this.endPrice = Math.round(parseInt(this.price) * 0.22 + parseInt(this.price), 0);
-      }
-
       this.stopnjaDavka = this.step3 + this.dizelTrdiDelci;
       this.znesekDavka = Math.round(this.stopnjaDavka / 100 * this.endPrice, 0);
       this.stopnjaPribitka = this.ccmPoints;
       this.znesekPribitka = Math.round(this.endPrice * (this.stopnjaPribitka / 100), 0);
-      this.skupajDavek = parseInt(this.endPrice) + this.znesekDavka + this.znesekPribitka + this.transportCosts + this.provision + this.homologacija + this.otherExpenses;
+
+      if (this.priceType === true) {
+        this.endPrice = Math.round(this.price / 1.19, 2);
+      }
+
+      this.skupajDavek = (parseInt(this.endPrice) + this.znesekDavka + this.znesekPribitka + this.transportCosts + this.homologacija) * 1.22;
+      this.skupajDavek += this.provision + this.otherExpenses;
       this.carPrice = this.price === 0;
       this.carFuel = this.fuel === '';
       this.carCCM = this.ccm === 0;
@@ -39230,10 +39230,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EnCalculation.vue?vue&type=template&id=34521205&scoped=true&":
-/*!****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EnCalculation.vue?vue&type=template&id=34521205&scoped=true& ***!
-  \****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EnCalculation.vue?vue&type=template&id=34521205&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EnCalculation.vue?vue&type=template&id=34521205& ***!
+  \****************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -39762,12 +39762,7 @@ var render = function() {
                     _vm._s(_vm.homologacija) +
                     "€"
                 ),
-                _c("br"),
-                _vm._v(
-                  "\n                    Other expenses: " +
-                    _vm._s(_vm.otherExpenses) +
-                    "€\n                "
-                )
+                _c("br")
               ]),
               _c("hr"),
               _vm._v(" "),
@@ -54567,7 +54562,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _EnCalculation_vue_vue_type_template_id_34521205_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EnCalculation.vue?vue&type=template&id=34521205&scoped=true& */ "./resources/js/components/EnCalculation.vue?vue&type=template&id=34521205&scoped=true&");
+/* harmony import */ var _EnCalculation_vue_vue_type_template_id_34521205___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EnCalculation.vue?vue&type=template&id=34521205& */ "./resources/js/components/EnCalculation.vue?vue&type=template&id=34521205&");
 /* harmony import */ var _EnCalculation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EnCalculation.vue?vue&type=script&lang=js& */ "./resources/js/components/EnCalculation.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
@@ -54579,11 +54574,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _EnCalculation_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _EnCalculation_vue_vue_type_template_id_34521205_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _EnCalculation_vue_vue_type_template_id_34521205_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _EnCalculation_vue_vue_type_template_id_34521205___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EnCalculation_vue_vue_type_template_id_34521205___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "34521205",
+  null,
   null
   
 )
@@ -54609,19 +54604,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/EnCalculation.vue?vue&type=template&id=34521205&scoped=true&":
-/*!**********************************************************************************************!*\
-  !*** ./resources/js/components/EnCalculation.vue?vue&type=template&id=34521205&scoped=true& ***!
-  \**********************************************************************************************/
+/***/ "./resources/js/components/EnCalculation.vue?vue&type=template&id=34521205&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/EnCalculation.vue?vue&type=template&id=34521205& ***!
+  \**********************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EnCalculation_vue_vue_type_template_id_34521205_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./EnCalculation.vue?vue&type=template&id=34521205&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EnCalculation.vue?vue&type=template&id=34521205&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EnCalculation_vue_vue_type_template_id_34521205_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EnCalculation_vue_vue_type_template_id_34521205___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./EnCalculation.vue?vue&type=template&id=34521205& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EnCalculation.vue?vue&type=template&id=34521205&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EnCalculation_vue_vue_type_template_id_34521205___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EnCalculation_vue_vue_type_template_id_34521205_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EnCalculation_vue_vue_type_template_id_34521205___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

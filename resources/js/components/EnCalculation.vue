@@ -122,7 +122,6 @@
                         The amount of mark-up: {{ znesekPribitka }}€<br>
                         Transportation costs: {{ transportCosts }}€ + VAT<br>
                         Homologation: {{ homologacija }}€<br>
-                        Other expenses: {{ otherExpenses }}€
                     <hr>
                     <p class="mb-0">
                         Final vehicle costs including taxes and transportation: <b>{{ skupajDavek }}€</b><br><br>
@@ -164,7 +163,7 @@
         name: "EnCalculation",
         data() {
             return {
-                priceGross:0, priceNett: 0, provision: 490, otherExpenses: 100, homologacija: 102,
+                priceGross:0, priceNett: 0, provision: 590, otherExpenses: 130, homologacija: 102,
                 price: 0, endPrice: 0,
                 fuel: '',
                 euroEngine: 0,
@@ -278,15 +277,18 @@
                 }
 
                 this.endPrice = this.price;
-                if (this.priceType === false) {
-                    this.endPrice = Math.round((parseInt(this.price) * 0.22) + parseInt(this.price),0);
-                }
 
                 this.stopnjaDavka = this.step3 + this.dizelTrdiDelci;
                 this.znesekDavka = Math.round((this.stopnjaDavka / 100) * this.endPrice, 0);
                 this.stopnjaPribitka = this.ccmPoints;
                 this.znesekPribitka = Math.round(this.endPrice * (this.stopnjaPribitka / 100), 0);
-                this.skupajDavek = parseInt(this.endPrice) + this.znesekDavka + this.znesekPribitka + this.transportCosts + this.provision + this.homologacija + this.otherExpenses;
+
+                if (this.priceType === true) {
+                    this.endPrice = Math.round((this.price / 1.19), 2);
+                }
+
+                this.skupajDavek =  (parseInt(this.endPrice) + this.znesekDavka + this.znesekPribitka + this.transportCosts + this.homologacija) * 1.22;
+                this.skupajDavek += this.provision + this.otherExpenses;
 
                 this.carPrice = this.price === 0;
                 this.carFuel = this.fuel === '';
@@ -296,10 +298,5 @@
                 this.show = this.carPrice === false && this.carFuel === false && this.carCCM === false && this.carEURO === false && this.carCO2 === false;
             }
         }
-
     }
 </script>
-
-<style scoped>
-
-</style>
