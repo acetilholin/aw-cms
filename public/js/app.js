@@ -38844,7 +38844,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("span", { staticClass: "font-weight-light" }, [
                   _vm._v(
-                    "Končna cena vključuje DMV, DDV, homologacijo, vse stroške uvoza in transporta"
+                    "Končna cena vključuje DMV, DDV, homologacijo, vse stroške uvoza in transporta "
                   ),
                   _c("i", {
                     staticClass: "fas fa-info-circle",

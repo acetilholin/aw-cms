@@ -126,7 +126,7 @@
                     <hr>
                     <p class="mb-0">
                         Končni znesek vozila z davkom in transportom: <b>{{ skupajDavek }}€</b><br><br>
-                        <span class="font-weight-light">Končna cena vključuje DMV, DDV, homologacijo, vse stroške uvoza in transporta<i class="fas fa-info-circle" data-toggle="transport-info" title="Izračun je informativen in velja v primeru plačila vozila po predračunu."></i></span>
+                        <span class="font-weight-light">Končna cena vključuje DMV, DDV, homologacijo, vse stroške uvoza in transporta <i class="fas fa-info-circle" data-toggle="transport-info" title="Izračun je informativen in velja v primeru plačila vozila po predračunu."></i></span>
                     </p>
                 </div>
             </transition>
