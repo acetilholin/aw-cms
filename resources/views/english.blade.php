@@ -58,9 +58,9 @@
                         </span>
                     </li>
                     <li class="nav-item lang-m-show">
-                        <a class="nav-link" href="http://avtowelt.com/en">
+                        <a class="nav-link" href="http://avtowelt.com">
                             <i class="fas fa-globe-americas" aria-hidden="true"></i>
-                            ENG
+                            SLO
                         </a>
                     </li>
                     <li class="nav-item">
