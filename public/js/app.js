@@ -39776,7 +39776,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("span", { staticClass: "font-weight-light" }, [
                   _vm._v(
-                    'Final price includes "DMV", VAT, homologation, import costs and transport'
+                    'Final price includes "DMV", VAT, homologation, import costs and transport '
                   ),
                   _c("i", {
                     staticClass: "fas fa-info-circle",

@@ -125,7 +125,7 @@
                     <hr>
                     <p class="mb-0">
                         Final vehicle costs including taxes and transportation: <b>{{ skupajDavek }}€</b><br><br>
-                        <span class="font-weight-light">Final price includes "DMV", VAT, homologation, import costs and transport<i class="fas fa-info-circle" data-toggle="transport-info" title="The calculation is for information only and is valid in the case of payment of the vehicle upon invoice."></i></span>
+                        <span class="font-weight-light">Final price includes "DMV", VAT, homologation, import costs and transport <i class="fas fa-info-circle" data-toggle="transport-info" title="The calculation is for information only and is valid in the case of payment of the vehicle upon invoice."></i></span>
                     </p>
                 </div>
             </transition>
