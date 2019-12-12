@@ -8,6 +8,9 @@
                 <div class="invalid-feedback">
                     Enter name and surname
                 </div>
+                <div v-if="!$v.fullname.minLength" >
+                    <span class="is-invalid">Minimal lenght is {{ $v.fullname.$params.minLength.min }} characters</span>
+                </div>
             </div>
             <div class="col-md-8 mb-2 form-group">
                 <label for="email-label">Email</label>
@@ -15,12 +18,18 @@
                 <div class="invalid-feedback">
                     Enter email
                 </div>
+                <div v-if="!$v.email.email">
+                    <span class="is-invalid">Email not valid</span>
+                </div>
             </div>
             <div class="col-md-8 mb-2 form-group">
                 <label for="textarea">Message</label>
                 <textarea class="form-control" id="textarea" v-bind:class="{ 'is-invalid': messageValid }" name="message" rows="3" placeholder="Message" v-model="message" required></textarea>
                 <div class="invalid-feedback">
                     Enter message
+                </div>
+                <div v-if="!$v.message.minLength" >
+                    <span class="is-invalid">{{ $v.message.$params.minLength.min - message.length }} more characters</span>
                 </div>
             </div>
             <div class="col-md-8 mb-2 form-group" v-if="responseMessage">
@@ -31,12 +40,14 @@
                     </button>
                 </div>
             </div>
-            <button class="btn btn-calculate" @click="sendEmail()">Send</button>
+            <button class="btn btn-calculate" @click="sendEmail()" :disabled="$v.$error">Send</button>
         </div>
     </div>
 </template>
 
 <script>
+    import {email, minLength} from "vuelidate/lib/validators";
+
     export default {
         name: "EnContact",
         data() {
@@ -44,6 +55,17 @@
                 message: '', email: '', fullname: '',
                 nameSurnameValid: '', emailValid: '', messageValid: '',
                 responseMessage: ''
+            }
+        },
+        validations: {
+            fullname: {
+                minLength: minLength(5)
+            },
+            email: {
+                email:email
+            },
+            message: {
+                minLength: minLength(30)
             }
         },
         methods: {
@@ -68,4 +90,12 @@
         }
     }
 </script>
+<style>
+    .is-invalid {
+        width: 100%;
+        margin-top: .25rem;
+        font-size: 80%;
+        color: #dc3545;
+    }
+</style>
 
