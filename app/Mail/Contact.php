@@ -40,7 +40,7 @@ class Contact extends Mailable
      */
     public function build()
     {
-        $timeNow = date('Y-m-d H:i');
+        $timeNow = date('d-m-Y H:i');
 
         return $this->from($this->email)
             ->view('emails.contact', [
