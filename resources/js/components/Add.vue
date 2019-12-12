@@ -27,7 +27,8 @@
         </div>
         <div class="form-group">
             <label for="description">Opis</label>
-            <textarea class="form-control" id="description" rows="4" name="description" v-model="description" @input="$v.description.$touch" required></textarea>
+            <textarea class="form-control" id="description" rows="4" name="description" v-model="description"
+                      @input="$v.description.$touch" required/>
             <span>
                    <div class="small" :class="{invalid: $v.description.$error}">Še {{$v.description.$params.maxLength.max - description.length }} znakov</div>
             </span>
