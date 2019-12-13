@@ -40,7 +40,7 @@ class UserController extends Controller
     function createLoginCookie($email)
     {
         $user = new User();
-        $cookieName = 'Login';
+        $cookieName = 'AVLogin';
         $token = Hash::make($this->generateStringToken());
         $data = [
             'email' => $email,
@@ -53,10 +53,9 @@ class UserController extends Controller
     function checkCookie(Request $request)
     {
         $user = new User();
-        $cars = new Cars();
 
-        if (isset($_COOKIE['Login'])) {
-            $cookieValue = json_decode($_COOKIE['Login']);
+        if (isset($_COOKIE['AVLogin'])) {
+            $cookieValue = json_decode($_COOKIE['AVLogin']);
             $email = $cookieValue->email;
             $loginToken = $cookieValue->token;
 
@@ -94,7 +93,7 @@ class UserController extends Controller
                     session(['email' => $email]);
                     $this->authenticate($email, $password);
                     $dateTime = Carbon::now("Europe/Ljubljana");
-                    $seen = $user->lastSeen($email, $dateTime);
+                    $user->lastSeen($email, $dateTime);
                     $this->createLoginCookie($email);
                     $allCars = $cars->getAll();
                     return view('main', [
@@ -119,7 +118,6 @@ class UserController extends Controller
         $password2 = $request->input('password2');
 
         $user = new User();
-        $cars = new Cars();
 
         $emailExists = $user->emailExists($email);
 
@@ -137,7 +135,6 @@ class UserController extends Controller
                     $register = $user->register($email, $name, $password2);
                     if ($register) {
                         $adminEmail = env('ADMIN_EMAIL');
-                        $allCars = $cars->getAll();
                         \Mail::to($email)->send(new NewUser($email));
                         \Mail::to($adminEmail)->send(new NewAccount($email));
                         return redirect('/login')->with('success', trans('messages.registrationSuccessful'));
@@ -196,7 +193,7 @@ class UserController extends Controller
                             return back()->with('error', trans('messages.passwordTooShort'));
                             break;
                         default:
-                            $updatePassword = $user->updatePassword($email, $password1);
+                            $user->updatePassword($email, $password1);
                             return redirect('/login')->with('success', trans('messages.passwordChanged'));
                     }
                 }
@@ -236,7 +233,7 @@ class UserController extends Controller
         } else if ($usersEmail == $currentEmail) {
             $info = trans('messages.selfDelete');
         } else {
-            $delete = $user->deleteUser($id);
+            $user->deleteUser($id);
             $info = trans('messages.userIsRemoved');
         }
 
@@ -263,7 +260,7 @@ class UserController extends Controller
         } else if ($usersEmail == $currentEmail) {
             $info = trans('messages.selfUnlock');
         } else {
-            $delete = $user->lockUser($id);
+            $user->lockUser($id);
             $info = trans('messages.userIsLocked');
         }
 
@@ -280,7 +277,7 @@ class UserController extends Controller
     {
         $user = new User();
 
-        $unlock = $user->unLockUser($id);
+        $user->unLockUser($id);
         $users = $user->getUsers();
         $onlineUsers = $this->onlineUsers();
 
