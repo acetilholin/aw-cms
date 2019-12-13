@@ -39979,7 +39979,12 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-calculate",
-          attrs: { disabled: _vm.$v.$error },
+          attrs: {
+            disabled:
+              _vm.$v.fullname.$invalid ||
+              !_vm.$v.email.email ||
+              _vm.$v.message.$invalid
+          },
           on: { click: _vm.sendEmail }
         },
         [_vm._v("Pošlji")]
@@ -40951,7 +40956,12 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-calculate",
-          attrs: { disabled: _vm.$v.$error },
+          attrs: {
+            disabled:
+              _vm.$v.fullname.$invalid ||
+              !_vm.$v.email.email ||
+              _vm.$v.message.$invalid
+          },
           on: {
             click: function($event) {
               return _vm.sendEmail()

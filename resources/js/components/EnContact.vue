@@ -40,7 +40,7 @@
                     </button>
                 </div>
             </div>
-            <button class="btn btn-calculate" @click="sendEmail()" :disabled="$v.$error">Send</button>
+            <button class="btn btn-calculate" @click="sendEmail()" :disabled="$v.fullname.$invalid || !$v.email.email || $v.message.$invalid">Send</button>
         </div>
     </div>
 </template>
