@@ -32,7 +32,7 @@ Route::post('/update', ['as' => 'update', 'uses' => 'CarsController@updateCar'])
 /* GET */
 Route::get('/', ['as' => 'welcome', 'uses' => 'WelcomePageController@index']);
 Route::get('/en', ['as' => 'english', 'uses' => 'WelcomePageController@indexEN']);
-Route::get('/test', ['as' => 'english', 'uses' => 'WelcomePageController@indexTest']);
+Route::get('/test', ['as' => 'test', 'uses' => 'WelcomePageController@indexTest']);
 Route::get('/main', ['as' => 'main', 'uses' => 'CarsController@index']);
 Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'CarsController@edit']);
 Route::get('/delete/{id}', ['as' => 'delete', 'uses' => 'CarsController@delete']);
