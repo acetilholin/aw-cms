@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <!-- Author: Gregor Kosmina -->
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Avto Welt d.o.o. Koper - Premium selection & fair price">
-
+    <meta name="description" content="Avto Welt d.o.o. Koper - Premium selection & fair price. Uvoz avtov iz Nemčije.">
     <link rel="shortcut icon" type="image/png" href="{{ asset('favicon.ico') }}">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -14,8 +14,6 @@
 
     <!-- Vue js animate -->
     <link rel="stylesheet" href="https://unpkg.com/vue2-animate/dist/vue2-animate.min.css"/>
-
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -52,31 +50,31 @@
                                   <i class="fas fa-globe-americas" aria-hidden="true"></i>
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item custom-color custom-item" href="{{ route('welcome') }}">SLO</a>
+                                <a class="dropdown-item custom-color custom-item" href="{{ route('english') }}">ENG</a>
                               </div>
                             </div>
                         </span>
                     </li>
                     <li class="nav-item lang-m-show">
-                        <a class="nav-link" href="http://avtowelt.com">
+                        <a class="nav-link" href="http://avtowelt.com/en">
                             <i class="fas fa-globe-americas" aria-hidden="true"></i>
-                            SLO
+                            ENG
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
+                        <a class="nav-link" href="#home">Domov</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About us</a>
+                        <a class="nav-link" href="#about">O nas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#cars">Cars</a>
+                        <a class="nav-link" href="#cars">Ponudba</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#import-and-calculation">Import</a>
+                        <a class="nav-link" href="#import-and-calculation">Uvoz</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#enc">Contact</a>
+                        <a class="nav-link" href="#contact">Kontakt</a>
                     </li>
                 </ul>
             </div>
@@ -85,9 +83,10 @@
     <div class="video-background">
         <div class="video-wrap">
             <div id="video">
-                <video id="bgvid" playsinline autoplay muted loop>
-                    <source src="{{ asset('videos/video.mp4') }}" type="video/mp4">
-                </video>
+                {{-- <video id="bgvid" playsinline autoplay muted loop>
+                     <source src="{{ asset('videos/video.mp4') }}" type="video/mp4">
+                 </video>--}}
+                <img width="100%" src="{{ asset('pictures/tesla1-test2.jpg') }}">
             </div>
         </div>
     </div>
@@ -105,7 +104,7 @@
             <h3 class="sub-title">Premium selection & fair price</h3>
         </div>
         <div class="os-animation" data-animation="bounceInUp" data-delay="1s">
-            <a class="btn btn-outline-light btn-lg" href="#about">About us</a>
+            <a class="btn btn-outline-light btn-lg" href="#about">O nas</a>
         </div>
     </div>
     <a class="down-arrow" href="#about">
@@ -118,22 +117,28 @@
     <div class="os-animation" data-animation="fadeInUp">
         <div class="narrow text-center">
             <div class="col-12">
-                <h1 class="mobile-title">Premium selection & fair price</h1>
-                <p class="lead">We are a young and highly motivated team of experts in the automotive market and your total satisfaction is our first and utmost priority. We strive for your positive experience from the moment you first contact us, to the moment you are finally driving the car of your dreams.</p>
-                <a class="btn btn-red btn-sm" href="#cars">Cars</a>
-                <a class="btn btn-gray btn-sm" href="#import-and-calculation">Costs calculation</a>
+                <h1 class="mobile-title">Odličen izbor za pravo ceno</h1>
+                <p class="lead">Smo mlada ter visoko motivirana ekipa strokovnjakov s področja avtomobilskega trga, katere je vaše zadovoljstvo
+                    naša prva in edina prioriteta. Z nami doživite pozitivno izkušnjo od prvega kontakta pa do trenutka, ko se končno
+                    vozite v avtu vaših sanj.</p>
+                <a class="btn btn-red btn-sm" href="#cars">Ponudba</a>
+                <a class="btn btn-gray btn-sm" href="#import-and-calculation">Kalkulacija</a>
             </div>
         </div>
     </div>
     <div class="jumbotron">
         <div class="narrow">
             <div class="os-animation" data-animation="fadeInUp">
-                <h3 class="heading">Our Service</h3>
+                <h3 class="heading">Storitve</h3>
                 <div class="heading-underline"></div>
             </div>
             <div class="row">
                 <p class="lead spacing-bottom lead-smaller os-animation justify" data-animation="fadeInUp">
-                    We have excellent business relations and connections with leasing companies and car dealers mainly in Germany but also Belgium, Netherlands and Sweden. This means that all our vehicles are of proven quality, of known origin and known entire service history or history of any repairs. Our direct contacts in these markets also enables us to guarantee a fast delivery time, most vehicles can be delivered within 2 weeks and of course always at the best prices. Generally these vehicles also have more equipment than comparable options available in other markets.
+                    Poslovno smo povezani z leasing hišami pretežno v Nemčiji, kar pomeni da so naša vozila preverjene
+                    kakovosti. Avtomobili so znanega izvora in preverjene celotne servisne zgodovine ter morebitnih popravil.
+                    Direkten kontakt z nemškim trgom nam omogoča hiter dobavni rok, saj lahko večino vozil dostavimo v
+                    roku dneh tednov. Ponujamo vam vozila po najboljši ceni s precej več opreme od vozil, ki so dostopna na našem trgu.
+                    Nudimo tudi nakup novega ali odkup vašega rabljenega vozila.
                 </p>
                 <div class="col-sm-12 col-md-3">
                     <div class="os-animation" data-animation="fadeInLeft">
@@ -141,8 +146,8 @@
                             <span class="fa-layers fa-3x">
                                 <i class="fas fa-truck"></i>
                             </span>
-                            <h3>Transportation</h3>
-                            <p>Transport of vehicles in cooperation with our partners.</p>
+                            <h3>Transport</h3>
+                            <p>Transport vozil v sodelovanju z našimi pogodbenimi partnerji.</p>
                         </div>
                     </div>
                 </div>
@@ -152,8 +157,8 @@
                             <span class="fa-layers fa-3x">
                                <i class="far fa-handshake"></i>
                             </span>
-                            <h3>Consulting</h3>
-                            <p>Consulting about the selection, purchase, import or export, maintenance and warranty of your new or used vehicles.</p>
+                            <h3>Svetovanje</h3>
+                            <p>Svetovanje pri izbiri, nakupu, uvozu/izvozu, vzdrževanju ter garanciji rabljenih vozil.</p>
                         </div>
                     </div>
                 </div>
@@ -163,8 +168,8 @@
                             <span class="fa-layers fa-3x">
                                <i class="fas fa-euro-sign"></i>
                             </span>
-                            <h3>Financing</h3>
-                            <p>Very favorable financing options in cooperation with our partners.</p>
+                            <h3>Financiranje</h3>
+                            <p>Ugodne možnosti financiranja v sodelovanju z našimi pogodbenimi partnerji.</p>
                         </div>
                     </div>
                 </div>
@@ -174,8 +179,8 @@
                             <span class="fa-layers fa-3x">
                                <i class="fas fa-tools"></i>
                             </span>
-                            <h3>Inspection</h3>
-                            <p>Expert inspection of vehicles before purchase.</p>
+                            <h3>Pregled</h3>
+                            <p>Strokoven pregled vozil v pooblaščenih servisih.</p>
                         </div>
                     </div>
                 </div>
@@ -187,7 +192,7 @@
     <div class="fixed-background">
         <div class="row light">
             <div class="os-animation" data-animation="fadeInUp">
-                <h3 class="heading">Cars</h3>
+                <h3 class="heading">Vozila v ponudbi</h3>
                 <div class="heading-underline"></div>
                 <div class="os-animation" data-animation="fadeInUp">
                     <div id="cars-in-offer" class="owl-carousel owl-theme">
@@ -198,7 +203,7 @@
                                 </a>
                                 <div class="card-body">
                                     @if( $car->new === 'true')
-                                        <div class="ribbon"><span>NEW</span></div>
+                                        <div class="ribbon"><span>NOVO</span></div>
                                     @endif
                                     <h4>{{ $car->title }}</h4>
                                     <h5>{{ $car->subtitle }}</h5>
@@ -226,39 +231,41 @@
 <div id="import-and-calculation" class="offset">
     <div class="narrow">
         <div class="col-12 os-animation" data-animation="fadeInUp">
-            <h3 class="heading">Import</h3>
+            <h3 class="heading">Uvoz</h3>
             <div class="heading-underline"></div>
         </div>
         <div class="os-animation" data-animation="fadeInLeft">
             <blockquote class="blockquote">
-                <p class="mb-0">Our service of import of pre-chosen vehicles from our clients starts already at 490€ + VAT.</p>
+                <p class="mb-0">Uvoz vozil po naročilu že od 490€ + DDV.</p>
             </blockquote>
-            <p class="justify">We advise you about possible vehicle choices, check your vehicle in advance and arrange everything you need from transportation to registration. Depending on your demand and wishes, we prepare a commercial offer that includes all costs, motor vehicle tax or "DMV" and VAT. Prices may vary depending on the "DMV" rate and vehicle pickup place. According to the commercial offer of the vehicle you pay the full amount or we can assist you with financing arrangements - leasing or Bank loan.</p>
+            <p class="justify">Željeno vozilo najprej preverimo. Vseskozi vam svetujemo, od prevoza do same registracije.  V skladu z vašimi željami vam pripravimo predračun, ki vključuje vse stroške prevoza, DMV in DDV.
+                Cene se razlikujejo glede na stopnjo DMV ter lokacijo vozila. Vozilo nato v celoti plačate po predračunu ali vam pomagamo pri ureditvi financiranja - leasing ali
+                kredit.</p>
             <p>
-                <span class="text-red">Typical import procedure:</span>
-            <li> You choose a vehicle on the Internet from one of the dealers, or we help you choose from our dealers database</li>
-            <li> We advise you and can arrange the verification of the vehicle on demand</li>
-            <li> We prepare all necessary documentation, arrange the transport of the vehicle at your desired location</li>
-            <li> We take care of the motor vehicle tax "DMV" and the certification/technical inspection of the vehicle</li>
-            <li> Paintwork and/or repair is offered at an additional cost</li>
-            <li> Internal deep cleaning or ozone cleaning (smoke smell) of vehicle is also subject to an additional charge</li>
+                <span class="text-red">Postopek:</span>
+            <li> Izbira vozila na internetu pri enem izmed trgovcev</li>
+            <li> Svetovanje ter preverba vozila</li>
+            <li> Urejanje potrebne dokumentacije</li>
+            <li> DMV in homologacija</li>
+            <li> Morebitna ličarska dela in/ali poliranje - doplačilo</li>
+            <li> Morebitno notranje globinsko čiščenje vozila - doplačilo</li>
             </p>
-            <button class="btn btn-gray-costs" style="cursor: pointer" id="accordion" data-toggle="collapse" data-target="#appeng" aria-expanded="true" aria-controls="collapseOne">Costs calculation</button>
+            <button class="btn btn-gray-costs" style="cursor: pointer" id="accordion" data-toggle="collapse" data-target="#app" aria-expanded="true" aria-controls="collapseOne">Izračun stroškov</button>
         </div>
-        <div id="appeng" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
-            <ecalc></ecalc>
+        <div id="app" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+            <calculation></calculation>
         </div>
     </div>
 </div>
-<div id="enc" class="offset">
+<div id="contact" class="offset">
     <footer>
         <div class="row">
             <div class="col-md-5">
                 <img src="{{ asset('pictures/logo-1.png') }}">
                 <p>AVTO WELT d.o.o.<br>Premium selection &amp; Fair price</p>
-                <strong>Address</strong>
+                <strong>Naslov</strong>
                 <p>Vanganelska cesta 5,<br>6000 Koper</p>
-                <strong>Contact</strong>
+                <strong>Kontakt</strong>
                 <p>Tadej Perhavec</p>
                 <p>
                     +386 41 743 217<br>
@@ -269,13 +276,25 @@
                 <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
             </div>
             <div class="col-md-7">
-                <encontact></encontact>
+                <contact></contact>
             </div>
             <a href="#home"><i class="far fa-arrow-alt-circle-up fa-2x scroller"></i></a>
             <hr class="socket">
             &copy; AVTO WELT d.o.o.
         </div>
     </footer>
+</div>
+<!-- Tesla Modal -->
+<div class="modal fade" id="tesla-add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <img class="img-fluid" src="{{ asset('pictures/tesla-modal.jpg') }}" height="370" width="100%">
+            <div class="text-center space-top-bottom">
+                <h3 class="mobile-size">Testna vožnja z <span class="text-red">novim</span> modelom Tesla 3 ?</h3>
+                <a href="#contact" class="btn btn-red" data-dismiss="modal">Prijavite se</a>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
