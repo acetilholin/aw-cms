@@ -172,7 +172,7 @@
                         <label for="exampleFormControlFile1">Slika</label>
                         <br>
                         <small class="text-muted">Slika bo avtomatsko zmanjšana na primerno velikost.</small>
-                        <input type="file" class="form-control-file" name="file" id="file">
+                        <input type="file" class="form-control-file" name="file" id="fileUpdate">
                     </div>
                     <input type="hidden" name="id" id="id">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
