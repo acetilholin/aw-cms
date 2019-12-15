@@ -50,7 +50,7 @@
         <div class="video-background">
             <div class="video-wrap">
                 <div id="video">
-                    <video id="bgvid" playsinline autoplay muted loop>
+                    <video id="bgvid" playsinline autoplay muted>
                         <source src="{{ asset('videos/video.mp4') }}" type="video/mp4">
                     </video>
                 </div>
