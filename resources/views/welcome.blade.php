@@ -249,6 +249,7 @@
                 &copy; AVTO WELT d.o.o.
             </div>
         </footer>
+        @include('cookies')
     </div>
     <!-- Tesla Modal -->
     <div class="modal fade" id="tesla-add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
