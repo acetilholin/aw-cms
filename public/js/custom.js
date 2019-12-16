@@ -15,6 +15,16 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready(function () {
+    if (!Cookies.get('cookieConsent')) {
+        $('.cookie-consent').addClass('cookies-show');
+        $('#agreeOnCookies').on('click', function () {
+            $('.cookie-consent').removeClass('cookies-show');
+            Cookies.set('cookieConsent', 'true', {expires: 365})
+        });
+    }
+});
+
 $(window).on('load', function () {
     if (!Cookies.get('modal')) {
         $('#tesla-add').modal('show');
@@ -65,7 +75,6 @@ $(document).ready(function () {
         $(".arrow").css("opacity", 1 - $(window).scrollTop() / 250);
     });
 });
-
 
 $(document).ready(function () {
     $("#cars-in-offer").owlCarousel({
