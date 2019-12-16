@@ -290,7 +290,7 @@
                     this.endPrice = Math.round((this.price / 1.19), 2);
                 }
 
-                this.skupajDavek =  (parseInt(this.endPrice) + this.znesekDavka + this.znesekPribitka + this.transportCosts + this.homologacija) * 1.22;
+                this.skupajDavek =  Math.round(((parseInt(this.endPrice) + this.znesekDavka + this.znesekPribitka + this.transportCosts + this.homologacija) * 1.22),2);
                 this.skupajDavek += this.provision + this.otherExpenses;
 
                 this.carPrice = this.price === 0;
