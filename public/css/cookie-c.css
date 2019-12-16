@@ -1,0 +1,43 @@
+.cookie-consent {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    padding: 10px;
+    text-align: center;
+    z-index: 999;
+    width: 100%;
+    background-color: #ed1c24 !important;
+    color: black;
+}
+.cookies-show {
+    display: block !important;
+}
+.button-agree {
+    border: 1.5px solid white !important;
+    text-decoration: none;
+    background: transparent;
+    color: white;
+    padding: .5rem 1.1rem;
+    font-size: 1.2rem;
+    margin: 1rem;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    line-height: 1.5;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.button-agree:hover {
+    background: white;
+    color: #ed1c24;
+    border: 1.5px solid white !important;
+}
+.button-agree:focus {
+    box-shadow: none !important;
+    outline: 1.5px solid #ed1c24;
+}
