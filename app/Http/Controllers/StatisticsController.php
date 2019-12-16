@@ -31,7 +31,11 @@ class StatisticsController extends Controller
             $substractDays--;
         }
 
+        $liveUsers = $this->liveUsers();
+
         return view('statistics', [
+            'liveUsers' => $liveUsers['liveUsers'],
+            'liveDetails' => $liveUsers['details'],
             'visitors' => $visitors,
             'totalVisitors' => $totalVisitors,
             'dates' => $dates,
@@ -39,13 +43,38 @@ class StatisticsController extends Controller
         ]);
     }
 
+    function liveUsers()
+    {
+        $liveUsers = 0;
+        $viewId = env('ANALYTICS_VIEW_ID');
+        $metrics = 'rt:activeUsers';
+        $dimensions = ['dimensions' => 'rt:country,rt:deviceCategory'];
+        $userData = \Analytics::getAnalyticsService()->data_realtime->get('ga:' . $viewId, $metrics, $dimensions)->rows;
+
+        if (!empty($userData)) {
+            foreach ($userData as $key => $data) {
+                $details[] = $data;
+                $liveUsers += $data[2];
+            }
+
+            $data = [
+                'liveUsers' => $liveUsers,
+                'details' => $details
+            ];
+        } else {
+            $data = [
+                'liveUsers' => 0,
+                'details' => []
+            ];
+        }
+        return $data;
+    }
 
     function getCountries($days)
     {
         $metrics = 'ga:visits';
         $options = ['dimensions' => 'ga:country', 'sort' => '-ga:visits'];
         $array = \Analytics::performQuery(Period::days($days), $metrics, $options)->rows;
-        dd($array);
         if (count($array)) {
             foreach ($array as $k => $v) {
                 $countriesTotal[$k] = $v[0];

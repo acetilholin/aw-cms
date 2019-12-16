@@ -67,12 +67,26 @@
                 </div>
             </div>
             <button class="btn btn-calculate" id="getData"><i class="fas fa-search"></i></button>
+            <div class="active-users">
+                Trenutno na strani: <span class="badge badge-primary" role="button" data-toggle="popover" id="active-users" data-placement="bottom" title="Obiskovalci na strani"
+                                          data-content=" @if($liveUsers > 0)
+                                                @foreach($liveDetails as $details)
+                                                    Država: {{ $details[0] }}<br>
+                                                    Naprava: {{ strtolower($details[1]) }}<br>
+                                                    <hr>
+                                                @endforeach
+                                                @else
+                                                    Na strani ni obiskovalcev.
+                                                @endif">{{ $liveUsers }}
+                                    </span>
+            </div>
+            <br>
             <div class="text-center">
                 <span class="text-red">Vseh obiskov:</span>
                 <span id="total-visitors"></span>
                 <span id="visitors-hide">{{ $totalVisitors }}</span>
             </div>
-            <canvas id="chartVisits" height="40vh" width="100vw"></canvas>
+            <canvas id="chartVisits" height="40vh" width="100vw" class="mb-2"></canvas>
         </div>
     </div>
 </div>
@@ -89,9 +103,23 @@
     .btn-outline-secondary {
         border-radius: 0 !important;
     }
-    .visits-total {
-        color: red;
-        padding-bottom: 1rem;
+    .active-users {
+        margin-top: 1rem;
+    }
+    .badge-primary {
+        background-color:  #ed1c24 !important;
+        cursor: pointer;
+    }
+    .link-style {
+        text-decoration: none;
+        color: unset;
+    }
+    .link-style:hover {
+        color: #1b1e21;
+        text-decoration: none;
+    }
+    .section-width {
+        width: 20%;
     }
 </style>
 
@@ -99,6 +127,8 @@
 <script src="{!! asset('js/bootstrap.min.js') !!}"></script>
 
 <script>
+
+    $('#active-users').popover({ html:true});
 
     $(document).ready(function() {
         var labels =  @json($dates);
