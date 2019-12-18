@@ -32,7 +32,6 @@ Route::post('/update', ['as' => 'update', 'uses' => 'CarsController@updateCar'])
 /* GET */
 Route::get('/', ['as' => 'welcome', 'uses' => 'WelcomePageController@index']);
 Route::get('/en', ['as' => 'english', 'uses' => 'WelcomePageController@indexEN']);
-Route::get('/test', ['as' => 'test', 'uses' => 'WelcomePageController@indexTest']);
 Route::get('/main', ['as' => 'main', 'uses' => 'CarsController@index']);
 Route::get('/edit/{id}', ['as' => 'edit', 'uses' => 'CarsController@edit']);
 Route::get('/delete/{id}', ['as' => 'delete', 'uses' => 'CarsController@delete']);
@@ -47,6 +46,9 @@ Route::get('/unlock/{id}', ['as' => 'unlock', 'uses' => 'UserController@unlockUs
 Route::get('/delete-user/{id}', ['as' => 'deleteUser', 'uses' => 'UserController@deleteUser']);
 Route::get('/statistics', ['as' => 'statistics', 'uses' => 'StatisticsController@index']);
 Route::get('/load-statistics', ['as' => 'loadStatistics', 'uses' => 'StatisticsController@getData']);
+
+Route::get('/test', ['as' => 'test', 'uses' => 'WelcomePageController@indexTest']);
+Route::get('/test2', ['as' => 'test2', 'uses' => 'WelcomePageController@indexTest2']);
 
 /*Logout*/
 Route::get('logout', ['as' => 'logout', 'uses' => 'UserController@logout']);

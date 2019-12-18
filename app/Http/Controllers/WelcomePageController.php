@@ -36,4 +36,14 @@ class WelcomePageController extends Controller
             'cars' => $allCars
         ]);
     }
+
+    function indexTest2(Request $request)
+    {
+        $cars = new Cars();
+        $allCars = $cars->getAllFirstPage();
+
+        return view('test2', [
+            'cars' => $allCars
+        ]);
+    }
 }
