@@ -92,7 +92,7 @@ class UserController extends Controller
                 if ($passwordMatch) {
                     session(['email' => $email]);
                     $this->authenticate($email, $password);
-                    $dateTime = Carbon::now("Europe/Ljubljana")->format('m.d.Y H:i');
+                    $dateTime = Carbon::now("Europe/Ljubljana")->format('d.m.Y H:i');
                     $user->lastSeen($email, $dateTime);
                     $this->createLoginCookie($email);
                     $allCars = $cars->getAll();
