@@ -91,7 +91,7 @@
                                     {!! Html::image('icons/settings.svg') !!}
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                                    <a href="#" class="edit dropdown-item" id="{{ $car->id }}">
+                                    <a class="edit dropdown-item" id="{{ $car->id }}">
                                         <i class="far fa-edit edit-style" style="font-size: 1.3rem; cursor: pointer" title="Uredi"></i>
                                         Uredi
                                     </a>
