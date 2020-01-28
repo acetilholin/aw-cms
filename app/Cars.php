@@ -28,7 +28,7 @@ class Cars extends Model
             'description' => $description,
             'new' => $new,
             'image' => $imgPath,
-            'hide' => 'false'
+            'hidden' => 'false'
         );
         return $result = DB::table('cars')->insert($values);
     }
