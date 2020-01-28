@@ -42,16 +42,20 @@ return [
     'debug' => env('APP_DEBUG', false),
 
     'debug_blacklist' => [
-        '_ENV' => [
-            'APP_KEY',
-            'DB_PASSWORD',
-        ],
-
+        '_ENV' => array_keys($_ENV),
         '_SERVER' => [
             'APP_KEY',
             'DB_PASSWORD',
+            'REDIS_PASSWORD',
+            'MAIL_PASSWORD',
+            'PUSHER_APP_KEY',
+            'PUSHER_APP_SECRET',
+            'DB_DATABASE',
+            'DB_USERNAME',
+            'USER',
+            'SCRIPT_FILENAME',
+            'DOCUMENT_ROOT'
         ],
-
         '_POST' => [
             'password',
         ],

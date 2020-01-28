@@ -95,25 +95,25 @@
                                     {!! Html::image('icons/settings.svg') !!}
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                                    @if($car->hidden == 'false')
                                     <a class="edit dropdown-item" id="{{ $car->id }}">
                                         <i class="far fa-edit edit-style" style="font-size: 1.3rem; cursor: pointer" title="Uredi"></i>
                                         Uredi
                                     </a>
-                                    @if($car->hidden == 'false')
-                                        <a href="{{ route('showOrHide', $car->id) }}" class="dropdown-item" id="{{ $car->id }}">
-                                            <i class="fas fa-eye-slash" style="font-size: 1.3rem; cursor: pointer" title="Skrij"></i>
-                                            Skrij
-                                        </a>
-                                    @else
-                                        <a href="{{ route('showOrHide', $car->id) }}" class="dropdown-item" id="{{ $car->id }}" style="-webkit-filter: blur(0) !important">
-                                            <i class="far fa-eye" style="font-size: 1.3rem; cursor: pointer" title="Pokaži"></i>
-                                            Pokaži
-                                        </a>
-                                    @endif
+                                    <a href="{{ route('showOrHide', $car->id) }}" class="dropdown-item" id="{{ $car->id }}">
+                                        <i class="fas fa-eye-slash" style="font-size: 1.3rem; cursor: pointer" title="Skrij"></i>
+                                        Skrij
+                                    </a>
                                     <div class="dropdown-divider"></div>
                                     <a href="{{ route('delete', $car->id) }}" id="{{ $car->id }}" class="dropdown-item delete"><i class="far fa-trash-alt remove" style="font-size: 1.3rem; cursor: pointer" title="Odstrani"></i>
-                                        Odstrani
+                                       Odstrani
                                     </a>
+                                    @else
+                                    <a href="{{ route('showOrHide', $car->id) }}" class="dropdown-item" id="{{ $car->id }}">
+                                        <i class="far fa-eye" style="font-size: 1.3rem; cursor: pointer" title="Pokaži"></i>
+                                        Pokaži
+                                    </a>
+                                    @endif
                                 </ul>
                             </div>
                         </td>
