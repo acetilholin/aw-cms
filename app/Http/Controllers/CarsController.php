@@ -54,6 +54,20 @@ class CarsController extends Controller
         ]);
     }
 
+    function showOrHide(Request $request)
+    {
+        $cars = new Cars();
+        $id = $request->id;
+
+        $hidden = $cars->showOrHide($id);
+        $info = $hidden == 'false' ? trans('messages.carIsDisplayed') : trans('messages.carIsHidden');
+        $allCars = $cars->getAll();
+        return view('main', [
+            'cars' => $allCars,
+            'info' => $info
+        ]);
+    }
+
     function updateCar(Request $request)
     {
         $cars = new Cars();

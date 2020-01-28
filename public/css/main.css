@@ -58,3 +58,6 @@
 .invalid {
     color: #ed1c24;
 }
+.background {
+    -webkit-filter: blur(1.5px)
+}

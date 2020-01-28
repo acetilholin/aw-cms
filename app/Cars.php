@@ -15,7 +15,7 @@ class Cars extends Model
 
     function getAllFirstPage()
     {
-        $cars = DB::select("SELECT * FROM cars order by new DESC");
+        $cars = DB::select("SELECT * FROM cars WHERE hidden = 'false' order by new DESC");
         return $cars;
     }
 
@@ -27,9 +27,23 @@ class Cars extends Model
             'price' => $price,
             'description' => $description,
             'new' => $new,
-            'image' => $imgPath
+            'image' => $imgPath,
+            'hide' => 'false'
         );
         return $result = DB::table('cars')->insert($values);
+    }
+
+    function showOrHide($id)
+    {
+        $sql = DB::select("SELECT hidden FROM cars WHERE id='" . $id . "'");
+        $hidden = $sql[0]->hidden == 'false' ? 'true' : 'false';
+
+        $update = DB::table('cars')
+            ->where('id', $id)
+            ->update([
+                'hidden' => $hidden
+            ]);
+        return $hidden;
     }
 
     function updateCar($id, $title, $subtitle, $price, $description, $new, $imgPath)
@@ -42,7 +56,8 @@ class Cars extends Model
                 'price' => $price,
                 'description' => $description,
                 'new' => $new,
-                'image' => $imgPath
+                'image' => $imgPath,
+                'hidden' => 'false'
             ]);
     }
 

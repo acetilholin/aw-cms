@@ -24,8 +24,7 @@ return [
     'wrongPassword' => 'Napačno geslo',
     'cannotLogin' => 'Prijava ni mogoča',
     'CFP' => 'CFP',
-    'cfp-blade' => 'pokličite za ceno'
-
-
-
+    'cfp-blade' => 'pokličite za ceno',
+    'carIsDisplayed' => 'Vozilo je vidno',
+    'carIsHidden' => 'Vozilo je skrito'
 ];

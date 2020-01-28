@@ -67,7 +67,11 @@
                 <tbody>
                 @php ( $number = 1 )
                 @foreach($cars as $car)
-                    <tr>
+                    @if($car->hidden == 'true')
+                        <tr class="background">
+                    @else
+                        <tr>
+                    @endif
                         <th scope="row">{{ $number++ }}</th>
                         <td>{{ $car->title }}</td>
                         <td>{{ $car->subtitle }}</td>
@@ -95,6 +99,17 @@
                                         <i class="far fa-edit edit-style" style="font-size: 1.3rem; cursor: pointer" title="Uredi"></i>
                                         Uredi
                                     </a>
+                                    @if($car->hidden == 'false')
+                                        <a href="{{ route('showOrHide', $car->id) }}" class="dropdown-item" id="{{ $car->id }}">
+                                            <i class="fas fa-eye-slash" style="font-size: 1.3rem; cursor: pointer" title="Skrij"></i>
+                                            Skrij
+                                        </a>
+                                    @else
+                                        <a href="{{ route('showOrHide', $car->id) }}" class="dropdown-item" id="{{ $car->id }}" style="-webkit-filter: blur(0) !important">
+                                            <i class="far fa-eye" style="font-size: 1.3rem; cursor: pointer" title="Pokaži"></i>
+                                            Pokaži
+                                        </a>
+                                    @endif
                                     <div class="dropdown-divider"></div>
                                     <a href="{{ route('delete', $car->id) }}" id="{{ $car->id }}" class="dropdown-item delete"><i class="far fa-trash-alt remove" style="font-size: 1.3rem; cursor: pointer" title="Odstrani"></i>
                                         Odstrani
@@ -188,7 +203,7 @@
 <div class="modal fade" id="image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content modal-lg">
-            <img src="" id="car-img" style="height: 500px; width: 700px">
+            <img src="/" id="car-img" style="height: 500px; width: 700px">
         </div>
     </div>
 </div>
@@ -252,7 +267,7 @@
             data: { id: id },
             dataType: "json",
             success: function(data){
-                $('#car-img').attr({"src": data.image});
+                $('#car-img').attr({"src": '/'+data.image});
                 $('#image').modal('show');
             }
         })
