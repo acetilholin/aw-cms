@@ -32,8 +32,10 @@ class StatisticsController extends Controller
         }
 
         $liveUsers = $this->liveUsers();
+        $average = round(($totalVisitors / $days), 1);
 
         return view('statistics', [
+            'avg' => $average,
             'liveUsers' => $liveUsers['liveUsers'],
             'liveDetails' => $liveUsers['details'],
             'visitors' => $visitors,
@@ -110,8 +112,11 @@ class StatisticsController extends Controller
             $substractDays--;
         }
 
+        $average = round(($totalVisitors / ($days + 1)), 1);
+
         return $data = [
             'visitors' => $visitors,
+            'avg' => $average,
             'totalVisitors' => $totalVisitors,
             'dates' => $dates,
             'days' => $days + 1

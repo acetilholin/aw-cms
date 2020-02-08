@@ -85,6 +85,8 @@
                 <span class="text-red">Vseh obiskov:</span>
                 <span id="total-visitors"></span>
                 <span id="visitors-hide">{{ $totalVisitors }}</span>
+                <div class="small" id="average-hide">Povprečno {{ $avg }} / dan</div>
+                <div class="small" id="average"></div>
             </div>
             <canvas id="chartVisits" height="40vh" width="100vw" class="mb-2"></canvas>
         </div>
@@ -167,7 +169,9 @@
               var days = results.days;
 
               $('#total-visitors').html(results.totalVisitors);
+              $('#average').html('Povprečno '+ results.avg + ' / dan');
               $('#visitors-hide').hide();
+              $('#average-hide').hide();
                 createVisitsGraph(labels,data, days);
             }
         })
