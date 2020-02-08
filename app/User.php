@@ -182,16 +182,4 @@ class User extends Authenticatable
         $sql = DB::select("SELECT token_time as time FROM users where email = '" . $email . "' and reset_token ='" . $token . "'");
         return $sql[0]->time;
     }
-
-    function getUsers()
-    {
-        $sql = DB::select("SELECT * FROM users");
-        return $sql;
-    }
-
-    function deleteUser($id)
-    {
-        $request = DB::table('users')->where('id', $id)->delete();
-        return $request;
-    }
 }

@@ -7,12 +7,6 @@ use Illuminate\Support\Facades\DB;
 
 class Cars extends Model
 {
-    function getAll()
-    {
-        $cars = DB::select("SELECT * FROM cars");
-        return $cars;
-    }
-
     function getAllFirstPage()
     {
         $cars = DB::select("SELECT * FROM cars WHERE hidden = 'false' order by new DESC");
@@ -65,17 +59,5 @@ class Cars extends Model
     {
         $image = DB::select("SELECT image FROM cars WHERE id='" . $id . "'");
         return $image[0];
-    }
-
-    function deleteCar($id)
-    {
-        $request = DB::table('cars')->where('id', $id)->delete();
-        return $request;
-    }
-
-    function getCarDataById($id)
-    {
-        $cars = DB::select("SELECT * FROM cars WHERE id='" . $id . "'");
-        return $cars[0];
     }
 }

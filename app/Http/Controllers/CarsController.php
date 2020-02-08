@@ -16,8 +16,8 @@ class CarsController extends Controller
         if (Auth::guest()) {
             return redirect('/login');
         }
-        $cars = new Cars();
-        $allCars = $cars->getAll();
+
+        $allCars = Cars::all();
 
         return view('main', [
             'cars' => $allCars
@@ -47,7 +47,7 @@ class CarsController extends Controller
 
         $cars->insertCar($title, $subtitle, $price, $description, $new, $imgPath);
 
-        $allCars = $cars->getAll();
+        $allCars = Cars::all();
         return view('main', [
             'cars' => $allCars,
             'info' => trans('messages.carIsAdded')
@@ -61,7 +61,7 @@ class CarsController extends Controller
 
         $hidden = $cars->showOrHide($id);
         $info = $hidden == 'false' ? trans('messages.carIsDisplayed') : trans('messages.carIsHidden');
-        $allCars = $cars->getAll();
+        $allCars = Cars::all();
         return view('main', [
             'cars' => $allCars,
             'info' => $info
@@ -82,7 +82,7 @@ class CarsController extends Controller
 
         $price = $callForPrice === 'checked' ? trans('messages.CFP') : $price;
 
-        $data = $cars->getCarDataById($id);
+        $data = Cars::find($id);
 
         if ($request->file('file') === null) {
             $imgPath = $data->image;
@@ -94,7 +94,7 @@ class CarsController extends Controller
         }
 
         $cars->updateCar($id, $title, $subtitle, $price, $description, $new, $imgPath);
-        $allCars = $cars->getAll();
+        $allCars = Cars::all();
         return view('main', [
             'cars' => $allCars,
             'info' => trans('messages.carIsUpdated')
@@ -104,8 +104,10 @@ class CarsController extends Controller
     function delete($id)
     {
         $cars = new Cars();
-        $cars->deleteCar($id);
-        $allCars = $cars->getAll();
+        $cars = Cars::find($id);
+        $cars->delete();
+
+        $allCars = Cars::all();
         return view('main', [
             'cars' => $allCars,
             'info' => trans('messages.carIsDeleted')
@@ -116,7 +118,7 @@ class CarsController extends Controller
     {
         $id = $request->id;
         $cars = new Cars();
-        $data = $cars->getCarDataById($id);
+        $data = Cars::find($id);
         return json_encode($data);
     }
 

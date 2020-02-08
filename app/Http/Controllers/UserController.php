@@ -23,7 +23,7 @@ class UserController extends Controller
         }
 
         $user = new User();
-        $users = $user->getUsers();
+        $users = User::all();
         $onlineUsers = $this->onlineUsers();
 
         return view('users', [
@@ -95,7 +95,7 @@ class UserController extends Controller
                     $dateTime = Carbon::now("Europe/Ljubljana")->format('d.m.Y H:i');
                     $user->lastSeen($email, $dateTime);
                     $this->createLoginCookie($email);
-                    $allCars = $cars->getAll();
+                    $allCars = Cars::all();
                     return view('main', [
                         'cars' => $allCars
                     ]);
@@ -233,11 +233,12 @@ class UserController extends Controller
         } else if ($usersEmail == $currentEmail) {
             $info = trans('messages.selfDelete');
         } else {
-            $user->deleteUser($id);
+            $user = User::find($id);
+            $user->delete();
             $info = trans('messages.userIsRemoved');
         }
 
-        $users = $user->getUsers();
+        $users = User::all();
 
         return view('users', [
             'users' => $users,
@@ -264,7 +265,7 @@ class UserController extends Controller
             $info = trans('messages.userIsLocked');
         }
 
-        $users = $user->getUsers();
+        $users = User::all();
 
         return view('users', [
             'users' => $users,
@@ -278,7 +279,7 @@ class UserController extends Controller
         $user = new User();
 
         $user->unLockUser($id);
-        $users = $user->getUsers();
+        $users = User::all();
         $onlineUsers = $this->onlineUsers();
 
         return view('users', [
