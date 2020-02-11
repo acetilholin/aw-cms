@@ -12,14 +12,17 @@ class Povprasevanje extends Mailable
     use Queueable, SerializesModels;
 
     public $data;
+    public $email;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($data, $email)
     {
         $this->data = $data;
+        $this->email = $email;
     }
 
     /**
@@ -29,8 +32,9 @@ class Povprasevanje extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.inquiry', [
-            'data' => $this->data
-        ]);
+        return $this->from($this->email)
+            ->view('emails.inquiry', [
+                'data' => $this->data
+            ]);
     }
 }

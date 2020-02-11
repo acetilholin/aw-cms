@@ -1,6 +1,6 @@
 @extends('emails.master')
 @section('content')
-    <div style="width: 140%">
+    <div style="width: 140%; background-color: #e9ecef">
         <h3>Novo povpraševanje</h3>
         Iz strani avtowelt.com ste prejeli novo povpraševanje:<br><br>
         <p style="padding-top: 1rem;">

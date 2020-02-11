@@ -51,6 +51,7 @@ class ContactController extends Controller
 
     function inquiry(Request $request)
     {
+        $email = $request->input('email');
         $data = [
             'znamka' => $request->input('znamka'),
             'oprema' => $request->input('oprema'),
@@ -65,7 +66,7 @@ class ContactController extends Controller
             'moc' => $request->input('moc'),
             'gorivo' => $request->input('gorivo'),
             'imePriimek' => $request->input('imePriimek'),
-            'email' => $request->input('email'),
+            'email' => $email,
             'cena' => $request->input('cena'),
             'telefon' => $request->input('telefon'),
             'notranja1' => $request->input('notranja1') == 'true' ? trans('inquiry.notranja1') : null,
@@ -94,7 +95,7 @@ class ContactController extends Controller
         $recipient2 = env('RECIPIENT2');
         $admin = env('ADMIN_EMAIL');
 
-        \Mail::to($admin)->send(new Povprasevanje($data));
+        \Mail::to($admin)->send(new Povprasevanje($data, $email));
 
         return [
             'resp' => 'Povpraševanje je poslano'
