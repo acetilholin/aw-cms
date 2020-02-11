@@ -23,7 +23,7 @@
                     <label for="password2">Geslo</label>
                     <input type="password" class="form-control" id="password2" name="password2" placeholder="Ponovite geslo" required>
                 </div>
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                @csrf
                 @include('messages.login-register')
                 @yield('content')
                 <div class="text-center" style="padding-top: 10px;">

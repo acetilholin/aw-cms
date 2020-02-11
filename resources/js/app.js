@@ -3,6 +3,7 @@ import Contact from "./components/Contact";
 import EnCalculation from "./components/EnCalculation";
 import EnContact from "./components/EnContact";
 import Add from "./components/Add";
+import Inquiry from "./components/Inquiry";
 import Vuelidate from 'vuelidate';
 
 require('./bootstrap');
@@ -20,7 +21,7 @@ const app = new Vue({
 });
 
 const contact = new Vue({
-    el: '#contact',
+    el: '#contactForm',
     components: {
         contact: Contact
     }
@@ -47,3 +48,9 @@ const modaladd = new Vue({
     }
 });
 
+const inquiry = new Vue({
+    el: '#inquiryForm',
+    components: {
+        inquiry: Inquiry
+    }
+});

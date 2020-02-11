@@ -89,6 +89,7 @@
                         vozite v avtu vaših sanj.</p>
                     <a class="btn btn-red btn-sm" href="#cars">Ponudba</a>
                     <a class="btn btn-gray btn-sm" href="#import-and-calculation">Kalkulacija</a>
+                    <a class="btn btn-red btn-sm" href="#contact">Povpraševanje</a>
                 </div>
             </div>
         </div>
@@ -226,7 +227,7 @@
     <div id="contact" class="offset">
         <footer>
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <img src="{{ asset('pictures/logo-1.png') }}">
                     <p>AVTO WELT d.o.o.<br>Premium selection &amp; Fair price</p>
                     <strong>Naslov</strong>
@@ -240,11 +241,16 @@
                     </p>
                     <a href="http://bit.ly/avtowelt" target="_blank"><i class="fas fa-map-marked-alt fa-2x"></i></a>
                     <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
+                    <div class="mt-5">
+                        <a href="#home"><i class="far fa-arrow-alt-circle-up fa-2x scroller"></i></a>
+                    </div>
                 </div>
-                <div class="col-md-7">
+                <div class="col-md-5" id="contactForm">
                     <contact></contact>
                 </div>
-                <a href="#home"><i class="far fa-arrow-alt-circle-up fa-2x scroller"></i></a>
+                <div class="col-md-3 mt-2" id="inquiryForm">
+                    <inquiry></inquiry>
+                </div>
                 <hr class="socket">
                 &copy; AVTO WELT d.o.o.
             </div>
@@ -263,4 +269,5 @@
             </div>
         </div>
     </div>
+
 @endsection

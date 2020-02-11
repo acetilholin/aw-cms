@@ -47,6 +47,7 @@ Route::get('/statistics', ['as' => 'statistics', 'uses' => 'StatisticsController
 Route::get('/load-statistics', ['as' => 'loadStatistics', 'uses' => 'StatisticsController@getData']);
 Route::get('/show-hide/{id}', ['as' => 'showOrHide', 'uses' => 'CarsController@showOrHide']);
 
+Route::get('/inquiry', ['as' => 'inquiry', 'uses' => 'ContactController@inquiry']);
 
 Route::get('/test', ['as' => 'test', 'uses' => 'WelcomePageController@indexTest']);
 Route::get('/test2', ['as' => 'test2', 'uses' => 'WelcomePageController@indexTest2']);

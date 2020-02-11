@@ -57,3 +57,9 @@ img {
     background: #ed1c24;
     text-decoration: none;
 }
+.text-red {
+    color: #ed1c24;
+}
+.text-gray {
+    color: #95989b;
+}
