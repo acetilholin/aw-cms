@@ -1,6 +1,6 @@
 @extends('emails.master')
 @section('content')
-    <div style="width: 140%; background-color: #e9ecef">
+    <div style="width: 140%;">
         <h3>Novo povpraševanje</h3>
         Iz strani avtowelt.com ste prejeli novo povpraševanje:<br><br>
         <p style="padding-top: 1rem;">
@@ -134,28 +134,4 @@
         <div class="column2">
         </div>
     </div>
-    <style>
-        .column1 {
-            float: left;
-            width: 33.33%;
-            text-align: center;
-        }
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-        .column2 {
-            margin-top: 30px;
-            margin-bottom: 30px;
-            float: left;
-            text-align: center;
-            width: 33.33%;
-        }
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-    </style>
 @endsection
