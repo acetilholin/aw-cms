@@ -454,5 +454,8 @@
 </script>
 
 <style scoped>
-
+    button:disabled {
+        cursor: not-allowed;
+        pointer-events: all !important;
+    }
 </style>
