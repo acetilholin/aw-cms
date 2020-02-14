@@ -33,6 +33,7 @@ class Povprasevanje extends Mailable
     public function build()
     {
         return $this->from($this->email)
+            ->subject('Povpraševanje')
             ->view('emails.inquiry', [
                 'data' => $this->data
             ]);

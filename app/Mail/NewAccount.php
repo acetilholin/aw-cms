@@ -30,8 +30,9 @@ class NewAccount extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.newaccount', [
-            'email' => $this->email
-        ]);
+        return $this->subject('Nov uporabniški račun')
+            ->view('emails.newaccount', [
+                'email' => $this->email
+            ]);
     }
 }

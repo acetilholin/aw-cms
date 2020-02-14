@@ -95,7 +95,7 @@ class ContactController extends Controller
         $recipient2 = env('RECIPIENT2');
         $admin = env('ADMIN_EMAIL');
 
-        \Mail::to($admin)->send(new Povprasevanje($data, $email));
+        \Mail::to($recipient1, $recipient2, $admin)->send(new Povprasevanje($data, $email));
 
         return [
             'resp' => 'Povpraševanje je poslano'

@@ -43,6 +43,7 @@ class Contact extends Mailable
         $timeNow = date('d-m-Y H:i');
 
         return $this->from($this->email)
+            ->subject('Sporočilo')
             ->view('emails.contact', [
                 'email' => $this->email,
                 'fullname' => $this->fullname,

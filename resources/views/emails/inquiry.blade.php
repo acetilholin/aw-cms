@@ -23,8 +23,8 @@
         @if(isset($data['oprema']))
             Oprema: <b> {{ $data['oprema'] }} </b><br>
         @endif
-        Letnik: od <b> {{ $data['letaMin'] }}</b> do <b>{{ $data['letaMax'] }} km</b><br>
-        Kilometri: <b> {{ $data['kilometri'] }} </b><br>
+        Letnik: od <b> {{ $data['letaMin'] }}</b> do <b>{{ $data['letaMax'] }}</b><br>
+        Kilometri: <b> {{ $data['kilometri'] }} </b>km<br>
         @if(isset($data['sedezi']))
             Sedeži: <b> {{ $data['sedezi'] }} </b><br>
         @endif
