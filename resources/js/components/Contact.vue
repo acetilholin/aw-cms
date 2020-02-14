@@ -99,5 +99,9 @@
         font-size: 80%;
         color: #dc3545;
     }
+    button:disabled {
+        cursor: not-allowed;
+        pointer-events: all !important;
+    }
 </style>
 

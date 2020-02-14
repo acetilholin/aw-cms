@@ -481,8 +481,13 @@ hr.socket {
     border-top: .1rem solid black;
     width: 100%;
 }
-footer .form-check-input {
-    margin-left: 0;
+
+ /* Inquiry form */
+.text-gray {
+    color: #505962;
+}
+.btn-mobile-close {
+    display: none;
 }
 
 /* Scroller */
@@ -616,6 +621,9 @@ and (orientation : portrait) {
     .mobile-size {
         font-size: 1.3rem;
     }
+    .btn-mobile-close {
+        display: block;
+    }
 }
 
 @media only screen  /* iPhone 6,7,8 plus */
@@ -669,6 +677,9 @@ and (orientation : portrait) {
     .mobile-size {
         font-size: 1.3rem !important;
     }
+    .btn-mobile-close {
+        display: block;
+    }
 }
 @media only screen /* Samsung galaxy S8 */
 and (min-width: 360px)
@@ -721,6 +732,9 @@ and (orientation: portrait) {
     .mobile-size {
         font-size: 1.2rem !important;
     }
+    .btn-mobile-close {
+        display: block;
+    }
 }
 
 /* iPad */
@@ -756,6 +770,9 @@ and (orientation : portrait) {
         display: none;
     }
     .lang-m-show {
+        display: block;
+    }
+    .btn-mobile-close {
         display: block;
     }
 }

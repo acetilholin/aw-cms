@@ -30,8 +30,9 @@ class NewPassword extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.newpassword', [
-            'token' => $this->token
-        ]);
+        return $this->subject('Novo geslo')
+            ->view('emails.newpassword', [
+                'token' => $this->token
+            ]);
     }
 }

@@ -2795,6 +2795,509 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Inquiry.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Inquiry.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Inquiry",
+  data: function data() {
+    return {
+      imePriimekValid: '',
+      emailValid: '',
+      cenaValid: '',
+      znamkaValid: '',
+      kilometriValid: '',
+      letnikMinValid: '',
+      letnikMaxValid: '',
+      znamka: '',
+      oprema: '',
+      sedezi: '',
+      vrata: '',
+      karoserija: '',
+      letaMin: '',
+      letaMax: '',
+      kilometri: '',
+      barva: '',
+      moc: '',
+      menjalnik: '',
+      gorivo: '',
+      imePriimek: '',
+      email: '',
+      telefon: '',
+      cena: '',
+      responseMessage: '',
+      notranja1: false,
+      notranja2: false,
+      notranja3: false,
+      notranja4: false,
+      notranja5: false,
+      notranja6: false,
+      notranja7: false,
+      varnost1: false,
+      varnost2: false,
+      varnost3: false,
+      varnost4: false,
+      varnost5: false,
+      varnost6: false,
+      pomoc1: false,
+      pomoc2: false,
+      pomoc3: false,
+      klima1: false,
+      klima2: false,
+      ostalo1: false,
+      ostalo2: false,
+      karoserijaOpcije: ['Limuzina', 'Kombi limuzina', 'Karavan', 'Enoprostorec', 'Coupe', 'Cabrio', 'SUV / Terenski', 'Pick-up'],
+      kilometriOpcije: ['do 50.000', 'od 50.000 do 100.000', 'od 100.000 do 125.000', 'od 125.000 do 150.000', 'od 150.000 do 175.000'],
+      barveOpcije: ['Katerakoli', 'Bela', 'Črna', 'Srebrna', 'Modra', 'Siva', 'Rumena', 'Rdeča', 'Zelena'],
+      mocOpcije: ['do 100KM', 'od 100 do 130KM', 'od 130 do 150KM', 'od 150 do 200KM'],
+      menjalnikOpcije: ['ročni', 'avtomatski'],
+      gorivoOpcije: ['Benzin', 'Dizel', 'Hibridni', 'Električni']
+    };
+  },
+  validations: {
+    imePriimek: {
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(7)
+    },
+    znamka: {
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5)
+    },
+    email: {
+      email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["email"]
+    },
+    cena: {
+      minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(4)
+    }
+  },
+  methods: {
+    sendInquiry: function sendInquiry() {
+      var _this = this;
+
+      this.imePriimekValid = this.imePriimek === '';
+      this.emailValid = this.email === '';
+      this.cenaValid = this.cena === '';
+      this.znamkaValid = this.znamka === '';
+      this.kilometriValid = this.kilometri === '';
+      this.letnikMinValid = this.letaMin === '';
+      this.letnikMaxValid = this.letaMax === '';
+
+      if (this.znamka !== '' && this.letaMin !== '' && this.letaMax !== '' && this.kilometri !== '' && this.cena !== '' && this.imePriimek !== '' && this.email !== '') {
+        axios.get('/inquiry', {
+          params: {
+            znamka: this.znamka,
+            oprema: this.oprema,
+            sedezi: this.sedezi,
+            vrata: this.vrata,
+            karoserija: this.karoserijaOpcije[this.karoserija],
+            letaMin: this.letaMin,
+            letaMax: this.letaMax,
+            kilometri: this.kilometriOpcije[this.kilometri],
+            barva: this.barveOpcije[this.barva],
+            moc: this.mocOpcije[this.moc],
+            menjalnik: this.menjalnikOpcije[this.menjalnik],
+            gorivo: this.gorivoOpcije[this.gorivo],
+            cena: this.cena,
+            imePriimek: this.imePriimek,
+            email: this.email,
+            telefon: this.telefon,
+            notranja1: this.notranja1,
+            notranja2: this.notranja2,
+            notranja3: this.notranja3,
+            notranja4: this.notranja4,
+            notranja5: this.notranja5,
+            notranja6: this.notranja6,
+            notranja7: this.notranja7,
+            varnost1: this.varnost1,
+            varnost2: this.varnost2,
+            varnost3: this.varnost3,
+            varnost4: this.varnost4,
+            varnost5: this.varnost5,
+            varnost6: this.varnost6,
+            pomoc1: this.pomoc1,
+            pomoc2: this.pomoc2,
+            pomoc3: this.pomoc3,
+            klima1: this.klima1,
+            klima2: this.klima2,
+            ostalo1: this.ostalo1,
+            ostalo2: this.ostalo2
+          }
+        }).then(function (response) {
+          return _this.responseMessage = response.data.resp;
+        });
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
 /*!*****************************************************!*\
   !*** ./node_modules/bootstrap/dist/js/bootstrap.js ***!
@@ -7252,7 +7755,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.is-invalid {\n    width: 100%;\n    margin-top: .25rem;\n    font-size: 80%;\n    color: #dc3545;\n}\n", ""]);
+exports.push([module.i, "\n.is-invalid {\n    width: 100%;\n    margin-top: .25rem;\n    font-size: 80%;\n    color: #dc3545;\n}\nbutton:disabled {\n    cursor: not-allowed;\n    pointer-events: all !important;\n}\n", ""]);
 
 // exports
 
@@ -7272,6 +7775,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\n.is-invalid {\n    width: 100%;\n    margin-top: .25rem;\n    font-size: 80%;\n    color: #dc3545;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Inquiry.vue?vue&type=style&index=0&id=48bf77ac&scoped=true&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Inquiry.vue?vue&type=style&index=0&id=48bf77ac&scoped=true&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nbutton[data-v-48bf77ac]:disabled {\n    cursor: not-allowed;\n    pointer-events: all !important;\n}\n", ""]);
 
 // exports
 
@@ -38184,6 +38706,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Inquiry.vue?vue&type=style&index=0&id=48bf77ac&scoped=true&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Inquiry.vue?vue&type=style&index=0&id=48bf77ac&scoped=true&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Inquiry.vue?vue&type=style&index=0&id=48bf77ac&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Inquiry.vue?vue&type=style&index=0&id=48bf77ac&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -40974,6 +41526,2302 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "alert",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Inquiry.vue?vue&type=template&id=48bf77ac&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Inquiry.vue?vue&type=template&id=48bf77ac&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "inquiry-form" }, [
+    _c("h3", { staticClass: "h3-contact" }, [_vm._v("Povpraševanje")]),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "inquiry",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-lg", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-body" }, [
+                _c("div", { staticClass: "text-red" }, [
+                  _vm._v("Osnovni podatki")
+                ]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "col-md-6 form-group" }, [
+                    _c("label", { attrs: { for: "znamka" } }, [
+                      _vm._v("Znamka in model")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.znamka,
+                          expression: "znamka"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { "is-invalid": _vm.znamkaValid },
+                      attrs: {
+                        type: "text",
+                        id: "znamka",
+                        "aria-describedby": "emailHelp",
+                        placeholder: "Znamka in model"
+                      },
+                      domProps: { value: _vm.znamka },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.znamka = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                                Vpišite znamko in model\n                            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    !_vm.$v.znamka.minLength
+                      ? _c("div", [
+                          _c("span", { staticClass: "is-invalid" }, [
+                            _vm._v(
+                              "Minimalna dolžina je " +
+                                _vm._s(_vm.$v.znamka.$params.minLength.min) +
+                                " znakov"
+                            )
+                          ])
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6 form-group" }, [
+                    _c("label", { attrs: { for: "oprema" } }, [
+                      _vm._v("Tip opreme")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.oprema,
+                          expression: "oprema"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "oprema",
+                        "aria-describedby": "emailHelp",
+                        placeholder: "Tip opreme (S-line, R-line....)"
+                      },
+                      domProps: { value: _vm.oprema },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.oprema = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "col-md-3 form-group" }, [
+                    _c("label", { attrs: { for: "sedezi" } }, [
+                      _vm._v("Sedeži")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.sedezi,
+                            expression: "sedezi"
+                          }
+                        ],
+                        staticClass: "custom-select",
+                        attrs: { id: "sedezi", title: "sedezi" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.sedezi = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "",
+                              selected: "",
+                              disabled: "",
+                              hidden: ""
+                            }
+                          },
+                          [_vm._v("Izberi")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2" } }, [_vm._v("2")]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "7" } }, [_vm._v("7")])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-3 form-group" }, [
+                    _c("label", { attrs: { for: "vrata" } }, [_vm._v("Vrata")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.vrata,
+                            expression: "vrata"
+                          }
+                        ],
+                        staticClass: "custom-select",
+                        attrs: { id: "vrata", title: "vrata" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.vrata = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "",
+                              selected: "",
+                              disabled: "",
+                              hidden: ""
+                            }
+                          },
+                          [_vm._v("Izberi")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "3" } }, [_vm._v("3")]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "5" } }, [_vm._v("5")])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-4 form-group" }, [
+                    _c("label", { attrs: { for: "karoserija" } }, [
+                      _vm._v("Karoserija")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.karoserija,
+                            expression: "karoserija"
+                          }
+                        ],
+                        staticClass: "custom-select",
+                        attrs: { id: "karoserija", title: "Karoserija" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.karoserija = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "",
+                              selected: "",
+                              disabled: "",
+                              hidden: ""
+                            }
+                          },
+                          [_vm._v("Izberi")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "0" } }, [
+                          _vm._v("Limuzina")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("Kombi limuzina")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2" } }, [
+                          _vm._v("Karavan")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "3" } }, [
+                          _vm._v("Enoprostorec")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "4" } }, [
+                          _vm._v("Coupe")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "5" } }, [
+                          _vm._v("Cabrio")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "6" } }, [
+                          _vm._v("SUV / Terenski")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "7" } }, [
+                          _vm._v("Pick-up")
+                        ])
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "col-md-3 form-group" }, [
+                    _c("label", { attrs: { for: "starostMin" } }, [
+                      _vm._v("Letnik min.")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.letaMin,
+                            expression: "letaMin"
+                          }
+                        ],
+                        staticClass: "custom-select",
+                        class: { "is-invalid": _vm.letnikMinValid },
+                        attrs: { id: "starostMin", title: "starostMin" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.letaMin = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "",
+                              selected: "",
+                              disabled: "",
+                              hidden: ""
+                            }
+                          },
+                          [_vm._v("Izberi")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2013" } }, [
+                          _vm._v("od 2013")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2014" } }, [
+                          _vm._v("od 2014")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2015" } }, [
+                          _vm._v("od 2015")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2016" } }, [
+                          _vm._v("od 2016")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2017" } }, [
+                          _vm._v("od 2017")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2018" } }, [
+                          _vm._v("od 2018")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2019" } }, [
+                          _vm._v("od 2019")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                                Izberite letnik min.\n                            "
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-3 form-group" }, [
+                    _c("label", { attrs: { for: "starostMax" } }, [
+                      _vm._v("Letnik max.")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.letaMax,
+                            expression: "letaMax"
+                          }
+                        ],
+                        staticClass: "custom-select",
+                        class: { "is-invalid": _vm.letnikMaxValid },
+                        attrs: { id: "starostMax", title: "starostMax" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.letaMax = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "",
+                              selected: "",
+                              disabled: "",
+                              hidden: ""
+                            }
+                          },
+                          [_vm._v("Izberi")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2013" } }, [
+                          _vm._v("do 2013")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2014" } }, [
+                          _vm._v("do 2014")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2015" } }, [
+                          _vm._v("do 2015")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2016" } }, [
+                          _vm._v("do 2016")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2017" } }, [
+                          _vm._v("do 2017")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2018" } }, [
+                          _vm._v("do 2018")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2019" } }, [
+                          _vm._v("do 2019")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                                Izberite letnik max.\n                            "
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-4 form-group" }, [
+                    _c("label", { attrs: { for: "kilometri" } }, [
+                      _vm._v("Kilometri")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.kilometri,
+                            expression: "kilometri"
+                          }
+                        ],
+                        staticClass: "custom-select",
+                        class: { "is-invalid": _vm.kilometriValid },
+                        attrs: { id: "kilometri", title: "kilometri" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.kilometri = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "",
+                              selected: "",
+                              disabled: "",
+                              hidden: ""
+                            }
+                          },
+                          [_vm._v("Izberi")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "0" } }, [
+                          _vm._v("do 50.000")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("od 50.000 do 100.000")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2" } }, [
+                          _vm._v("od 100.000 do 125.000")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "3" } }, [
+                          _vm._v("od 125.000 do 150.000")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "4" } }, [
+                          _vm._v("od 150.000 do 175.000")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                                Izberite kilometre\n                            "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "col-md-3 form-group" }, [
+                    _c("label", { attrs: { for: "barva" } }, [_vm._v("Barva")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.barva,
+                            expression: "barva"
+                          }
+                        ],
+                        staticClass: "custom-select",
+                        attrs: { id: "barva", title: "barva" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.barva = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "",
+                              selected: "",
+                              disabled: "",
+                              hidden: ""
+                            }
+                          },
+                          [_vm._v("Izberi")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "0" } }, [
+                          _vm._v("Katerakoli")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("Bela")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2" } }, [
+                          _vm._v("Črna")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "3" } }, [
+                          _vm._v("Srebrna")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "4" } }, [
+                          _vm._v("Modra")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "5" } }, [
+                          _vm._v("Siva")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "6" } }, [
+                          _vm._v("Rumena")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "7" } }, [
+                          _vm._v("Rdeča")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "8" } }, [
+                          _vm._v("Zelena")
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-3 form-group" }, [
+                    _c("label", { attrs: { for: "moc" } }, [
+                      _vm._v("Moč motorja")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.moc,
+                            expression: "moc"
+                          }
+                        ],
+                        staticClass: "custom-select",
+                        attrs: { id: "moc", title: "moc" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.moc = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "",
+                              selected: "",
+                              disabled: "",
+                              hidden: ""
+                            }
+                          },
+                          [_vm._v("Izberi")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "0" } }, [
+                          _vm._v("do 100KM")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("od 100 do 130KM")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2" } }, [
+                          _vm._v("od 130 do 150KM")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "3" } }, [
+                          _vm._v("od 150 do 200KM")
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-3 form-group" }, [
+                    _c("label", { attrs: { for: "menjalnik" } }, [
+                      _vm._v("Menjalnik")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.menjalnik,
+                            expression: "menjalnik"
+                          }
+                        ],
+                        staticClass: "custom-select",
+                        attrs: { id: "menjalnik", title: "menjalnik" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.menjalnik = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "",
+                              selected: "",
+                              disabled: "",
+                              hidden: ""
+                            }
+                          },
+                          [_vm._v("Izberi")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "0" } }, [
+                          _vm._v("Ročni")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("Avtomatski")
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-3 form-group" }, [
+                    _c("label", { attrs: { for: "gorivo" } }, [
+                      _vm._v("Gorivo")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.gorivo,
+                            expression: "gorivo"
+                          }
+                        ],
+                        staticClass: "custom-select",
+                        attrs: { id: "gorivo", title: "gorivo" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.gorivo = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: {
+                              value: "",
+                              selected: "",
+                              disabled: "",
+                              hidden: ""
+                            }
+                          },
+                          [_vm._v("Izberi")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "0" } }, [
+                          _vm._v("Benzin")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("Dizel")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2" } }, [
+                          _vm._v("Hibrid")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "3" } }, [
+                          _vm._v("Električni")
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-red" }, [
+                    _vm._v("Dodatne opcije")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "col-md-4" }, [
+                    _c("div", { staticClass: "text-gray" }, [
+                      _vm._v("Notranja oprema")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.notranja1,
+                            expression: "notranja1"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", id: "notranja1" },
+                        domProps: {
+                          checked: Array.isArray(_vm.notranja1)
+                            ? _vm._i(_vm.notranja1, null) > -1
+                            : _vm.notranja1
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.notranja1,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = null,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.notranja1 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.notranja1 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.notranja1 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "notranja1" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Gretje sedežev\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.notranja2,
+                            expression: "notranja2"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", id: "notranja2" },
+                        domProps: {
+                          checked: Array.isArray(_vm.notranja2)
+                            ? _vm._i(_vm.notranja2, null) > -1
+                            : _vm.notranja2
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.notranja2,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = null,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.notranja2 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.notranja2 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.notranja2 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "notranja2" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Hlajenje/ventilacija sedežev\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.notranja3,
+                            expression: "notranja3"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "notranja3" },
+                        domProps: {
+                          checked: Array.isArray(_vm.notranja3)
+                            ? _vm._i(_vm.notranja3, "") > -1
+                            : _vm.notranja3
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.notranja3,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.notranja3 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.notranja3 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.notranja3 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "notranja3" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    El. nastavitev sedežev\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.notranja4,
+                            expression: "notranja4"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "notranja4" },
+                        domProps: {
+                          checked: Array.isArray(_vm.notranja4)
+                            ? _vm._i(_vm.notranja4, "") > -1
+                            : _vm.notranja4
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.notranja4,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.notranja4 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.notranja4 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.notranja4 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "notranja4" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Usnjeni sedeži\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.notranja5,
+                            expression: "notranja5"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "notranja5" },
+                        domProps: {
+                          checked: Array.isArray(_vm.notranja5)
+                            ? _vm._i(_vm.notranja5, "") > -1
+                            : _vm.notranja5
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.notranja5,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.notranja5 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.notranja5 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.notranja5 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "notranja5" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Sončna streha\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.notranja6,
+                            expression: "notranja6"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "notranja6" },
+                        domProps: {
+                          checked: Array.isArray(_vm.notranja6)
+                            ? _vm._i(_vm.notranja6, "") > -1
+                            : _vm.notranja6
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.notranja6,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.notranja6 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.notranja6 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.notranja6 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "notranja6" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Navigacija\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.notranja7,
+                            expression: "notranja7"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "notranja7" },
+                        domProps: {
+                          checked: Array.isArray(_vm.notranja7)
+                            ? _vm._i(_vm.notranja7, "") > -1
+                            : _vm.notranja7
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.notranja7,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.notranja7 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.notranja7 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.notranja7 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "notranja7" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Head Up display\n                                "
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-4" }, [
+                    _c("div", { staticClass: "text-gray" }, [
+                      _vm._v("Varnost")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.varnost1,
+                            expression: "varnost1"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "varnost1" },
+                        domProps: {
+                          checked: Array.isArray(_vm.varnost1)
+                            ? _vm._i(_vm.varnost1, "") > -1
+                            : _vm.varnost1
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.varnost1,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.varnost1 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.varnost1 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.varnost1 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "varnost1" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Tempomat\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.varnost2,
+                            expression: "varnost2"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "varnost2" },
+                        domProps: {
+                          checked: Array.isArray(_vm.varnost2)
+                            ? _vm._i(_vm.varnost2, "") > -1
+                            : _vm.varnost2
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.varnost2,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.varnost2 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.varnost2 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.varnost2 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "varnost2" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Aktivni tempomat\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.varnost3,
+                            expression: "varnost3"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "varnost3" },
+                        domProps: {
+                          checked: Array.isArray(_vm.varnost3)
+                            ? _vm._i(_vm.varnost3, "") > -1
+                            : _vm.varnost3
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.varnost3,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.varnost3 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.varnost3 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.varnost3 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "varnost3" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Xenon žarometi\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.varnost4,
+                            expression: "varnost4"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "varnost4" },
+                        domProps: {
+                          checked: Array.isArray(_vm.varnost4)
+                            ? _vm._i(_vm.varnost4, "") > -1
+                            : _vm.varnost4
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.varnost4,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.varnost4 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.varnost4 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.varnost4 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "varnost4" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    LED žarometi\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.varnost5,
+                            expression: "varnost5"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "varnost5" },
+                        domProps: {
+                          checked: Array.isArray(_vm.varnost5)
+                            ? _vm._i(_vm.varnost5, "") > -1
+                            : _vm.varnost5
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.varnost5,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.varnost5 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.varnost5 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.varnost5 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "varnost5" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Avtom. ohranjanje voz.pasu\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.varnost6,
+                            expression: "varnost6"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "varnost6" },
+                        domProps: {
+                          checked: Array.isArray(_vm.varnost6)
+                            ? _vm._i(_vm.varnost6, "") > -1
+                            : _vm.varnost6
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.varnost6,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.varnost6 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.varnost6 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.varnost6 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "varnost6" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Samodejno zaviranje v sili\n                                "
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-4" }, [
+                    _c("div", { staticClass: "text-gray" }, [
+                      _vm._v("Pomoč pri parkiranju")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.pomoc1,
+                            expression: "pomoc1"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "pomoc1" },
+                        domProps: {
+                          checked: Array.isArray(_vm.pomoc1)
+                            ? _vm._i(_vm.pomoc1, "") > -1
+                            : _vm.pomoc1
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.pomoc1,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.pomoc1 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.pomoc1 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.pomoc1 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "pomoc1" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Parkirni asistent\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.pomoc2,
+                            expression: "pomoc2"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "pomoc2" },
+                        domProps: {
+                          checked: Array.isArray(_vm.pomoc2)
+                            ? _vm._i(_vm.pomoc2, "") > -1
+                            : _vm.pomoc2
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.pomoc2,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.pomoc2 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.pomoc2 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.pomoc2 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "pomoc2" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Parkirna kamera\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.pomoc3,
+                            expression: "pomoc3"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "pomoc3" },
+                        domProps: {
+                          checked: Array.isArray(_vm.pomoc3)
+                            ? _vm._i(_vm.pomoc3, "") > -1
+                            : _vm.pomoc3
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.pomoc3,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.pomoc3 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.pomoc3 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.pomoc3 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "pomoc3" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Parkirni senzorji\n                                "
+                          )
+                        ]
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "col-md-4" }, [
+                    _c("div", { staticClass: "text-gray" }, [
+                      _vm._v("Klimatizacija")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.klima1,
+                            expression: "klima1"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "klima1" },
+                        domProps: {
+                          checked: Array.isArray(_vm.klima1)
+                            ? _vm._i(_vm.klima1, "") > -1
+                            : _vm.klima1
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.klima1,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.klima1 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.klima1 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.klima1 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "klima1" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Avtomatska klima\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.klima2,
+                            expression: "klima2"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "klima2" },
+                        domProps: {
+                          checked: Array.isArray(_vm.klima2)
+                            ? _vm._i(_vm.klima2, "") > -1
+                            : _vm.klima2
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.klima2,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.klima2 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.klima2 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.klima2 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "klima2" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Gretje mirujočega vozila\n                                "
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-4" }, [
+                    _c("div", { staticClass: "text-gray" }, [_vm._v("Ostalo")]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.ostalo1,
+                            expression: "ostalo1"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "ostalo1" },
+                        domProps: {
+                          checked: Array.isArray(_vm.ostalo1)
+                            ? _vm._i(_vm.ostalo1, "") > -1
+                            : _vm.ostalo1
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.ostalo1,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.ostalo1 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.ostalo1 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.ostalo1 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "ostalo1" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Pogon 4x4\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.ostalo2,
+                            expression: "ostalo2"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: { type: "checkbox", value: "", id: "ostalo2" },
+                        domProps: {
+                          checked: Array.isArray(_vm.ostalo2)
+                            ? _vm._i(_vm.ostalo2, "") > -1
+                            : _vm.ostalo2
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.ostalo2,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.ostalo2 = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.ostalo2 = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.ostalo2 = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "ostalo2" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Vlečna naprava\n                                "
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-4" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-red" }, [
+                    _vm._v("Pričakovana cena")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "col-md-9 form-group" }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.cena,
+                          expression: "cena"
+                        }
+                      ],
+                      staticClass: "form-control col-md-7",
+                      class: { "is-invalid": _vm.cenaValid },
+                      attrs: {
+                        type: "text",
+                        id: "cena",
+                        name: "cena",
+                        "aria-describedby": "emailHelp",
+                        placeholder: "Pričakovana cena v €"
+                      },
+                      domProps: { value: _vm.cena },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.cena = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                                Vpišite ceno\n                            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    !_vm.$v.cena.minLength
+                      ? _c("div", [
+                          _c("span", { staticClass: "is-invalid" }, [
+                            _vm._v(
+                              "Minimalna dolžina je " +
+                                _vm._s(_vm.$v.cena.$params.minLength.min) +
+                                " znakov"
+                            )
+                          ])
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-3" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-red" }, [
+                    _vm._v("Osebni podatki")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "col-md-4 form-group" }, [
+                    _c("label", { attrs: { for: "imepriimek" } }, [
+                      _vm._v("Ime in priimek")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.imePriimek,
+                          expression: "imePriimek"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { "is-invalid": _vm.imePriimekValid },
+                      attrs: {
+                        type: "text",
+                        id: "imepriimek",
+                        name: "imepriimek",
+                        "aria-describedby": "emailHelp",
+                        placeholder: "Ime in priimek"
+                      },
+                      domProps: { value: _vm.imePriimek },
+                      on: {
+                        input: [
+                          function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.imePriimek = $event.target.value
+                          },
+                          _vm.$v.imePriimek.$touch
+                        ]
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                                Vpišite ime in priimek\n                            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    !_vm.$v.imePriimek.minLength
+                      ? _c("div", [
+                          _c("span", { staticClass: "is-invalid" }, [
+                            _vm._v(
+                              "Minimalna dolžina je " +
+                                _vm._s(
+                                  _vm.$v.imePriimek.$params.minLength.min
+                                ) +
+                                " znakov"
+                            )
+                          ])
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-4 form-group" }, [
+                    _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.email,
+                          expression: "email"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: { "is-invalid": _vm.emailValid },
+                      attrs: {
+                        type: "email",
+                        id: "email",
+                        name: "imepriimek",
+                        "aria-describedby": "emailHelp",
+                        placeholder: "Email"
+                      },
+                      domProps: { value: _vm.email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.email = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                                Vpišite email naslov\n                            "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    !_vm.$v.email.email
+                      ? _c("div", [
+                          _c("span", { staticClass: "is-invalid" }, [
+                            _vm._v("Email ni veljaven")
+                          ])
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-4 form-group" }, [
+                    _c("label", { attrs: { for: "telefon" } }, [
+                      _vm._v("Telefon")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.telefon,
+                          expression: "telefon"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "telefon",
+                        name: "imepriimek",
+                        "aria-describedby": "emailHelp",
+                        placeholder: "Telefon"
+                      },
+                      domProps: { value: _vm.telefon },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.telefon = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _vm.responseMessage
+                ? _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "alert alert-success alert-dismissible text-center fade show",
+                        attrs: { role: "alert" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.responseMessage) +
+                            "\n                        "
+                        ),
+                        _vm._m(2)
+                      ]
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-gray btn-mobile-close",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Zapri")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-red",
+                    attrs: {
+                      disabled:
+                        _vm.$v.imePriimek.$invalid ||
+                        !_vm.$v.email.email ||
+                        _vm.letaMin === "" ||
+                        _vm.letaMax === "" ||
+                        _vm.$v.znamka.$invalid ||
+                        _vm.kilometri === ""
+                    },
+                    on: { click: _vm.sendInquiry }
+                  },
+                  [_vm._v("Pošlji")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-red",
+          staticStyle: { "margin-left": "0 !important" },
+          attrs: { "data-toggle": "modal", "data-target": "#inquiry" }
+        },
+        [_vm._v("Obrazec")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "cena" } }, [
+      _vm._v("Max. pričakovana cena "),
+      _c("span", { staticClass: "small" }, [
+        _vm._v("(z DMV, DDV in ostalimi dajatvami v SLO)")
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -55074,8 +57922,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_EnCalculation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/EnCalculation */ "./resources/js/components/EnCalculation.vue");
 /* harmony import */ var _components_EnContact__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/EnContact */ "./resources/js/components/EnContact.vue");
 /* harmony import */ var _components_Add__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Add */ "./resources/js/components/Add.vue");
-/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
-/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_Inquiry__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Inquiry */ "./resources/js/components/Inquiry.vue");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 
@@ -55092,7 +57942,7 @@ Vue.config.silent = true;
 Vue.config.productionTip = false;
 /* development mode notice */
 
-Vue.use(vuelidate__WEBPACK_IMPORTED_MODULE_5___default.a);
+Vue.use(vuelidate__WEBPACK_IMPORTED_MODULE_6___default.a);
 var app = new Vue({
   el: '#app',
   components: {
@@ -55100,7 +57950,7 @@ var app = new Vue({
   }
 });
 var contact = new Vue({
-  el: '#contact',
+  el: '#contactForm',
   components: {
     contact: _components_Contact__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
@@ -55121,6 +57971,12 @@ var modaladd = new Vue({
   el: '#modaladd',
   components: {
     add: _components_Add__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }
+});
+var inquiry = new Vue({
+  el: '#inquiryForm',
+  components: {
+    inquiry: _components_Inquiry__WEBPACK_IMPORTED_MODULE_5__["default"]
   }
 });
 
@@ -55547,6 +58403,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EnContact_vue_vue_type_template_id_08c9f448___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EnContact_vue_vue_type_template_id_08c9f448___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Inquiry.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/components/Inquiry.vue ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Inquiry_vue_vue_type_template_id_48bf77ac_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Inquiry.vue?vue&type=template&id=48bf77ac&scoped=true& */ "./resources/js/components/Inquiry.vue?vue&type=template&id=48bf77ac&scoped=true&");
+/* harmony import */ var _Inquiry_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Inquiry.vue?vue&type=script&lang=js& */ "./resources/js/components/Inquiry.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Inquiry_vue_vue_type_style_index_0_id_48bf77ac_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Inquiry.vue?vue&type=style&index=0&id=48bf77ac&scoped=true&lang=css& */ "./resources/js/components/Inquiry.vue?vue&type=style&index=0&id=48bf77ac&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Inquiry_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Inquiry_vue_vue_type_template_id_48bf77ac_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Inquiry_vue_vue_type_template_id_48bf77ac_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "48bf77ac",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Inquiry.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Inquiry.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/Inquiry.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Inquiry_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Inquiry.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Inquiry.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Inquiry_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Inquiry.vue?vue&type=style&index=0&id=48bf77ac&scoped=true&lang=css&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/Inquiry.vue?vue&type=style&index=0&id=48bf77ac&scoped=true&lang=css& ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Inquiry_vue_vue_type_style_index_0_id_48bf77ac_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Inquiry.vue?vue&type=style&index=0&id=48bf77ac&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Inquiry.vue?vue&type=style&index=0&id=48bf77ac&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Inquiry_vue_vue_type_style_index_0_id_48bf77ac_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Inquiry_vue_vue_type_style_index_0_id_48bf77ac_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Inquiry_vue_vue_type_style_index_0_id_48bf77ac_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Inquiry_vue_vue_type_style_index_0_id_48bf77ac_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Inquiry_vue_vue_type_style_index_0_id_48bf77ac_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Inquiry.vue?vue&type=template&id=48bf77ac&scoped=true&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/Inquiry.vue?vue&type=template&id=48bf77ac&scoped=true& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Inquiry_vue_vue_type_template_id_48bf77ac_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Inquiry.vue?vue&type=template&id=48bf77ac&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Inquiry.vue?vue&type=template&id=48bf77ac&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Inquiry_vue_vue_type_template_id_48bf77ac_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Inquiry_vue_vue_type_template_id_48bf77ac_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -128,13 +128,10 @@
 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content modal-lg">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Nov vnos</h5>
-            </div>
             <div class="modal-body">
                 <form method="POST" action="{{ route('add') }}" enctype="multipart/form-data" id="modaladd">
                     <add></add>
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    @csrf
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-gray">Shrani</button>
                     </div>
@@ -147,9 +144,6 @@
 <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content modal-lg">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Uredi vnos</h5>
-            </div>
             <div class="modal-body">
                 <form method="POST" action="{{ route('update') }}" enctype="multipart/form-data" id="modalupdate">
                     <div class="form-group">
@@ -190,7 +184,7 @@
                         <input type="file" class="form-control-file" name="file" id="fileUpdate">
                     </div>
                     <input type="hidden" name="id" id="id">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    @csrf
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-gray">Shrani</button>
                     </div>

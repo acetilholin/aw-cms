@@ -10,7 +10,7 @@
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="Email">
                 </div>
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                @csrf
                 @include('messages.login-register')
                 @yield('content')
                 <div class="text-center" style="padding-top: 10px;">

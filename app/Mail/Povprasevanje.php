@@ -7,10 +7,11 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NewAccount extends Mailable
+class Povprasevanje extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $data;
     public $email;
 
     /**
@@ -18,8 +19,9 @@ class NewAccount extends Mailable
      *
      * @return void
      */
-    public function __construct($email)
+    public function __construct($data, $email)
     {
+        $this->data = $data;
         $this->email = $email;
     }
 
@@ -30,9 +32,10 @@ class NewAccount extends Mailable
      */
     public function build()
     {
-        return $this->subject('Nov uporabniški račun')
-            ->view('emails.newaccount', [
-                'email' => $this->email
+        return $this->from($this->email)
+            ->subject('Povpraševanje')
+            ->view('emails.inquiry', [
+                'data' => $this->data
             ]);
     }
 }
