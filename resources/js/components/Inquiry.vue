@@ -347,6 +347,9 @@
                             </button>
                         </div>
                     </div>
+                    <div class="small text-center text-red" v-if="helpText">
+                        Polja znamka, letnik min. letnik max., kilometri, pričakovana cena ter vaši podatki (brez telefona) so obvezna.
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-gray btn-mobile-close" data-dismiss="modal">Zapri</button>
                         <button @click="sendInquiry" class="btn btn-red" :disabled="$v.imePriimek.$invalid || !$v.email.email || letaMin === '' || letaMax ==='' || $v.znamka.$invalid || kilometri ==='' ">Pošlji</button>
@@ -377,7 +380,8 @@
                 barveOpcije: ['Katerakoli','Bela','Črna','Srebrna','Modra','Siva','Rumena','Rdeča','Zelena'],
                 mocOpcije: ['do 100KM','od 100 do 130KM','od 130 do 150KM','od 150 do 200KM'],
                 menjalnikOpcije: ['ročni','avtomatski'],
-                gorivoOpcije: ['Benzin','Dizel','Hibridni','Električni']
+                gorivoOpcije: ['Benzin','Dizel','Hibridni','Električni'],
+                helpText: true
             }
         },
         validations: {
@@ -406,6 +410,7 @@
                 this.letnikMaxValid = this.letaMax === '';
 
                 if (this.znamka !== '' && this.letaMin !== '' && this.letaMax !== '' && this.kilometri !== '' && this.cena !== '' && this.imePriimek !== '' && this.email !== '') {
+                    this.helpText = false;
                     axios.get('/inquiry', {
                         params: {
                             znamka: this.znamka,

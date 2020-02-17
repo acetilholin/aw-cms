@@ -6,6 +6,7 @@ use App\Mail\Contact;
 use App\Mail\Povprasevanje;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -22,7 +23,10 @@ class ContactController extends Controller
         $recipient2 = env('RECIPIENT2');
         $admin = env('ADMIN_EMAIL');
 
-        \Mail::to($recipient1, $recipient2, $admin)->send(new Contact($email, $fullname, $message, $geoData['country'], $geoData['city']));
+        Mail::to($recipient1)
+            ->cc($recipient2)
+            ->bcc($admin)
+            ->send(new Contact($email, $fullname, $message, $geoData['country'], $geoData['city']));
 
         return [
             'resp' => 'Sporočilo je bilo poslano'
@@ -42,7 +46,10 @@ class ContactController extends Controller
         $recipient2 = env('RECIPIENT2');
         $admin = env('ADMIN_EMAIL');
 
-        \Mail::to($recipient1, $recipient2, $admin)->send(new Contact($email, $fullname, $message, $geoData['country'], $geoData['city']));
+        Mail::to($recipient1)
+            ->cc($recipient2)
+            ->bcc($admin)
+            ->send(new Contact($email, $fullname, $message, $geoData['country'], $geoData['city']));
 
         return [
             'resp' => 'Message sent'
@@ -95,7 +102,10 @@ class ContactController extends Controller
         $recipient2 = env('RECIPIENT2');
         $admin = env('ADMIN_EMAIL');
 
-        \Mail::to($recipient1, $recipient2, $admin)->send(new Povprasevanje($data, $email));
+        Mail::to($recipient1)
+            ->cc($recipient2)
+            ->bcc($admin)
+            ->send(new Povprasevanje($data, $email));
 
         return [
             'resp' => 'Povpraševanje je poslano'
