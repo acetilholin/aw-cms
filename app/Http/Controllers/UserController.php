@@ -82,7 +82,11 @@ class UserController extends Controller
         $password = $request->input('password');
 
         $user = new User();
-        $cars = new Cars();
+
+        $validatedData = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ], $this->messages());
 
         $emailExists = $user->emailExists($email);
         if ($emailExists) {
@@ -114,34 +118,30 @@ class UserController extends Controller
     {
         $email = $request->input('email');
         $name = $request->input('name');
-        $password1 = $request->input('password1');
-        $password2 = $request->input('password2');
+        $password1 = $request->input('password');
+        $password2 = $request->input('password_confirmation');
+
+        $validatedData = $request->validate([
+            'name' => 'required|min:3',
+            'email' => 'required|unique:users|max:60',
+            'password' => 'required|min:6',
+            'password_confirmation' => 'required|same:password'
+
+        ], $this->messages());
 
         $user = new User();
 
         $emailExists = $user->emailExists($email);
 
-        switch (true) {
-            case ($password1 != $password2):
-                return back()->with('error', trans('messages.passwordMissmatch'));
-                break;
-            case (strlen($password1) < 6):
-                return back()->with('error', trans('messages.passwordTooShort'));
-                break;
-            default:
-                if ($emailExists) {
-                    return back()->with('error', trans('messages.emailAlreadyExists'));
-                } else {
-                    $register = $user->register($email, $name, $password2);
-                    if ($register) {
-                        $adminEmail = env('ADMIN_EMAIL');
-                        \Mail::to($email)->send(new NewUser($email));
-                        \Mail::to($adminEmail)->send(new NewAccount($email));
-                        return redirect('/login')->with('success', trans('messages.registrationSuccessful'));
-                    } else {
-                        return back()->with('error', trans('messages.accountNotConfirmed'));
-                    }
-                }
+        $register = $user->register($email, $name, $password2);
+
+        if ($register) {
+            $adminEmail = env('ADMIN_EMAIL');
+            \Mail::to($email)->send(new NewUser($email));
+            \Mail::to($adminEmail)->send(new NewAccount($email));
+            return redirect('/login')->with('success', trans('messages.registrationSuccessful'));
+        } else {
+            return back()->with('error', trans('messages.accountNotConfirmed'));
         }
     }
 
@@ -149,6 +149,10 @@ class UserController extends Controller
     {
         $email = $request->input('email');
         $user = new User();
+
+        $validatedData = $request->validate([
+            'email' => 'required'
+        ], $this->messages());
 
         $emailExists = $user->emailExists($email);
         if (!$emailExists) {
@@ -176,6 +180,13 @@ class UserController extends Controller
 
         $user = new User();
 
+        $validatedData = $request->validate([
+            'token' => 'required',
+            'email' => 'required',
+            'password' => 'required|min:6',
+            'password_confirmation' => 'required|same:password'
+        ], $this->messages());
+
         $emailExists = $user->emailExists($email);
 
         if ($emailExists) {
@@ -185,17 +196,8 @@ class UserController extends Controller
                 if ($tokenHasExpired) {
                     return back()->with('error', trans('messages.tokenExpired'));
                 } else {
-                    switch (true) {
-                        case ($password1 != $password2):
-                            return back()->with('error', trans('messages.passwordMissmatch'));
-                            break;
-                        case (strlen($password1) < 6):
-                            return back()->with('error', trans('messages.passwordTooShort'));
-                            break;
-                        default:
-                            $user->updatePassword($email, $password1);
-                            return redirect('/login')->with('success', trans('messages.passwordChanged'));
-                    }
+                    $user->updatePassword($email, $password1);
+                    return redirect('/login')->with('success', trans('messages.passwordChanged'));
                 }
             } else {
                 return back()->with('error', trans('messages.wrongToken'));
@@ -302,6 +304,21 @@ class UserController extends Controller
             }
         }
         return $userStatus;
+    }
+
+    function messages()
+    {
+        return [
+            'email.required' => trans('messages.emailRequired'),
+            'password.required' => trans('messages.passwordRequired'),
+            'name.required' => trans('messages.nameRequired'),
+            'name.min' => trans('messages.nameTooShort'),
+            'email.unique' => trans('messages.emailAlreadyExists'),
+            'password.min' => trans('messages.passwordTooShort'),
+            'password_confirmation.same' => trans('messages.passwordMissmatch'),
+            'password_confirmation.required' => trans('messages.passConfirmationRequired'),
+            'token.required' => trans('messages.tokenRequired')
+        ];
     }
 
     function generateStringToken()

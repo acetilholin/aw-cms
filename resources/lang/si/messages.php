@@ -26,5 +26,11 @@ return [
     'CFP' => 'CFP',
     'cfp-blade' => 'pokličite za ceno',
     'carIsDisplayed' => 'Vozilo je vidno',
-    'carIsHidden' => 'Vozilo je skrito'
+    'carIsHidden' => 'Vozilo je skrito',
+    'emailRequired' => 'Vpišite email',
+    'passwordRequired' => 'Vpišite geslo',
+    'nameRequired' => 'Vpišite ime',
+    'nameTooShort' => 'Ime je prekratko',
+    'passConfirmationRequired' => 'Ponovite vpis gesla',
+    'tokenRequired' => 'Vnesite žeton'
 ];

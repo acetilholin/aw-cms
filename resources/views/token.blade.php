@@ -17,11 +17,11 @@
                 <div class="form-group">
                     <label for="password1">Geslo</label>
                     <small id="emailHelp" class="form-text text-muted">Minimalna dolžina 6 znakov</small>
-                    <input type="password" class="form-control" id="password1" name="password1" placeholder="Geslo">
+                    <input type="password" class="form-control" id="password1" name="password" placeholder="Geslo">
                 </div>
                 <div class="form-group">
                     <label for="password2">Geslo</label>
-                    <input type="password" class="form-control" id="password2" name="password2" placeholder="Ponovite geslo">
+                    <input type="password" class="form-control" id="password2" name="password_confirmation" placeholder="Ponovite geslo">
                 </div>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 @include('messages.login-register')

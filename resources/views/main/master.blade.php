@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- Author: Gregor Kosmina -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153852651-1"></script>
     <script>
@@ -15,6 +14,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="tesla 3, avto, uvoz avto nemčija, BMW, AUDI, VW, izračun DMV">
+    <meta name="author" content="Gregor Kosmina">
     <meta name="description" content="Avto Welt d.o.o. Koper - Premium selection & fair price. Uvoz avtov iz Nemčije.">
     <link rel="shortcut icon" type="image/png" href="{{ asset('favicon.ico') }}">
 

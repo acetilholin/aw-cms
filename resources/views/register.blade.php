@@ -8,20 +8,20 @@
             <form method="POST" action="{{ route('registerUser') }}">
                 <div class="form-group">
                     <label for="name">Ime</label>
-                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" placeholder="Ime" required>
+                    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" placeholder="Ime">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="ime@avtowelt.com" required>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="ime@avtowelt.com">
                 </div>
                 <div class="form-group">
                     <label for="password1">Geslo</label>
                     <small id="emailHelp" class="form-text text-muted">Minimalna dolžina 6 znakov</small>
-                    <input type="password" class="form-control" id="password1" name="password1" placeholder="Geslo" required>
+                    <input type="password" class="form-control" id="password1" name="password" placeholder="Geslo">
                 </div>
                 <div class="form-group">
                     <label for="password2">Geslo</label>
-                    <input type="password" class="form-control" id="password2" name="password2" placeholder="Ponovite geslo" required>
+                    <input type="password" class="form-control" id="password2" name="password_confirmation" placeholder="Ponovite geslo">
                 </div>
                 @csrf
                 @include('messages.login-register')
