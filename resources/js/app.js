@@ -5,6 +5,8 @@ import EnContact from "./components/EnContact";
 import Add from "./components/Add";
 import Inquiry from "./components/Inquiry";
 import Vuelidate from 'vuelidate';
+import VueLoadingButton from 'vue-loading-button'
+
 
 require('./bootstrap');
 window.Vue = require('vue');
@@ -12,6 +14,7 @@ window.Vue = require('vue');
 Vue.config.silent = true; /* Suppress all Vue logs and warnings */
 Vue.config.productionTip = false /* development mode notice */
 Vue.use(Vuelidate);
+Vue.use(VueLoadingButton);
 
 const app = new Vue({
     el: '#app',

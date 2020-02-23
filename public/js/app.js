@@ -2260,6 +2260,45 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_loading_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-loading-button */ "./node_modules/vue-loading-button/dist/vue-loading-button.esm.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2309,6 +2348,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Contact",
   data: function data() {
@@ -2319,17 +2359,24 @@ __webpack_require__.r(__webpack_exports__);
       nameSurnameValid: '',
       emailValid: '',
       messageValid: '',
-      responseMessage: ''
+      responseMessage: '',
+      isLoading: false
     };
+  },
+  components: {
+    VueLoadingButton: vue_loading_button__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   validations: {
     fullname: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
       minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5)
     },
     email: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
       email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["email"]
     },
     message: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
       minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(30)
     }
   },
@@ -2342,6 +2389,7 @@ __webpack_require__.r(__webpack_exports__);
       this.messageValid = this.message === '';
 
       if (this.fullname !== '' && this.email !== '' && this.message !== '') {
+        this.isLoading = true;
         axios.get('/contact', {
           params: {
             email: this.email,
@@ -2349,7 +2397,8 @@ __webpack_require__.r(__webpack_exports__);
             message: this.message
           }
         }).then(function (response) {
-          return _this.responseMessage = response.data.resp;
+          _this.responseMessage = response.data.resp;
+          _this.isLoading = response.data.loading;
         });
       }
     }
@@ -2698,6 +2747,44 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_loading_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-loading-button */ "./node_modules/vue-loading-button/dist/vue-loading-button.esm.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2746,6 +2833,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "EnContact",
   data: function data() {
@@ -2756,17 +2844,24 @@ __webpack_require__.r(__webpack_exports__);
       nameSurnameValid: '',
       emailValid: '',
       messageValid: '',
-      responseMessage: ''
+      responseMessage: '',
+      isLoading: false
     };
+  },
+  components: {
+    VueLoadingButton: vue_loading_button__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   validations: {
     fullname: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
       minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(5)
     },
     email: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
       email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["email"]
     },
     message: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"],
       minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["minLength"])(30)
     }
   },
@@ -2779,6 +2874,7 @@ __webpack_require__.r(__webpack_exports__);
       this.messageValid = this.message === '';
 
       if (this.fullname !== '' && this.email !== '' && this.message !== '') {
+        this.isLoading = true;
         axios.get('/contact-en', {
           params: {
             email: this.email,
@@ -2786,7 +2882,8 @@ __webpack_require__.r(__webpack_exports__);
             message: this.message
           }
         }).then(function (response) {
-          return _this.responseMessage = response.data.resp;
+          _this.responseMessage = response.data.resp;
+          _this.isLoading = response.data.loading;
         });
       }
     }
@@ -2806,6 +2903,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_loading_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-loading-button */ "./node_modules/vue-loading-button/dist/vue-loading-button.esm.js");
 //
 //
 //
@@ -3168,6 +3266,317 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Inquiry",
@@ -3223,8 +3632,12 @@ __webpack_require__.r(__webpack_exports__);
       mocOpcije: ['do 100KM', 'od 100 do 130KM', 'od 130 do 150KM', 'od 150 do 200KM'],
       menjalnikOpcije: ['ročni', 'avtomatski'],
       gorivoOpcije: ['Benzin', 'Dizel', 'Hibridni', 'Električni'],
-      helpText: true
+      helpText: true,
+      isLoading: false
     };
+  },
+  components: {
+    VueLoadingButton: vue_loading_button__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   validations: {
     imePriimek: {
@@ -3253,6 +3666,7 @@ __webpack_require__.r(__webpack_exports__);
       this.letnikMaxValid = this.letaMax === '';
 
       if (this.znamka !== '' && this.letaMin !== '' && this.letaMax !== '' && this.kilometri !== '' && this.cena !== '' && this.imePriimek !== '' && this.email !== '') {
+        this.isLoading = true;
         this.helpText = false;
         axios.get('/inquiry', {
           params: {
@@ -3294,7 +3708,8 @@ __webpack_require__.r(__webpack_exports__);
             ostalo2: this.ostalo2
           }
         }).then(function (response) {
-          return _this.responseMessage = response.data.resp;
+          _this.responseMessage = response.data.resp;
+          _this.isLoading = response.data.loading;
         });
       }
     }
@@ -7779,7 +8194,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.is-invalid {\n    width: 100%;\n    margin-top: .25rem;\n    font-size: 80%;\n    color: #dc3545;\n}\n", ""]);
+exports.push([module.i, "\n.is-invalid {\n    width: 100%;\n    margin-top: .25rem;\n    font-size: 80%;\n    color: #dc3545;\n}\nbutton:disabled {\n    cursor: not-allowed;\n    pointer-events: all !important;\n}\n", ""]);
 
 // exports
 
@@ -40356,197 +40771,207 @@ var render = function() {
   return _c("div", { staticClass: "contact-form" }, [
     _c("h3", { staticClass: "h3-contact" }, [_vm._v("Kontakt")]),
     _vm._v(" "),
-    _c("div", [
-      _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
-        _c("label", { attrs: { for: "name-surname" } }, [
-          _vm._v("Ime in priimek")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fullname,
-              expression: "fullname"
-            }
-          ],
-          staticClass: "form-control",
-          class: { "is-invalid": _vm.nameSurnameValid },
-          attrs: {
-            type: "text",
-            id: "name-surname",
-            name: "fullname",
-            "aria-describedby": "emailHelp",
-            placeholder: "Ime in priimek",
-            required: ""
-          },
-          domProps: { value: _vm.fullname },
-          on: {
-            input: [
-              function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.fullname = $event.target.value
-              },
-              _vm.$v.fullname.$touch
-            ]
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "invalid-feedback" }, [
-          _vm._v("\n                Vpišite ime in priimek\n            ")
-        ]),
-        _vm._v(" "),
-        !_vm.$v.fullname.minLength
-          ? _c("div", [
-              _c("span", { staticClass: "is-invalid" }, [
-                _vm._v(
-                  "Minimalna dolžina je " +
-                    _vm._s(_vm.$v.fullname.$params.minLength.min) +
-                    " znakov"
-                )
-              ])
-            ])
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
-        _c("label", { attrs: { for: "email-label" } }, [_vm._v("Email")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.email,
-              expression: "email"
-            }
-          ],
-          staticClass: "form-control",
-          class: { "is-invalid": _vm.emailValid },
-          attrs: {
-            type: "text",
-            id: "email-label",
-            name: "email",
-            "aria-describedby": "emailHelp",
-            placeholder: "Email",
-            required: ""
-          },
-          domProps: { value: _vm.email },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.email = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "invalid-feedback" }, [
-          _vm._v("\n                Vpišite email naslov\n            ")
-        ]),
-        _vm._v(" "),
-        !_vm.$v.email.email
-          ? _c("div", [
-              _c("span", { staticClass: "is-invalid" }, [
-                _vm._v("Email ni veljaven")
-              ])
-            ])
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
-        _c("label", { attrs: { for: "textarea" } }, [_vm._v("Sporočilo")]),
-        _vm._v(" "),
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.message,
-              expression: "message"
-            }
-          ],
-          staticClass: "form-control",
-          class: { "is-invalid": _vm.messageValid },
-          attrs: {
-            id: "textarea",
-            name: "message",
-            rows: "3",
-            placeholder: "Sporočilo",
-            required: ""
-          },
-          domProps: { value: _vm.message },
-          on: {
-            input: [
-              function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.message = $event.target.value
-              },
-              _vm.$v.fullname.$touch
-            ]
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "invalid-feedback" }, [
-          _vm._v("\n                Vpišite sporočilo\n            ")
-        ]),
-        _vm._v(" "),
-        !_vm.$v.message.minLength
-          ? _c("div", [
-              _c("span", { staticClass: "is-invalid" }, [
-                _vm._v(
-                  "Še " +
-                    _vm._s(
-                      _vm.$v.message.$params.minLength.min - _vm.message.length
-                    ) +
-                    " znakov"
-                )
-              ])
-            ])
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _vm.responseMessage
-        ? _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
-            _c(
-              "div",
+    _c(
+      "div",
+      [
+        _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
+          _c("label", { attrs: { for: "name-surname" } }, [
+            _vm._v("Ime in priimek")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
               {
-                staticClass: "alert alert-success alert-dismissible fade show",
-                attrs: { role: "alert" }
-              },
-              [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(_vm.responseMessage) +
-                    "\n                "
-                ),
-                _vm._m(0)
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fullname,
+                expression: "fullname"
+              }
+            ],
+            staticClass: "form-control",
+            class: { "is-invalid": _vm.nameSurnameValid },
+            attrs: {
+              type: "text",
+              id: "name-surname",
+              name: "fullname",
+              "aria-describedby": "emailHelp",
+              placeholder: "Ime in priimek"
+            },
+            domProps: { value: _vm.fullname },
+            on: {
+              input: [
+                function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.fullname = $event.target.value
+                },
+                _vm.$v.fullname.$touch
               ]
-            )
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-calculate",
-          attrs: {
-            disabled:
-              _vm.$v.fullname.$invalid ||
-              !_vm.$v.email.email ||
-              _vm.$v.message.$invalid
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "invalid-feedback" }, [
+            _vm._v("\n                Vpišite ime in priimek\n            ")
+          ]),
+          _vm._v(" "),
+          !_vm.$v.fullname.minLength
+            ? _c("div", [
+                _c("span", { staticClass: "is-invalid" }, [
+                  _vm._v(
+                    "Minimalna dolžina je " +
+                      _vm._s(_vm.$v.fullname.$params.minLength.min) +
+                      " znakov"
+                  )
+                ])
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
+          _c("label", { attrs: { for: "email-label" } }, [_vm._v("Email")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.email,
+                expression: "email"
+              }
+            ],
+            staticClass: "form-control",
+            class: { "is-invalid": _vm.emailValid },
+            attrs: {
+              type: "text",
+              id: "email-label",
+              name: "email",
+              "aria-describedby": "emailHelp",
+              placeholder: "Email"
+            },
+            domProps: { value: _vm.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.email = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "invalid-feedback" }, [
+            _vm._v("\n                Vpišite email naslov\n            ")
+          ]),
+          _vm._v(" "),
+          !_vm.$v.email.email
+            ? _c("div", [
+                _c("span", { staticClass: "is-invalid" }, [
+                  _vm._v("Email ni veljaven")
+                ])
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
+          _c("label", { attrs: { for: "textarea" } }, [_vm._v("Sporočilo")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.message,
+                expression: "message"
+              }
+            ],
+            staticClass: "form-control",
+            class: { "is-invalid": _vm.messageValid },
+            attrs: {
+              id: "textarea",
+              name: "message",
+              rows: "3",
+              placeholder: "Sporočilo"
+            },
+            domProps: { value: _vm.message },
+            on: {
+              input: [
+                function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.message = $event.target.value
+                },
+                _vm.$v.fullname.$touch
+              ]
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "invalid-feedback" }, [
+            _vm._v("\n                Vpišite sporočilo\n            ")
+          ]),
+          _vm._v(" "),
+          !_vm.$v.message.minLength
+            ? _c("div", [
+                _c("span", { staticClass: "is-invalid" }, [
+                  _vm._v(
+                    "Še " +
+                      _vm._s(
+                        _vm.$v.message.$params.minLength.min -
+                          _vm.message.length
+                      ) +
+                      " znakov"
+                  )
+                ])
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _vm.responseMessage
+          ? _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "alert alert-success alert-dismissible fade show",
+                  attrs: { role: "alert" }
+                },
+                [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(_vm.responseMessage) +
+                      "\n                "
+                  ),
+                  _vm._m(0)
+                ]
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c(
+          "VueLoadingButton",
+          {
+            staticClass: "btn btn-calculate",
+            attrs: {
+              "aria-label": "Send message",
+              loading: _vm.isLoading,
+              disabled:
+                _vm.$v.fullname.$invalid ||
+                !_vm.$v.email.email ||
+                !_vm.$v.email.required ||
+                _vm.$v.message.$invalid
+            },
+            nativeOn: {
+              click: function($event) {
+                return _vm.sendEmail($event)
+              }
+            }
           },
-          on: { click: _vm.sendEmail }
-        },
-        [_vm._v("Pošlji")]
-      )
-    ])
+          [_vm._v("Pošlji\n        ")]
+        )
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [
@@ -41341,193 +41766,198 @@ var render = function() {
   return _c("div", { staticClass: "contact-form" }, [
     _c("h3", { staticClass: "h3-contact" }, [_vm._v("Contact")]),
     _vm._v(" "),
-    _c("div", [
-      _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
-        _c("label", { attrs: { for: "name-surname" } }, [
-          _vm._v("Name and surname")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.fullname,
-              expression: "fullname"
-            }
-          ],
-          staticClass: "form-control",
-          class: { "is-invalid": _vm.nameSurnameValid },
-          attrs: {
-            type: "text",
-            id: "name-surname",
-            name: "fullname",
-            "aria-describedby": "emailHelp",
-            placeholder: "Name and surname",
-            required: ""
-          },
-          domProps: { value: _vm.fullname },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.fullname = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "invalid-feedback" }, [
-          _vm._v("\n                Enter name and surname\n            ")
-        ]),
-        _vm._v(" "),
-        !_vm.$v.fullname.minLength
-          ? _c("div", [
-              _c("span", { staticClass: "is-invalid" }, [
-                _vm._v(
-                  "Minimal lenght is " +
-                    _vm._s(_vm.$v.fullname.$params.minLength.min) +
-                    " characters"
-                )
-              ])
-            ])
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
-        _c("label", { attrs: { for: "email-label" } }, [_vm._v("Email")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.email,
-              expression: "email"
-            }
-          ],
-          staticClass: "form-control",
-          class: { "is-invalid": _vm.emailValid },
-          attrs: {
-            type: "email",
-            id: "email-label",
-            name: "email",
-            "aria-describedby": "emailHelp",
-            placeholder: "Email",
-            required: ""
-          },
-          domProps: { value: _vm.email },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.email = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "invalid-feedback" }, [
-          _vm._v("\n                Enter email\n            ")
-        ]),
-        _vm._v(" "),
-        !_vm.$v.email.email
-          ? _c("div", [
-              _c("span", { staticClass: "is-invalid" }, [
-                _vm._v("Email not valid")
-              ])
-            ])
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
-        _c("label", { attrs: { for: "textarea" } }, [_vm._v("Message")]),
-        _vm._v(" "),
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.message,
-              expression: "message"
-            }
-          ],
-          staticClass: "form-control",
-          class: { "is-invalid": _vm.messageValid },
-          attrs: {
-            id: "textarea",
-            name: "message",
-            rows: "3",
-            placeholder: "Message",
-            required: ""
-          },
-          domProps: { value: _vm.message },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.message = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "invalid-feedback" }, [
-          _vm._v("\n                Enter message\n            ")
-        ]),
-        _vm._v(" "),
-        !_vm.$v.message.minLength
-          ? _c("div", [
-              _c("span", { staticClass: "is-invalid" }, [
-                _vm._v(
-                  _vm._s(
-                    _vm.$v.message.$params.minLength.min - _vm.message.length
-                  ) + " more characters"
-                )
-              ])
-            ])
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _vm.responseMessage
-        ? _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
-            _c(
-              "div",
+    _c(
+      "div",
+      [
+        _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
+          _c("label", { attrs: { for: "name-surname" } }, [
+            _vm._v("Name and surname")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
               {
-                staticClass: "alert alert-success alert-dismissible fade show",
-                attrs: { role: "alert" }
-              },
-              [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(_vm.responseMessage) +
-                    "\n                "
-                ),
-                _vm._m(0)
-              ]
-            )
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-calculate",
-          attrs: {
-            disabled:
-              _vm.$v.fullname.$invalid ||
-              !_vm.$v.email.email ||
-              _vm.$v.message.$invalid
-          },
-          on: {
-            click: function($event) {
-              return _vm.sendEmail()
+                name: "model",
+                rawName: "v-model",
+                value: _vm.fullname,
+                expression: "fullname"
+              }
+            ],
+            staticClass: "form-control",
+            class: { "is-invalid": _vm.nameSurnameValid },
+            attrs: {
+              type: "text",
+              id: "name-surname",
+              name: "fullname",
+              "aria-describedby": "emailHelp",
+              placeholder: "Name and surname"
+            },
+            domProps: { value: _vm.fullname },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.fullname = $event.target.value
+              }
             }
-          }
-        },
-        [_vm._v("Send")]
-      )
-    ])
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "invalid-feedback" }, [
+            _vm._v("\n                Enter name and surname\n            ")
+          ]),
+          _vm._v(" "),
+          !_vm.$v.fullname.minLength
+            ? _c("div", [
+                _c("span", { staticClass: "is-invalid" }, [
+                  _vm._v(
+                    "Minimal lenght is " +
+                      _vm._s(_vm.$v.fullname.$params.minLength.min) +
+                      " characters"
+                  )
+                ])
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
+          _c("label", { attrs: { for: "email-label" } }, [_vm._v("Email")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.email,
+                expression: "email"
+              }
+            ],
+            staticClass: "form-control",
+            class: { "is-invalid": _vm.emailValid },
+            attrs: {
+              type: "email",
+              id: "email-label",
+              name: "email",
+              "aria-describedby": "emailHelp",
+              placeholder: "Email"
+            },
+            domProps: { value: _vm.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.email = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "invalid-feedback" }, [
+            _vm._v("\n                Enter email\n            ")
+          ]),
+          _vm._v(" "),
+          !_vm.$v.email.email
+            ? _c("div", [
+                _c("span", { staticClass: "is-invalid" }, [
+                  _vm._v("Email not valid")
+                ])
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
+          _c("label", { attrs: { for: "textarea" } }, [_vm._v("Message")]),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.message,
+                expression: "message"
+              }
+            ],
+            staticClass: "form-control",
+            class: { "is-invalid": _vm.messageValid },
+            attrs: {
+              id: "textarea",
+              name: "message",
+              rows: "3",
+              placeholder: "Message"
+            },
+            domProps: { value: _vm.message },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.message = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "invalid-feedback" }, [
+            _vm._v("\n                Enter message\n            ")
+          ]),
+          _vm._v(" "),
+          !_vm.$v.message.minLength
+            ? _c("div", [
+                _c("span", { staticClass: "is-invalid" }, [
+                  _vm._v(
+                    _vm._s(
+                      _vm.$v.message.$params.minLength.min - _vm.message.length
+                    ) + " more characters"
+                  )
+                ])
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _vm.responseMessage
+          ? _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "alert alert-success alert-dismissible fade show",
+                  attrs: { role: "alert" }
+                },
+                [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(_vm.responseMessage) +
+                      "\n                "
+                  ),
+                  _vm._m(0)
+                ]
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c(
+          "VueLoadingButton",
+          {
+            staticClass: "btn btn-calculate",
+            attrs: {
+              "aria-label": "Send message",
+              loading: _vm.isLoading,
+              disabled:
+                _vm.$v.fullname.$invalid ||
+                !_vm.$v.email.email ||
+                !_vm.$v.email.required ||
+                _vm.$v.message.$invalid
+            },
+            nativeOn: {
+              click: function($event) {
+                return _vm.sendEmail($event)
+              }
+            }
+          },
+          [_vm._v("Send\n        ")]
+        )
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [
@@ -41733,7 +42163,7 @@ var render = function() {
                               hidden: ""
                             }
                           },
-                          [_vm._v("Izberi")]
+                          [_vm._v("Izberi\n                                ")]
                         ),
                         _vm._v(" "),
                         _c("option", { attrs: { value: "2" } }, [_vm._v("2")]),
@@ -41788,7 +42218,7 @@ var render = function() {
                               hidden: ""
                             }
                           },
-                          [_vm._v("Izberi")]
+                          [_vm._v("Izberi\n                                ")]
                         ),
                         _vm._v(" "),
                         _c("option", { attrs: { value: "3" } }, [_vm._v("3")]),
@@ -41843,7 +42273,7 @@ var render = function() {
                               hidden: ""
                             }
                           },
-                          [_vm._v("Izberi")]
+                          [_vm._v("Izberi\n                                ")]
                         ),
                         _vm._v(" "),
                         _c("option", { attrs: { value: "0" } }, [
@@ -41929,7 +42359,7 @@ var render = function() {
                               hidden: ""
                             }
                           },
-                          [_vm._v("Izberi")]
+                          [_vm._v("Izberi\n                                ")]
                         ),
                         _vm._v(" "),
                         _c("option", { attrs: { value: "2013" } }, [
@@ -42015,7 +42445,7 @@ var render = function() {
                               hidden: ""
                             }
                           },
-                          [_vm._v("Izberi")]
+                          [_vm._v("Izberi\n                                ")]
                         ),
                         _vm._v(" "),
                         _c("option", { attrs: { value: "2013" } }, [
@@ -42101,7 +42531,7 @@ var render = function() {
                               hidden: ""
                             }
                           },
-                          [_vm._v("Izberi")]
+                          [_vm._v("Izberi\n                                ")]
                         ),
                         _vm._v(" "),
                         _c("option", { attrs: { value: "0" } }, [
@@ -42178,7 +42608,7 @@ var render = function() {
                               hidden: ""
                             }
                           },
-                          [_vm._v("Izberi")]
+                          [_vm._v("Izberi\n                                ")]
                         ),
                         _vm._v(" "),
                         _c("option", { attrs: { value: "0" } }, [
@@ -42265,7 +42695,7 @@ var render = function() {
                               hidden: ""
                             }
                           },
-                          [_vm._v("Izberi")]
+                          [_vm._v("Izberi\n                                ")]
                         ),
                         _vm._v(" "),
                         _c("option", { attrs: { value: "0" } }, [
@@ -42332,7 +42762,7 @@ var render = function() {
                               hidden: ""
                             }
                           },
-                          [_vm._v("Izberi")]
+                          [_vm._v("Izberi\n                                ")]
                         ),
                         _vm._v(" "),
                         _c("option", { attrs: { value: "0" } }, [
@@ -42391,7 +42821,7 @@ var render = function() {
                               hidden: ""
                             }
                           },
-                          [_vm._v("Izberi")]
+                          [_vm._v("Izberi\n                                ")]
                         ),
                         _vm._v(" "),
                         _c("option", { attrs: { value: "0" } }, [
@@ -43767,39 +44197,50 @@ var render = function() {
               _vm.helpText
                 ? _c("div", { staticClass: "small text-center text-red" }, [
                     _vm._v(
-                      "\n                    Polja znamka, letnik min. letnik max., kilometri, pričakovana cena ter vaši podatki (brez telefona) so obvezna.\n                "
+                      "\n                    Polja znamka, letnik min. letnik max., kilometri, pričakovana cena ter vaši podatki (brez\n                    telefona) so obvezna.\n                "
                     )
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-gray btn-mobile-close",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [_vm._v("Zapri")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-red",
-                    attrs: {
-                      disabled:
-                        _vm.$v.imePriimek.$invalid ||
-                        !_vm.$v.email.email ||
-                        _vm.letaMin === "" ||
-                        _vm.letaMax === "" ||
-                        _vm.$v.znamka.$invalid ||
-                        _vm.kilometri === ""
+              _c(
+                "div",
+                { staticClass: "modal-footer" },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-gray btn-mobile-close",
+                      attrs: { type: "button", "data-dismiss": "modal" }
                     },
-                    on: { click: _vm.sendInquiry }
-                  },
-                  [_vm._v("Pošlji")]
-                )
-              ])
+                    [_vm._v("Zapri\n                    ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "VueLoadingButton",
+                    {
+                      staticClass: "btn btn-red",
+                      attrs: {
+                        "aria-label": "Send message",
+                        loading: _vm.isLoading,
+                        disabled:
+                          _vm.$v.imePriimek.$invalid ||
+                          !_vm.$v.email.email ||
+                          _vm.letaMin === "" ||
+                          _vm.letaMax === "" ||
+                          _vm.$v.znamka.$invalid ||
+                          _vm.kilometri === ""
+                      },
+                      nativeOn: {
+                        click: function($event) {
+                          return _vm.sendInquiry($event)
+                        }
+                      }
+                    },
+                    [_vm._v("Pošlji\n                    ")]
+                  )
+                ],
+                1
+              )
             ])
           ]
         )
@@ -43820,7 +44261,7 @@ var staticRenderFns = [
           staticStyle: { "margin-left": "0 !important" },
           attrs: { "data-toggle": "modal", "data-target": "#inquiry" }
         },
-        [_vm._v("Obrazec")]
+        [_vm._v("Obrazec\n        ")]
       )
     ])
   },
@@ -43963,6 +44404,277 @@ function normalizeComponent (
   }
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/vue-loading-button/dist/vue-loading-button.esm.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/vue-loading-button/dist/vue-loading-button.esm.js ***!
+  \************************************************************************/
+/*! exports provided: default, install */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "install", function() { return install; });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var script = {
+  name: "VueLoadingButton",
+  props: {
+    loading: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    styled: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+  }
+};
+
+function normalizeComponent(compiledTemplate, injectStyle, defaultExport, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, isShadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+    if (typeof isShadowMode === 'function') {
+        createInjectorSSR = createInjector;
+        createInjector = isShadowMode;
+        isShadowMode = false;
+    }
+    // Vue.extend constructor export interop
+    var options = typeof defaultExport === 'function' ? defaultExport.options : defaultExport;
+    // render functions
+    if (compiledTemplate && compiledTemplate.render) {
+        options.render = compiledTemplate.render;
+        options.staticRenderFns = compiledTemplate.staticRenderFns;
+        options._compiled = true;
+        // functional template
+        if (isFunctionalTemplate) {
+            options.functional = true;
+        }
+    }
+    // scopedId
+    if (scopeId) {
+        options._scopeId = scopeId;
+    }
+    var hook;
+    if (moduleIdentifier) {
+        // server build
+        hook = function (context) {
+            // 2.3 injection
+            context =
+                context || // cached call
+                    (this.$vnode && this.$vnode.ssrContext) || // stateful
+                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+            // 2.2 with runInNewContext: true
+            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                context = __VUE_SSR_CONTEXT__;
+            }
+            // inject component styles
+            if (injectStyle) {
+                injectStyle.call(this, createInjectorSSR(context));
+            }
+            // register component module identifier for async chunk inference
+            if (context && context._registeredComponents) {
+                context._registeredComponents.add(moduleIdentifier);
+            }
+        };
+        // used by ssr in case component is cached and beforeCreate
+        // never gets called
+        options._ssrRegister = hook;
+    }
+    else if (injectStyle) {
+        hook = isShadowMode
+            ? function () {
+                injectStyle.call(this, createInjectorShadow(this.$root.$options.shadowRoot));
+            }
+            : function (context) {
+                injectStyle.call(this, createInjector(context));
+            };
+    }
+    if (hook) {
+        if (options.functional) {
+            // register for functional component in vue file
+            var originalRender = options.render;
+            options.render = function renderWithStyleInjection(h, context) {
+                hook.call(context);
+                return originalRender(h, context);
+            };
+        }
+        else {
+            // inject component registration as beforeCreate hook
+            var existing = options.beforeCreate;
+            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+        }
+    }
+    return defaultExport;
+}
+
+var isOldIE = typeof navigator !== 'undefined' &&
+    /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
+function createInjector(context) {
+    return function (id, style) { return addStyle(id, style); };
+}
+var HEAD = document.head || document.getElementsByTagName('head')[0];
+var styles = {};
+function addStyle(id, css) {
+    var group = isOldIE ? css.media || 'default' : id;
+    var style = styles[group] || (styles[group] = { ids: new Set(), styles: [] });
+    if (!style.ids.has(id)) {
+        style.ids.add(id);
+        var code = css.source;
+        if (css.map) {
+            // https://developer.chrome.com/devtools/docs/javascript-debugging
+            // this makes source maps inside style tags work properly in Chrome
+            code += '\n/*# sourceURL=' + css.map.sources[0] + ' */';
+            // http://stackoverflow.com/a/26603875
+            code +=
+                '\n/*# sourceMappingURL=data:application/json;base64,' +
+                    btoa(unescape(encodeURIComponent(JSON.stringify(css.map)))) +
+                    ' */';
+        }
+        if (!style.element) {
+            style.element = document.createElement('style');
+            style.element.type = 'text/css';
+            if (css.media)
+                { style.element.setAttribute('media', css.media); }
+            HEAD.appendChild(style.element);
+        }
+        if ('styleSheet' in style.element) {
+            style.styles.push(code);
+            style.element.styleSheet.cssText = style.styles
+                .filter(Boolean)
+                .join('\n');
+        }
+        else {
+            var index = style.ids.size - 1;
+            var textNode = document.createTextNode(code);
+            var nodes = style.element.childNodes;
+            if (nodes[index])
+                { style.element.removeChild(nodes[index]); }
+            if (nodes.length)
+                { style.element.insertBefore(textNode, nodes[index]); }
+            else
+                { style.element.appendChild(textNode); }
+        }
+    }
+}
+
+/* script */
+var __vue_script__ = script;
+// For security concerns, we use only base name in production mode. See https://github.com/vuejs/rollup-plugin-vue/issues/258
+script.__file = "/mnt/c/Users/william/temp/vue-loading-button/src/vue-loading-button.vue";
+
+/* template */
+var __vue_render__ = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c(
+    "button",
+    {
+      class: {
+        "vue-loading-button": true,
+        "default-styles": _vm.styled,
+        loading: _vm.loading
+      },
+      attrs: { disabled: _vm.loading, type: "button" }
+    },
+    [_vm._t("default", [_vm._v("Submit")]), _vm._v(" "), _vm._m(0)],
+    2
+  )
+};
+var __vue_staticRenderFns__ = [
+  function() {
+    var _vm = this;
+    var _h = _vm.$createElement;
+    var _c = _vm._self._c || _h;
+    return _c("span", { staticClass: "spinner" }, [
+      _c("span"),
+      _vm._v(" "),
+      _c("span"),
+      _vm._v(" "),
+      _c("span"),
+      _vm._v(" "),
+      _c("span")
+    ])
+  }
+];
+__vue_render__._withStripped = true;
+
+  /* style */
+  var __vue_inject_styles__ = function (inject) {
+    if (!inject) { return }
+    inject("data-v-3a698022_0", { source: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* reset */\nbutton[data-v-3a698022] {\n  font-family: inherit;\n  font-size: 100%;\n  font-size: 1.4rem;\n  line-height: 1.15;\n  margin: 0;\n  overflow: visible;\n  text-transform: none;\n  -webkit-appearance: button;\n}\nbutton[data-v-3a698022]::-moz-focus-inner {\n  border-style: none;\n  padding: 0;\n}\nbutton[data-v-3a698022]:-moz-focusring {\n  outline: 1px dotted ButtonText;\n}\n\n/* loading styles */\nbutton[data-v-3a698022] {\n  position: relative;\n  -webkit-transition: all 0.2s;\n  transition: all 0.2s;\n  transition-timing-function: ease-in;\n}\n.spinner[data-v-3a698022] {\n  line-height: 1.15;\n  position: absolute;\n  top: 50%;\n  left: auto;\n  right: 1.7rem;\n  margin: -0.5em;\n  opacity: 0;\n  transition-property: padding, opacity;\n  transition-duration: 0.2s, 0.2s;\n  transition-timing-function: ease-in, ease;\n  transition-delay: 0s, 0.2s;\n}\n.spinner span[data-v-3a698022] {\n  box-sizing: border-box;\n  display: inline-block;\n  position: absolute;\n  right: 0;\n  top: 0.15rem;\n  width: 1rem;\n  height: 1rem;\n  opacity: 1;\n  border: 3.4px solid #888;\n  border-radius: 50%;\n  animation: spinner-data-v-3a698022 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;\n  border-color: #888 transparent transparent transparent;\n}\n.spinner span[data-v-3a698022]:nth-child(1) {\n  animation-delay: 0.45s;\n}\n.spinner span[data-v-3a698022]:nth-child(2) {\n  animation-delay: 0.3s;\n}\n.spinner span[data-v-3a698022]:nth-child(3) {\n  animation-delay: 0.15s;\n}\n.loading[data-v-3a698022] {\n  padding-right: 3rem !important;\n}\n.loading .spinner[data-v-3a698022] {\n  opacity: 1;\n}\n.loading .spinner span[data-v-3a698022] {\n  opacity: 1;\n}\nbutton[data-v-3a698022]:not(:disabled) {\n  transition-delay: 0.2s;\n}\nbutton:not(:disabled) .spinner span[data-v-3a698022] {\n  box-shadow: 0 0 0 0.2rem #888 inset;\n  border: 7.4px solid transparent;\n  -webkit-transition: all 0.4s;\n  transition: all 0.4s;\n}\nbutton:not(:disabled) .spinner span[data-v-3a698022]:nth-child(1) {\n  transform: rotate(0deg) !important;\n}\nbutton:not(:disabled) .spinner span[data-v-3a698022]:nth-child(2) {\n  transform: rotate(90deg) !important;\n}\nbutton:not(:disabled) .spinner span[data-v-3a698022]:nth-child(3) {\n  transform: rotate(180deg) !important;\n}\nbutton:not(:disabled) .spinner span[data-v-3a698022]:nth-child(4) {\n  transform: rotate(270deg) !important;\n}\n@keyframes spinner-data-v-3a698022 {\n0% {\n    transform: rotate(0deg);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n\n/* optional styles */\n.default-styles[data-v-3a698022] {\n  color: white;\n  background-color: blue;\n  border: solid 1px transparent;\n  border-radius: 4px;\n  cursor: pointer;\n  padding: 8px 16.5px 8px 16px;\n  line-height: 1.9rem;\n}\n.default-styles[data-v-3a698022]:disabled {\n  pointer-events: stroke;\n  cursor: not-allowed;\n}\n.default-styles[data-v-3a698022]:focus {\n  outline: none;\n  box-shadow: 0 0 0 3px lightblue, 0 0 0 1.5px lightblue;\n}\n.default-styles .spinner span[data-v-3a698022] {\n  top: 0rem;\n  width: 1.2rem;\n  height: 1.2rem;\n  border: 3.4px solid #fff;\n  border-color: #fff transparent transparent transparent;\n}\n.default-styles:not(:disabled) .spinner span[data-v-3a698022] {\n  border: 8.4px solid transparent;\n  box-shadow: 0 0 0 0.1rem #fff inset;\n}\n", map: {"version":3,"sources":["/mnt/c/Users/william/temp/vue-loading-button/src/vue-loading-button.vue"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAuCA,UAAA;AACA;EACA,oBAAA;EACA,eAAA;EACA,iBAAA;EACA,iBAAA;EACA,SAAA;EACA,iBAAA;EACA,oBAAA;EACA,0BAAA;AACA;AACA;EACA,kBAAA;EACA,UAAA;AACA;AACA;EACA,8BAAA;AACA;;AAEA,mBAAA;AACA;EACA,kBAAA;EACA,4BAAA;EACA,oBAAA;EACA,mCAAA;AACA;AACA;EACA,iBAAA;EACA,kBAAA;EACA,QAAA;EACA,UAAA;EACA,aAAA;EACA,cAAA;EACA,UAAA;EACA,qCAAA;EACA,+BAAA;EACA,yCAAA;EACA,0BAAA;AACA;AACA;EACA,sBAAA;EACA,qBAAA;EACA,kBAAA;EACA,QAAA;EACA,YAAA;EACA,WAAA;EACA,YAAA;EACA,UAAA;EACA,wBAAA;EACA,kBAAA;EACA,6EAAA;EACA,sDAAA;AACA;AACA;EACA,sBAAA;AACA;AACA;EACA,qBAAA;AACA;AACA;EACA,sBAAA;AACA;AACA;EACA,8BAAA;AACA;AACA;EACA,UAAA;AACA;AACA;EACA,UAAA;AACA;AACA;EACA,sBAAA;AACA;AACA;EACA,mCAAA;EACA,+BAAA;EACA,4BAAA;EACA,oBAAA;AACA;AACA;EACA,kCAAA;AACA;AACA;EACA,mCAAA;AACA;AACA;EACA,oCAAA;AACA;AACA;EACA,oCAAA;AACA;AACA;AACA;IACA,uBAAA;AACA;AACA;IACA,yBAAA;AACA;AACA;;AAEA,oBAAA;AACA;EACA,YAAA;EACA,sBAAA;EACA,6BAAA;EACA,kBAAA;EACA,eAAA;EACA,4BAAA;EACA,mBAAA;AACA;AACA;EACA,sBAAA;EACA,mBAAA;AACA;AACA;EACA,aAAA;EACA,sDAAA;AACA;AACA;EACA,SAAA;EACA,aAAA;EACA,cAAA;EACA,wBAAA;EACA,sDAAA;AACA;AACA;EACA,+BAAA;EACA,mCAAA;AACA","file":"vue-loading-button.vue","sourcesContent":["<template>\n  <button\n    :class=\"{\n      'vue-loading-button': true,\n      'default-styles': styled,\n      'loading': loading,\n    }\"\n    :disabled=\"loading\"\n    type=\"button\"\n  >\n    <slot>Submit</slot>\n    <span class=\"spinner\">\n      <span></span>\n      <span></span>\n      <span></span>\n      <span></span>\n    </span>\n  </button>\n</template>\n\n<script>\nexport default {\n  name: \"VueLoadingButton\",\n  props: {\n    loading: {\n      type: Boolean,\n      required: false,\n      default: false\n    },\n    styled: {\n      type: Boolean,\n      required: false,\n      default: false\n    }\n  }\n};\n</script>\n\n<style scoped>\n/* reset */\nbutton {\n  font-family: inherit;\n  font-size: 100%;\n  font-size: 1.4rem;\n  line-height: 1.15;\n  margin: 0;\n  overflow: visible;\n  text-transform: none;\n  -webkit-appearance: button;\n}\nbutton::-moz-focus-inner {\n  border-style: none;\n  padding: 0;\n}\nbutton:-moz-focusring {\n  outline: 1px dotted ButtonText;\n}\n\n/* loading styles */\nbutton {\n  position: relative;\n  -webkit-transition: all 0.2s;\n  transition: all 0.2s;\n  transition-timing-function: ease-in;\n}\n.spinner {\n  line-height: 1.15;\n  position: absolute;\n  top: 50%;\n  left: auto;\n  right: 1.7rem;\n  margin: -0.5em;\n  opacity: 0;\n  transition-property: padding, opacity;\n  transition-duration: 0.2s, 0.2s;\n  transition-timing-function: ease-in, ease;\n  transition-delay: 0s, 0.2s;\n}\n.spinner span {\n  box-sizing: border-box;\n  display: inline-block;\n  position: absolute;\n  right: 0;\n  top: 0.15rem;\n  width: 1rem;\n  height: 1rem;\n  opacity: 1;\n  border: 3.4px solid #888;\n  border-radius: 50%;\n  animation: spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;\n  border-color: #888 transparent transparent transparent;\n}\n.spinner span:nth-child(1) {\n  animation-delay: 0.45s;\n}\n.spinner span:nth-child(2) {\n  animation-delay: 0.3s;\n}\n.spinner span:nth-child(3) {\n  animation-delay: 0.15s;\n}\n.loading {\n  padding-right: 3rem !important;\n}\n.loading .spinner {\n  opacity: 1;\n}\n.loading .spinner span {\n  opacity: 1;\n}\nbutton:not(:disabled) {\n  transition-delay: 0.2s;\n}\nbutton:not(:disabled) .spinner span {\n  box-shadow: 0 0 0 0.2rem #888 inset;\n  border: 7.4px solid transparent;\n  -webkit-transition: all 0.4s;\n  transition: all 0.4s;\n}\nbutton:not(:disabled) .spinner span:nth-child(1) {\n  transform: rotate(0deg) !important;\n}\nbutton:not(:disabled) .spinner span:nth-child(2) {\n  transform: rotate(90deg) !important;\n}\nbutton:not(:disabled) .spinner span:nth-child(3) {\n  transform: rotate(180deg) !important;\n}\nbutton:not(:disabled) .spinner span:nth-child(4) {\n  transform: rotate(270deg) !important;\n}\n@keyframes spinner {\n  0% {\n    transform: rotate(0deg);\n  }\n  100% {\n    transform: rotate(360deg);\n  }\n}\n\n/* optional styles */\n.default-styles {\n  color: white;\n  background-color: blue;\n  border: solid 1px transparent;\n  border-radius: 4px;\n  cursor: pointer;\n  padding: 8px 16.5px 8px 16px;\n  line-height: 1.9rem;\n}\n.default-styles:disabled {\n  pointer-events: stroke;\n  cursor: not-allowed;\n}\n.default-styles:focus {\n  outline: none;\n  box-shadow: 0 0 0 3px lightblue, 0 0 0 1.5px lightblue;\n}\n.default-styles .spinner span {\n  top: 0rem;\n  width: 1.2rem;\n  height: 1.2rem;\n  border: 3.4px solid #fff;\n  border-color: #fff transparent transparent transparent;\n}\n.default-styles:not(:disabled) .spinner span {\n  border: 8.4px solid transparent;\n  box-shadow: 0 0 0 0.1rem #fff inset;\n}\n</style>\n"]}, media: undefined });
+
+  };
+  /* scoped */
+  var __vue_scope_id__ = "data-v-3a698022";
+  /* module identifier */
+  var __vue_module_identifier__ = undefined;
+  /* functional template */
+  var __vue_is_functional_template__ = false;
+  /* style inject SSR */
+  
+
+  
+  var component = normalizeComponent(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    createInjector,
+    undefined
+  )
+
+// install function executed by Vue.use()
+function install(Vue) {
+  if (install.installed) { return; }
+  install.installed = true;
+  Vue.component("VueLoadingButton", component);
+}
+
+// create module definition for Vue.use()
+var plugin = {
+  install: install
+};
+
+// auto-install when vue is found
+var GlobalVue = null;
+if (typeof window !== "undefined") {
+  GlobalVue = window.Vue;
+} else if (typeof global !== "undefined") {
+  GlobalVue = global.Vue;
+}
+if (GlobalVue) {
+  GlobalVue.use(plugin);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (component);
+
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
@@ -57938,6 +58650,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Inquiry__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Inquiry */ "./resources/js/components/Inquiry.vue");
 /* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
 /* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var vue_loading_button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-loading-button */ "./node_modules/vue-loading-button/dist/vue-loading-button.esm.js");
+
 
 
 
@@ -57956,6 +58670,7 @@ Vue.config.productionTip = false;
 /* development mode notice */
 
 Vue.use(vuelidate__WEBPACK_IMPORTED_MODULE_6___default.a);
+Vue.use(vue_loading_button__WEBPACK_IMPORTED_MODULE_7__["default"]);
 var app = new Vue({
   el: '#app',
   components: {

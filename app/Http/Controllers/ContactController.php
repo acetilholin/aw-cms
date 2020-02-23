@@ -29,7 +29,8 @@ class ContactController extends Controller
             ->send(new Contact($email, $fullname, $message, $geoData['country'], $geoData['city']));
 
         return [
-            'resp' => 'Sporočilo je bilo poslano'
+            'resp' => 'Sporočilo je bilo poslano',
+            'loading' => false
         ];
     }
 
@@ -108,7 +109,8 @@ class ContactController extends Controller
             ->send(new Povprasevanje($data, $email));
 
         return [
-            'resp' => 'Povpraševanje je poslano'
+            'resp' => 'Povpraševanje je poslano',
+            'loading' => false
         ];
     }
 }
