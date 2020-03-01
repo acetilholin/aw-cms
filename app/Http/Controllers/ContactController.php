@@ -10,11 +10,18 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
-    function sendContactEmail(Request $request)   /* TODO add server validation */
+    function sendContactEmail(Request $request)
     {
         $email = $request->input('email');
         $fullname = $request->input('fullname');
         $message = $request->input('message');
+
+        $validatedData = $request->validate([
+            'email' => 'required',
+            'fullname' => 'required|min:5',
+            'message' => 'required|min:30'
+
+        ], $this->messagesSI());
 
         $user = new User();
         $geoData = $user->geoData();
@@ -34,11 +41,18 @@ class ContactController extends Controller
         ];
     }
 
-    function sendContactEmailEnglish(Request $request) /* TODO add server validation */
+    function sendContactEmailEnglish(Request $request)
     {
         $email = $request->input('email');
         $fullname = $request->input('fullname');
         $message = $request->input('message');
+
+        $validatedData = $request->validate([
+            'email' => 'required',
+            'fullname' => 'required|min:5',
+            'message' => 'required|min:30'
+
+        ], $this->messagesEN());
 
         $user = new User();
         $geoData = $user->geoData();
@@ -111,6 +125,28 @@ class ContactController extends Controller
         return [
             'resp' => 'Povpraševanje je poslano',
             'loading' => false
+        ];
+    }
+
+    function messagesSI()
+    {
+        return [
+            'email.required' => trans('messages.emailRequired'),
+            'fullname.required' => trans('messages.fullnameRequired'),
+            'fullname.min' => trans('messages.fullnameTooShort'),
+            'message.required' => trans('messages.messageRequired'),
+            'message.min' => trans('messages.messageTooShort'),
+        ];
+    }
+
+    function messagesEN()
+    {
+        return [
+            'email.required' => trans('messages.emailRequiredEN'),
+            'fullname.required' => trans('messages.fullnameRequiredEN'),
+            'fullname.min' => trans('messages.fullnameTooShortEN'),
+            'message.required' => trans('messages.messageRequiredEN'),
+            'message.min' => trans('messages.messageTooShortEN'),
         ];
     }
 }

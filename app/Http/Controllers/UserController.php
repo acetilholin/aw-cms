@@ -175,8 +175,8 @@ class UserController extends Controller
     {
         $token = $request->input('token');
         $email = $request->input('email');
-        $password1 = $request->input('password1');
-        $password2 = $request->input('password2');
+        $password1 = $request->input('password');
+        $password2 = $request->input('password_confirmation');
 
         $user = new User();
 

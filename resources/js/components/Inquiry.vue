@@ -821,4 +821,7 @@
         cursor: not-allowed;
         pointer-events: all !important;
     }
+    .btn-gray {
+        border-width: 0 !important;
+    }
 </style>

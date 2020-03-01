@@ -8213,7 +8213,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbutton[data-v-48bf77ac]:disabled {\n    cursor: not-allowed;\n    pointer-events: all !important;\n}\n", ""]);
+exports.push([module.i, "\nbutton[data-v-48bf77ac]:disabled {\n    cursor: not-allowed;\n    pointer-events: all !important;\n}\n.btn-gray[data-v-48bf77ac] {\n    border-width: 0 !important;\n}\n", ""]);
 
 // exports
 

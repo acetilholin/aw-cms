@@ -32,5 +32,15 @@ return [
     'nameRequired' => 'Vpišite ime',
     'nameTooShort' => 'Ime je prekratko',
     'passConfirmationRequired' => 'Ponovite vpis gesla',
-    'tokenRequired' => 'Vnesite žeton'
+    'tokenRequired' => 'Vnesite žeton',
+    'fullnameRequired' => 'Ime in priimek sta obvezna',
+    'fullnameTooShort' => 'Ime in priimek sta prekratka',
+    'messageRequired' => 'Sporočilo je obvezno',
+    'messageTooShort' => 'Sporočilo je prekratko',
+
+    'messages.emailRequiredEN' => 'Email is required',
+    'messages.fullnameRequiredEN' => 'Fullname is required',
+    'messages.fullnameTooShortEN' => 'Fullname is too short',
+    'messages.messageRequiredEN' => 'Message is required',
+    'messages.messageTooShortEN' => 'Message is too short'
 ];
