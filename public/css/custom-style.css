@@ -775,12 +775,28 @@ and (orientation : portrait) {
     .btn-mobile-close {
         display: block;
     }
+    .h3-contact {
+        font-size: 1.5rem;
+    }
+}
+@media only screen
+and (min-device-width : 1080px) {
+    .card {
+        min-height: 650px !important;
+    }
 }
 
 @media only screen
-and (min-device-width : 1540px) {
+and (min-device-width : 1430px) {
     .card {
-        max-height: 730px !important;
+        min-height: 630px !important;
+    }
+}
+
+@media only screen
+and (min-device-width : 1630px) {
+    .card {
+        min-height: 700px !important;
     }
 }
 
