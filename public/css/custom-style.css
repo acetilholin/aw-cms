@@ -103,6 +103,11 @@ body {
     width: 0;
     left: 50%;
 }
+.navbar-toggler:focus {
+    outline: 0 !important;
+    -webkit-appearance: none;
+    box-shadow: none;
+}
 
 /* Navbar */
 
