@@ -51,7 +51,7 @@
             </div>
             @include('messages.info')
             @yield('content')
-            <table class="table table-font text-center table-hover">
+            <table class="table table-font text-center table-hover mb-5">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
