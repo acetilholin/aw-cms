@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Session;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -41,7 +42,7 @@ class UserController extends Controller
     {
         $user = new User();
         $cookieName = 'AVLogin';
-        $token = Hash::make($this->generateStringToken());
+        $token = Hash::make(Str::random(10));
         $data = [
             'email' => $email,
             'token' => $token
@@ -162,7 +163,7 @@ class UserController extends Controller
         $approvedEmailExists = $user->loginApproved($email);
 
         if ($approvedEmailExists) {
-            $token = $this->generateStringToken();
+            $token = Str::random(10);
             $user->insertResetPasswordToken($token, $email);
             \Mail::to($email)->send(new NewPassword($token));
             return redirect('token')->with('success', trans('messages.tokenSent'));
@@ -319,11 +320,6 @@ class UserController extends Controller
             'password_confirmation.required' => trans('messages.passConfirmationRequired'),
             'token.required' => trans('messages.tokenRequired')
         ];
-    }
-
-    function generateStringToken()
-    {
-        return substr(str_shuffle(str_repeat($x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10 / strlen($x)))), 1, 10);
     }
 
     function logout()
