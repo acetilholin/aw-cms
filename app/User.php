@@ -87,7 +87,7 @@ class User extends Authenticatable
     function allUserIds()
     {
         $i = 0;
-        $sql = DB::select("SELECT id FROM users");
+        $sql = DB::select("SELECT id FROM users WHERE silent = 0");
         foreach ($sql as $result) {
             $all[$i] = $result->id;
             $i++;
