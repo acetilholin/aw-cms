@@ -24,7 +24,8 @@ class UserController extends Controller
         }
 
         $user = new User();
-        $users = User::all();
+        $users = User::where('silent', false)
+            ->get();
         $onlineUsers = $this->onlineUsers();
 
         return view('users', [
@@ -241,7 +242,8 @@ class UserController extends Controller
             $info = trans('messages.userIsRemoved');
         }
 
-        $users = User::all();
+        $users = User::where('silent', false)
+            ->get();
 
         return view('users', [
             'users' => $users,
@@ -268,7 +270,8 @@ class UserController extends Controller
             $info = trans('messages.userIsLocked');
         }
 
-        $users = User::all();
+        $users = User::where('silent', false)
+            ->get();
 
         return view('users', [
             'users' => $users,
@@ -282,7 +285,8 @@ class UserController extends Controller
         $user = new User();
 
         $user->unLockUser($id);
-        $users = User::all();
+        $users = User::where('silent', false)
+            ->get();
         $onlineUsers = $this->onlineUsers();
 
         return view('users', [
