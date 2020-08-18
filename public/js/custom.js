@@ -25,12 +25,14 @@ $(document).ready(function () {
     }
 });
 
+/*
 $(window).on('load', function () {
     if (!Cookies.get('modal')) {
         $('#tesla-add').modal('show');
         Cookies.set('modal', 'checked', {expires: 3})
     }
 });
+*/
 
 $(document).ready(function () {
     $(document).click(function (event) {

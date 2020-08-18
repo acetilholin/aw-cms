@@ -258,7 +258,7 @@
         @include('cookies')
     </div>
     <!-- Tesla Modal -->
-    <div class="modal fade" id="tesla-add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    {{--<div class="modal fade" id="tesla-add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <img class="img-fluid" src="{{ asset('pictures/tesla-modal.jpg') }}" height="370" width="100%">
@@ -268,6 +268,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
 
 @endsection

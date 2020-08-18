@@ -49,8 +49,5 @@ Route::get('/show-hide/{id}', ['as' => 'showOrHide', 'uses' => 'CarsController@s
 
 Route::get('/inquiry', ['as' => 'inquiry', 'uses' => 'ContactController@inquiry']);
 
-Route::get('/test', ['as' => 'test', 'uses' => 'WelcomePageController@indexTest']);
-Route::get('/test2', ['as' => 'test2', 'uses' => 'WelcomePageController@indexTest2']);
-
 /*Logout*/
 Route::get('logout', ['as' => 'logout', 'uses' => 'UserController@logout']);

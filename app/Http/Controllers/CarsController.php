@@ -118,7 +118,6 @@ class CarsController extends Controller
     function loadCar(Request $request)
     {
         $id = $request->id;
-        $cars = new Cars();
         $data = Cars::find($id);
         return json_encode($data);
     }
