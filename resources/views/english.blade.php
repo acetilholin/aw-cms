@@ -231,7 +231,6 @@
                         matjaz@avtowelt.com<br>
                     </p>
                     <a href="http://bit.ly/avtowelt" target="_blank"><i class="fas fa-map-marked-alt fa-2x"></i></a>
-                    <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
                 </div>
                 <div class="col-md-7">
                     <encontact></encontact>

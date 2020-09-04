@@ -240,7 +240,6 @@
                         matjaz@avtowelt.com<br>
                     </p>
                     <a href="http://bit.ly/avtowelt" target="_blank"><i class="fas fa-map-marked-alt fa-2x"></i></a>
-                    <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
                     <div class="mt-5">
                         <a href="#home"><i class="far fa-arrow-alt-circle-up fa-2x scroller"></i></a>
                     </div>
