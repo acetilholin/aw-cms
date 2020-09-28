@@ -628,22 +628,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group"
-                         v-if="responseMessage"
-                    >
-                        <div class="alert alert-success alert-dismissible text-center fade show"
-                             role="alert"
-                        >
-                            {{ responseMessage }}
-                            <button type="button"
-                                    class="close"
-                                    data-dismiss="alert"
-                                    aria-label="Close"
-                            >
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    </div>
                     <div class="small text-center text-red"
                          v-if="helpText"
                     >
@@ -661,7 +645,7 @@
                                           @click.native="sendInquiry"
                                           :loading="isLoading"
                                           :disabled="$v.imePriimek.$invalid || !$v.email.email || letaMin === '' || letaMax ==='' || $v.znamka.$invalid || kilometri ===''"
-                        >Pošlji
+                        >{{ buttonText }}
                         </VueLoadingButton>
                     </div>
                 </div>
@@ -702,7 +686,6 @@
                 email: '',
                 telefon: '',
                 cena: '',
-                responseMessage: '',
                 notranja1: false,
                 notranja2: false,
                 notranja3: false,
@@ -730,7 +713,8 @@
                 menjalnikOpcije: ['ročni', 'avtomatski'],
                 gorivoOpcije: ['Benzin', 'Dizel', 'Hibridni', 'Električni'],
                 helpText: true,
-                isLoading: false
+                isLoading: false,
+                buttonText: 'Pošlji'
             }
         },
         components: {
@@ -806,8 +790,10 @@
                     })
                         .then(
                             response => {
-                                this.responseMessage = response.data.resp;
                                 this.isLoading = response.data.loading
+                                setTimeout(() => {
+                                    this.buttonText =  response.data.resp
+                                }, 500)
                             }
                         )
                 }

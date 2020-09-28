@@ -36,7 +36,7 @@ class ContactController extends Controller
             ->send(new Contact($email, $fullname, $message, $geoData['country'], $geoData['city']));
 
         return [
-            'resp' => 'Sporočilo je bilo poslano',
+            'resp' => trans('messages.poslano'),
             'loading' => false
         ];
     }
@@ -67,7 +67,7 @@ class ContactController extends Controller
             ->send(new Contact($email, $fullname, $message, $geoData['country'], $geoData['city']));
 
         return [
-            'resp' => 'Message sent'
+            'resp' => trans('messages.sent'),
         ];
     }
 
@@ -123,7 +123,7 @@ class ContactController extends Controller
             ->send(new Povprasevanje($data, $email));
 
         return [
-            'resp' => 'Povpraševanje je poslano',
+            'resp' => trans('messages.poslano'),
             'loading' => false
         ];
     }

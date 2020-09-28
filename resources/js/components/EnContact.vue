@@ -55,28 +55,12 @@
                     <span class="is-invalid">{{ $v.message.$params.minLength.min - message.length }} more characters</span>
                 </div>
             </div>
-            <div class="col-md-8 mb-2 form-group"
-                 v-if="responseMessage"
-            >
-                <div class="alert alert-success alert-dismissible fade show"
-                     role="alert"
-                >
-                    {{ responseMessage }}
-                    <button type="button"
-                            class="close"
-                            data-dismiss="alert"
-                            aria-label="Close"
-                    >
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
             <VueLoadingButton class="btn btn-calculate"
                               aria-label='Send message'
                               @click.native="sendEmail"
                               :loading="isLoading"
                               :disabled="$v.fullname.$invalid || !$v.email.email || !$v.email.required || $v.message.$invalid"
-            >Send
+            >{{ buttonText }}
             </VueLoadingButton>
         </div>
     </div>
@@ -93,7 +77,8 @@
                 message: '', email: '', fullname: '',
                 nameSurnameValid: '', emailValid: '', messageValid: '',
                 responseMessage: '',
-                isLoading: false
+                isLoading: false,
+                buttonText: 'Send'
             }
         },
         components: {
@@ -129,12 +114,12 @@
                             message: this.message
                         }
                     })
-                        .then(
-                            response => {
-                                this.responseMessage = response.data.resp;
+                        .then(response => {
                                 this.isLoading = response.data.loading
-                            }
-                        )
+                                setTimeout(() => {
+                                    this.buttonText =  response.data.resp
+                                }, 500)
+                            })
 
                 }
             }

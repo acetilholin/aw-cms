@@ -2331,22 +2331,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2359,8 +2343,8 @@ __webpack_require__.r(__webpack_exports__);
       nameSurnameValid: '',
       emailValid: '',
       messageValid: '',
-      responseMessage: '',
-      isLoading: false
+      isLoading: false,
+      buttonText: 'Pošlji'
     };
   },
   components: {
@@ -2397,8 +2381,10 @@ __webpack_require__.r(__webpack_exports__);
             message: this.message
           }
         }).then(function (response) {
-          _this.responseMessage = response.data.resp;
           _this.isLoading = response.data.loading;
+          setTimeout(function () {
+            _this.buttonText = response.data.resp;
+          }, 500);
         });
       }
     }
@@ -2816,22 +2802,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2845,7 +2815,8 @@ __webpack_require__.r(__webpack_exports__);
       emailValid: '',
       messageValid: '',
       responseMessage: '',
-      isLoading: false
+      isLoading: false,
+      buttonText: 'Send'
     };
   },
   components: {
@@ -2882,8 +2853,10 @@ __webpack_require__.r(__webpack_exports__);
             message: this.message
           }
         }).then(function (response) {
-          _this.responseMessage = response.data.resp;
           _this.isLoading = response.data.loading;
+          setTimeout(function () {
+            _this.buttonText = response.data.resp;
+          }, 500);
         });
       }
     }
@@ -2904,22 +2877,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_loading_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-loading-button */ "./node_modules/vue-loading-button/dist/vue-loading-button.esm.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3605,7 +3562,6 @@ __webpack_require__.r(__webpack_exports__);
       email: '',
       telefon: '',
       cena: '',
-      responseMessage: '',
       notranja1: false,
       notranja2: false,
       notranja3: false,
@@ -3633,7 +3589,8 @@ __webpack_require__.r(__webpack_exports__);
       menjalnikOpcije: ['ročni', 'avtomatski'],
       gorivoOpcije: ['Benzin', 'Dizel', 'Hibridni', 'Električni'],
       helpText: true,
-      isLoading: false
+      isLoading: false,
+      buttonText: 'Pošlji'
     };
   },
   components: {
@@ -3708,8 +3665,10 @@ __webpack_require__.r(__webpack_exports__);
             ostalo2: this.ostalo2
           }
         }).then(function (response) {
-          _this.responseMessage = response.data.resp;
           _this.isLoading = response.data.loading;
+          setTimeout(function () {
+            _this.buttonText = response.data.resp;
+          }, 500);
         });
       }
     }
@@ -41201,27 +41160,6 @@ var render = function() {
             : _vm._e()
         ]),
         _vm._v(" "),
-        _vm.responseMessage
-          ? _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "alert alert-success alert-dismissible fade show",
-                  attrs: { role: "alert" }
-                },
-                [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.responseMessage) +
-                      "\n                "
-                  ),
-                  _vm._m(0)
-                ]
-              )
-            ])
-          : _vm._e(),
-        _vm._v(" "),
         _c(
           "VueLoadingButton",
           {
@@ -41241,32 +41179,14 @@ var render = function() {
               }
             }
           },
-          [_vm._v("Pošlji\n        ")]
+          [_vm._v(_vm._s(_vm.buttonText) + "\n        ")]
         )
       ],
       1
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close",
-        attrs: {
-          type: "button",
-          "data-dismiss": "alert",
-          "aria-label": "Close"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -42187,27 +42107,6 @@ var render = function() {
             : _vm._e()
         ]),
         _vm._v(" "),
-        _vm.responseMessage
-          ? _c("div", { staticClass: "col-md-8 mb-2 form-group" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "alert alert-success alert-dismissible fade show",
-                  attrs: { role: "alert" }
-                },
-                [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.responseMessage) +
-                      "\n                "
-                  ),
-                  _vm._m(0)
-                ]
-              )
-            ])
-          : _vm._e(),
-        _vm._v(" "),
         _c(
           "VueLoadingButton",
           {
@@ -42227,32 +42126,14 @@ var render = function() {
               }
             }
           },
-          [_vm._v("Send\n        ")]
+          [_vm._v(_vm._s(_vm.buttonText) + "\n        ")]
         )
       ],
       1
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close",
-        attrs: {
-          type: "button",
-          "data-dismiss": "alert",
-          "aria-label": "Close"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -44447,27 +44328,6 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm.responseMessage
-                ? _c("div", { staticClass: "form-group" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "alert alert-success alert-dismissible text-center fade show",
-                        attrs: { role: "alert" }
-                      },
-                      [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.responseMessage) +
-                            "\n                        "
-                        ),
-                        _vm._m(2)
-                      ]
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
               _vm.helpText
                 ? _c("div", { staticClass: "small text-center text-red" }, [
                     _vm._v(
@@ -44510,7 +44370,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("Pošlji\n                    ")]
+                    [_vm._v(_vm._s(_vm.buttonText) + "\n                    ")]
                   )
                 ],
                 1
@@ -44549,23 +44409,6 @@ var staticRenderFns = [
         _vm._v("(z DMV, DDV in ostalimi dajatvami v SLO)")
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close",
-        attrs: {
-          type: "button",
-          "data-dismiss": "alert",
-          "aria-label": "Close"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
   }
 ]
 render._withStripped = true

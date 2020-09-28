@@ -37,13 +37,13 @@ return [
     'fullnameTooShort' => 'Ime in priimek sta prekratka',
     'messageRequired' => 'Sporočilo je obvezno',
     'messageTooShort' => 'Sporočilo je prekratko',
+    'poslano' => 'Poslano :)',
 
     /* eng */
-    'messages.emailRequiredEN' => 'Email is required',
-    'messages.fullnameRequiredEN' => 'Fullname is required',
-    'messages.fullnameTooShortEN' => 'Fullname is too short',
-    'messages.messageRequiredEN' => 'Message is required',
-    'messages.messageTooShortEN' => 'Message is too short'
-
-
+    'emailRequiredEN' => 'Email is required',
+    'fullnameRequiredEN' => 'Fullname is required',
+    'fullnameTooShortEN' => 'Fullname is too short',
+    'messageRequiredEN' => 'Message is required',
+    'messageTooShortEN' => 'Message is too short',
+    'sent' => 'Sent :)'
 ];
