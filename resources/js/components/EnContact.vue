@@ -107,7 +107,7 @@
 
                 if (this.fullname !== '' && this.email !== '' && this.message !== '') {
                     this.isLoading = true;
-                    axios.get('/contact-en', {
+                    axios.get('/contact', {
                         params: {
                             email: this.email,
                             fullname: this.fullname,

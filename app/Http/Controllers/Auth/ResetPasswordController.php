@@ -2,38 +2,51 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Password Reset Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for handling password reset requests
-    | and uses a simple trait to include this behavior. You're free to
-    | explore this trait and override any methods you wish to tweak.
-    |
-    */
-
-    use ResetsPasswords;
-
     /**
-     * Where to redirect users after resetting their password.
+     * Validate token
      *
-     * @var string
+     * @param  \Illuminate\Http\Request  $request
      */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function resetPassword(Request $request)
     {
-        $this->middleware('guest');
+        $helper = new UserHelper();
+        $validatedData = $request->validate([
+            'token' => 'required',
+            'email' => 'required',
+            'password' => 'required|min:6',
+            'password_confirmation' => 'required|same:password'
+        ], $helper->messages());
+
+        $email = $request->input('email');
+        $user = User::where('email', $email)->first();
+        if (!$user) {
+            return back()->with('error', trans('messages.emailNotExists'));
+        } else {
+            $token = $request->input('token');
+            $match = $helper->emailAndTokenMatch($email, $token);
+            if ($match) {
+                $expired = $helper->checkTokenExpirationTime($token, $email);
+                if ($expired) {
+                    return back()->with('error', trans('messages.tokenExpired'));
+                } else {
+                    $password = $request->input('password');
+                    $password = Hash::make($password);
+                    User::where('email', $email)
+                        ->update(['password' => $password]);
+                    return redirect('/login')->with('success', trans('messages.passwordChanged'));
+                }
+            } else {
+                return back()->with('error', trans('messages.wrongToken'));
+            }
+        }
     }
 }

@@ -169,7 +169,7 @@
                                         <img class="card-img-top" src="../{{ $car->image }}" alt="">
                                     </a>
                                     <div class="card-body">
-                                        @if( $car->new === 'true')
+                                        @if((boolean)$car->new === true)
                                             <div class="ribbon"><span>NOVO</span></div>
                                         @endif
                                         <h4>{{ $car->title }}</h4>
@@ -178,7 +178,7 @@
                                             @if($car->price === trans('messages.CFP'))
                                                 <span class="text-red">{{ trans('messages.cfp-blade') }}</span>
                                             @else
-                                                {{ $car->price }}€
+                                                {{ number_format($car->price,2,',','.') }}€
                                             @endif
                                         </h5>
                                         <p>{{ $car->description }}</p>

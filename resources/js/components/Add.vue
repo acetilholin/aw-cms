@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
             <label for="price">Cena</label>
-            <small id="text-muted" class="form-text text-muted">Format e.g. 21.000, brez znaka za €</small>
+            <small id="text-muted" class="form-text text-muted">Format e.g. 21000, brez znaka za €</small>
             <input type="text" class="form-control" id="price" aria-describedby="emailHelp" placeholder="Vnesite ceno" name="price" required>
             <div class="form-check">
                 <input class="form-check-input" id="cfp" type="checkbox" value="checked" name="cfp">

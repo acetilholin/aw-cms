@@ -5,7 +5,7 @@
                     <span>
                         <a href="{{ route('welcome') }}"><img src="{{ asset('pictures/logo-1.png') }}" class="img-spacing" style="height: 60px" alt=""></a>
                     </span>
-            <form method="POST" action="{{ route('validateToken') }}">
+            <form method="POST" action="{{ route('resetPassword') }}">
                 <div class="form-group">
                     <label for="token">Žeton</label>
                     <input type="text" class="form-control" id="token" aria-describedby="emailHelp" name="token" placeholder="Žeton">
