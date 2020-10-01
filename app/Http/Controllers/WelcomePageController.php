@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Cars;
+use App\Car;
 use Illuminate\Http\Request;
 
 class WelcomePageController extends Controller
 {
     function index(Request $request)
     {
-        $cars = new Cars();
-        $allCars = $cars->getAllFirstPage();
+        $cars = Car::where('hidden', 0)
+            ->orderBy('new', 'DESC')
+            ->get();
 
-        return view('welcome', [
-            'cars' => $allCars
-        ]);
-    }
+        $sloView = 'welcome';
+        $engView = 'english';
 
-    function indexEN(Request $request)
-    {
-        $cars = new Cars();
-        $allCars = $cars->getAllFirstPage();
+        if (url()->current() === env('APP_URL').'/en') {
+            $view = $engView;
+        } else {
+            $view = $sloView;
+        }
 
-        return view('english', [
-            'cars' => $allCars
+        return view($view, [
+            'cars' => $cars
         ]);
     }
 }

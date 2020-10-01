@@ -67,7 +67,7 @@
                 <tbody>
                 @php ( $number = 1 )
                 @foreach($cars as $car)
-                    @if($car->hidden == 'true')
+                    @if((boolean)$car->hidden === true)
                         <tr class="background">
                     @else
                         <tr>
@@ -76,15 +76,15 @@
                         <td>{{ $car->title }}</td>
                         <td>{{ $car->subtitle }}</td>
                         <td>
-                            @if($car->price === trans('messages.CFP'))
+                            @if((boolean)$car->call_for_price === true)
                                 {!! Html::image('icons/phone.svg', 'cfp', array('title' => 'Pokličite za ceno')) !!}
                                 @else
-                                {{ $car->price }}€
+                                {{ number_format($car->price,2,',','.') }}€
                             @endif
                         </td>
                         <td>{{ $car->description }}</td>
                         <td>
-                            @if($car->new == 'true' )
+                            @if((boolean)$car->new === true )
                                 {!! Html::image('icons/check.svg') !!}
                             @endif
                         </td>
@@ -95,7 +95,7 @@
                                     {!! Html::image('icons/settings.svg') !!}
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                                    @if($car->hidden == 'false')
+                                    @if((boolean)$car->hidden === false)
                                     <a class="edit dropdown-item" id="{{ $car->id }}">
                                         <i class="far fa-edit edit-style" style="font-size: 1.3rem; cursor: pointer" title="Uredi"></i>
                                         Uredi
@@ -105,7 +105,7 @@
                                         Skrij
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a href="{{ route('delete', $car->id) }}" id="{{ $car->id }}" class="dropdown-item delete"><i class="far fa-trash-alt remove" style="font-size: 1.3rem; cursor: pointer" title="Odstrani"></i>
+                                    <a href="#" id="{{ $car->id }}" class="dropdown-item delete"><i class="far fa-trash-alt remove" style="font-size: 1.3rem; cursor: pointer" title="Odstrani"></i>
                                        Odstrani
                                     </a>
                                     @else
@@ -132,6 +132,17 @@
                 <form method="POST" action="{{ route('add') }}" enctype="multipart/form-data" id="modaladd">
                     <add></add>
                     @csrf
+                    <div class="col-12">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-gray">Shrani</button>
                     </div>
@@ -228,21 +239,22 @@
             data: { id: id },
             dataType: "json",
             success: function(data){
-                $('#update-title').val(data.title);
-                $('#update-subtitle').val(data.subtitle);
-                $('#update-description').val(data.description);
-                $('#id').val(data.id);
-                if(data.new === "true") {
+                let car = data.car
+                $('#update-title').val(car.title);
+                $('#update-subtitle').val(car.subtitle);
+                $('#update-description').val(car.description);
+                $('#id').val(car.id);
+                if(car.new === 1) {
                     $('#update-new').prop('checked', true);
                 } else {
                     $('#update-new').prop('checked', false);
                 }
-                if(data.price === 'CFP') {
+                if(car.call_for_price === 1) {
                     $('#update-cfp').prop('checked', true);
                     $('#update-price').val(' ');
                 } else {
                     $('#update-cfp').prop('checked', false);
-                    $('#update-price').val(data.price);
+                    $('#update-price').val(car.price);
                 }
 
                 $('#update').modal('show');

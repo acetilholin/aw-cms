@@ -1,3 +1,6 @@
+body {
+    overflow-x:scroll
+}
 .swal-button {
     border-width: medium;
     background: #ed1c24;

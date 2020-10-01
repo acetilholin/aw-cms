@@ -2,72 +2,54 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\Contact;
+use App\Helpers\ContactHelper;
+use App\Helpers\UserHelper;
 use App\Mail\Povprasevanje;
-use Illuminate\Http\Request;
+use App\Notifications\ContactNotification;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
     function sendContactEmail(Request $request)
     {
+        $contactHelper = new ContactHelper();
+        if (url()->current() === env('APP_URL').'/en') {
+            $messages = $contactHelper->messagesEN();
+            $response = trans('messages.sent');
+        } else {
+            $messages = $contactHelper->messagesSI();
+            $response = trans('messages.poslano');
+        }
+
         $email = $request->input('email');
         $fullname = $request->input('fullname');
         $message = $request->input('message');
 
+        $userHelper = new UserHelper();
+
         $validatedData = $request->validate([
             'email' => 'required',
             'fullname' => 'required|min:5',
-            'message' => 'required|min:30'
+            'message' => 'required|min:29'
 
-        ], $this->messagesSI());
+        ], $messages);
 
-        $user = new User();
-        $geoData = $user->geoData();
+        $geoData = $userHelper->geoData();
 
         $recipient1 = env('RECIPIENT1');
         $recipient2 = env('RECIPIENT2');
         $admin = env('ADMIN_EMAIL');
 
-        Mail::to($recipient1)
-            ->cc($recipient2)
-            ->bcc($admin)
-            ->send(new Contact($email, $fullname, $message, $geoData['country'], $geoData['city']));
+        $user = User::where('email', $admin)->first();
+
+        $user->notify(new ContactNotification($email, $fullname, $message, $recipient1, $recipient2,
+            $geoData['country'], $geoData['city']));
 
         return [
-            'resp' => trans('messages.poslano'),
+            'resp' => $response,
             'loading' => false
-        ];
-    }
-
-    function sendContactEmailEnglish(Request $request)
-    {
-        $email = $request->input('email');
-        $fullname = $request->input('fullname');
-        $message = $request->input('message');
-
-        $validatedData = $request->validate([
-            'email' => 'required',
-            'fullname' => 'required|min:5',
-            'message' => 'required|min:30'
-
-        ], $this->messagesEN());
-
-        $user = new User();
-        $geoData = $user->geoData();
-
-        $recipient1 = env('RECIPIENT1');
-        $recipient2 = env('RECIPIENT2');
-        $admin = env('ADMIN_EMAIL');
-
-        Mail::to($recipient1)
-            ->cc($recipient2)
-            ->bcc($admin)
-            ->send(new Contact($email, $fullname, $message, $geoData['country'], $geoData['city']));
-
-        return [
-            'resp' => trans('messages.sent'),
         ];
     }
 
@@ -125,28 +107,6 @@ class ContactController extends Controller
         return [
             'resp' => trans('messages.poslano'),
             'loading' => false
-        ];
-    }
-
-    function messagesSI()
-    {
-        return [
-            'email.required' => trans('messages.emailRequired'),
-            'fullname.required' => trans('messages.fullnameRequired'),
-            'fullname.min' => trans('messages.fullnameTooShort'),
-            'message.required' => trans('messages.messageRequired'),
-            'message.min' => trans('messages.messageTooShort'),
-        ];
-    }
-
-    function messagesEN()
-    {
-        return [
-            'email.required' => trans('messages.emailRequiredEN'),
-            'fullname.required' => trans('messages.fullnameRequiredEN'),
-            'fullname.min' => trans('messages.fullnameTooShortEN'),
-            'message.required' => trans('messages.messageRequiredEN'),
-            'message.min' => trans('messages.messageTooShortEN'),
         ];
     }
 }

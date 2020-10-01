@@ -2,31 +2,43 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
+use App\Notifications\ResetPassword;
+use App\User;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ForgotPasswordController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Password Reset Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for handling password reset emails and
-    | includes a trait which assists in sending these notifications from
-    | your application to your users. Feel free to explore this trait.
-    |
-    */
-
-    use SendsPasswordResetEmails;
-
     /**
-     * Create a new controller instance.
+     * Send reset token
      *
-     * @return void
+     * @param  \Illuminate\Http\Request  $request
      */
-    public function __construct()
+    public function sendToken(Request $request)
     {
-        $this->middleware('guest');
+        $email = $request->input('email');
+        $helper = new UserHelper();
+
+        $validatedData = $request->validate([
+            'email' => 'required'
+        ], $helper->messages());
+
+        $user = User::where('email', $email)->first();
+        if (!$user) {
+            return back()->with('error', trans('messages.emailNotExists'));
+        } else {
+            $approved = User::where('email', $email)->pluck('approved')->toArray();
+            if (!$approved[0]) {
+                return back()->with('error', trans('messages.accountNotConfirmed'));
+            } else {
+                $token = Str::random(15);
+                $helper->insertResetPasswordToken($token, $email);
+                $user->notify(new ResetPassword($token));
+                return redirect('token')->with('success', trans('messages.tokenSent'));
+            }
+        }
     }
 }

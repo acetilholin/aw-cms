@@ -76,7 +76,7 @@
                                 {!! Html::image('icons/x.svg','x', array('title' => 'Uporabnik ni potrjen')) !!}
                             @endif
                         </td>
-                        <td>{{ $user->last_seen }}</td>
+                        <td>{{ date("d-m-Y H:i", strtotime($user->last_seen)) }}</td>
                         <td>{!! Html::image('countries/'. strtolower($user->country) .'.svg','drzava', array('width' => '40px', 'height' => '40px')) !!}</td>
                         <td>
                             @if($onlineUsers[$index] == 'online')
@@ -90,13 +90,13 @@
                                     {!! Html::image('icons/settings.svg') !!}
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                                   @if($user->approved == '1')
-                                        <a href="{{ route('lock', $user->id) }}" class="edit dropdown-item">
+                                   @if((boolean)$user->approved === true)
+                                        <a href="{{ route('lockUnlock', $user->id) }}" class="edit dropdown-item">
                                             <i class="fas fa-lock edit-style" style="font-size: 1.3rem; cursor: pointer" title="Zakleni"></i>
                                             Zakleni
                                         </a>
                                        @else
-                                        <a href="{{ route('unlock', $user->id) }}" class="edit dropdown-item">
+                                        <a href="{{ route('lockUnlock', $user->id) }}" class="edit dropdown-item">
                                             {!! Html::image('icons/check.svg','check', array('title' => 'Potrdi')) !!}
                                             Potrdi
                                         </a>

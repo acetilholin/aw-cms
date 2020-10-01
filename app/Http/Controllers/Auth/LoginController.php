@@ -2,38 +2,96 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Car;
+use App\Helpers\UserHelper;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Carbon;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
-    use AuthenticatesUsers;
-
     /**
-     * Where to redirect users after login.
+     * Check for login cookie
      *
-     * @var string
      */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function checkCookie()
     {
-        $this->middleware('guest')->except('logout');
+        if (isset($_COOKIE['AVLogin'])) {
+            $cookieValue = json_decode($_COOKIE['AVLogin']);
+            $email = $cookieValue->email;
+            $loginToken = $cookieValue->token;
+
+            if (User::where('email', $email)->exists()) {
+                $token = User::where('email', $email)->pluck('login_token');
+                $name = User::where('email', $email)->pluck('name');
+
+                if ($token[0] === $loginToken) {
+                    return view('login', [
+                        'email' => $email,
+                        'name' => $name[0]
+                    ]);
+                }
+            }
+            return view('login');
+        } else {
+            return view('login');
+        }
+    }
+
+    /**
+     * Login user
+     *
+     * @param  \Illuminate\Http\Request  $request
+     */
+    public function login(Request $request)
+    {
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $helper = new UserHelper();
+
+        $validatedData = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ], $helper->messages());
+
+        $exists = User::where('email', $email)->first();
+
+        if (!$exists) {
+            return back()->with('error', trans('messages.emailNotExists'));
+        } else {
+            $approved = User::where('email', $email)->pluck('approved')->toArray();
+            if (!(boolean) $approved[0]) {
+                return back()->with('error', trans('messages.accountNotConfirmed'));
+            }
+
+            $userPassword = User::where('email', $email)->pluck('password')->toArray();
+            if (!Hash::check($password, $userPassword[0])) {
+                return back()->with('error', trans('messages.wrongPassword'));
+            } else {
+                session(['email' => $email]);
+                $helper->authenticate($email, $password);
+                $dateTime = Carbon::now("Europe/Ljubljana")->format('Y-m-d H:i');
+                $helper->lastSeen($email, $dateTime);
+                $helper->createLoginCookie($email);
+                $allCars = Car::all();
+                return view('main', [
+                    'cars' => $allCars
+                ]);
+            }
+        }
+    }
+
+    /**
+     * User logout
+     *
+     */
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/login');
     }
 }
