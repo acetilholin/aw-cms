@@ -82,37 +82,6 @@ $(document).ready(function () {
     $("#cars-in-offer").owlCarousel({
             items: 3,
             autoplay: true,
-            smartSpeed: 900,
-            loop: true,
-            autoplayHoverPause: true,
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                576: {
-                    items: 2,
-                },
-                768: {
-                    items: 3
-                }
-            }
-        }
-    );
-});
-
-
-$(document).ready(function () {
-    $('.counter').counterUp({
-        delay: 10,
-        time: 1800
-    });
-});
-
-
-$(document).ready(function () {
-    $("#cars-in-offer").owlCarousel({
-            items: 3,
-            autoplay: true,
             smartSpeed: 1700,
             loop: true,
             autoplayHoverPause: true,

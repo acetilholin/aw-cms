@@ -167,7 +167,7 @@
                     </div>
                     <div class="form-group">
                         <label for="update-price">Cena</label>
-                        <small id="text-muted" class="form-text text-muted">Format e.g. 21.000, brez znaka za €</small>
+                        <small id="text-muted" class="form-text text-muted">Format e.g. 21000, brez znaka za €</small>
                         <input type="text" class="form-control" id="update-price"  aria-describedby="emailHelp" placeholder="Vnesite ceno" name="price">
                         <div class="form-check">
                             <input class="form-check-input" id="update-cfp" type="checkbox" value="checked" name="cfp">
@@ -240,23 +240,17 @@
             dataType: "json",
             success: function(data){
                 let car = data.car
-                $('#update-title').val(car.title);
-                $('#update-subtitle').val(car.subtitle);
-                $('#update-description').val(car.description);
-                $('#id').val(car.id);
-                if(car.new === 1) {
-                    $('#update-new').prop('checked', true);
-                } else {
-                    $('#update-new').prop('checked', false);
-                }
-                if(car.call_for_price === 1) {
-                    $('#update-cfp').prop('checked', true);
-                    $('#update-price').val(' ');
-                } else {
-                    $('#update-cfp').prop('checked', false);
-                    $('#update-price').val(car.price);
-                }
+                let newCar = car.new === 1
+                let CFP = car.call_for_price === 1
+                let price = CFP ? ' ' : car.price
 
+                $('#update-title').val(car.title)
+                $('#update-subtitle').val(car.subtitle)
+                $('#update-description').val(car.description)
+                $('#id').val(car.id)
+                $('#update-new').prop('checked', newCar)
+                $('#update-cfp').prop('checked', CFP)
+                $('#update-price').val(price)
                 $('#update').modal('show');
             }
         })
