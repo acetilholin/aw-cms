@@ -13,6 +13,7 @@ window.Vue = require('vue');
 
 Vue.config.silent = true; /* Suppress all Vue logs and warnings */
 Vue.config.productionTip = false /* development mode notice */
+
 Vue.use(Vuelidate);
 Vue.use(VueLoadingButton);
 

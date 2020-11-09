@@ -14,10 +14,6 @@ class StatisticsController extends Controller
 
     function index()
     {
-        if (Auth::guest()) {
-            return redirect('/login');
-        }
-
         $totalVisitors = 0;
         $days = $this->days;
         $substractDays = $this->days;

@@ -168,6 +168,9 @@ select.form-control.language:focus {
     color: #ed1c24;
     background: none;
 }
+.button, a, a.button {
+    transition: all .6s ease;
+}
 
 .custom-color {
     color: white;
@@ -283,10 +286,6 @@ select.form-control.language:focus {
     background-color: #586168;
 }
 .btn-gray:focus {
-    box-shadow: none !important;
-    outline: 2px solid #586168;
-}
-.btn-gray-costs:focus {
     box-shadow: none !important;
     outline: 2px solid #586168;
 }
@@ -418,6 +417,11 @@ h3.heading {
     background: #586168;
     color: white;
 }
+.btn-gray-costs:focus {
+    outline: 2px solid #586168;
+    box-shadow: none;
+}
+
 .form-control,.custom-select {
     border-radius: 0 !important;
 }
@@ -585,6 +589,9 @@ hr.socket {
 and (min-device-width : 375px)
 and (max-device-width : 667px)
 and (orientation : portrait) {
+    [class*="col-"] {
+        padding: .5rem;
+    }
     .navbar.solid {
         background: rgba(0,0,0,0.99) !important;
         transition: background-color 1s ease 0s;
@@ -635,6 +642,9 @@ and (orientation : portrait) {
 and (min-device-width : 414px)
 and (max-device-width : 736px)
 and (orientation : portrait) {
+    [class*="col-"] {
+        padding: .5rem;
+    }
     .navbar.solid {
         background: rgba(0,0,0,0.99) !important;
         transition: background-color 1s ease 0s;
@@ -690,6 +700,9 @@ and (orientation : portrait) {
 and (min-width: 360px)
 and (max-width: 767px)
 and (orientation: portrait) {
+    [class*="col-"] {
+        padding: .5rem;
+    }
     .navbar.solid {
         background: rgba(0,0,0,0.99) !important;
         transition: background-color 1s ease 0s;
