@@ -422,7 +422,9 @@ h3.heading {
     box-shadow: none;
 }
 
-.form-control,.custom-select {
+.form-control, .custom-select {
+    color: #495057 !important;
+    font-size: 1rem !important;
     border-radius: 0 !important;
 }
 /* contact */
