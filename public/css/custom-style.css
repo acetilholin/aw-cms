@@ -620,6 +620,7 @@ and (orientation : portrait) {
     }
     .card {
         min-height: 640px !important;
+        margin: 0 .5rem !important;
     }
     .padding {
         position: absolute !important;
@@ -676,6 +677,7 @@ and (orientation : portrait) {
     }
     .card {
         min-height: 630px !important;
+        margin: 0 .5rem !important;
     }
     .padding {
         position: absolute !important;
@@ -734,6 +736,7 @@ and (orientation: portrait) {
     }
     .card {
         min-height: 630px !important;
+        margin: 0 .5rem !important;
     }
     .padding {
         position: absolute !important;
