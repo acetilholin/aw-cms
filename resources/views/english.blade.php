@@ -11,21 +11,9 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                        <span class="nav-link lang-m-hide">
-                            <div class="dropdown">
-                              <button class="btn transparent-button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <i class="fas fa-globe-americas" aria-hidden="true"></i>
-                              </button>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item custom-color custom-item" href="{{ route('welcome') }}">SLO</a>
-                              </div>
-                            </div>
-                        </span>
-                        </li>
-                        <li class="nav-item lang-m-show">
-                            <a class="nav-link" href="http://avtowelt.com">
+                            <a href="{{ route($langRoute) }}" class="lang-link nav-link">
                                 <i class="fas fa-globe-americas" aria-hidden="true"></i>
-                                SLO
+                                {{ $lang }}
                             </a>
                         </li>
                         <li class="nav-item">

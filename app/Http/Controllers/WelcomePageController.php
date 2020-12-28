@@ -16,14 +16,13 @@ class WelcomePageController extends Controller
         $sloView = 'welcome';
         $engView = 'english';
 
-        if (url()->current() === env('APP_URL').'/en') {
-            $view = $engView;
-        } else {
-            $view = $sloView;
-        }
+        $view = url()->current() === env('APP_URL').'/en' ? $engView : $sloView;
+        $route = url()->current() === env('APP_URL') ? 'english' : 'welcome';
 
         return view($view, [
-            'cars' => $cars
+            'cars' => $cars,
+            'langRoute' => $route,
+            'lang' => $view === 'welcome' ? 'ENG' : 'SLO'
         ]);
     }
 }
