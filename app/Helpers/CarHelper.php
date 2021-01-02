@@ -2,18 +2,17 @@
 
 
 namespace App\Helpers;
-
-
 use App\Car;
 
 class CarHelper
 {
-    public function update($id, $title, $subtitle, $price, $description, $new, $imgPath, $callForPrice)
+    public function update($id, $title, $subtitle, $link, $price, $description, $new, $imgPath, $callForPrice)
     {
         Car::where('id', $id)
             ->update([
                 'title' => $title,
                 'subtitle' => $subtitle,
+                'link' => $link,
                 'price' => $price,
                 'description' => $description,
                 'new' => (int)$new,

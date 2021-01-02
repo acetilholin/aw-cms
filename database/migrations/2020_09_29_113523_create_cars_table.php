@@ -17,6 +17,7 @@ class CreateCarsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('subtitle');
+            $table->longText('link');
             $table->bigInteger('price');
             $table->boolean('call_for_price')->default(false);
             $table->string('description');

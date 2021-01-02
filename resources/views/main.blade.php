@@ -57,6 +57,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Model</th>
                     <th scope="col">Oznaka</th>
+                    <th scope="col">Link</th>
                     <th scope="col">Cena</th>
                     <th scope="col">Opis</th>
                     <th scope="col">Novo</th>
@@ -75,6 +76,13 @@
                         <th scope="row">{{ $number++ }}</th>
                         <td>{{ $car->title }}</td>
                         <td>{{ $car->subtitle }}</td>
+                        <td>
+                            @if($car->link !== env('DEFAULT_LINK'))
+                            <a href="{!! $car->link !!}" target="_blank">
+                                <i class="fas fa-link link-color"></i>
+                            </a>
+                            @endif
+                        </td>
                         <td>
                             @if((boolean)$car->call_for_price === true)
                                 {!! Html::image('icons/phone.svg', 'cfp', array('title' => 'Pokličite za ceno')) !!}
@@ -158,15 +166,19 @@
             <div class="modal-body">
                 <form method="POST" action="{{ route('update') }}" enctype="multipart/form-data" id="modalupdate">
                     <div class="form-group">
-                        <label for="update-title">Model</label>
+                        <label for="update-title" class="text">Model</label>
                         <input type="text" class="form-control" id="update-title" aria-describedby="emailHelp" placeholder="Vnesite model" name="title">
                     </div>
                     <div class="form-group">
-                        <label for="update-subtitle">Oznaka</label>
+                        <label for="update-subtitle" class="text">Oznaka</label>
                         <input type="text" class="form-control" id="update-subtitle" aria-describedby="emailHelp" placeholder="Vnesite oznako" name="subtitle">
                     </div>
                     <div class="form-group">
-                        <label for="update-price">Cena</label>
+                        <label for="link" class="text">avto.net link</label>
+                        <input type="text" class="form-control" id="update-link" aria-describedby="emailHelp" placeholder="Vnesite link" name="link">
+                    </div>
+                    <div class="form-group">
+                        <label for="update-price" class="text">Cena</label>
                         <small id="text-muted" class="form-text text-muted">Format e.g. 21000, brez znaka za €</small>
                         <input type="text" class="form-control" id="update-price"  aria-describedby="emailHelp" placeholder="Vnesite ceno" name="price">
                         <div class="form-check">
@@ -177,7 +189,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="update-description">Opis</label>
+                        <label for="update-description" class="text">Opis</label>
                         <textarea class="form-control" id="update-description" rows="4" name="description"></textarea>
                     </div>
                     <div class="form-group">
@@ -189,7 +201,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlFile1">Slika</label>
+                        <label for="exampleFormControlFile1" class="text">Slika</label>
                         <br>
                         <small class="text-muted">Slika bo avtomatsko zmanjšana na primerno velikost.</small>
                         <input type="file" class="form-control-file" name="file" id="fileUpdate">
@@ -251,6 +263,7 @@
                 $('#update-new').prop('checked', newCar)
                 $('#update-cfp').prop('checked', CFP)
                 $('#update-price').val(price)
+                $('#update-link').val(car.link)
                 $('#update').modal('show');
             }
         })

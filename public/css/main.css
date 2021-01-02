@@ -64,3 +64,13 @@ body {
 .background {
     -webkit-filter: blur(1.5px)
 }
+.text {
+    color: black;
+    font-weight: 400;
+}
+.link-color {
+    color: #ed1c24;
+}
+.link-color:hover {
+    color: #c4191e;
+}

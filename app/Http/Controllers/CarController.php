@@ -55,6 +55,7 @@ class CarController extends Controller
         $callForPrice = $request->input('cfp');
         $new = $request->input('new');
         $new = $new === 'checked' ? (int) true : (int) false;
+        $link = is_null($request->input('link')) ? env('DEFAULT_LINK') : $request->input('link');
         $cfp = $callForPrice === 'checked' ? (int) true : (int) false;
 
         if ($request->file('file') !== null) {
@@ -67,6 +68,7 @@ class CarController extends Controller
         }
 
         $validatedData['new'] = $new;
+        $validatedData['link'] = $link;
         $validatedData['image'] = $imgPath;
         $validatedData['call_for_price'] = $cfp;
 
@@ -134,11 +136,12 @@ class CarController extends Controller
         $subtitle = $request->input('subtitle');
         $price = $request->input('price') === null ? 0 : $request->input('price');
         $callForPrice = $request->input('cfp') === 'checked';
+        $link = is_null($request->input('link')) ? env('DEFAULT_LINK') : $request->input('link');
         $description = $request->input('description');
         $new = $request->input('new');
         $new = $new === 'checked';
 
-        $image = Car::where('id',$id)->pluck('image')->toArray();
+        $image = Car::where('id', $id)->pluck('image')->toArray();
 
         if ($request->file('file') === null) {
             $imgPath = $image[0];
@@ -150,7 +153,7 @@ class CarController extends Controller
         }
 
         $helper = new CarHelper();
-        $helper->update($id, $title, $subtitle, $price, $description, $new, $imgPath, $callForPrice);
+        $helper->update($id, $title, $subtitle, $link, $price, $description, $new, $imgPath, $callForPrice);
 
         $cars = Car::all();
         return view('main', [
@@ -164,10 +167,10 @@ class CarController extends Controller
         $id = $request->id;
 
         $status = Car::where('id', $id)->pluck('hidden')->toArray();
-        $hide = (boolean)$status[0] === false;
+        $hide = (boolean) $status[0] === false;
 
         $hidden = Car::where('id', $id)->update([
-           'hidden' => (int)$hide
+            'hidden' => (int) $hide
         ]);
 
         $info = $hide === false ? trans('messages.carIsDisplayed') : trans('messages.carIsHidden');
