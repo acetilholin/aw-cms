@@ -79,7 +79,7 @@
                         <td>
                             @if($car->link !== env('DEFAULT_LINK'))
                             <a href="{!! $car->link !!}" target="_blank">
-                                <i class="fas fa-link link-color"></i>
+                                <i class="fas fa-link link-color" data-toggle="tooltip" data-placement="top" title="{!! $car->link !!}"></i>
                             </a>
                             @endif
                         </td>
@@ -284,6 +284,10 @@
                 $('#image').modal('show');
             }
         })
+    });
+
+    $('body').tooltip({
+        selector: '[data-toggle="tooltip"]'
     });
 
     $('.delete').on('click',function(e) {
