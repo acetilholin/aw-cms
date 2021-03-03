@@ -113,5 +113,5 @@ $(document).ready(function () {
 
 $(function () {
     $('[data-toggle="transport-info"]').tooltip();
-    $('[data-toggle="diesel-info"]').tooltip();
+    $('[data-toggle="cycle-info"]').tooltip();
 });

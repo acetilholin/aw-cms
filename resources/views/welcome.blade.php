@@ -76,7 +76,8 @@
                         naša prva in edina prioriteta. Z nami doživite pozitivno izkušnjo od prvega kontakta pa do trenutka, ko se končno
                         vozite v avtu vaših sanj.</p>
                     <a class="btn btn-red btn-sm" href="#cars">Ponudba</a>
-                    <a class="btn btn-gray btn-sm" href="#import-and-calculation">Kalkulacija</a>
+                    <a class="btn btn-gray btn-sm" href="#import-and-calculation">Uvoz</a>
+                    <!-- kalkulacija -->
                     <a class="btn btn-red btn-sm" href="#contact">Povpraševanje</a>
                 </div>
             </div>
@@ -205,6 +206,7 @@
                 <li> Morebitna ličarska dela in/ali poliranje - doplačilo</li>
                 <li> Morebitno notranje globinsko čiščenje vozila - doplačilo</li>
                 </p>
+                <br><br>
                 <button class="btn btn-gray-costs" style="cursor: pointer" id="accordion" data-toggle="collapse" data-target="#app" aria-expanded="true" aria-controls="collapseOne">Izračun stroškov</button>
             </div>
             <div id="app" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">

@@ -10,7 +10,7 @@
                     </div>
                 </div>
             </div>
-            <fieldset class="row">
+            <fieldset>
                 <div class="row">
                     <legend class="col-form-label col-sm-3">Price type</legend>
                     <div class="col-sm-9">
@@ -26,59 +26,48 @@
             <div class="row">
                 <div class="col-sm-3 align-self-center">Fuel</div>
                 <div class="col-sm-9">
-                    <select class="custom-select" id="selectBox1" v-bind:class="{ 'is-invalid': carFuel }" v-model="fuel" title="select fuel type" required>
+                    <select class="custom-select" id="selectBox1" v-bind:class="{ 'is-invalid': carFuel }" v-model="fuel" @change="checkFuelType()" title="select fuel type" required>
+                        <option value="">Fuel type</option>
                         <option value="dizel">Diesel</option>
                         <option value="elektrika">Electricity</option>
-                        <option value="ostalo">Petrol(+ rest)</option>
+                        <option value="benzin">Petrol(+ rest)</option>
                     </select>
                     <div class="invalid-feedback">
                         Select fuel type
                     </div>
                 </div>
             </div>
-            <div class="row zero-margin">
-                <div class="col-sm-3 align-self-center pad">Engine displacement</div>
+            <div class="row" v-if="fuelType">
+                <div class="col-sm-3 align-self-center">First registration</div>
                 <div class="col-sm-9">
-                    <select class="custom-select" id="selectBox2" v-bind:class="{ 'is-invalid': carCCM }" v-model="ccm" title="selecte engine displacement class" required>
-                        <option value="1">to 2499</option>
-                        <option value="2">from 2500 to 2999</option>
-                        <option value="3">from 3000 to 3499</option>
-                        <option value="4">from 3500 to 3999</option>
-                        <option value="5">above 4000</option>
-                    </select>
+                    <input type="text" class="form-control" v-bind:class="{ 'is-invalid': carMonthYear }" id="monthYear" v-model="monthYear" aria-describedby="emailHelp" title="month and year of first registration" required>
+                    <div class="small">
+                        Format: mm/yyyy
+                    </div>
                     <div class="invalid-feedback">
-                        Select displacement class
+                        Insert date of first registration
                     </div>
                 </div>
             </div>
-            <fieldset>
-                <div class="row">
-                    <legend class="col-form-label col-sm-3">Solid particles <i class="fas fa-info-circle" data-toggle="diesel-info" title="solid particle emission in g/km (diesel cars only)"></i></legend>
-                    <div class="col-sm-9">
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="trdidelci" v-model="dizelTrdiDelci">
-                            <label class="custom-control-label" for="trdidelci">Solid particles emission above 0,005 g/km</label>
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-            <div class="row">
-                <div class="col-sm-3 align-self-center">EURO engine</div>
+            <div class="row" v-if="fuelType">
+                <div class="col-sm-3 align-self-center">EURO motor</div>
                 <div class="col-sm-9">
                     <select class="custom-select" id="selectBox3" v-bind:class="{ 'is-invalid': carEURO }" v-model="euroEngine" title="select EURO engine standard" required>
-                        <option value="euro1">EURO 1</option>
-                        <option value="euro2">EURO 2</option>
-                        <option value="euro3">EURO 3</option>
-                        <option value="euro4">EURO 4</option>
-                        <option value="euro5">EURO 5</option>
-                        <option value="euro6">EURO 6</option>
+                        <option value="">Engine standard</option>
+                        <option value="0">EURO 0,1,2,3</option>
+                        <option value="1">EURO 4</option>
+                        <option value="2">EURO 5, 5a, 5b</option>
+                        <option value="3">EURO 6, 6a, 6b</option>
+                        <option value="4">EURO 6c</option>
+                        <option value="5">EURO 6d</option>
+                        <option value="6">higher than EURO 6d</option>
                     </select>
                     <div class="invalid-feedback">
-                        Select EURO engine standard
+                        Choose EURO engine standard
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" v-if="fuelType">
                 <div class="col-sm-3 align-self-center">CO2 emissions</div>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="emission" aria-describedby="emailHelp" placeholder="0" v-bind:class="{ 'is-invalid': carCO2 }" v-model="co2" required>
@@ -102,12 +91,12 @@
                             <option value="7">Flensburg</option>
                         </optgroup>
                         <optgroup label="Belgium" data-max-options="1">
-                            <option value="8">Celotna država</option>
+                            <option value="8">Whole country</option>
                         </optgroup>
                         <optgroup label="Holland" data-max-options="1">
                             <option value="9" >Rotterdam + Amsterdam</option>
                             <option value="10">Groningen</option>
-                            <option value="11">Ostale destinacie v NL</option>
+                            <option value="11">Other cities in NL</option>
                         </optgroup>
                     </select>
                 </div>
@@ -116,15 +105,12 @@
                 <div class="alert alert-secondary" role="alert" v-show="show" style="animation-duration: 1s">
                     <h4 class="alert-heading">Calculation:</h4>
                     <p>
-                        Tax rate: {{ stopnjaDavka }}%<br>
-                        Tax amount: {{ znesekDavka }}€<br>
-                        Rate of mark-up: {{ stopnjaPribitka }}%<br>
-                        The amount of mark-up: {{ znesekPribitka }}€<br>
-                        Transportation costs: {{ transportCosts }}€ + VAT<br>
-                        Homologation: {{ homologacija }}€<br>
+                        DMV Tax: {{ total | format }}€<br>
+                        Transportation costs: {{ transport.costs | format }}€ + DDV<br>
+                        Homologation: {{ homologacija | format }}€<br>
                     <hr>
                     <p class="mb-0">
-                        Final vehicle costs including taxes and transportation: <b>{{ skupajDavek }}€</b><br><br>
+                        Final vehicle costs including taxes and transportation: <b>{{ grandTotal | format }}€</b><br><br>
                         <span class="font-weight-light">Final price includes "DMV", VAT, homologation, import costs and transport <i class="fas fa-info-circle" data-toggle="transport-info" title="The calculation is for information only and is valid in the case of payment of the vehicle upon invoice."></i></span>
                     </p>
                 </div>
@@ -164,138 +150,209 @@
         data() {
             return {
                 priceGross:0, priceNett: 0, provision: 590, otherExpenses: 130, homologacija: 102,
-                price: 0, endPrice: 0,
+                price: 0, endPrice: 0, carMonthYear: 0,
                 fuel: '',
-                euroEngine: 0,
+                euroEngine: '',
                 co2: 0,
-                show: false,
+                show: false, fuelType: true, priceType: false,
                 emission:0, emissionPoints: 1,
-                fuelPoints: 0,
-                ccm: 0, ccmPoints: 0,
-                location: 0, transportCosts: 0,
-                dizelTrdiDelci: false, priceType: false,
+                location: 0, transport: 0,
+                monthYear: '',
+                grandTotal: 0, total:0,
                 step1: 0, step2:0, step3: 0,
-                emissionBenzin: 0, emissionDizel:0,
                 carPrice: 0, carFuel: '', carCCM: '', carEURO: '', carCO2: '',
-                stopnjaDavka: 0, stopnjaPribitka: 0, znesekPribitka: 0, skupajDavek: 0, znesekDavka: 0
+                NEDCFaktorBenzin: 1.22, NEDCFaktorDizel: 1.2,
+                faktor: 0, popravek: 0, co2Factor: 0
+            }
+        },
+        filters: {
+            format(val) {
+                if (typeof val !== "undefined") {
+                    return val.toFixed(1)
+                }
             }
         },
         methods: {
-            calculate: function () {
+            checkFuelType() {
+                this.fuelType = this.fuel !== 'elektrika'
+            },
+            getEuroStandard(fuel, index) {
+                let euroEmissionBenzin = [500, 400, 150, 75, 50, 50, 30, 10]
+                let euroEmmisionDiesel = [1000, 800, 225, 112, 75, 45, 15]
 
-                var costs = [240, 260, 280, 320, 320, 330, 350, 400, 300, 350, 400, 430 ];
-                this.transportCosts = costs[this.location];
+                return fuel === 'dizel' ? euroEmmisionDiesel[index] : euroEmissionBenzin[index]
+            },
+            getTransportCosts(location) {
+                let costs = [240, 260, 280, 320, 320, 330, 350, 400, 300, 350, 400, 430 ]
+                let factorCountry = 0
 
-                if(this.fuel === 'elektrika') {
-                    this.fuelPoints = 1;
-                } else if (this.fuel === 'dizel') {
-                    this.fuelPoints = 2;
+                factorCountry = location < 8 ? 1.19 : 1.21
+
+                return {
+                    'costs': costs[location],
+                    'factorCountry': factorCountry
+                }
+            },
+            getEmissions(co2, fuel) {
+                let pribitek = 0
+                let min = 0
+                let pribitekBenzin = 0
+                let minBenzin = 0
+                let pribitekDizel = 0
+                let minDizel = 0
+                let minSpodnja = 0
+
+                if (co2 < 50) {
+                    pribitekBenzin = 0
+                    minBenzin = 0
+                    pribitekDizel = 0
+                    minDizel = 0
+                    minSpodnja = 0
+                } else if(co2 > 50 && co2 <=100) {
+                    pribitekBenzin = 0.4
+                    minBenzin = 0
+                    pribitekDizel = 0.5
+                    minDizel = 0
+                    minSpodnja = 50
+                } else if(co2 > 100 && co2 <= 140) {
+                    pribitekBenzin = 0.7
+                    minBenzin = 20
+                    pribitekDizel = 0.8
+                    minDizel = 25
+                    minSpodnja = 100
+                } else if(co2 > 140 && co2 <= 190) {
+                    pribitekBenzin = 5
+                    minBenzin = 48
+                    pribitekDizel = 6
+                    minDizel = 57
+                    minSpodnja = 140
+                } else if(co2 > 190 && co2 <= 230) {
+                    pribitekBenzin = 30
+                    minBenzin = 298
+                    pribitekDizel = 36
+                    minDizel = 357
+                    minSpodnja = 190
                 } else {
-                    this.fuelPoints = 3
+                    pribitekBenzin = 30
+                    minBenzin = 298
+                    pribitekDizel = 36
+                    minDizel = 357
+                    minSpodnja = 230
                 }
 
-                if (this.euroEngine === 'euro1') {
-                    this.emissionPoints = 10;
-                } else if (this.euroEngine === 'euro2') {
-                    this.emissionPoints = 10;
-                } else if (this.euroEngine === 'euro3') {
-                    this.emissionPoints = 5;
-                } else if (this.euroEngine === 'euro4') {
-                    this.emissionPoints = 2;
-                } else if (this.euroEngine === 'euro5') {
-                    this.emissionPoints = 0;
-                } else {
-                    this.emissionPoints = 0;
+                pribitek = fuel === 'benzin' ? pribitekBenzin : pribitekDizel
+                min = fuel === 'benzin' ? minBenzin : minDizel
+
+                return {
+                    'pribitek':pribitek,
+                    'min': min,
+                    'minSpodnja': minSpodnja
                 }
+            },
+            diffYears(date2, date1) {
+                let  diff =(date2.getTime() - date1.getTime()) / 1000
+                diff /= (60 * 60 * 24);
+                return Math.floor(Math.abs(diff/365.25))
+            },
+            getPopravek(monthYear) {
+                let splitted = monthYear.split("/")
+                let percentage = 0
+                let yearDiff = 0
 
-                if (this.ccm === '1') {
-                    this.ccmPoints = 0;
-                } else if (this.ccm === '2') {
-                    this.ccmPoints = 8;
-                } else if (this.ccm === '3') {
-                    this.ccmPoints = 10;
-                } else if (this.ccm === '4') {
-                    this.ccmPoints = 13;
-                } else {
-                    this.ccmPoints = 16;
+                let carYear =  new Date(splitted[1], splitted[0]-1)
+                let year = new Date().getFullYear()
+                let month = new Date().getMonth()
+
+                let currentMonthYear = new Date(year, month)
+
+                yearDiff = this.diffYears(carYear, currentMonthYear)
+
+                switch(true) {
+                    case yearDiff === 0:
+                        percentage = 0.91
+                        break
+                    case yearDiff < 2:
+                        percentage = 0.83
+                        break
+                    case yearDiff < 3:
+                        percentage = 0.76
+                        break
+                    case yearDiff < 4:
+                        percentage = 0.70
+                        break
+                    case yearDiff < 5:
+                        percentage = 0.64
+                        break
+                    case yearDiff < 6:
+                        percentage = 0.58
+                        break
+                    case yearDiff < 7:
+                        percentage = 0.53
+                        break
+                    case yearDiff < 8:
+                        percentage = 0.48
+                        break
+                    case yearDiff < 10:
+                        percentage = 0.38
+                        break
+                    default:
+                        percentage = 0.33
                 }
+                return percentage
+            },
+            checkYearFaktor(monthYear) {
+                let splitted = monthYear.split("/")
+                let firstRegistration = new Date(splitted[1],splitted[0])
+                let dateToCheck = new Date(2017, 8 ,1)
+                return firstRegistration < dateToCheck
+            },
+            calculate() {
+                this.transport = this.getTransportCosts(this.location)
 
-                if (this.fuel === 'dizel' && this.dizelTrdiDelci === true) {
-                    this.dizelTrdiDelci = 5;
+
+                if (this.fuel !== 'elektrika') {
+                    if (this.checkYearFaktor(this.monthYear)) {
+                        this.co2Factor = this.fuel === 'benzin' ? (this.co2 * this.NEDCFaktorBenzin) : (this.co2 * this.NEDCFaktorDizel)
+                    } else {
+                        this.co2Factor = this.co2
+                    }
+
+                    this.emission = this.getEmissions(this.co2Factor, this.fuel)
+
+                    this.popravek = this.getPopravek(this.monthYear)
+
+                    this.result = this.emission.min + ((this.co2Factor - this.emission.minSpodnja) * this.emission.pribitek)
+
+
+                    if(this.fuel !== 'elektrika') {
+                        this.emissionPoints = this.getEuroStandard(this.fuel, this.euroEngine)
+                    }
+
+                    this.total = (this.emissionPoints + this.result) * this.popravek
                 } else {
-                    this.dizelTrdiDelci = 0;
-                }
-
-                if (this.fuel === 'elektrika') {
-                    this.co2 = 0;
-                }
-
-                if (this.co2 >= 0 && this.co2 < 110.1) {
-                    this.emissionBenzin = 0.5;
-                    this.emissionDizel = 1
-                } else if(this.co2 > 110.1 && this.co2 < 120.01) {
-                    this.emissionBenzin = 1;
-                    this.emissionDizel = 2;
-                } else if (this.co2 > 120.01 && this.co2 < 130.01) {
-                    this.emissionBenzin = 1.5;
-                    this.emissionDizel = 3
-                } else if (this.co2 > 130.01 && this.co2 < 150.01) {
-                    this.emissionBenzin = 3;
-                    this.emissionDizel = 6
-                } else if (this.co2 > 150.01 && this.co2 < 170.01) {
-                    this.emissionBenzin = 6;
-                    this.emissionDizel = 11
-                } else if (this.co2 > 170.01 && this.co2 < 190.01) {
-                    this.emissionBenzin = 9;
-                    this.emissionDizel = 15
-                } else if (this.co2 > 190.01 && this.co2 < 210.01) {
-                    this.emissionBenzin = 13;
-                    this.emissionDizel = 18;
-                } else if (this.co2 > 210.01 && this.co2 < 230.1) {
-                    this.emissionBenzin = 18;
-                    this.emissionDizel = 22;
-                } else if (this.co2 > 230.01 && this.co2 < 250.01) {
-                    this.emissionBenzin = 23;
-                    this.emissionDizel = 26;
-                } else {
-                    this.emissionBenzin = 28;
-                    this.emissionDizel = 31;
-                }
-
-                if(this.fuel === 'ostalo'){
-                    this.step1 = true;
-                } else if (this.fuel === 'dizel' && this.euroEngine === 'euro6') {
-                    this.step1 = true;
-                } else this.step1 = this.fuel === 'elektrika';
-
-                this.step2 = this.step1 === true ? this.emissionBenzin : this.emissionDizel;
-
-                if (this.fuel === 'elektrika') {
-                    this.step3 = this.step2;
-                } else {
-                    this.step3 = this.step2 + this.emissionPoints;
+                    this.total = 0
                 }
 
                 this.endPrice = this.price;
 
-                this.stopnjaDavka = this.step3 + this.dizelTrdiDelci;
-                this.znesekDavka = Math.round((this.stopnjaDavka / 100) * this.endPrice, 0);
-                this.stopnjaPribitka = this.ccmPoints;
-                this.znesekPribitka = Math.round(this.endPrice * (this.stopnjaPribitka / 100), 0);
-
                 if (this.priceType === true) {
-                    this.endPrice = Math.round((this.price / 1.19), 2);
+                    this.endPrice = Math.round((this.price / this.transport.factorCountry), 2)
                 }
 
-                this.skupajDavek =  (parseInt(this.endPrice) + this.znesekDavka + this.znesekPribitka + this.transportCosts + this.homologacija) * 1.22;
-                this.skupajDavek += this.provision + this.otherExpenses;
+                this.grandTotal =  Math.round(((parseInt(this.endPrice) + this.total + this.transport.costs + this.homologacija) * 1.22), 2)
+                this.grandTotal += this.provision + this.otherExpenses
 
-                this.carPrice = this.price === 0;
-                this.carFuel = this.fuel === '';
-                this.carCCM = this.ccm === 0;
-                this.carEURO = this.euroEngine === 0;
-                this.carCO2 = this.fuel !== 'elektrika' && this.co2 === 0;
-                this.show = this.carPrice === false && this.carFuel === false && this.carCCM === false && this.carEURO === false && this.carCO2 === false;
+                this.carPrice = this.price === 0
+                this.carFuel = this.fuel === ''
+                this.carMonthYear = this.monthYear === ''
+                this.carEURO = this.euroEngine === ''
+                this.carCO2 = this.fuel !== 'elektrika' && this.co2 === 0
+
+                if (this.fuel !== 'elektrika') {
+                    this.show = this.carPrice === false && this.carFuel === false && this.carEURO === false && this.carCO2 === false && this.carMonthYear === false
+                } else {
+                    this.show = this.carPrice === false && this.carFuel === false
+                }
             }
         }
     }

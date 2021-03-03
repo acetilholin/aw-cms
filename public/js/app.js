@@ -2079,20 +2079,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Calculation',
   data: function data() {
@@ -2104,149 +2090,221 @@ __webpack_require__.r(__webpack_exports__);
       homologacija: 102,
       price: 0,
       endPrice: 0,
+      carMonthYear: 0,
       fuel: '',
-      euroEngine: 0,
+      euroEngine: '',
       co2: 0,
       show: false,
+      fuelType: true,
+      priceType: false,
       emission: 0,
       emissionPoints: 1,
-      fuelPoints: 0,
-      ccm: 0,
-      ccmPoints: 0,
       location: 0,
-      transportCosts: 0,
-      dizelTrdiDelci: false,
-      priceType: false,
+      transport: 0,
+      monthYear: '',
+      grandTotal: 0,
+      total: 0,
       step1: 0,
       step2: 0,
       step3: 0,
-      emissionBenzin: 0,
-      emissionDizel: 0,
       carPrice: 0,
       carFuel: '',
       carCCM: '',
       carEURO: '',
       carCO2: '',
-      stopnjaDavka: 0,
-      stopnjaPribitka: 0,
-      znesekPribitka: 0,
-      skupajDavek: 0,
-      znesekDavka: 0
+      NEDCFaktorBenzin: 1.22,
+      NEDCFaktorDizel: 1.2,
+      faktor: 0,
+      popravek: 0,
+      co2Factor: 0
     };
   },
+  filters: {
+    format: function format(val) {
+      if (typeof val !== "undefined") {
+        return val.toFixed(1);
+      }
+    }
+  },
   methods: {
-    calculate: function calculate() {
+    checkFuelType: function checkFuelType() {
+      this.fuelType = this.fuel !== 'elektrika';
+    },
+    getEuroStandard: function getEuroStandard(fuel, index) {
+      var euroEmissionBenzin = [500, 400, 150, 75, 50, 50, 30, 10];
+      var euroEmmisionDiesel = [1000, 800, 225, 112, 75, 45, 15];
+      return fuel === 'dizel' ? euroEmmisionDiesel[index] : euroEmissionBenzin[index];
+    },
+    getTransportCosts: function getTransportCosts(location) {
       var costs = [240, 260, 280, 320, 320, 330, 350, 400, 300, 350, 400, 430];
-      this.transportCosts = costs[this.location];
+      var factorCountry = 0;
+      factorCountry = location < 8 ? 1.19 : 1.21;
+      return {
+        'costs': costs[location],
+        'factorCountry': factorCountry
+      };
+    },
+    getEmissions: function getEmissions(co2, fuel) {
+      var pribitek = 0;
+      var min = 0;
+      var pribitekBenzin = 0;
+      var minBenzin = 0;
+      var pribitekDizel = 0;
+      var minDizel = 0;
+      var minSpodnja = 0;
 
-      if (this.fuel === 'elektrika') {
-        this.fuelPoints = 1;
-      } else if (this.fuel === 'dizel') {
-        this.fuelPoints = 2;
+      if (co2 < 50) {
+        pribitekBenzin = 0;
+        minBenzin = 0;
+        pribitekDizel = 0;
+        minDizel = 0;
+        minSpodnja = 0;
+      } else if (co2 > 50 && co2 <= 100) {
+        pribitekBenzin = 0.4;
+        minBenzin = 0;
+        pribitekDizel = 0.5;
+        minDizel = 0;
+        minSpodnja = 50;
+      } else if (co2 > 100 && co2 <= 140) {
+        pribitekBenzin = 0.7;
+        minBenzin = 20;
+        pribitekDizel = 0.8;
+        minDizel = 25;
+        minSpodnja = 100;
+      } else if (co2 > 140 && co2 <= 190) {
+        pribitekBenzin = 5;
+        minBenzin = 48;
+        pribitekDizel = 6;
+        minDizel = 57;
+        minSpodnja = 140;
+      } else if (co2 > 190 && co2 <= 230) {
+        pribitekBenzin = 30;
+        minBenzin = 298;
+        pribitekDizel = 36;
+        minDizel = 357;
+        minSpodnja = 190;
       } else {
-        this.fuelPoints = 3;
+        pribitekBenzin = 30;
+        minBenzin = 298;
+        pribitekDizel = 36;
+        minDizel = 357;
+        minSpodnja = 230;
       }
 
-      if (this.euroEngine === 'euro1') {
-        this.emissionPoints = 10;
-      } else if (this.euroEngine === 'euro2') {
-        this.emissionPoints = 10;
-      } else if (this.euroEngine === 'euro3') {
-        this.emissionPoints = 5;
-      } else if (this.euroEngine === 'euro4') {
-        this.emissionPoints = 2;
-      } else if (this.euroEngine === 'euro5') {
-        this.emissionPoints = 0;
-      } else {
-        this.emissionPoints = 0;
+      pribitek = fuel === 'benzin' ? pribitekBenzin : pribitekDizel;
+      min = fuel === 'benzin' ? minBenzin : minDizel;
+      return {
+        'pribitek': pribitek,
+        'min': min,
+        'minSpodnja': minSpodnja
+      };
+    },
+    diffYears: function diffYears(date2, date1) {
+      var diff = (date2.getTime() - date1.getTime()) / 1000;
+      diff /= 60 * 60 * 24;
+      return Math.floor(Math.abs(diff / 365.25));
+    },
+    getPopravek: function getPopravek(monthYear) {
+      var splitted = monthYear.split("/");
+      var percentage = 0;
+      var yearDiff = 0;
+      var carYear = new Date(splitted[1], splitted[0] - 1);
+      var year = new Date().getFullYear();
+      var month = new Date().getMonth();
+      var currentMonthYear = new Date(year, month);
+      yearDiff = this.diffYears(carYear, currentMonthYear);
+
+      switch (true) {
+        case yearDiff === 0:
+          percentage = 0.91;
+          break;
+
+        case yearDiff < 2:
+          percentage = 0.83;
+          break;
+
+        case yearDiff < 3:
+          percentage = 0.76;
+          break;
+
+        case yearDiff < 4:
+          percentage = 0.70;
+          break;
+
+        case yearDiff < 5:
+          percentage = 0.64;
+          break;
+
+        case yearDiff < 6:
+          percentage = 0.58;
+          break;
+
+        case yearDiff < 7:
+          percentage = 0.53;
+          break;
+
+        case yearDiff < 8:
+          percentage = 0.48;
+          break;
+
+        case yearDiff < 10:
+          percentage = 0.38;
+          break;
+
+        default:
+          percentage = 0.33;
       }
 
-      if (this.ccm === '1') {
-        this.ccmPoints = 0;
-      } else if (this.ccm === '2') {
-        this.ccmPoints = 8;
-      } else if (this.ccm === '3') {
-        this.ccmPoints = 10;
-      } else if (this.ccm === '4') {
-        this.ccmPoints = 13;
+      return percentage;
+    },
+    checkYearFaktor: function checkYearFaktor(monthYear) {
+      var splitted = monthYear.split("/");
+      var firstRegistration = new Date(splitted[1], splitted[0]);
+      var dateToCheck = new Date(2017, 8, 1);
+      return firstRegistration < dateToCheck;
+    },
+    calculate: function calculate() {
+      this.transport = this.getTransportCosts(this.location);
+
+      if (this.fuel !== 'elektrika') {
+        if (this.checkYearFaktor(this.monthYear)) {
+          this.co2Factor = this.fuel === 'benzin' ? this.co2 * this.NEDCFaktorBenzin : this.co2 * this.NEDCFaktorDizel;
+        } else {
+          this.co2Factor = this.co2;
+        }
+
+        this.emission = this.getEmissions(this.co2Factor, this.fuel);
+        this.popravek = this.getPopravek(this.monthYear);
+        this.result = this.emission.min + (this.co2Factor - this.emission.minSpodnja) * this.emission.pribitek;
+
+        if (this.fuel !== 'elektrika') {
+          this.emissionPoints = this.getEuroStandard(this.fuel, this.euroEngine);
+        }
+
+        this.total = (this.emissionPoints + this.result) * this.popravek;
       } else {
-        this.ccmPoints = 16;
-      }
-
-      if (this.fuel === 'dizel' && this.dizelTrdiDelci === true) {
-        this.dizelTrdiDelci = 5;
-      } else {
-        this.dizelTrdiDelci = 0;
-      }
-
-      if (this.fuel === 'elektrika') {
-        this.co2 = 0;
-      }
-
-      if (this.co2 >= 0 && this.co2 < 110.1) {
-        this.emissionBenzin = 0.5;
-        this.emissionDizel = 1;
-      } else if (this.co2 > 110.1 && this.co2 < 120.01) {
-        this.emissionBenzin = 1;
-        this.emissionDizel = 2;
-      } else if (this.co2 > 120.01 && this.co2 < 130.01) {
-        this.emissionBenzin = 1.5;
-        this.emissionDizel = 3;
-      } else if (this.co2 > 130.01 && this.co2 < 150.01) {
-        this.emissionBenzin = 3;
-        this.emissionDizel = 6;
-      } else if (this.co2 > 150.01 && this.co2 < 170.01) {
-        this.emissionBenzin = 6;
-        this.emissionDizel = 11;
-      } else if (this.co2 > 170.01 && this.co2 < 190.01) {
-        this.emissionBenzin = 9;
-        this.emissionDizel = 15;
-      } else if (this.co2 > 190.01 && this.co2 < 210.01) {
-        this.emissionBenzin = 13;
-        this.emissionDizel = 18;
-      } else if (this.co2 > 210.01 && this.co2 < 230.1) {
-        this.emissionBenzin = 18;
-        this.emissionDizel = 22;
-      } else if (this.co2 > 230.01 && this.co2 < 250.01) {
-        this.emissionBenzin = 23;
-        this.emissionDizel = 26;
-      } else {
-        this.emissionBenzin = 28;
-        this.emissionDizel = 31;
-      }
-
-      if (this.fuel === 'ostalo') {
-        this.step1 = true;
-      } else if (this.fuel === 'dizel' && this.euroEngine === 'euro6') {
-        this.step1 = true;
-      } else this.step1 = this.fuel === 'elektrika';
-
-      this.step2 = this.step1 === true ? this.emissionBenzin : this.emissionDizel;
-
-      if (this.fuel === 'elektrika') {
-        this.step3 = this.step2;
-      } else {
-        this.step3 = this.step2 + this.emissionPoints;
+        this.total = 0;
       }
 
       this.endPrice = this.price;
-      this.stopnjaDavka = this.step3 + this.dizelTrdiDelci;
-      this.znesekDavka = Math.round(this.stopnjaDavka / 100 * this.endPrice, 0);
-      this.stopnjaPribitka = this.ccmPoints;
-      this.znesekPribitka = Math.round(this.endPrice * (this.stopnjaPribitka / 100), 0);
 
       if (this.priceType === true) {
-        this.endPrice = Math.round(this.price / 1.19, 2);
+        this.endPrice = Math.round(this.price / this.transport.factorCountry, 2);
       }
 
-      this.skupajDavek = Math.round((parseInt(this.endPrice) + this.znesekDavka + this.znesekPribitka + this.transportCosts + this.homologacija) * 1.22, 2);
-      this.skupajDavek += this.provision + this.otherExpenses;
+      this.grandTotal = Math.round((parseInt(this.endPrice) + this.total + this.transport.costs + this.homologacija) * 1.22, 2);
+      this.grandTotal += this.provision + this.otherExpenses;
       this.carPrice = this.price === 0;
       this.carFuel = this.fuel === '';
-      this.carCCM = this.ccm === 0;
-      this.carEURO = this.euroEngine === 0;
+      this.carMonthYear = this.monthYear === '';
+      this.carEURO = this.euroEngine === '';
       this.carCO2 = this.fuel !== 'elektrika' && this.co2 === 0;
-      this.show = this.carPrice === false && this.carFuel === false && this.carCCM === false && this.carEURO === false && this.carCO2 === false;
+
+      if (this.fuel !== 'elektrika') {
+        this.show = this.carPrice === false && this.carFuel === false && this.carEURO === false && this.carCO2 === false && this.carMonthYear === false;
+      } else {
+        this.show = this.carPrice === false && this.carFuel === false;
+      }
     }
   }
 });
@@ -2552,20 +2610,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "EnCalculation",
   data: function data() {
@@ -2577,149 +2621,221 @@ __webpack_require__.r(__webpack_exports__);
       homologacija: 102,
       price: 0,
       endPrice: 0,
+      carMonthYear: 0,
       fuel: '',
-      euroEngine: 0,
+      euroEngine: '',
       co2: 0,
       show: false,
+      fuelType: true,
+      priceType: false,
       emission: 0,
       emissionPoints: 1,
-      fuelPoints: 0,
-      ccm: 0,
-      ccmPoints: 0,
       location: 0,
-      transportCosts: 0,
-      dizelTrdiDelci: false,
-      priceType: false,
+      transport: 0,
+      monthYear: '',
+      grandTotal: 0,
+      total: 0,
       step1: 0,
       step2: 0,
       step3: 0,
-      emissionBenzin: 0,
-      emissionDizel: 0,
       carPrice: 0,
       carFuel: '',
       carCCM: '',
       carEURO: '',
       carCO2: '',
-      stopnjaDavka: 0,
-      stopnjaPribitka: 0,
-      znesekPribitka: 0,
-      skupajDavek: 0,
-      znesekDavka: 0
+      NEDCFaktorBenzin: 1.22,
+      NEDCFaktorDizel: 1.2,
+      faktor: 0,
+      popravek: 0,
+      co2Factor: 0
     };
   },
+  filters: {
+    format: function format(val) {
+      if (typeof val !== "undefined") {
+        return val.toFixed(1);
+      }
+    }
+  },
   methods: {
-    calculate: function calculate() {
+    checkFuelType: function checkFuelType() {
+      this.fuelType = this.fuel !== 'elektrika';
+    },
+    getEuroStandard: function getEuroStandard(fuel, index) {
+      var euroEmissionBenzin = [500, 400, 150, 75, 50, 50, 30, 10];
+      var euroEmmisionDiesel = [1000, 800, 225, 112, 75, 45, 15];
+      return fuel === 'dizel' ? euroEmmisionDiesel[index] : euroEmissionBenzin[index];
+    },
+    getTransportCosts: function getTransportCosts(location) {
       var costs = [240, 260, 280, 320, 320, 330, 350, 400, 300, 350, 400, 430];
-      this.transportCosts = costs[this.location];
+      var factorCountry = 0;
+      factorCountry = location < 8 ? 1.19 : 1.21;
+      return {
+        'costs': costs[location],
+        'factorCountry': factorCountry
+      };
+    },
+    getEmissions: function getEmissions(co2, fuel) {
+      var pribitek = 0;
+      var min = 0;
+      var pribitekBenzin = 0;
+      var minBenzin = 0;
+      var pribitekDizel = 0;
+      var minDizel = 0;
+      var minSpodnja = 0;
 
-      if (this.fuel === 'elektrika') {
-        this.fuelPoints = 1;
-      } else if (this.fuel === 'dizel') {
-        this.fuelPoints = 2;
+      if (co2 < 50) {
+        pribitekBenzin = 0;
+        minBenzin = 0;
+        pribitekDizel = 0;
+        minDizel = 0;
+        minSpodnja = 0;
+      } else if (co2 > 50 && co2 <= 100) {
+        pribitekBenzin = 0.4;
+        minBenzin = 0;
+        pribitekDizel = 0.5;
+        minDizel = 0;
+        minSpodnja = 50;
+      } else if (co2 > 100 && co2 <= 140) {
+        pribitekBenzin = 0.7;
+        minBenzin = 20;
+        pribitekDizel = 0.8;
+        minDizel = 25;
+        minSpodnja = 100;
+      } else if (co2 > 140 && co2 <= 190) {
+        pribitekBenzin = 5;
+        minBenzin = 48;
+        pribitekDizel = 6;
+        minDizel = 57;
+        minSpodnja = 140;
+      } else if (co2 > 190 && co2 <= 230) {
+        pribitekBenzin = 30;
+        minBenzin = 298;
+        pribitekDizel = 36;
+        minDizel = 357;
+        minSpodnja = 190;
       } else {
-        this.fuelPoints = 3;
+        pribitekBenzin = 30;
+        minBenzin = 298;
+        pribitekDizel = 36;
+        minDizel = 357;
+        minSpodnja = 230;
       }
 
-      if (this.euroEngine === 'euro1') {
-        this.emissionPoints = 10;
-      } else if (this.euroEngine === 'euro2') {
-        this.emissionPoints = 10;
-      } else if (this.euroEngine === 'euro3') {
-        this.emissionPoints = 5;
-      } else if (this.euroEngine === 'euro4') {
-        this.emissionPoints = 2;
-      } else if (this.euroEngine === 'euro5') {
-        this.emissionPoints = 0;
-      } else {
-        this.emissionPoints = 0;
+      pribitek = fuel === 'benzin' ? pribitekBenzin : pribitekDizel;
+      min = fuel === 'benzin' ? minBenzin : minDizel;
+      return {
+        'pribitek': pribitek,
+        'min': min,
+        'minSpodnja': minSpodnja
+      };
+    },
+    diffYears: function diffYears(date2, date1) {
+      var diff = (date2.getTime() - date1.getTime()) / 1000;
+      diff /= 60 * 60 * 24;
+      return Math.floor(Math.abs(diff / 365.25));
+    },
+    getPopravek: function getPopravek(monthYear) {
+      var splitted = monthYear.split("/");
+      var percentage = 0;
+      var yearDiff = 0;
+      var carYear = new Date(splitted[1], splitted[0] - 1);
+      var year = new Date().getFullYear();
+      var month = new Date().getMonth();
+      var currentMonthYear = new Date(year, month);
+      yearDiff = this.diffYears(carYear, currentMonthYear);
+
+      switch (true) {
+        case yearDiff === 0:
+          percentage = 0.91;
+          break;
+
+        case yearDiff < 2:
+          percentage = 0.83;
+          break;
+
+        case yearDiff < 3:
+          percentage = 0.76;
+          break;
+
+        case yearDiff < 4:
+          percentage = 0.70;
+          break;
+
+        case yearDiff < 5:
+          percentage = 0.64;
+          break;
+
+        case yearDiff < 6:
+          percentage = 0.58;
+          break;
+
+        case yearDiff < 7:
+          percentage = 0.53;
+          break;
+
+        case yearDiff < 8:
+          percentage = 0.48;
+          break;
+
+        case yearDiff < 10:
+          percentage = 0.38;
+          break;
+
+        default:
+          percentage = 0.33;
       }
 
-      if (this.ccm === '1') {
-        this.ccmPoints = 0;
-      } else if (this.ccm === '2') {
-        this.ccmPoints = 8;
-      } else if (this.ccm === '3') {
-        this.ccmPoints = 10;
-      } else if (this.ccm === '4') {
-        this.ccmPoints = 13;
+      return percentage;
+    },
+    checkYearFaktor: function checkYearFaktor(monthYear) {
+      var splitted = monthYear.split("/");
+      var firstRegistration = new Date(splitted[1], splitted[0]);
+      var dateToCheck = new Date(2017, 8, 1);
+      return firstRegistration < dateToCheck;
+    },
+    calculate: function calculate() {
+      this.transport = this.getTransportCosts(this.location);
+
+      if (this.fuel !== 'elektrika') {
+        if (this.checkYearFaktor(this.monthYear)) {
+          this.co2Factor = this.fuel === 'benzin' ? this.co2 * this.NEDCFaktorBenzin : this.co2 * this.NEDCFaktorDizel;
+        } else {
+          this.co2Factor = this.co2;
+        }
+
+        this.emission = this.getEmissions(this.co2Factor, this.fuel);
+        this.popravek = this.getPopravek(this.monthYear);
+        this.result = this.emission.min + (this.co2Factor - this.emission.minSpodnja) * this.emission.pribitek;
+
+        if (this.fuel !== 'elektrika') {
+          this.emissionPoints = this.getEuroStandard(this.fuel, this.euroEngine);
+        }
+
+        this.total = (this.emissionPoints + this.result) * this.popravek;
       } else {
-        this.ccmPoints = 16;
-      }
-
-      if (this.fuel === 'dizel' && this.dizelTrdiDelci === true) {
-        this.dizelTrdiDelci = 5;
-      } else {
-        this.dizelTrdiDelci = 0;
-      }
-
-      if (this.fuel === 'elektrika') {
-        this.co2 = 0;
-      }
-
-      if (this.co2 >= 0 && this.co2 < 110.1) {
-        this.emissionBenzin = 0.5;
-        this.emissionDizel = 1;
-      } else if (this.co2 > 110.1 && this.co2 < 120.01) {
-        this.emissionBenzin = 1;
-        this.emissionDizel = 2;
-      } else if (this.co2 > 120.01 && this.co2 < 130.01) {
-        this.emissionBenzin = 1.5;
-        this.emissionDizel = 3;
-      } else if (this.co2 > 130.01 && this.co2 < 150.01) {
-        this.emissionBenzin = 3;
-        this.emissionDizel = 6;
-      } else if (this.co2 > 150.01 && this.co2 < 170.01) {
-        this.emissionBenzin = 6;
-        this.emissionDizel = 11;
-      } else if (this.co2 > 170.01 && this.co2 < 190.01) {
-        this.emissionBenzin = 9;
-        this.emissionDizel = 15;
-      } else if (this.co2 > 190.01 && this.co2 < 210.01) {
-        this.emissionBenzin = 13;
-        this.emissionDizel = 18;
-      } else if (this.co2 > 210.01 && this.co2 < 230.1) {
-        this.emissionBenzin = 18;
-        this.emissionDizel = 22;
-      } else if (this.co2 > 230.01 && this.co2 < 250.01) {
-        this.emissionBenzin = 23;
-        this.emissionDizel = 26;
-      } else {
-        this.emissionBenzin = 28;
-        this.emissionDizel = 31;
-      }
-
-      if (this.fuel === 'ostalo') {
-        this.step1 = true;
-      } else if (this.fuel === 'dizel' && this.euroEngine === 'euro6') {
-        this.step1 = true;
-      } else this.step1 = this.fuel === 'elektrika';
-
-      this.step2 = this.step1 === true ? this.emissionBenzin : this.emissionDizel;
-
-      if (this.fuel === 'elektrika') {
-        this.step3 = this.step2;
-      } else {
-        this.step3 = this.step2 + this.emissionPoints;
+        this.total = 0;
       }
 
       this.endPrice = this.price;
-      this.stopnjaDavka = this.step3 + this.dizelTrdiDelci;
-      this.znesekDavka = Math.round(this.stopnjaDavka / 100 * this.endPrice, 0);
-      this.stopnjaPribitka = this.ccmPoints;
-      this.znesekPribitka = Math.round(this.endPrice * (this.stopnjaPribitka / 100), 0);
 
       if (this.priceType === true) {
-        this.endPrice = Math.round(this.price / 1.19, 2);
+        this.endPrice = Math.round(this.price / this.transport.factorCountry, 2);
       }
 
-      this.skupajDavek = (parseInt(this.endPrice) + this.znesekDavka + this.znesekPribitka + this.transportCosts + this.homologacija) * 1.22;
-      this.skupajDavek += this.provision + this.otherExpenses;
+      this.grandTotal = Math.round((parseInt(this.endPrice) + this.total + this.transport.costs + this.homologacija) * 1.22, 2);
+      this.grandTotal += this.provision + this.otherExpenses;
       this.carPrice = this.price === 0;
       this.carFuel = this.fuel === '';
-      this.carCCM = this.ccm === 0;
-      this.carEURO = this.euroEngine === 0;
+      this.carMonthYear = this.monthYear === '';
+      this.carEURO = this.euroEngine === '';
       this.carCO2 = this.fuel !== 'elektrika' && this.co2 === 0;
-      this.show = this.carPrice === false && this.carFuel === false && this.carCCM === false && this.carEURO === false && this.carCO2 === false;
+
+      if (this.fuel !== 'elektrika') {
+        this.show = this.carPrice === false && this.carFuel === false && this.carEURO === false && this.carCO2 === false && this.carMonthYear === false;
+      } else {
+        this.show = this.carPrice === false && this.carFuel === false;
+      }
     }
   }
 });
@@ -40370,7 +40486,6 @@ var render = function() {
                 id: "price",
                 "aria-describedby": "emailHelp",
                 title: "vpišite ceno vozila v evrih",
-                placeholder: "Davčna osnova",
                 required: ""
               },
               domProps: { value: _vm.price },
@@ -40392,7 +40507,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("fieldset", { staticClass: "row" }, [
+        _c("fieldset", [
           _c("div", { staticClass: "row" }, [
             _c("legend", { staticClass: "col-form-label col-sm-3" }, [
               _vm._v("Tip cene")
@@ -40492,29 +40607,36 @@ var render = function() {
                   required: ""
                 },
                 on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.fuel = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  }
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.fuel = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    function($event) {
+                      return _vm.checkFuelType()
+                    }
+                  ]
                 }
               },
               [
+                _c("option", { attrs: { value: "" } }, [_vm._v("Tip goriva")]),
+                _vm._v(" "),
                 _c("option", { attrs: { value: "dizel" } }, [_vm._v("Dizel")]),
                 _vm._v(" "),
                 _c("option", { attrs: { value: "elektrika" } }, [
                   _vm._v("Elektrika")
                 ]),
                 _vm._v(" "),
-                _c("option", { attrs: { value: "ostalo" } }, [
+                _c("option", { attrs: { value: "benzin" } }, [
                   _vm._v("Benzin(+vse ostalo)")
                 ])
               ]
@@ -40528,236 +40650,184 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "row zero-margin" }, [
-          _c("div", { staticClass: "col-sm-3 align-self-center pad" }, [
-            _vm._v("Prostornina")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-9" }, [
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.ccm,
-                    expression: "ccm"
-                  }
-                ],
-                staticClass: "custom-select",
-                class: { "is-invalid": _vm.carCCM },
-                attrs: {
-                  id: "selectBox2",
-                  title: "izberite razred prostornine motorja",
-                  required: ""
-                },
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.ccm = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  }
-                }
-              },
-              [
-                _c("option", { attrs: { value: "1" } }, [_vm._v("do 2499")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "2" } }, [
-                  _vm._v("od 2500 do 2999")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "3" } }, [
-                  _vm._v("od 3000 do 3499")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "4" } }, [
-                  _vm._v("od 3500 do 3999")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "5" } }, [_vm._v("nad 4000")])
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "invalid-feedback" }, [
-              _vm._v(
-                "\n                    Izberite razred prostornine\n                "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("fieldset", [
-          _c("div", { staticClass: "row" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-9" }, [
-              _c("div", { staticClass: "custom-control custom-switch" }, [
+        _vm.fuelType
+          ? _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-sm-3 align-self-center" }, [
+                _vm._v("Prva registracija")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-9" }, [
                 _c("input", {
                   directives: [
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dizelTrdiDelci,
-                      expression: "dizelTrdiDelci"
+                      value: _vm.monthYear,
+                      expression: "monthYear"
                     }
                   ],
-                  staticClass: "custom-control-input",
-                  attrs: { type: "checkbox", id: "trdidelci" },
-                  domProps: {
-                    checked: Array.isArray(_vm.dizelTrdiDelci)
-                      ? _vm._i(_vm.dizelTrdiDelci, null) > -1
-                      : _vm.dizelTrdiDelci
+                  staticClass: "form-control",
+                  class: { "is-invalid": _vm.carMonthYear },
+                  attrs: {
+                    type: "text",
+                    id: "monthYear",
+                    "aria-describedby": "emailHelp",
+                    title: "vpišite mesec in leto prve registracije",
+                    required: ""
                   },
+                  domProps: { value: _vm.monthYear },
                   on: {
-                    change: function($event) {
-                      var $$a = _vm.dizelTrdiDelci,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = null,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 && (_vm.dizelTrdiDelci = $$a.concat([$$v]))
-                        } else {
-                          $$i > -1 &&
-                            (_vm.dizelTrdiDelci = $$a
-                              .slice(0, $$i)
-                              .concat($$a.slice($$i + 1)))
-                        }
-                      } else {
-                        _vm.dizelTrdiDelci = $$c
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
                       }
+                      _vm.monthYear = $event.target.value
                     }
                   }
                 }),
                 _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "custom-control-label",
-                    attrs: { for: "trdidelci" }
-                  },
-                  [_vm._v("Izpust trdih delcev nad 0,005 g/km")]
-                )
+                _c("div", { staticClass: "small" }, [
+                  _vm._v(
+                    "\n                    Format: mm/llll\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n                    Vneste datum prve registracije\n                "
+                  )
+                ])
               ])
             ])
-          ])
-        ]),
+          : _vm._e(),
         _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-3 align-self-center" }, [
-            _vm._v("EURO motor")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-9" }, [
-            _c(
-              "select",
-              {
-                directives: [
+        _vm.fuelType
+          ? _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-sm-3 align-self-center" }, [
+                _vm._v("EURO motor")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-9" }, [
+                _c(
+                  "select",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.euroEngine,
-                    expression: "euroEngine"
-                  }
-                ],
-                staticClass: "custom-select",
-                class: { "is-invalid": _vm.carEURO },
-                attrs: {
-                  id: "selectBox3",
-                  title: "izberite tip EURO standarda motorja",
-                  required: ""
-                },
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.euroEngine = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  }
-                }
-              },
-              [
-                _c("option", { attrs: { value: "euro1" } }, [_vm._v("EURO 1")]),
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.euroEngine,
+                        expression: "euroEngine"
+                      }
+                    ],
+                    staticClass: "custom-select",
+                    class: { "is-invalid": _vm.carEURO },
+                    attrs: {
+                      id: "selectBox3",
+                      title: "izberite tip EURO standarda motorja",
+                      required: ""
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.euroEngine = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "" } }, [
+                      _vm._v("Tip motorja")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "0" } }, [
+                      _vm._v("EURO 0,1,2,3")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "1" } }, [_vm._v("EURO 4")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "2" } }, [
+                      _vm._v("EURO 5, 5a, 5b")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "3" } }, [
+                      _vm._v("EURO 6, 6a, 6b")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "4" } }, [
+                      _vm._v("EURO 6c")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "5" } }, [
+                      _vm._v("EURO 6d")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "6" } }, [
+                      _vm._v("višji od EURO 6d")
+                    ])
+                  ]
+                ),
                 _vm._v(" "),
-                _c("option", { attrs: { value: "euro2" } }, [_vm._v("EURO 2")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "euro3" } }, [_vm._v("EURO 3")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "euro4" } }, [_vm._v("EURO 4")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "euro5" } }, [_vm._v("EURO 5")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "euro6" } }, [_vm._v("EURO 6")])
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "invalid-feedback" }, [
-              _vm._v(
-                "\n                    Izberite EURO standard motorja\n                "
-              )
+                _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n                    Izberite EURO standard motorja\n                "
+                  )
+                ])
+              ])
             ])
-          ])
-        ]),
+          : _vm._e(),
         _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-3 align-self-center" }, [
-            _vm._v("Emisije CO2")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-9" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.co2,
-                  expression: "co2"
-                }
-              ],
-              staticClass: "form-control",
-              class: { "is-invalid": _vm.carCO2 },
-              attrs: {
-                type: "text",
-                id: "emission",
-                "aria-describedby": "emailHelp",
-                placeholder: "0",
-                required: ""
-              },
-              domProps: { value: _vm.co2 },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+        _vm.fuelType
+          ? _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-sm-3 align-self-center" }, [
+                _vm._v("Emisije CO2")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-9" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.co2,
+                      expression: "co2"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  class: { "is-invalid": _vm.carCO2 },
+                  attrs: {
+                    type: "text",
+                    id: "emission",
+                    "aria-describedby": "emailHelp",
+                    placeholder: "0",
+                    required: ""
+                  },
+                  domProps: { value: _vm.co2 },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.co2 = $event.target.value
+                    }
                   }
-                  _vm.co2 = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "invalid-feedback" }, [
-              _vm._v(
-                "\n                    Vpišite emisije CO2\n                "
-              )
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n                    Vpišite emisije CO2\n                "
+                  )
+                ])
+              ])
             ])
-          ])
-        ]),
+          : _vm._e(),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-sm-3 align-self-center pad-2" }, [
@@ -40798,7 +40868,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3)]
+              [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)]
             )
           ])
         ]),
@@ -40824,38 +40894,20 @@ var render = function() {
               _vm._v(" "),
               _c("p", [
                 _vm._v(
-                  "\n                    Stopnja DMV: " +
-                    _vm._s(_vm.stopnjaDavka) +
-                    "%"
-                ),
-                _c("br"),
-                _vm._v(
                   "\n                    Znesek DMV: " +
-                    _vm._s(_vm.znesekDavka) +
-                    "€"
-                ),
-                _c("br"),
-                _vm._v(
-                  "\n                    Stopnja pribitka: " +
-                    _vm._s(_vm.stopnjaPribitka) +
-                    "%"
-                ),
-                _c("br"),
-                _vm._v(
-                  "\n                    Znesek pribitka: " +
-                    _vm._s(_vm.znesekPribitka) +
+                    _vm._s(_vm._f("format")(_vm.total)) +
                     "€"
                 ),
                 _c("br"),
                 _vm._v(
                   "\n                    Strošek transporta: " +
-                    _vm._s(_vm.transportCosts) +
+                    _vm._s(_vm._f("format")(_vm.transport.costs)) +
                     "€ + DDV"
                 ),
                 _c("br"),
                 _vm._v(
                   "\n                    Homologacija: " +
-                    _vm._s(_vm.homologacija) +
+                    _vm._s(_vm._f("format")(_vm.homologacija)) +
                     "€"
                 ),
                 _c("br")
@@ -40867,13 +40919,15 @@ var render = function() {
                 _vm._v(
                   "\n                    Končni znesek vozila z davkom in transportom: "
                 ),
-                _c("b", [_vm._v(_vm._s(_vm.skupajDavek) + "€")]),
+                _c("b", [
+                  _vm._v(_vm._s(_vm._f("format")(_vm.grandTotal)) + "€")
+                ]),
                 _c("br"),
                 _c("br"),
                 _vm._v(" "),
                 _c("span", { staticClass: "font-weight-light" }, [
                   _vm._v(
-                    "Končna cena vključuje DMV, DDV, homologacijo, vse stroške uvoza in transporta "
+                    "Končna cena vključuje DMV, DDV, homologacijo, stroške uvoza in transporta "
                   ),
                   _c("i", {
                     staticClass: "fas fa-info-circle",
@@ -40905,25 +40959,10 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _vm._m(4)
+    _vm._m(3)
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("legend", { staticClass: "col-form-label col-sm-3" }, [
-      _vm._v("Trdi delci "),
-      _c("i", {
-        staticClass: "fas fa-info-circle",
-        attrs: {
-          "data-toggle": "diesel-info",
-          title: "Emisija trdih delcev v g/km (samo za dizel)"
-        }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -41345,7 +41384,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("fieldset", { staticClass: "row" }, [
+        _c("fieldset", [
           _c("div", { staticClass: "row" }, [
             _c("legend", { staticClass: "col-form-label col-sm-3" }, [
               _vm._v("Price type")
@@ -41445,29 +41484,36 @@ var render = function() {
                   required: ""
                 },
                 on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.fuel = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  }
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.fuel = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    function($event) {
+                      return _vm.checkFuelType()
+                    }
+                  ]
                 }
               },
               [
+                _c("option", { attrs: { value: "" } }, [_vm._v("Fuel type")]),
+                _vm._v(" "),
                 _c("option", { attrs: { value: "dizel" } }, [_vm._v("Diesel")]),
                 _vm._v(" "),
                 _c("option", { attrs: { value: "elektrika" } }, [
                   _vm._v("Electricity")
                 ]),
                 _vm._v(" "),
-                _c("option", { attrs: { value: "ostalo" } }, [
+                _c("option", { attrs: { value: "benzin" } }, [
                   _vm._v("Petrol(+ rest)")
                 ])
               ]
@@ -41479,236 +41525,184 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "row zero-margin" }, [
-          _c("div", { staticClass: "col-sm-3 align-self-center pad" }, [
-            _vm._v("Engine displacement")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-9" }, [
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.ccm,
-                    expression: "ccm"
-                  }
-                ],
-                staticClass: "custom-select",
-                class: { "is-invalid": _vm.carCCM },
-                attrs: {
-                  id: "selectBox2",
-                  title: "selecte engine displacement class",
-                  required: ""
-                },
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.ccm = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  }
-                }
-              },
-              [
-                _c("option", { attrs: { value: "1" } }, [_vm._v("to 2499")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "2" } }, [
-                  _vm._v("from 2500 to 2999")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "3" } }, [
-                  _vm._v("from 3000 to 3499")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "4" } }, [
-                  _vm._v("from 3500 to 3999")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "5" } }, [_vm._v("above 4000")])
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "invalid-feedback" }, [
-              _vm._v(
-                "\n                    Select displacement class\n                "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("fieldset", [
-          _c("div", { staticClass: "row" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-sm-9" }, [
-              _c("div", { staticClass: "custom-control custom-switch" }, [
+        _vm.fuelType
+          ? _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-sm-3 align-self-center" }, [
+                _vm._v("First registration")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-9" }, [
                 _c("input", {
                   directives: [
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.dizelTrdiDelci,
-                      expression: "dizelTrdiDelci"
+                      value: _vm.monthYear,
+                      expression: "monthYear"
                     }
                   ],
-                  staticClass: "custom-control-input",
-                  attrs: { type: "checkbox", id: "trdidelci" },
-                  domProps: {
-                    checked: Array.isArray(_vm.dizelTrdiDelci)
-                      ? _vm._i(_vm.dizelTrdiDelci, null) > -1
-                      : _vm.dizelTrdiDelci
+                  staticClass: "form-control",
+                  class: { "is-invalid": _vm.carMonthYear },
+                  attrs: {
+                    type: "text",
+                    id: "monthYear",
+                    "aria-describedby": "emailHelp",
+                    title: "month and year of first registration",
+                    required: ""
                   },
+                  domProps: { value: _vm.monthYear },
                   on: {
-                    change: function($event) {
-                      var $$a = _vm.dizelTrdiDelci,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = null,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 && (_vm.dizelTrdiDelci = $$a.concat([$$v]))
-                        } else {
-                          $$i > -1 &&
-                            (_vm.dizelTrdiDelci = $$a
-                              .slice(0, $$i)
-                              .concat($$a.slice($$i + 1)))
-                        }
-                      } else {
-                        _vm.dizelTrdiDelci = $$c
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
                       }
+                      _vm.monthYear = $event.target.value
                     }
                   }
                 }),
                 _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "custom-control-label",
-                    attrs: { for: "trdidelci" }
-                  },
-                  [_vm._v("Solid particles emission above 0,005 g/km")]
-                )
+                _c("div", { staticClass: "small" }, [
+                  _vm._v(
+                    "\n                    Format: mm/yyyy\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n                    Insert date of first registration\n                "
+                  )
+                ])
               ])
             ])
-          ])
-        ]),
+          : _vm._e(),
         _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-3 align-self-center" }, [
-            _vm._v("EURO engine")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-9" }, [
-            _c(
-              "select",
-              {
-                directives: [
+        _vm.fuelType
+          ? _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-sm-3 align-self-center" }, [
+                _vm._v("EURO motor")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-9" }, [
+                _c(
+                  "select",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.euroEngine,
-                    expression: "euroEngine"
-                  }
-                ],
-                staticClass: "custom-select",
-                class: { "is-invalid": _vm.carEURO },
-                attrs: {
-                  id: "selectBox3",
-                  title: "select EURO engine standard",
-                  required: ""
-                },
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.euroEngine = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  }
-                }
-              },
-              [
-                _c("option", { attrs: { value: "euro1" } }, [_vm._v("EURO 1")]),
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.euroEngine,
+                        expression: "euroEngine"
+                      }
+                    ],
+                    staticClass: "custom-select",
+                    class: { "is-invalid": _vm.carEURO },
+                    attrs: {
+                      id: "selectBox3",
+                      title: "select EURO engine standard",
+                      required: ""
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.euroEngine = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "" } }, [
+                      _vm._v("Engine standard")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "0" } }, [
+                      _vm._v("EURO 0,1,2,3")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "1" } }, [_vm._v("EURO 4")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "2" } }, [
+                      _vm._v("EURO 5, 5a, 5b")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "3" } }, [
+                      _vm._v("EURO 6, 6a, 6b")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "4" } }, [
+                      _vm._v("EURO 6c")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "5" } }, [
+                      _vm._v("EURO 6d")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "6" } }, [
+                      _vm._v("higher than EURO 6d")
+                    ])
+                  ]
+                ),
                 _vm._v(" "),
-                _c("option", { attrs: { value: "euro2" } }, [_vm._v("EURO 2")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "euro3" } }, [_vm._v("EURO 3")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "euro4" } }, [_vm._v("EURO 4")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "euro5" } }, [_vm._v("EURO 5")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "euro6" } }, [_vm._v("EURO 6")])
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "invalid-feedback" }, [
-              _vm._v(
-                "\n                    Select EURO engine standard\n                "
-              )
+                _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n                    Choose EURO engine standard\n                "
+                  )
+                ])
+              ])
             ])
-          ])
-        ]),
+          : _vm._e(),
         _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-3 align-self-center" }, [
-            _vm._v("CO2 emissions")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-9" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.co2,
-                  expression: "co2"
-                }
-              ],
-              staticClass: "form-control",
-              class: { "is-invalid": _vm.carCO2 },
-              attrs: {
-                type: "text",
-                id: "emission",
-                "aria-describedby": "emailHelp",
-                placeholder: "0",
-                required: ""
-              },
-              domProps: { value: _vm.co2 },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+        _vm.fuelType
+          ? _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-sm-3 align-self-center" }, [
+                _vm._v("CO2 emissions")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-9" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.co2,
+                      expression: "co2"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  class: { "is-invalid": _vm.carCO2 },
+                  attrs: {
+                    type: "text",
+                    id: "emission",
+                    "aria-describedby": "emailHelp",
+                    placeholder: "0",
+                    required: ""
+                  },
+                  domProps: { value: _vm.co2 },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.co2 = $event.target.value
+                    }
                   }
-                  _vm.co2 = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "invalid-feedback" }, [
-              _vm._v(
-                "\n                    Insert CO2 emissions\n                "
-              )
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n                    Insert CO2 emissions\n                "
+                  )
+                ])
+              ])
             ])
-          ])
-        ]),
+          : _vm._e(),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-sm-3 align-self-center pad-2" }, [
@@ -41749,7 +41743,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3)]
+              [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)]
             )
           ])
         ]),
@@ -41777,38 +41771,20 @@ var render = function() {
               _vm._v(" "),
               _c("p", [
                 _vm._v(
-                  "\n                    Tax rate: " +
-                    _vm._s(_vm.stopnjaDavka) +
-                    "%"
-                ),
-                _c("br"),
-                _vm._v(
-                  "\n                    Tax amount: " +
-                    _vm._s(_vm.znesekDavka) +
-                    "€"
-                ),
-                _c("br"),
-                _vm._v(
-                  "\n                    Rate of mark-up: " +
-                    _vm._s(_vm.stopnjaPribitka) +
-                    "%"
-                ),
-                _c("br"),
-                _vm._v(
-                  "\n                    The amount of mark-up: " +
-                    _vm._s(_vm.znesekPribitka) +
+                  "\n                    DMV Tax: " +
+                    _vm._s(_vm._f("format")(_vm.total)) +
                     "€"
                 ),
                 _c("br"),
                 _vm._v(
                   "\n                    Transportation costs: " +
-                    _vm._s(_vm.transportCosts) +
-                    "€ + VAT"
+                    _vm._s(_vm._f("format")(_vm.transport.costs)) +
+                    "€ + DDV"
                 ),
                 _c("br"),
                 _vm._v(
                   "\n                    Homologation: " +
-                    _vm._s(_vm.homologacija) +
+                    _vm._s(_vm._f("format")(_vm.homologacija)) +
                     "€"
                 ),
                 _c("br")
@@ -41819,7 +41795,9 @@ var render = function() {
                 _vm._v(
                   "\n                    Final vehicle costs including taxes and transportation: "
                 ),
-                _c("b", [_vm._v(_vm._s(_vm.skupajDavek) + "€")]),
+                _c("b", [
+                  _vm._v(_vm._s(_vm._f("format")(_vm.grandTotal)) + "€")
+                ]),
                 _c("br"),
                 _c("br"),
                 _vm._v(" "),
@@ -41857,25 +41835,10 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _vm._m(4)
+    _vm._m(3)
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("legend", { staticClass: "col-form-label col-sm-3" }, [
-      _vm._v("Solid particles "),
-      _c("i", {
-        staticClass: "fas fa-info-circle",
-        attrs: {
-          "data-toggle": "diesel-info",
-          title: "solid particle emission in g/km (diesel cars only)"
-        }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -41915,7 +41878,7 @@ var staticRenderFns = [
     return _c(
       "optgroup",
       { attrs: { label: "Belgium", "data-max-options": "1" } },
-      [_c("option", { attrs: { value: "8" } }, [_vm._v("Celotna država")])]
+      [_c("option", { attrs: { value: "8" } }, [_vm._v("Whole country")])]
     )
   },
   function() {
@@ -41932,9 +41895,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("option", { attrs: { value: "10" } }, [_vm._v("Groningen")]),
         _vm._v(" "),
-        _c("option", { attrs: { value: "11" } }, [
-          _vm._v("Ostale destinacie v NL")
-        ])
+        _c("option", { attrs: { value: "11" } }, [_vm._v("Other cities in NL")])
       ]
     )
   },
