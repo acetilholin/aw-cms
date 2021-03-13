@@ -822,4 +822,9 @@ and (min-device-width : 1630px) {
         min-height: 700px !important;
     }
 }
-
+@media only screen
+and (min-device-width : 2300px) {
+    .card {
+        min-height: 830px !important;
+    }
+}

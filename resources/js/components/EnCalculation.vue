@@ -40,12 +40,15 @@
             <div class="row" v-if="fuelType">
                 <div class="col-sm-3 align-self-center">First registration</div>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" v-bind:class="{ 'is-invalid': carMonthYear }" id="monthYear" v-model="monthYear" aria-describedby="emailHelp" title="month and year of first registration" required>
+                    <input type="text" class="form-control" v-bind:class="{ 'is-invalid': carMonthYear || monthYearFormat }" id="monthYear" v-model="monthYear" aria-describedby="emailHelp" title="month and year of first registration" required>
                     <div class="small">
-                        Format: mm/yyyy
+                        Format: MM/YYYY
                     </div>
-                    <div class="invalid-feedback">
+                    <div class="invalid-feedback" v-if="carMonthYear">
                         Insert date of first registration
+                    </div>
+                    <div class="invalid-feedback" v-if="monthYearFormat">
+                        Wrong format
                     </div>
                 </div>
             </div>
@@ -150,7 +153,7 @@
         data() {
             return {
                 priceGross:0, priceNett: 0, provision: 590, otherExpenses: 130, homologacija: 102,
-                price: 0, endPrice: 0, carMonthYear: 0,
+                price: 0, endPrice: 0, carMonthYear: 0, monthYearFormat: false,
                 fuel: '',
                 euroEngine: '',
                 co2: 0,
@@ -308,7 +311,7 @@
             },
             calculate() {
                 this.transport = this.getTransportCosts(this.location)
-
+                let pattern = /^(0[1-9]|1[012])\/\d{4}$/
 
                 if (this.fuel !== 'elektrika') {
                     if (this.checkYearFaktor(this.monthYear)) {
@@ -345,11 +348,16 @@
                 this.carPrice = this.price === 0
                 this.carFuel = this.fuel === ''
                 this.carMonthYear = this.monthYear === ''
+
+                if (this.monthYear !== '') {
+                    this.monthYearFormat = !pattern.test(this.monthYear)
+                }
+
                 this.carEURO = this.euroEngine === ''
                 this.carCO2 = this.fuel !== 'elektrika' && this.co2 === 0
 
                 if (this.fuel !== 'elektrika') {
-                    this.show = this.carPrice === false && this.carFuel === false && this.carEURO === false && this.carCO2 === false && this.carMonthYear === false
+                    this.show = this.carPrice === false && this.carFuel === false && this.carEURO === false && this.carCO2 === false && this.carMonthYear === false && this.monthYearFormat === false
                 } else {
                     this.show = this.carPrice === false && this.carFuel === false
                 }

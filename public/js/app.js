@@ -2079,6 +2079,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Calculation',
   data: function data() {
@@ -2091,6 +2094,7 @@ __webpack_require__.r(__webpack_exports__);
       price: 0,
       endPrice: 0,
       carMonthYear: 0,
+      monthYearFormat: false,
       fuel: '',
       euroEngine: '',
       co2: 0,
@@ -2265,6 +2269,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     calculate: function calculate() {
       this.transport = this.getTransportCosts(this.location);
+      var pattern = /^(0[1-9]|1[012])\/\d{4}$/;
 
       if (this.fuel !== 'elektrika') {
         if (this.checkYearFaktor(this.monthYear)) {
@@ -2297,11 +2302,16 @@ __webpack_require__.r(__webpack_exports__);
       this.carPrice = this.price === 0;
       this.carFuel = this.fuel === '';
       this.carMonthYear = this.monthYear === '';
+
+      if (this.monthYear !== '') {
+        this.monthYearFormat = !pattern.test(this.monthYear);
+      }
+
       this.carEURO = this.euroEngine === '';
       this.carCO2 = this.fuel !== 'elektrika' && this.co2 === 0;
 
       if (this.fuel !== 'elektrika') {
-        this.show = this.carPrice === false && this.carFuel === false && this.carEURO === false && this.carCO2 === false && this.carMonthYear === false;
+        this.show = this.carPrice === false && this.carFuel === false && this.carEURO === false && this.carCO2 === false && this.carMonthYear === false && this.monthYearFormat === false;
       } else {
         this.show = this.carPrice === false && this.carFuel === false;
       }
@@ -2610,6 +2620,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "EnCalculation",
   data: function data() {
@@ -2622,6 +2635,7 @@ __webpack_require__.r(__webpack_exports__);
       price: 0,
       endPrice: 0,
       carMonthYear: 0,
+      monthYearFormat: false,
       fuel: '',
       euroEngine: '',
       co2: 0,
@@ -2796,6 +2810,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     calculate: function calculate() {
       this.transport = this.getTransportCosts(this.location);
+      var pattern = /^(0[1-9]|1[012])\/\d{4}$/;
 
       if (this.fuel !== 'elektrika') {
         if (this.checkYearFaktor(this.monthYear)) {
@@ -2828,11 +2843,16 @@ __webpack_require__.r(__webpack_exports__);
       this.carPrice = this.price === 0;
       this.carFuel = this.fuel === '';
       this.carMonthYear = this.monthYear === '';
+
+      if (this.monthYear !== '') {
+        this.monthYearFormat = !pattern.test(this.monthYear);
+      }
+
       this.carEURO = this.euroEngine === '';
       this.carCO2 = this.fuel !== 'elektrika' && this.co2 === 0;
 
       if (this.fuel !== 'elektrika') {
-        this.show = this.carPrice === false && this.carFuel === false && this.carEURO === false && this.carCO2 === false && this.carMonthYear === false;
+        this.show = this.carPrice === false && this.carFuel === false && this.carEURO === false && this.carCO2 === false && this.carMonthYear === false && this.monthYearFormat === false;
       } else {
         this.show = this.carPrice === false && this.carFuel === false;
       }
@@ -40667,7 +40687,9 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  class: { "is-invalid": _vm.carMonthYear },
+                  class: {
+                    "is-invalid": _vm.carMonthYear || _vm.monthYearFormat
+                  },
                   attrs: {
                     type: "text",
                     id: "monthYear",
@@ -40688,15 +40710,25 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "small" }, [
                   _vm._v(
-                    "\n                    Format: mm/llll\n                "
+                    "\n                    Format: MM/LLLL\n                "
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "invalid-feedback" }, [
-                  _vm._v(
-                    "\n                    Vneste datum prve registracije\n                "
-                  )
-                ])
+                _vm.carMonthYear
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                    Vneste datum prve registracije\n                "
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.monthYearFormat
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                    Napačen format\n                "
+                      )
+                    ])
+                  : _vm._e()
               ])
             ])
           : _vm._e(),
@@ -41542,7 +41574,9 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  class: { "is-invalid": _vm.carMonthYear },
+                  class: {
+                    "is-invalid": _vm.carMonthYear || _vm.monthYearFormat
+                  },
                   attrs: {
                     type: "text",
                     id: "monthYear",
@@ -41563,15 +41597,25 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "small" }, [
                   _vm._v(
-                    "\n                    Format: mm/yyyy\n                "
+                    "\n                    Format: MM/YYYY\n                "
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "invalid-feedback" }, [
-                  _vm._v(
-                    "\n                    Insert date of first registration\n                "
-                  )
-                ])
+                _vm.carMonthYear
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                    Insert date of first registration\n                "
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.monthYearFormat
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n                    Wrong format\n                "
+                      )
+                    ])
+                  : _vm._e()
               ])
             ])
           : _vm._e(),
