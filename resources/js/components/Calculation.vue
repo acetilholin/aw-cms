@@ -123,7 +123,7 @@
         </div>
         <div class="col-md-6">
             Davek na motorna vozila - DMV<br>
-            <a class="modal-title" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <a class="modal-title" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 Preberi več...
             </a>
             <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">

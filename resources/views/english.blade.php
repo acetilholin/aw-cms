@@ -3,7 +3,7 @@
     <div id="home">
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="{{ asset('pictures/logo-1.png') }}"></a>
+                <a class="navbar-brand" href="#"><img src="{{ asset('pictures/logo-1.png') }}" alt="logo"></a>
                 <button class="navbar-toggler second-button" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                         aria-controls="navbarSupportedContent23" aria-expanded="false" aria-label="Toggle navigation">
                     <div class="animated-icon2"><span></span><span></span><span></span><span></span></div>
@@ -153,7 +153,7 @@
                                         @if((boolean)$car->new === true)
                                             <div class="ribbon"><span>NEW</span></div>
                                         @endif
-                                        <h4>{{ $car->title }}</h4>
+                                        <h5 class="text-red">{{ $car->title }}</h5>
                                         <h5>{{ $car->subtitle }}</h5>
                                         <h5>
                                             @if($car->price === trans('messages.CFP'))
@@ -195,7 +195,6 @@
                 <li> We take care of the motor vehicle tax "DMV" and the certification/technical inspection of the vehicle</li>
                 <li> Paintwork and/or repair is offered at an additional cost</li>
                 <li> Internal deep cleaning or ozone cleaning (smoke smell) of vehicle is also subject to an additional charge</li>
-                </p>
                 <button class="btn btn-gray-costs" style="cursor: pointer" id="accordion" data-toggle="collapse" data-target="#appeng" aria-expanded="true" aria-controls="collapseOne">Costs calculation</button>
             </div>
             <div id="appeng" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
@@ -207,7 +206,7 @@
         <footer>
             <div class="row">
                 <div class="col-md-5">
-                    <img src="{{ asset('pictures/logo-1.png') }}">
+                    <img src="{{ asset('pictures/logo-1.png') }}" alt="logo">
                     <p>AVTO WELT d.o.o.<br>Premium selection &amp; Fair price</p>
                     <strong>Address</strong>
                     <p>Vanganelska cesta 5,<br>6000 Koper</p>

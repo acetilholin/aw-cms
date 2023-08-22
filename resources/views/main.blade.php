@@ -51,7 +51,7 @@
             </div>
             @include('messages.info')
             @yield('content')
-            <table class="table table-font text-center table-hover mb-5">
+            <table class="table table-font text-center table-hover mb-5" id="cars">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -71,7 +71,7 @@
                     @if((boolean)$car->hidden === true)
                         <tr class="background">
                     @else
-                        <tr>
+                        <tr id="{{ $number }}">
                     @endif
                         <th scope="row">{{ $number++ }}</th>
                         <td>{{ $car->title }}</td>
@@ -104,8 +104,8 @@
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
                                     @if((boolean)$car->hidden === false)
-                                    <a class="edit dropdown-item" id="{{ $car->id }}">
-                                        <i class="far fa-edit edit-style" style="font-size: 1.3rem; cursor: pointer" title="Uredi"></i>
+                                    <a class="edit dropdown-item" id="{{ $car->id }}" style="cursor: pointer">
+                                        <i class="far fa-edit edit-style" style="font-size: 1.3rem;" title="Uredi"></i>
                                         Uredi
                                     </a>
                                     <a href="{{ route('showOrHide', $car->id) }}" class="dropdown-item" id="{{ $car->id }}">
@@ -234,6 +234,40 @@
 <script src="{!! asset('js/bootstrap.min.js') !!}"></script>
 
 <script>
+
+    $('document').ready(function(){
+
+        var fixHelperModified = function(e, tr) {
+                var $originals = tr.children();
+                var $helper = tr.clone();
+                $helper.children().each(function(index) {
+                    $(this).width($originals.eq(index).width())
+                });
+                return $helper;
+            },
+            updateIndex = function(e, ui) {
+                $('td.index', ui.item.parent()).each(function (i) {
+                    $(this).html(i+1);
+                });
+                $('input[type=text]', ui.item.parent()).each(function (i) {
+                    $(this).val(i + 1);
+                });
+            };
+
+        $("#cars tbody").sortable({
+            helper: fixHelperModified,
+            stop: updateIndex
+        }).disableSelection();
+
+        $("tbody").sortable({
+            distance: 5,
+            delay: 100,
+            opacity: 0.6,
+            cursor: 'move',
+            update: function() {}
+        });
+    });
+
     $(function() {
         $("#message").fadeTo(2000, 500).slideUp(500, function () {
             $("#message").slideUp(500);

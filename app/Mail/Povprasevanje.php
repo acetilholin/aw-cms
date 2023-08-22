@@ -11,8 +11,7 @@ class Povprasevanje extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
-    public $email;
+    public $data, $email, $recipient1, $recipient2;
 
     /**
      * Create a new message instance.

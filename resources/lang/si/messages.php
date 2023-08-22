@@ -18,6 +18,7 @@ return [
     'tokenExpired' => 'Žeton je potekel',
     'wrongToken' => 'Napačen žeton',
     'accountNotConfirmed' => 'Vaš račun ni potrjen',
+    'reachedMaxLoginAttempts' => 'Dosegli ste max. dovoljeno število poizkusov prijave (3).',
     'tokenSent' => 'Žeton je poslan na vaš email',
     'registrationSuccessful' => 'Registracija je uspela',
     'emailAlreadyExists' => 'Email že obstaja',

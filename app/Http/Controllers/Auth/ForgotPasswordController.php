@@ -31,6 +31,12 @@ class ForgotPasswordController extends Controller
             return back()->with('error', trans('messages.emailNotExists'));
         } else {
             $approved = User::where('email', $email)->pluck('approved')->toArray();
+            $locked = $user['locked'];
+
+            if ($locked > 2) {
+                return back()->with('error', trans('messages.reachedMaxLoginAttempts'));
+            }
+
             if (!$approved[0]) {
                 return back()->with('error', trans('messages.accountNotConfirmed'));
             } else {

@@ -63,14 +63,27 @@ class LoginController extends Controller
         if (!$exists) {
             return back()->with('error', trans('messages.emailNotExists'));
         } else {
-            $approved = User::where('email', $email)->pluck('approved')->toArray();
+            $user = $exists->getAttributes();
+            $locked = $user['locked'];
+
+            if ($locked > 2) {
+                return back()->with('error', trans('messages.reachedMaxLoginAttempts'));
+            }
+            if ($exists->getAttributes()) {
+                $approved = User::where('email', $email)->pluck('approved')->toArray();
+            }
             if (!(boolean) $approved[0]) {
                 return back()->with('error', trans('messages.accountNotConfirmed'));
             }
 
             $userPassword = User::where('email', $email)->pluck('password')->toArray();
             if (!Hash::check($password, $userPassword[0])) {
-                return back()->with('error', trans('messages.wrongPassword'));
+                $locked++;
+                User::where('email', $email)->update(['locked' => $locked]);
+                return redirect()->back()->with([
+                    'error' => trans('messages.wrongPassword'),
+                    'poizkus' => 1
+                ]);
             } else {
                 session(['email' => $email]);
                 $helper->authenticate($email, $password);

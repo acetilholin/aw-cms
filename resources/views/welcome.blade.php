@@ -3,7 +3,7 @@
     <div id="home">
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="{{ asset('pictures/logo-1.png') }}"></a>
+                <a class="navbar-brand" href="#"><img src="{{ asset('pictures/logo-1.png') }}" alt="logo"></a>
                 <button class="navbar-toggler second-button" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                         aria-controls="navbarSupportedContent23" aria-expanded="false" aria-label="Toggle navigation">
                     <div class="animated-icon2"><span></span><span></span><span></span><span></span></div>
@@ -161,7 +161,7 @@
                                         @if((boolean)$car->new)
                                             <div class="ribbon"><span>NOVO</span></div>
                                         @endif
-                                        <h4>{{ $car->title }}</h4>
+                                        <h5 class="text-red">{{ $car->title }}</h5>
                                         <h5>{{ $car->subtitle }}</h5>
                                         <h5>
                                             @if((boolean)$car->call_for_price)
@@ -205,7 +205,6 @@
                 <li> DMV in homologacija</li>
                 <li> Morebitna ličarska dela in/ali poliranje - doplačilo</li>
                 <li> Morebitno notranje globinsko čiščenje vozila - doplačilo</li>
-                </p>
                 <br><br>
                 <button class="btn btn-gray-costs" style="cursor: pointer" id="accordion" data-toggle="collapse" data-target="#app" aria-expanded="true" aria-controls="collapseOne">Izračun stroškov</button>
             </div>
@@ -218,7 +217,7 @@
         <footer>
             <div class="row">
                 <div class="col-md-4">
-                    <img src="{{ asset('pictures/logo-1.png') }}">
+                    <img src="{{ asset('pictures/logo-1.png') }}" alt="logo">
                     <p>AVTO WELT d.o.o.<br>Premium selection &amp; Fair price</p>
                     <strong>Naslov</strong>
                     <p>Vanganelska cesta 5,<br>6000 Koper</p>
