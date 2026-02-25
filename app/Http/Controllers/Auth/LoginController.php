@@ -90,7 +90,11 @@ class LoginController extends Controller
                 $dateTime = Carbon::now("Europe/Ljubljana")->format('Y-m-d H:i');
                 $helper->lastSeen($email, $dateTime);
                 $helper->createLoginCookie($email);
-                $allCars = Car::all();
+
+                $allCars = Car::orderBy('new', 'DESC')
+                    ->orderBy('created_at', 'DESC')
+                    ->get();
+
                 return view('main', [
                     'cars' => $allCars
                 ]);

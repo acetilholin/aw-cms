@@ -11,6 +11,7 @@ class WelcomePageController extends Controller
     {
         $cars = Car::where('hidden', 0)
             ->orderBy('new', 'DESC')
+            ->orderBy('created_at', 'DESC')
             ->get();
 
         $sloView = 'welcome';

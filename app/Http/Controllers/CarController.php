@@ -19,7 +19,9 @@ class CarController extends Controller
      */
     public function index()
     {
-        $allCars = Car::all();
+        $allCars = Car::orderBy('new', 'DESC')
+            ->orderBy('created_at', 'DESC')
+            ->get();
         return view('main', [
             'cars' => $allCars
         ]);
