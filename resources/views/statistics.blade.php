@@ -41,14 +41,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a class="navbar-brand" href="#"><img src="{{ asset('pictures/logo-1.png') }}" class="img-spacing" style="height: 40px"></a>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ route('statistics') }}">Statistika<span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
-        <div class="form-inline my-2 my-lg-0">
-            <span class="m-item"><a href="{{ route('main') }}"><i class="fas fa-car"></i></a></span>
-            <span class="m-item"><a href="{{ route('users') }}"><i class="fas fa-users"></i></a></span>
+        <div class="form-inline my-2 my-lg-0 ml-auto">
+            @unless(request()->routeIs('statistics'))
+                <span class="m-item"><a href="{{ route('statistics') }}"><i class="fas fa-chart-line"></i></a></span>
+            @endunless
+            @unless(request()->routeIs('main'))
+                <span class="m-item"><a href="{{ route('main') }}"><i class="fas fa-car"></i></a></span>
+            @endunless
+            @unless(request()->routeIs('users'))
+                <span class="m-item"><a href="{{ route('users') }}"><i class="fas fa-users"></i></a></span>
+            @endunless
+            @unless(request()->routeIs('reservations'))
+                <span class="m-item"><a href="{{ route('reservations') }}"><i class="fas fa-shuttle-van"></i></a></span>
+            @endunless
             <form action="{{ route('logout') }}">
                 <button class="btn btn-gray btn-sm" type="submit" style="margin: 0">Odjava</button>
             </form>
@@ -58,18 +63,34 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="form-row mb-2 mt-1">
-                <div class="col-md-3 mb-2 form-group">
-                    <input type="text" class="form-control" id="datepicker1" name="dateFrom" aria-describedby="emailHelp" placeholder="Datum od" required>
-                </div>
-                <div class="col-md-3 mb-2 form-group">
-                    <input type="text" class="form-control" id="datepicker2" name="dateTo" aria-describedby="emailHelp" placeholder="Datum do" required>
+            <div class="section-head">
+                <div>
+                    <h5 class="section-title">Statistika</h5>
+                    <div class="section-underline"></div>
                 </div>
             </div>
-            <button class="btn btn-calculate" id="getData"><i class="fas fa-search"></i></button>
-            <div class="active-users">
-                Trenutno na strani: <span class="badge badge-primary" role="button" data-toggle="popover" id="active-users" data-placement="bottom" title="Obiskovalci na strani"
-                                          data-content=" @if($liveUsers > 0)
+
+            <div class="table-card stat-filter mb-3">
+                <div class="form-row align-items-center">
+                    <div class="col-md-3 mb-2 mb-md-0">
+                        <input type="text" class="form-control" id="datepicker1" name="dateFrom" aria-describedby="emailHelp" placeholder="Datum od" required>
+                    </div>
+                    <div class="col-md-3 mb-2 mb-md-0">
+                        <input type="text" class="form-control" id="datepicker2" name="dateTo" aria-describedby="emailHelp" placeholder="Datum do" required>
+                    </div>
+                    <div class="col-md-auto">
+                        <button class="btn btn-calculate" id="getData" title="Išči"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row stat-cards">
+                <div class="col-md-4 mb-3">
+                    <div class="table-card stat-card">
+                        <div class="stat-label">Trenutno na strani</div>
+                        <div class="stat-value">
+                            <span class="badge badge-primary" role="button" data-toggle="popover" id="active-users" data-placement="bottom" title="Obiskovalci na strani"
+                                  data-content=" @if($liveUsers > 0)
                                                 @foreach($liveDetails as $details)
                                                     Država: {{ $details[0] }}<br>
                                                     Naprava: {{ strtolower($details[1]) }}<br>
@@ -77,18 +98,33 @@
                                                 @endforeach
                                                 @else
                                                     Na strani ni obiskovalcev.
-                                                @endif">{{ $liveUsers }}
-                                    </span>
+                                                @endif">{{ $liveUsers }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="table-card stat-card">
+                        <div class="stat-label">Vseh obiskov</div>
+                        <div class="stat-value">
+                            <span id="total-visitors"></span>
+                            <span id="visitors-hide">{{ $totalVisitors }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="table-card stat-card">
+                        <div class="stat-label">Povprečno na dan</div>
+                        <div class="stat-value">
+                            <span id="average"></span>
+                            <span id="average-hide">{{ $avg }}</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <br>
-            <div class="text-center">
-                <span class="text-red">Vseh obiskov:</span>
-                <span id="total-visitors"></span>
-                <span id="visitors-hide">{{ $totalVisitors }}</span>
-                <div class="small" id="average-hide">Povprečno {{ $avg }} / dan</div>
-                <div class="small" id="average"></div>
+
+            <div class="table-card stat-chart mb-5">
+            <canvas id="chartVisits" height="40vh" width="100vw"></canvas>
             </div>
-            <canvas id="chartVisits" height="40vh" width="100vw" class="mb-2"></canvas>
         </div>
     </div>
 </div>
@@ -169,7 +205,7 @@
               var days = results.days;
 
               $('#total-visitors').html(results.totalVisitors);
-              $('#average').html('Povprečno '+ results.avg + ' / dan');
+              $('#average').html(results.avg);
               $('#visitors-hide').hide();
               $('#average-hide').hide();
                 createVisitsGraph(labels,data, days);
@@ -189,7 +225,11 @@
                 datasets: [{
                     label: 'Obiskov na strani v obdobju ' + days + ' dni',
                     data: data,
-                    borderWidth: 1,
+                    borderWidth: 2,
+                    lineTension: .3,
+                    pointRadius: 2,
+                    pointBackgroundColor: '#ed1c24',
+                    backgroundColor: 'rgba(237, 28, 36, 0.08)',
                     borderColor: '#ed1c24'
                 }]
             },

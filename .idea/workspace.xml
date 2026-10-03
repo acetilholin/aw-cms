@@ -1,11 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="683ee3bd-9800-463e-a565-5d8f78a4a3a0" name="Default Changelist" comment="">
+    <list default="true" id="683ee3bd-9800-463e-a565-5d8f78a4a3a0" name="Default Changelist" comment="camper reservation">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/Laravel_30_09_2026__09_00.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/laravel-idea.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/laravel-plugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Calendar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Helpers/CamperAvailabilityHelper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CalendarController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Mail/CamperInquiry.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Reservation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Season.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Setting.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/extras.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2026_09_30_125818_create_reservations_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2026_09_30_131802_create_seasons_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2026_09_30_131803_create_calendars_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2026_10_01_090000_create_settings_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/reservation.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/Camper.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/camper-inquiry.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/master.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/reservation.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/aw-cms.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aw-cms.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mail/Contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/Contact.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Helpers/UserHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/UserHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContactController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StatisticsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StatisticsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WelcomePageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WelcomePageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/Povprasevanje.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/Povprasevanje.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/custom-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/custom-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/users.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/users.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lightbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/lightbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/si/cars.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/sl/cars.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/si/cookies.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/sl/cookies.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/si/inquiry.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/sl/inquiry.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/si/messages.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/sl/messages.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/inquiry.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/inquiry.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/main/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/statistics.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/statistics.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +71,15 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
-      <executable />
+      <execution>
+        <execution>
+          <execution>
+            <execution>
+              <execution />
+            </execution>
+          </execution>
+        </execution>
+      </execution>
     </execution>
   </component>
   <component name="DatabaseView">
@@ -37,13 +102,88 @@
         <option value="JavaScript File" />
         <option value="Vue Single File Component" />
         <option value="CSS File" />
+        <option value="PHP File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0000000000000002" />
+      <entry key="MS500" value="1.0014666759516215" />
+      <entry key="S2" value="1.4391288259530817" />
+      <entry key="S5" value="2.388978996585562" />
+      <entry key="S10" value="3.040816503031706" />
+      <entry key="S30" value="3.6383074538850013" />
+      <entry key="S60" value="3.8134747966928257" />
+      <entry key="M2" value="3.9495200854888335" />
+      <entry key="M5" value="5.371314107645587" />
+      <entry key="M10" value="8.829846639799765" />
+      <entry key="M15" value="11.75226778573176" />
+      <entry key="M30" value="17.277596870977447" />
+      <entry key="H1" value="21.975480420314355" />
+      <entry key="H2" value="25.27650638036381" />
+      <entry key="H4" value="30.909702287219176" />
+      <entry key="D1" value="95.99514621163095" />
+      <entry key="W1" value="139.42504815564288" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="3.2293775186739413E-247" />
+      <entry key="M2" value="5.682761236551673E-124" />
+      <entry key="M5" value="5.034373749661965E-50" />
+      <entry key="M10" value="2.280982672252285E-25" />
+      <entry key="M15" value="3.93375870293281E-17" />
+      <entry key="M30" value="7.6938262090427E-9" />
+      <entry key="H1" value="1.4717334520359104E-4" />
+      <entry key="H2" value="0.03690002708509145" />
+      <entry key="H4" value="0.7761727889463894" />
+      <entry key="D1" value="11.060202621182542" />
+      <entry key="W1" value="17.58369403041615" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.3109706683779882E-14" />
+      <entry key="MS500" value="0.002933472914041751" />
+      <entry key="S2" value="0.6249513467665838" />
+      <entry key="S5" value="1.895737662716761" />
+      <entry key="S10" value="2.7518433150623913" />
+      <entry key="S30" value="3.53060682346796" />
+      <entry key="S60" value="3.758058116768561" />
+      <entry key="M2" value="3.9213962073316604" />
+      <entry key="M5" value="5.359803593047271" />
+      <entry key="M10" value="8.82383610890281" />
+      <entry key="M15" value="11.748096839281304" />
+      <entry key="M30" value="17.27533602760175" />
+      <entry key="H1" value="21.974415785501918" />
+      <entry key="H2" value="25.31275780731443" />
+      <entry key="H4" value="31.68539022591115" />
+      <entry key="D1" value="107.0548950311661" />
+      <entry key="W1" value="157.00864293067593" />
+    </decayedShown>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/vendor/composer" />
@@ -134,19 +274,59 @@
       <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/vendor/fedeisas/laravel-mail-css-inliner" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/madewithlove/illuminate-psr-cache-bridge" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-analytics" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/google/auth" />
+      <path value="$PROJECT_DIR$/vendor/google/apiclient" />
+      <path value="$PROJECT_DIR$/vendor/google/apiclient-services" />
+      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/vendor/kylekatarnls/update-helper" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
     </include_path>
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="1SEuvx8LF2VLDbFUf1qdczdoCgM" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.laravel_idea.move_run_console_settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/aw-cms&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PhpStorm 2021.2.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\aw-cms\public\icons" />
@@ -159,24 +339,21 @@
       <recent name="C:\xampp\htdocs\aw-cms\public\videos" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-PS-262.8665.325" />
+        <option value="bundled-php-predefined-a98d8de5180a-ff90ddd8021d-com.jetbrains.php.sharedIndexes-PS-262.8665.325" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -221,23 +398,102 @@
       <workItem from="1573834532497" duration="11979000" />
       <workItem from="1573850171034" duration="460000" />
       <workItem from="1574276358943" duration="1284000" />
+      <workItem from="1610043593584" duration="158000" />
+      <workItem from="1610213816945" duration="504000" />
+      <workItem from="1610230144171" duration="20000" />
+      <workItem from="1610478442430" duration="479000" />
+      <workItem from="1611432015474" duration="25000" />
+      <workItem from="1612014899230" duration="43000" />
+      <workItem from="1612095857137" duration="268000" />
+      <workItem from="1614541124105" duration="5004000" />
+      <workItem from="1614627098528" duration="6345000" />
+      <workItem from="1614636771260" duration="472000" />
+      <workItem from="1614712984709" duration="4041000" />
+      <workItem from="1614795753434" duration="8762000" />
+      <workItem from="1615050443593" duration="1240000" />
+      <workItem from="1615120253541" duration="557000" />
+      <workItem from="1615495249718" duration="1027000" />
+      <workItem from="1615571217058" duration="746000" />
+      <workItem from="1615652212365" duration="1093000" />
+      <workItem from="1615661579644" duration="3070000" />
+      <workItem from="1615746817791" duration="317000" />
+      <workItem from="1618080598776" duration="287000" />
+      <workItem from="1618081034731" duration="192000" />
+      <workItem from="1618084203510" duration="107000" />
+      <workItem from="1618084407073" duration="592000" />
+      <workItem from="1618141906248" duration="40000" />
+      <workItem from="1619463489791" duration="1942000" />
+      <workItem from="1619552886789" duration="100000" />
+      <workItem from="1619810016752" duration="431000" />
+      <workItem from="1620246881225" duration="20000" />
+      <workItem from="1638220757096" duration="2413000" />
+      <workItem from="1638308308167" duration="1286000" />
+      <workItem from="1639304001155" duration="24000" />
+      <workItem from="1639326013493" duration="17000" />
+      <workItem from="1646141815924" duration="2227000" />
+      <workItem from="1649707832579" duration="99000" />
+      <workItem from="1649709165639" duration="1180000" />
+      <workItem from="1649793210613" duration="465000" />
+      <workItem from="1692731886304" duration="1754000" />
+      <workItem from="1761481667669" duration="233000" />
+      <workItem from="1767539480432" duration="90000" />
+      <workItem from="1772043566748" duration="1904000" />
+      <workItem from="1790751571885" duration="4681000" />
+      <workItem from="1790757566108" duration="723000" />
+      <workItem from="1790764894990" duration="21083000" />
+      <workItem from="1790849203216" duration="19000" />
+      <workItem from="1791012959301" duration="2859000" />
     </task>
+    <task id="LOCAL-00001" summary="DMV 2021">
+      <created>1614808693283</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1614808693283</updated>
+    </task>
+    <task id="LOCAL-00002" summary="calc improvement">
+      <created>1615668551853</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1615668551853</updated>
+    </task>
+    <task id="LOCAL-00003" summary="improvements">
+      <created>1692733383570</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1692733383570</updated>
+    </task>
+    <task id="LOCAL-00004" summary="improvements">
+      <created>1772045470838</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1772045470840</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="DMV 2021" />
+    <MESSAGE value="calc improvement" />
+    <MESSAGE value="improvements" />
+    <MESSAGE value="camper reservation" />
+    <option name="LAST_COMMIT_MESSAGE" value="camper reservation" />
   </component>
 </project>

@@ -11,6 +11,8 @@ Route::get('/en', ['as' => 'english', 'uses' => 'WelcomePageController@index']);
 Route::get('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@checkCookie']);
 Route::get('/inquiry', ['as' => 'inquiry', 'uses' => 'ContactController@inquiry']);
 Route::get('/contact', ['as' => 'contactForm', 'uses' => 'ContactController@sendContactEmail']);
+Route::get('/camper-inquiry', ['as' => 'camperInquiry', 'uses' => 'ContactController@camperInquiry']);
+Route::get('/camper-availability', ['as' => 'camperAvailability', 'uses' => 'WelcomePageController@camperAvailability']);
 
 Route::get('/register', function () {
     return view('register');
@@ -36,6 +38,15 @@ Route::group(['middleware' =>'authUser'], function ($router) {
     Route::get('/show-hide/{id}', ['as' => 'showOrHide', 'uses' => 'CarController@showHide']);
     Route::get('/delete-user/{id}', ['as' => 'deleteUser', 'uses' => 'UserController@destroy']);
     Route::get('/lock/{id}', ['as' => 'lockUnlock', 'uses' => 'UserController@lockUnlock']);
+    Route::get('/reservations', ['as' => 'reservations', 'uses' => 'ReservationController@index']);
+    Route::post('/toggle-camper', ['as' => 'toggleCamper', 'uses' => 'ReservationController@toggleCamper']);
+    Route::get('/load-reservation', ['as' => 'loadReservation', 'uses' => 'ReservationController@edit']);
+    Route::post('/update-reservation', ['as' => 'updateReservation', 'uses' => 'ReservationController@update']);
+    Route::get('/delete-reservation/{id}', ['as' => 'deleteReservation', 'uses' => 'ReservationController@destroy']);
+    Route::post('/add-calendar', ['as' => 'addCalendar', 'uses' => 'CalendarController@store']);
+    Route::get('/load-calendar', ['as' => 'loadCalendar', 'uses' => 'CalendarController@edit']);
+    Route::post('/update-calendar', ['as' => 'updateCalendar', 'uses' => 'CalendarController@update']);
+    Route::get('/delete-calendar/{id}', ['as' => 'deleteCalendar', 'uses' => 'CalendarController@destroy']);
 });
 
 

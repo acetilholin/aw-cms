@@ -29,9 +29,10 @@ class UserHelper
 
     public function lastSeen($email, $dateTime)
     {
-        $country = $this->geoData();
-        $country = $country['code'] == null ? 'SI' : $country['code'];
-        $update = DB::table('users')
+        $geoData = $this->geoData();
+        $country = $geoData['code'] ?: 'SI';
+
+        DB::table('users')
             ->where('email', $email)
             ->update([
                 'last_seen' => $dateTime,
@@ -39,15 +40,33 @@ class UserHelper
             ]);
     }
 
-    public function geoData()
+    public function geoData($ip = null)
     {
-        $ip = $_SERVER['REMOTE_ADDR'];
-        $data = json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=".$ip));
-        return $geoData = [
-            'code' => $data->geoplugin_countryCode,
-            'country' => $data->geoplugin_countryName,
-            'city' => $data->geoplugin_city
-        ];
+        $ip = $ip ?: request()->ip();
+        $empty = ['code' => null, 'country' => null, 'city' => null];
+
+        if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) {
+            return $empty;
+        }
+
+        return Cache::remember('geo-' . $ip, 60 * 24, function () use ($ip, $empty) {
+            try {
+                $context = stream_context_create(['http' => ['timeout' => 3]]);
+                $json = @file_get_contents('https://ipwho.is/' . $ip . '?fields=success,country_code,country,city', false, $context);
+                $data = $json ? json_decode($json) : null;
+
+                if ($data && !empty($data->success)) {
+                    return [
+                        'code' => $data->country_code ?? null,
+                        'country' => $data->country ?? null,
+                        'city' => $data->city ?? null
+                    ];
+                }
+            } catch (\Throwable $e) {
+                // ignore, use fallback
+            }
+            return $empty;
+        });
     }
 
     public function insertResetPasswordToken($token, $email)

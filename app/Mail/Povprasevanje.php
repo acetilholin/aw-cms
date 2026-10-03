@@ -33,7 +33,7 @@ class Povprasevanje extends Mailable
     {
         return $this->from($this->email)
             ->subject('Povpraševanje')
-            ->view('emails.inquiry', [
+            ->markdown('emails.inquiry', [
                 'data' => $this->data
             ]);
     }

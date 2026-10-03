@@ -4,6 +4,7 @@ import EnCalculation from "./components/EnCalculation";
 import EnContact from "./components/EnContact";
 import Add from "./components/Add";
 import Inquiry from "./components/Inquiry";
+import Camper from "./components/Camper";
 import Vuelidate from 'vuelidate';
 import VueLoadingButton from 'vue-loading-button'
 
@@ -56,5 +57,12 @@ const inquiry = new Vue({
     el: '#inquiryForm',
     components: {
         inquiry: Inquiry
+    }
+});
+
+const camper = new Vue({
+    el: '#camperForm',
+    components: {
+        camper: Camper
     }
 });

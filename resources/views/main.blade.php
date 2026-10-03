@@ -29,14 +29,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a class="navbar-brand" href="#"><img src="{{ asset('pictures/logo-1.png') }}" class="img-spacing" style="height: 40px"></a>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ route('main') }}">Vozila v ponudbi<span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
-        <div class="form-inline my-2 my-lg-0">
-            <span class="m-item"><a href="{{ route('statistics') }}"><i class="fas fa-chart-line"></i></a></span>
-            <span class="m-item"><a href="{{ route('users') }}"><i class="fas fa-users"></i></a></span>
+        <div class="form-inline my-2 my-lg-0 ml-auto">
+            @unless(request()->routeIs('statistics'))
+                <span class="m-item"><a href="{{ route('statistics') }}"><i class="fas fa-chart-line"></i></a></span>
+            @endunless
+            @unless(request()->routeIs('main'))
+                <span class="m-item"><a href="{{ route('main') }}"><i class="fas fa-car"></i></a></span>
+            @endunless
+            @unless(request()->routeIs('users'))
+                <span class="m-item"><a href="{{ route('users') }}"><i class="fas fa-users"></i></a></span>
+            @endunless
+            @unless(request()->routeIs('reservations'))
+                <span class="m-item"><a href="{{ route('reservations') }}"><i class="fas fa-shuttle-van"></i></a></span>
+            @endunless
             <form action="{{ route('logout') }}">
                 <button class="btn btn-gray btn-sm" type="submit" style="margin: 0">Odjava</button>
             </form>
@@ -46,20 +51,25 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="button-margin">
+            <div class="section-head">
+                <div>
+                    <h5 class="section-title">Vozila v ponudbi</h5>
+                    <div class="section-underline"></div>
+                </div>
                 <button type="submit" class="btn btn-calculate btn-sm" style="margin: 0" data-toggle="modal" data-target="#add">Dodaj</button>
             </div>
             @include('messages.info')
             @yield('content')
-            <table class="table table-font text-center table-hover mb-5" id="cars">
+            <div class="table-card mb-5">
+            <table class="table table-font text-center table-hover data-table" id="cars">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Model</th>
-                    <th scope="col">Oznaka</th>
+                    <th scope="col" class="text-left">Model</th>
+                    <th scope="col" class="text-left">Oznaka</th>
                     <th scope="col">Link</th>
                     <th scope="col">Cena</th>
-                    <th scope="col">Opis</th>
+                    <th scope="col" class="text-left">Opis</th>
                     <th scope="col">Novo</th>
                     <th scope="col">Slika</th>
                     <th scope="col">Uredi</th>
@@ -74,8 +84,8 @@
                         <tr id="{{ $number }}">
                     @endif
                         <th scope="row">{{ $number++ }}</th>
-                        <td>{{ $car->title }}</td>
-                        <td>{{ $car->subtitle }}</td>
+                        <td class="text-left"><strong>{{ $car->title }}</strong></td>
+                        <td class="text-left">{{ $car->subtitle }}</td>
                         <td>
                             @if($car->link !== env('DEFAULT_LINK'))
                             <a href="{!! $car->link !!}" target="_blank">
@@ -83,20 +93,20 @@
                             </a>
                             @endif
                         </td>
-                        <td>
+                        <td class="price-cell">
                             @if((boolean)$car->call_for_price === true)
                                 {!! Html::image('icons/phone.svg', 'cfp', array('title' => 'Pokličite za ceno')) !!}
                                 @else
                                 {{ number_format($car->price,2,',','.') }}€
                             @endif
                         </td>
-                        <td>{{ $car->description }}</td>
+                        <td class="text-left description-cell" @if(mb_strlen($car->description) > 40) data-toggle="tooltip" data-placement="top" title="{{ $car->description }}" @endif>{{ \Illuminate\Support\Str::limit($car->description, 40) }}</td>
                         <td>
                             @if((boolean)$car->new === true )
-                                {!! Html::image('icons/check.svg') !!}
+                                <span class="status-pill status-ok"><i class="fas fa-check"></i> Novo</span>
                             @endif
                         </td>
-                        <td><img src="../{{ $car->image }}" class="open-image" width="80px" height="50px" id="{{ $car->id }}" style="cursor: zoom-in"></td>
+                        <td><img src="../{{ $car->image }}" class="open-image car-thumb" width="80px" height="50px" id="{{ $car->id }}" style="cursor: zoom-in"></td>
                         <td>
                             <div class="btn-group dropright">
                                 <button type="button" class="btn btn-white dropdown-toggle dropdown-toggle-split" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -129,6 +139,7 @@
                     @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 </div>
@@ -227,11 +238,8 @@
 </body>
 </html>
 
-<!-- Vue src file -->
+<!-- Vue src file (also bundles Bootstrap's JS - do not also load bootstrap.min.js, it registers duplicate dropdown/modal handlers) -->
 <script src="{!! asset('js/app.js') !!}"></script>
-
-<!-- Bootstrap min js -->
-<script src="{!! asset('js/bootstrap.min.js') !!}"></script>
 
 <script>
 

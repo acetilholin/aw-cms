@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Helpers\ContactHelper;
 use App\Helpers\UserHelper;
+use App\Mail\CamperInquiry;
 use App\Mail\Povprasevanje;
 use App\Notifications\ContactNotification;
+use App\Reservation;
+use App\Setting;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -49,6 +52,60 @@ class ContactController extends Controller
 
         return [
             'resp' => $response,
+            'loading' => false
+        ];
+    }
+
+    function camperInquiry(Request $request)
+    {
+        if (!Setting::camperEnabled()) {
+            abort(404);
+        }
+        $data = $request->validate([
+            'fullname' => 'required|min:5',
+            'email' => 'required|email',
+            'phone' => 'required|min:6',
+            'dateFrom' => 'required|date',
+            'dateTo' => 'required|date|after_or_equal:dateFrom',
+            'days' => 'required|integer|min:1',
+            'price' => 'required|numeric',
+            'message' => 'nullable|string|max:2000',
+            'extras' => 'nullable|string|max:255',
+        ]);
+
+        $overlaps = Reservation::where('date_from', '<=', $data['dateTo'])
+            ->where('date_to', '>=', $data['dateFrom'])
+            ->exists();
+
+        if ($overlaps) {
+            return response()->json([
+                'resp' => trans('messages.reservationDatesOverlap', [
+                    'dateFrom' => date('d-m-Y', strtotime($data['dateFrom'])),
+                    'dateTo' => date('d-m-Y', strtotime($data['dateTo'])),
+                ]),
+                'loading' => false
+            ], 422);
+        }
+
+        Reservation::create([
+            'fullname' => $data['fullname'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'date_from' => $data['dateFrom'],
+            'date_to' => $data['dateTo'],
+            'days' => $data['days'],
+            'price' => $data['price'],
+            'message' => $data['message'] ?? null,
+            'extras' => $data['extras'] ?? null,
+        ]);
+
+        Mail::to(env('RECIPIENT1'))
+            ->cc(env('RECIPIENT2'))
+            ->bcc(env('ADMIN_EMAIL'))
+            ->send(new CamperInquiry($data));
+
+        return [
+            'resp' => trans('messages.poslano'),
             'loading' => false
         ];
     }

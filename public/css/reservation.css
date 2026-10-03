@@ -1,0 +1,270 @@
+.button-margin {
+    margin: 1rem auto;
+}
+.dropdown-menu {
+    background-color: white;
+    border: 1px solid lightgray !important;
+}
+.btn-white {
+    border: 1px solid #ed1c24;
+}
+.btn-white:focus {
+    border-color: #ed1c24;
+    box-shadow: 0 0 0 0.2rem rgba(237, 28, 36, 0.25);
+}
+.remove {
+    color: #ed1c24;
+}
+.remove:hover {
+    color: #c4191e;
+}
+.edit-style {
+    color: #586168;
+}
+.edit-style:hover {
+    color: #444c53;
+}
+.calendar-scroll {
+    max-height: 260px;
+    overflow-y: auto;
+    display: block;
+}
+.reservation-scroll {
+    max-height: 460px;
+    overflow-y: auto;
+    display: block;
+}
+.calendar-scroll thead th,
+.reservation-scroll thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f4f5f6;
+    z-index: 1;
+}
+.legend-swatch {
+    display: inline-block;
+    width: 16px;
+    height: 14px;
+    background-color: #eaf7ea;
+    border-left: 4px solid #4caf50;
+    border: 1px solid lightgray;
+    vertical-align: middle;
+    margin-right: .3rem;
+}
+#print-reservations i {
+    color: #ed1c24;
+}
+#print-reservations {
+    color: #ed1c24;
+    font-size: 1.2rem;
+}
+#print-reservations:hover {
+    color: #c4191e;
+}
+/* page */
+body {
+    background-color: #f4f5f6;
+}
+
+/* section headings */
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 1.5rem 0 .75rem;
+}
+.section-head-spaced {
+    margin-top: 3rem;
+}
+.section-title {
+    margin: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05rem;
+    color: #586168;
+}
+.section-underline {
+    width: 2.5rem;
+    height: .2rem;
+    background-color: #ed1c24;
+    margin-top: .4rem;
+}
+.table-legend {
+    margin-bottom: .5rem;
+    font-size: .85rem;
+    color: #586168;
+}
+.legend-swatch-past {
+    background-color: #fff;
+    border-left-color: lightgray;
+    opacity: .6;
+}
+
+/* table card */
+.table-card {
+    background: #fff;
+    border-radius: .35rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .1);
+}
+.data-table {
+    margin-bottom: 0;
+}
+.data-table thead th {
+    background-color: #f4f5f6;
+    color: #586168;
+    font-size: .75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05rem;
+    border-top: 0;
+    border-bottom: 2px solid #dee2e6;
+    padding: .85rem .5rem;
+    white-space: nowrap;
+}
+.data-table tbody td, .data-table tbody th {
+    padding: .8rem .5rem;
+    vertical-align: middle;
+    border-top: 1px solid #eef0f2;
+}
+.data-table tbody tr.row-upcoming {
+    background-color: #f3faf3;
+}
+.data-table tbody tr.row-upcoming > :first-child {
+    box-shadow: inset 4px 0 0 #4caf50;
+}
+.data-table tbody tr.row-past {
+    color: #8a9199;
+}
+.data-table tbody tr.row-past > td:not(:last-child), .data-table tbody tr.row-past > th {
+    opacity: .75;
+}
+.data-table tbody tr:hover {
+    background-color: #eef1f4;
+}
+.nowrap {
+    white-space: nowrap;
+}
+.price-cell {
+    font-weight: 700;
+    white-space: nowrap;
+}
+.muted-cell {
+    font-size: .8rem;
+    color: #8a9199;
+}
+.message-cell {
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.extra-pill {
+    display: inline-block;
+    background: #fff;
+    color: #000;
+    border: 1px solid #ced4da;
+    border-radius: 1rem;
+    padding: .15rem .7rem;
+    font-size: .75rem;
+    font-weight: 500;
+    margin: .15rem .1rem;
+    white-space: nowrap;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .08);
+}
+.season-badge {
+    display: inline-block;
+    border-radius: 1rem;
+    padding: .15rem .8rem;
+    font-size: .8rem;
+    font-weight: 600;
+    color: #fff;
+}
+.season-badge.season-1 { background-color: #4caf50; }
+.season-badge.season-2 { background-color: #ffb300; color: #3d2b00; }
+.season-badge.season-3 { background-color: #ed1c24; }
+.season-badge.season-4 { background-color: #8a9199; }
+
+@media print {
+    body {
+        background: #fff;
+    }
+    .table-card {
+        box-shadow: none;
+    }
+    .message-cell {
+        white-space: normal;
+        max-width: none;
+    }
+    body * {
+        visibility: hidden;
+    }
+    #print-wrapper, #print-wrapper * {
+        visibility: visible;
+    }
+    #print-wrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+    #print-title {
+        display: block !important;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .reservation-scroll {
+        max-height: none !important;
+        overflow: visible !important;
+    }
+    #reservations-table tbody tr:not(.upcoming-row) {
+        display: none;
+    }
+    .edit-column {
+        display: none;
+    }
+}
+.data-table thead tr:first-child th:first-child {
+    border-top-left-radius: .35rem;
+}
+.data-table thead tr:first-child th:last-child {
+    border-top-right-radius: .35rem;
+}
+
+/* active seasons and reservations - #ed1c24 tint */
+.data-table tbody tr.row-upcoming {
+    background-color: rgba(237, 28, 36, .08);
+}
+.data-table tbody tr.row-upcoming:hover {
+    background-color: rgba(237, 28, 36, .14);
+}
+.data-table tbody tr.row-upcoming > :first-child {
+    box-shadow: inset 4px 0 0 #ed1c24;
+}
+.legend-swatch-reservation {
+    background-color: rgba(237, 28, 36, .08);
+    border-left-color: #ed1c24;
+}
+.data-table tbody tr.row-upcoming > td,
+.data-table tbody tr.row-upcoming > th {
+    border-top: 1px solid rgba(237, 28, 36, .25);
+}
+
+/* camper visibility switch */
+.camper-switch-bar {
+    background: #fff;
+    border-radius: .35rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .1);
+    padding: .9rem 1.25rem;
+    margin-top: 1.5rem;
+}
+.camper-switch-bar .custom-control-label {
+    cursor: pointer;
+    user-select: none;
+}
+.camper-switch-bar .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #ed1c24;
+    border-color: #ed1c24;
+}
+.camper-switch-bar .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: 0 0 0 .2rem rgba(237, 28, 36, .25);
+}

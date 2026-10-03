@@ -28,6 +28,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#import-and-calculation">Uvoz</a>
                         </li>
+                        @if($camperEnabled)
+                        <li class="nav-item">
+                            <a class="nav-link" href="#camper-rental">Najem kamperja</a>
+                        </li>
+                         @endif
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">Kontakt</a>
                         </li>
@@ -96,7 +101,7 @@
                         roku dneh tednov. Ponujamo vam vozila po najboljši ceni s precej več opreme od vozil, ki so dostopna na našem trgu.
                         Nudimo tudi nakup novega ali odkup vašega rabljenega vozila.
                     </p>
-                    <div class="col-sm-12 col-md-3">
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl">
                         <div class="os-animation" data-animation="fadeInLeft">
                             <div class="feature">
                             <span class="fa-layers fa-3x">
@@ -107,7 +112,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-md-3">
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl">
                         <div class="os-animation" data-animation="fadeInUp">
                             <div class="feature">
                             <span class="fa-layers fa-3x">
@@ -118,7 +123,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-md-3">
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl">
                         <div class="os-animation" data-animation="fadeInRight">
                             <div class="feature">
                             <span class="fa-layers fa-3x">
@@ -129,7 +134,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-md-3">
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl">
                         <div class="os-animation" data-animation="fadeInRight">
                             <div class="feature">
                             <span class="fa-layers fa-3x">
@@ -140,6 +145,19 @@
                             </div>
                         </div>
                     </div>
+                    @if($camperEnabled)
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl">
+                        <div class="os-animation" data-animation="fadeInRight">
+                            <a class="feature d-block" href="#camper-rental" style="color: inherit; text-decoration: none;">
+                            <span class="fa-layers fa-3x">
+                               <i class="fas fa-shuttle-van"></i>
+                            </span>
+                                <h3>Najem kamperja</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                            </a>
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -185,6 +203,7 @@
         </div>
     </div>
     <div id="import-and-calculation" class="offset">
+        <div @unless($camperEnabled) class="section-grey" @endunless>
         <div class="narrow">
             <div class="col-12 os-animation" data-animation="fadeInUp">
                 <h3 class="heading">Uvoz</h3>
@@ -212,7 +231,48 @@
                 <calculation></calculation>
             </div>
         </div>
+        </div>
     </div>
+    @if($camperEnabled)
+    <div id="camper-rental" class="offset">
+        <div class="camper-bg">
+        <div class="narrow">
+            <div class="col-12 os-animation" data-animation="fadeInUp">
+                <h3 class="heading">Najem kamperja</h3>
+                <div class="heading-underline"></div>
+            </div>
+            <div class="os-animation" data-animation="fadeInLeft">
+                <blockquote class="blockquote">
+                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </blockquote>
+                <p class="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <p>
+                    <span class="text-red">Kako do najema:</span>
+                    <li> Lorem ipsum dolor sit amet</li>
+                    <li> Consectetur adipiscing elit</li>
+                    <li> Sed do eiusmod tempor incididunt</li>
+                </p>
+            </div>
+            <div class="os-animation" data-animation="fadeInUp">
+                <div class="row mt-4">
+                    @foreach([13601011, 6945904, 33219213, 38212765, 4774659, 14924831, 8985295, 19995809, 12261472, 17719807] as $photo)
+                        <div class="col-4 col-md-3 col-lg-2 px-1 mb-2">
+                            <a href="https://images.pexels.com/photos/{{ $photo }}/pexels-photo-{{ $photo }}.jpeg?auto=compress&cs=tinysrgb&w=1200" data-lightbox="camper-gallery" data-title="Kamper {{ $loop->iteration }}">
+                                <img class="img-fluid rounded" src="https://images.pexels.com/photos/{{ $photo }}/pexels-photo-{{ $photo }}.jpeg?auto=compress&cs=tinysrgb&w=400&h=270&fit=crop" alt="Kamper {{ $loop->iteration }}">
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <div id="camperForm" class="mt-4">
+                <camper :calendar='@json($calendars)' :reservations='@json($reservations)' :extras-options='@json($extrasOptions)'></camper>
+            </div>
+        </div>
+        </div>
+    </div>
+    @endif
     <div id="contact" class="offset">
         <footer>
             <div class="row">

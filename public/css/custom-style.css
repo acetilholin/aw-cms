@@ -196,6 +196,12 @@ select.form-control.language:focus {
 .fa-chart-line:hover {
     color: #ed1c24 !important;
 }
+.m-item .fa-shuttle-van {
+    color: #505962 !important;
+}
+.m-item .fa-shuttle-van:hover {
+    color: #ed1c24 !important;
+}
 
 /* users page */
 .green-dot{
@@ -307,6 +313,22 @@ select.form-control.language:focus {
     box-shadow: none !important;
     outline: 2px solid #ed1c24;
 }
+.camper-form .form-control {
+    background-color: transparent;
+    border: 1px solid #586168;
+}
+.camper-form .form-control:focus {
+    background-color: transparent;
+    border-color: #ed1c24;
+    box-shadow: none;
+}
+.camper-form .form-control.is-invalid-input {
+    border-color: #dc3545;
+}
+.camper-bg {
+    background-color: #e9ecef;
+    padding-bottom: 3rem;
+}
 .jumbotron {
     margin-bottom: 0;
     border-radius: 0;
@@ -325,7 +347,7 @@ h3.heading {
     background-color: #ed1c24;
     margin: 0 auto 2rem;
 }
-.fa-car, .fa-euro-sign, .fa-handshake, .fa-tools, .fa-truck {
+.fa-car, .fa-caravan, .fa-shuttle-van, .fa-euro-sign, .fa-handshake, .fa-tools, .fa-truck {
     color: #ed1c24;
 }
 .feature {
@@ -429,7 +451,7 @@ h3.heading {
 }
 /* contact */
 footer {
-    background-color: #e9ecef;
+    background-color: #fff;
     color: black;
 }
 footer .row {
@@ -827,4 +849,8 @@ and (min-device-width : 2300px) {
     .card {
         min-height: 830px !important;
     }
+}
+.section-grey {
+    background-color: #e9ecef;
+    padding-bottom: 3rem;
 }
