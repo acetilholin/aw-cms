@@ -12,7 +12,8 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="Email">
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="Email" value="{{ request('email') }}" disabled>
+                    <input type="hidden" name="email" value="{{ request('email') }}">
                 </div>
                 <div class="form-group">
                     <label for="password1">Geslo</label>

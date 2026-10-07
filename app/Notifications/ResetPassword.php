@@ -49,7 +49,7 @@ class ResetPassword extends Notification
             ->subject('Ponastavitev gesla')
             ->line('Vnesite žeton, po 60 minutah bo neveljaven!')
             ->line(new HtmlString('<div class="text-center"><b>'.$this->token.'</b></div>'))
-            ->action(Lang::get('Vnesi žeton'), env('TOKEN_URL'));
+            ->action(Lang::get('Vnesi žeton'), env('TOKEN_URL') . '?email=' . urlencode($notifiable->email));
     }
 
     /**

@@ -43,7 +43,7 @@ class ForgotPasswordController extends Controller
                 $token = Str::random(15);
                 $helper->insertResetPasswordToken($token, $email);
                 $user->notify(new ResetPassword($token));
-                return redirect('token')->with('success', trans('messages.tokenSent'));
+                return redirect('token?email=' . urlencode($email))->with('success', trans('messages.tokenSent'));
             }
         }
     }
