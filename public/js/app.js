@@ -41313,12 +41313,14 @@ var staticRenderFns = [
       _c("br"),
       _vm._v(" "),
       _c("small", { staticClass: "text-muted" }, [
-        _vm._v("Slika bo avtomatsko zmanjšana na primerno velikost.")
+        _vm._v(
+          "Slika bo avtomatsko zmanjšana na primerno velikost. Prva fotografija bo naslovna."
+        )
       ]),
       _vm._v(" "),
       _c("input", {
         staticClass: "form-control-file",
-        attrs: { type: "file", name: "file", id: "file" }
+        attrs: { type: "file", name: "file[]", id: "file", multiple: "" }
       })
     ])
   }

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Car;
+use App\CarImage;
 use App\Helpers\CarHelper;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
@@ -60,27 +60,50 @@ class CarController extends Controller
         $link = is_null($request->input('link')) ? env('DEFAULT_LINK') : $request->input('link');
         $cfp = $callForPrice === 'checked' ? (int) true : (int) false;
 
-        if ($request->file('file') !== null) {
-            $imageName = Str::random(10).".jpeg";
-            $imgPath = "pictures/cars/{$imageName}";
-            $file = Input::file('file');
-            Image::make($file)->resize(2048, 1536)->save("pictures/cars/{$imageName}");
-        } else {
-            $imgPath = "pictures/cars/noimage.png";
+        $files = $request->file('file');
+        if ($files !== null && !is_array($files)) {
+            $files = [$files];
         }
+
+        $imgPath = empty($files) ? "pictures/cars/noimage.png" : $this->storeUploadedImage($files[0]);
 
         $validatedData['new'] = $new;
         $validatedData['link'] = $link;
         $validatedData['image'] = $imgPath;
         $validatedData['call_for_price'] = $cfp;
 
-        Car::create($validatedData)->save();
+        $car = Car::create($validatedData);
+
+        if (!empty($files)) {
+            foreach ($files as $index => $file) {
+                CarImage::create([
+                    'car_id' => $car->id,
+                    'path' => $index === 0 ? $imgPath : $this->storeUploadedImage($file),
+                    'is_cover' => $index === 0
+                ]);
+            }
+        }
+
         $cars = Car::all();
 
         return view('main', [
             'cars' => $cars,
             'info' => trans('messages.carIsAdded')
         ]);
+    }
+
+    /**
+     * Resize and store an uploaded image file, returning its relative path.
+     *
+     * @param  \Illuminate\Http\UploadedFile  $file
+     * @return string
+     */
+    private function storeUploadedImage($file)
+    {
+        $imageName = Str::random(10).".jpeg";
+        $path = "pictures/cars/{$imageName}";
+        Image::make($file)->resize(2048, 1536)->save($path);
+        return $path;
     }
 
     /**
@@ -118,7 +141,7 @@ class CarController extends Controller
     public function edit(Request $request)
     {
         $id = $request->id;
-        $car = Car::find($id);
+        $car = Car::with('images')->find($id);
         return response()->json([
             'car' => $car
         ], 200);
@@ -144,14 +167,28 @@ class CarController extends Controller
         $new = $new === 'checked';
 
         $image = Car::where('id', $id)->pluck('image')->toArray();
+        $imgPath = $image[0];
 
-        if ($request->file('file') === null) {
-            $imgPath = $image[0];
-        } else {
-            $imageName = Str::random(10).".jpeg";
-            $imgPath = "pictures/cars/{$imageName}";
-            $file = Input::file('file');
-            Image::make($file)->resize(2048, 1536)->save("pictures/cars/{$imageName}");
+        $files = $request->file('file');
+        if ($files !== null && !is_array($files)) {
+            $files = [$files];
+        }
+
+        if (!empty($files)) {
+            $hasCover = CarImage::where('car_id', $id)->where('is_cover', true)->exists();
+            foreach ($files as $file) {
+                $path = $this->storeUploadedImage($file);
+                $isCover = !$hasCover;
+                if ($isCover) {
+                    $imgPath = $path;
+                    $hasCover = true;
+                }
+                CarImage::create([
+                    'car_id' => $id,
+                    'path' => $path,
+                    'is_cover' => $isCover
+                ]);
+            }
         }
 
         $helper = new CarHelper();
@@ -162,6 +199,70 @@ class CarController extends Controller
             'cars' => $cars,
             'info' => trans('messages.carIsUpdated')
         ]);
+    }
+
+    /**
+     * Remove a single uploaded photo from a car's gallery.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function deleteImage(Request $request)
+    {
+        $image = CarImage::find($request->input('id'));
+
+        if ($image === null) {
+            return response()->json(['message' => 'Not found'], 404);
+        }
+
+        $carId = $image->car_id;
+        $wasCover = (bool) $image->is_cover;
+        $path = $image->path;
+
+        $image->delete();
+
+        // Removing the file must never fail the request - the database row is already gone.
+        $file = public_path($path);
+        if ($path !== 'pictures/cars/noimage.png' && is_file($file)) {
+            @unlink($file);
+        }
+
+        if ($wasCover) {
+            $next = CarImage::where('car_id', $carId)->orderBy('id')->first();
+            if ($next !== null) {
+                $next->update(['is_cover' => true]);
+                Car::where('id', $carId)->update(['image' => $next->path]);
+            } else {
+                Car::where('id', $carId)->update(['image' => 'pictures/cars/noimage.png']);
+            }
+        }
+
+        return response()->json([
+            'images' => CarImage::where('car_id', $carId)->orderByDesc('is_cover')->orderBy('id')->get()
+        ], 200);
+    }
+
+    /**
+     * Mark a photo as the car's cover/main image.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function setCoverImage(Request $request)
+    {
+        $image = CarImage::find($request->input('id'));
+
+        if ($image === null) {
+            return response()->json(['message' => 'Not found'], 404);
+        }
+
+        CarImage::where('car_id', $image->car_id)->update(['is_cover' => false]);
+        $image->update(['is_cover' => true]);
+        Car::where('id', $image->car_id)->update(['image' => $image->path]);
+
+        return response()->json([
+            'images' => CarImage::where('car_id', $image->car_id)->orderByDesc('is_cover')->orderBy('id')->get()
+        ], 200);
     }
 
     public function showHide(Request $request)

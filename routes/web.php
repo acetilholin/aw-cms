@@ -33,6 +33,8 @@ Route::group(['middleware' =>'authUser'], function ($router) {
     Route::get('/users', ['as' => 'users', 'uses' => 'UserController@index']);
     Route::get('/load', ['as' => 'loadCar', 'uses' => 'CarController@edit']);
     Route::post('/update', ['as' => 'update', 'uses' => 'CarController@update']);
+    Route::post('/delete-car-image', ['as' => 'deleteCarImage', 'uses' => 'CarController@deleteImage']);
+    Route::post('/set-cover-image', ['as' => 'setCoverImage', 'uses' => 'CarController@setCoverImage']);
     Route::get('/statistics', ['as' => 'statistics', 'uses' => 'StatisticsController@index']);
     Route::get('/load-statistics', ['as' => 'loadStatistics', 'uses' => 'StatisticsController@getData']);
     Route::get('/show-hide/{id}', ['as' => 'showOrHide', 'uses' => 'CarController@showHide']);

@@ -48,8 +48,8 @@
         <div class="form-group">
             <label for="file" class="text">Slika</label>
             <br>
-            <small class="text-muted">Slika bo avtomatsko zmanjšana na primerno velikost.</small>
-            <input type="file" class="form-control-file" name="file" id="file">
+            <small class="text-muted">Slika bo avtomatsko zmanjšana na primerno velikost. Prva fotografija bo naslovna.</small>
+            <input type="file" class="form-control-file" name="file[]" id="file" multiple>
         </div>
     </div>
 </template>

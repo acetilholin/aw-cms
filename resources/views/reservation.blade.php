@@ -26,7 +26,7 @@
     <title>Avto Welt d.o.o.</title>
 </head>
 <body>
-<x-navbar />
+@include('components.navbar')
 <div class="container mb-5" style="max-width: 1400px;">
     <div class="row">
         <div class="col-md-12">

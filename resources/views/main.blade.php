@@ -4,6 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -23,7 +24,7 @@
     <title>Avto Welt d.o.o.</title>
 </head>
 <body>
-<x-navbar />
+@include('components.navbar')
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -190,8 +191,12 @@
                     <div class="form-group">
                         <label for="exampleFormControlFile1" class="text">Slika</label>
                         <br>
-                        <small class="text-muted">Slika bo avtomatsko zmanjšana na primerno velikost.</small>
-                        <input type="file" class="form-control-file" name="file" id="fileUpdate">
+                        <small class="text-muted">Slika bo avtomatsko zmanjšana na primerno velikost. Naložene fotografije se dodajo h galeriji spodaj.</small>
+                        <input type="file" class="form-control-file" name="file[]" id="fileUpdate" multiple>
+                    </div>
+                    <div class="form-group">
+                        <label class="text">Fotografije</label>
+                        <div class="car-image-frames" id="update-images"></div>
                     </div>
                     <input type="hidden" name="id" id="id">
                     @csrf
@@ -258,6 +263,25 @@
         });
     });
 
+    function renderCarImages(images) {
+        let $container = $('#update-images');
+        $container.empty();
+
+        images.forEach(function (image) {
+            let starClass = image.is_cover ? 'fas' : 'far';
+            let $frame = $(
+                '<div class="car-image-frame' + (image.is_cover ? ' is-cover' : '') + '" data-id="' + image.id + '">' +
+                    '<img src="/' + image.path + '" class="car-image-frame-img">' +
+                    '<div class="car-image-frame-actions">' +
+                        (image.is_cover ? '<span></span>' : '<i class="' + starClass + ' fa-star set-cover-car-image" data-id="' + image.id + '" title="Nastavi kot glavno sliko"></i>') +
+                        '<i class="fas fa-times delete-car-image" data-id="' + image.id + '" title="Izbriši sliko"></i>' +
+                    '</div>' +
+                '</div>'
+            );
+            $container.append($frame);
+        });
+    }
+
     $(document).on('click','.edit', function () {
         var id = $(this).attr("id");
         $.ajax({
@@ -282,7 +306,56 @@
                 $('#update-cfp').prop('checked', CFP)
                 $('#update-price').val(price)
                 $('#update-link').val(car.link)
+                renderCarImages(car.images || [])
                 $('#update').modal('show');
+            }
+        })
+    });
+
+    $(document).on('click', '.set-cover-car-image', function () {
+        var id = $(this).data("id");
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '{{ url('/set-cover-image') }}',
+            method: "POST",
+            data: { id: id },
+            dataType: "json",
+            success: function (data) {
+                renderCarImages(data.images || [])
+            }
+        })
+    });
+
+    $(document).on('click', '.delete-car-image', function () {
+        var id = $(this).data("id");
+        var $frame = $(this).closest('.car-image-frame');
+
+        if ($frame.data('busy')) {
+            return;
+        }
+        $frame.data('busy', true).css('opacity', .5);
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '{{ url('/delete-car-image') }}',
+            method: "POST",
+            data: { id: id },
+            dataType: "json",
+            success: function (data) {
+                renderCarImages(data.images || [])
+            },
+            error: function (xhr) {
+                if (xhr.status === 404) {
+                    // already deleted - just drop it from the gallery
+                    $frame.remove();
+                } else {
+                    $frame.data('busy', false).css('opacity', 1);
+                    swal({ title: 'Napaka pri brisanju slike.', icon: 'error' });
+                }
             }
         })
     });
