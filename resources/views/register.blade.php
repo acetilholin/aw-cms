@@ -17,11 +17,25 @@
                 <div class="form-group">
                     <label for="password1">Geslo</label>
                     <small id="emailHelp" class="form-text text-muted">Minimalna dolžina 6 znakov</small>
-                    <input type="password" class="form-control" id="password1" name="password" placeholder="Geslo">
+                    <div class="position-relative">
+                        <input type="password" class="form-control pr-5" id="password1" name="password" placeholder="Geslo">
+                        <button type="button" class="btn btn-link p-0 text-muted toggle-password" data-target="password1"
+                                aria-label="Prikaži geslo" aria-pressed="false"
+                                style="position: absolute; top: 50%; right: .75rem; transform: translateY(-50%); line-height: 1; box-shadow: none;">
+                            <i class="fas fa-eye" aria-hidden="true"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="password2">Geslo</label>
-                    <input type="password" class="form-control" id="password2" name="password_confirmation" placeholder="Ponovite geslo">
+                    <div class="position-relative">
+                        <input type="password" class="form-control pr-5" id="password2" name="password_confirmation" placeholder="Ponovite geslo">
+                        <button type="button" class="btn btn-link p-0 text-muted toggle-password" data-target="password2"
+                                aria-label="Prikaži geslo" aria-pressed="false"
+                                style="position: absolute; top: 50%; right: .75rem; transform: translateY(-50%); line-height: 1; box-shadow: none;">
+                            <i class="fas fa-eye" aria-hidden="true"></i>
+                        </button>
+                    </div>
                 </div>
                 @csrf
                 @include('messages.login-register')
@@ -33,4 +47,18 @@
             </form>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.toggle-password').forEach(function (btn) {
+                var input = document.getElementById(btn.dataset.target);
+                btn.addEventListener('click', function () {
+                    var show = input.type === 'password';
+                    input.type = show ? 'text' : 'password';
+                    btn.setAttribute('aria-pressed', show);
+                    btn.setAttribute('aria-label', show ? 'Skrij geslo' : 'Prikaži geslo');
+                    btn.querySelector('i').className = show ? 'fas fa-eye-slash' : 'fas fa-eye';
+                });
+            });
+        });
+    </script>
 @endsection

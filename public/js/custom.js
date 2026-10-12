@@ -80,7 +80,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#cars-in-offer").owlCarousel({
-            items: 3,
+            items: 4,
             autoplay: true,
             smartSpeed: 1700,
             loop: true,
@@ -95,6 +95,9 @@ $(document).ready(function () {
                 },
                 768: {
                     items: 3
+                },
+                1400: {
+                    items: 4
                 }
             }
         }

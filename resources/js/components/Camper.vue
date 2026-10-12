@@ -1,5 +1,10 @@
 <template>
     <div class="camper-form">
+        <div class="camper-form-header text-center">
+            <span class="camper-eyebrow"><i class="fas fa-calendar-alt mr-1"></i> REZERVACIJA</span>
+            <h3 class="camper-form-title">Preverite zasedenost in rezervirajte</h3>
+            <p class="camper-form-sub">Izberite želene datume v spodnjem koledarju in oddajte povpraševanje za najem.</p>
+        </div>
         <h3 class="h3-contact">Povpraševanje za najem</h3>
         <div class="row">
             <div class="col-md-5">
@@ -312,15 +317,74 @@
 </script>
 
 <style>
+    .camper-form {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 18px;
+        padding: 2.2rem;
+        box-shadow: 0 10px 30px -5px rgba(0, 0, 0, .07);
+    }
+
+    .camper-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        background: rgba(237, 28, 36, .1);
+        border: 1px solid rgba(237, 28, 36, .25);
+        color: #ed1c24;
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: .12em;
+        padding: .3rem .9rem;
+        border-radius: 999px;
+    }
+
+    .camper-form-title {
+        margin: .75rem 0 .5rem;
+        color: #1e293b;
+    }
+
+    .camper-form-sub {
+        color: #64748b;
+        margin-bottom: 1.5rem;
+    }
+
+    .camper-form .h3-contact {
+        margin-bottom: 1.5rem;
+    }
+
+    .camper-form .form-control {
+        height: calc(2.6rem + 2px);
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        background: #fff;
+        color: #0f172a;
+        font-size: .95rem;
+        transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .camper-form textarea.form-control {
+        height: auto;
+    }
+
+    .camper-form .form-control:focus {
+        border-color: #ed1c24;
+        box-shadow: 0 0 0 3px rgba(237, 28, 36, .18);
+    }
+
     .camper-form .is-invalid-input {
         border-color: #dc3545;
     }
 
     .calendar {
         background: #fff;
-        border: 1px solid #ced4da;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
         padding: .75rem;
         max-width: 26rem;
+    }
+
+    .calendar-day {
+        border-radius: 6px;
     }
 
     .calendar-header {

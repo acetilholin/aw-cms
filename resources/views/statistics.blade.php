@@ -69,6 +69,7 @@
                                                 @foreach($liveDetails as $details)
                                                     Država: {{ $details[0] }}<br>
                                                     Naprava: {{ strtolower($details[1]) }}<br>
+                                                    Obiskovalcev: {{ $details[2] }}<br>
                                                     <hr>
                                                 @endforeach
                                                 @else

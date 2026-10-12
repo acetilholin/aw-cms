@@ -2792,6 +2792,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -9039,7 +9044,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.camper-form .is-invalid-input {\n    border-color: #dc3545;\n}\n.calendar {\n    background: #fff;\n    border: 1px solid #ced4da;\n    padding: .75rem;\n    max-width: 26rem;\n}\n.calendar-header {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    margin-bottom: .5rem;\n}\n.calendar-title {\n    font-weight: 700;\n    text-transform: uppercase;\n}\n.calendar-nav {\n    border: 0;\n    background: transparent;\n    font-size: 1.6rem;\n    line-height: 1;\n    padding: 0 .75rem;\n    cursor: pointer;\n    color: #ed1c24;\n    outline: none !important;\n    box-shadow: none !important;\n    -moz-outline-style: none;\n}\n.calendar-nav:focus,\n.calendar-nav:focus-visible,\n.calendar-nav:active {\n    outline: none !important;\n    box-shadow: none !important;\n}\n.calendar-nav:disabled {\n    color: #ccc;\n    cursor: not-allowed;\n}\n.calendar-grid {\n    display: grid;\n    grid-template-columns: repeat(7, 1fr);\n    gap: 2px;\n}\n.calendar-weekdays span {\n    text-align: center;\n    font-size: .8rem;\n    color: #586168;\n    padding-bottom: .25rem;\n}\n.calendar-day {\n    width: 100%;\n    border: 0;\n    background: #f4f5f6;\n    padding: .3rem 0;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    cursor: pointer;\n}\n.calendar-day:hover:not(:disabled) {\n    background: #e9ecef;\n}\n.calendar-day:disabled {\n    opacity: .35;\n    cursor: not-allowed;\n}\n.calendar-day.is-booked .calendar-day-num {\n    text-decoration: line-through;\n}\n.calendar-day-num {\n    font-weight: 600;\n    font-size: .95rem;\n}\n.calendar-day-price {\n    font-size: .65rem;\n    color: #586168;\n}\n.calendar-day.is-today .calendar-day-num {\n    text-decoration: underline;\n}\n.calendar-day.in-range {\n    background: #f9c4c6;\n}\n.calendar-day.is-start, .calendar-day.is-end {\n    background: #ed1c24;\n    color: #fff;\n}\n.calendar-day.is-start .calendar-day-price, .calendar-day.is-end .calendar-day-price {\n    color: #fff;\n}\n.calendar-day {\n    border-top: 2px solid transparent;\n}\n.calendar-day.season-low, .legend-item.season-low {\n    border-color: #4caf50;\n}\n.calendar-day.season-mid, .legend-item.season-mid {\n    border-color: #ffb300;\n}\n.calendar-day.season-high, .legend-item.season-high {\n    border-color: #ed1c24;\n}\n.legend-item {\n    border-left: 3px solid;\n    padding-left: .4rem;\n    margin-bottom: .2rem;\n}\n.extras-toggle {\n    color: #ed1c24;\n}\n.extras-list {\n    margin-top: .5rem;\n}\n.calendar-min-days {\n    display: block;\n    color: #586168;\n    margin-bottom: .5rem;\n}\n.calendar-legend {\n    margin-top: .5rem;\n    font-size: .75rem;\n    color: #586168;\n}\n.calendar-summary {\n    margin-top: 1rem;\n    padding: .75rem 1rem;\n    max-width: 26rem;\n    background: #fff;\n    border-left: .25rem solid #ed1c24;\n}\n.calendar-summary-empty {\n    color: #586168;\n}\n.calendar-total {\n    font-size: 1.2rem;\n}\n.calendar-total strong {\n    color: #ed1c24;\n}\n", ""]);
+exports.push([module.i, "\n.camper-form {\n    background: #fff;\n    border: 1px solid #e2e8f0;\n    border-radius: 18px;\n    padding: 2.2rem;\n    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, .07);\n}\n.camper-eyebrow {\n    display: inline-flex;\n    align-items: center;\n    background: rgba(237, 28, 36, .1);\n    border: 1px solid rgba(237, 28, 36, .25);\n    color: #ed1c24;\n    font-size: .78rem;\n    font-weight: 700;\n    letter-spacing: .12em;\n    padding: .3rem .9rem;\n    border-radius: 999px;\n}\n.camper-form-title {\n    margin: .75rem 0 .5rem;\n    color: #1e293b;\n}\n.camper-form-sub {\n    color: #64748b;\n    margin-bottom: 1.5rem;\n}\n.camper-form .h3-contact {\n    margin-bottom: 1.5rem;\n}\n.camper-form .form-control {\n    height: calc(2.6rem + 2px);\n    border: 1px solid #cbd5e1;\n    border-radius: 8px;\n    background: #fff;\n    color: #0f172a;\n    font-size: .95rem;\n    transition: border-color .2s ease, box-shadow .2s ease;\n}\n.camper-form textarea.form-control {\n    height: auto;\n}\n.camper-form .form-control:focus {\n    border-color: #ed1c24;\n    box-shadow: 0 0 0 3px rgba(237, 28, 36, .18);\n}\n.camper-form .is-invalid-input {\n    border-color: #dc3545;\n}\n.calendar {\n    background: #fff;\n    border: 1px solid #cbd5e1;\n    border-radius: 8px;\n    padding: .75rem;\n    max-width: 26rem;\n}\n.calendar-day {\n    border-radius: 6px;\n}\n.calendar-header {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    margin-bottom: .5rem;\n}\n.calendar-title {\n    font-weight: 700;\n    text-transform: uppercase;\n}\n.calendar-nav {\n    border: 0;\n    background: transparent;\n    font-size: 1.6rem;\n    line-height: 1;\n    padding: 0 .75rem;\n    cursor: pointer;\n    color: #ed1c24;\n    outline: none !important;\n    box-shadow: none !important;\n    -moz-outline-style: none;\n}\n.calendar-nav:focus,\n.calendar-nav:focus-visible,\n.calendar-nav:active {\n    outline: none !important;\n    box-shadow: none !important;\n}\n.calendar-nav:disabled {\n    color: #ccc;\n    cursor: not-allowed;\n}\n.calendar-grid {\n    display: grid;\n    grid-template-columns: repeat(7, 1fr);\n    gap: 2px;\n}\n.calendar-weekdays span {\n    text-align: center;\n    font-size: .8rem;\n    color: #586168;\n    padding-bottom: .25rem;\n}\n.calendar-day {\n    width: 100%;\n    border: 0;\n    background: #f4f5f6;\n    padding: .3rem 0;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    cursor: pointer;\n}\n.calendar-day:hover:not(:disabled) {\n    background: #e9ecef;\n}\n.calendar-day:disabled {\n    opacity: .35;\n    cursor: not-allowed;\n}\n.calendar-day.is-booked .calendar-day-num {\n    text-decoration: line-through;\n}\n.calendar-day-num {\n    font-weight: 600;\n    font-size: .95rem;\n}\n.calendar-day-price {\n    font-size: .65rem;\n    color: #586168;\n}\n.calendar-day.is-today .calendar-day-num {\n    text-decoration: underline;\n}\n.calendar-day.in-range {\n    background: #f9c4c6;\n}\n.calendar-day.is-start, .calendar-day.is-end {\n    background: #ed1c24;\n    color: #fff;\n}\n.calendar-day.is-start .calendar-day-price, .calendar-day.is-end .calendar-day-price {\n    color: #fff;\n}\n.calendar-day {\n    border-top: 2px solid transparent;\n}\n.calendar-day.season-low, .legend-item.season-low {\n    border-color: #4caf50;\n}\n.calendar-day.season-mid, .legend-item.season-mid {\n    border-color: #ffb300;\n}\n.calendar-day.season-high, .legend-item.season-high {\n    border-color: #ed1c24;\n}\n.legend-item {\n    border-left: 3px solid;\n    padding-left: .4rem;\n    margin-bottom: .2rem;\n}\n.extras-toggle {\n    color: #ed1c24;\n}\n.extras-list {\n    margin-top: .5rem;\n}\n.calendar-min-days {\n    display: block;\n    color: #586168;\n    margin-bottom: .5rem;\n}\n.calendar-legend {\n    margin-top: .5rem;\n    font-size: .75rem;\n    color: #586168;\n}\n.calendar-summary {\n    margin-top: 1rem;\n    padding: .75rem 1rem;\n    max-width: 26rem;\n    background: #fff;\n    border-left: .25rem solid #ed1c24;\n}\n.calendar-summary-empty {\n    color: #586168;\n}\n.calendar-total {\n    font-size: 1.2rem;\n}\n.calendar-total strong {\n    color: #ed1c24;\n}\n", ""]);
 
 // exports
 
@@ -42035,6 +42040,8 @@ var render = function() {
     "div",
     { staticClass: "camper-form" },
     [
+      _vm._m(0),
+      _vm._v(" "),
       _c("h3", { staticClass: "h3-contact" }, [
         _vm._v("Povpraševanje za najem")
       ]),
@@ -42497,7 +42504,29 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "camper-form-header text-center" }, [
+      _c("span", { staticClass: "camper-eyebrow" }, [
+        _c("i", { staticClass: "fas fa-calendar-alt mr-1" }),
+        _vm._v(" REZERVACIJA")
+      ]),
+      _vm._v(" "),
+      _c("h3", { staticClass: "camper-form-title" }, [
+        _vm._v("Preverite zasedenost in rezervirajte")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "camper-form-sub" }, [
+        _vm._v(
+          "Izberite želene datume v spodnjem koledarju in oddajte povpraševanje za najem."
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

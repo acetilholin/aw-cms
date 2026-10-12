@@ -171,24 +171,37 @@
                     <div class="os-animation" data-animation="fadeInUp">
                         <div id="cars-in-offer" class="owl-carousel owl-theme">
                             @foreach($cars as $car)
-                                <div class="card text-center">
-                                    <a href="{{ $car->link }}" target="_blank">
-                                        <img class="card-img-top" src="../{{ $car->image }}" alt="">
-                                    </a>
-                                    <div class="card-body">
+                                <div class="modern-car-card">
+                                    <div class="car-img-wrapper">
+                                        <a href="{{ $car->link }}" target="_blank" class="d-block overflow-hidden">
+                                            <img class="card-img-top modern-car-img" src="../{{ $car->image }}" alt="{{ $car->title }}">
+                                        </a>
                                         @if((boolean)$car->new)
-                                            <div class="ribbon"><span>NOVO</span></div>
+                                            <div class="car-badge-new">
+                                                <i class="fas fa-fire mr-1"></i> NOVO
+                                            </div>
                                         @endif
-                                        <h5 class="text-red">{{ $car->title }}</h5>
-                                        <h5>{{ $car->subtitle }}</h5>
-                                        <h5>
+                                        <div class="car-price-pill">
                                             @if((boolean)$car->call_for_price)
-                                                <span class="text-red">{{ trans('messages.cfp-blade') }}</span>
+                                                <span>{{ trans('messages.cfp-blade') }}</span>
                                             @else
-                                                {{ number_format($car->price,2,',','.') }}€
+                                                <span>{{ number_format($car->price,2,',','.') }} €</span>
                                             @endif
-                                        </h5>
-                                        <p>{{ $car->description }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-body modern-car-body text-left">
+                                        <h4 class="car-card-title">{{ $car->title }}</h4>
+                                        <div class="car-card-subtitle text-muted">
+                                            <i class="fas fa-tachometer-alt mr-1 text-danger"></i> {{ $car->subtitle }}
+                                        </div>
+                                        @if($car->description)
+                                            <p class="car-card-desc">{{ $car->description }}</p>
+                                        @endif
+                                        <div class="car-card-cta mt-auto pt-3">
+                                            <a href="{{ $car->link }}" target="_blank" class="btn btn-car-view">
+                                                Podrobnosti vozila <i class="fas fa-arrow-right ml-1"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
@@ -255,6 +268,25 @@
                     <li> Sed do eiusmod tempor incididunt</li>
                 </p>
             </div>
+            <div class="camper-hero-card os-animation mt-4" data-animation="fadeInLeft">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h3 class="camper-card-title">Sodobno opremljen avtodom za nepozabna doživetja</h3>
+                        <p class="camper-card-desc">Doživite popolno svobodo na poti z našim sodobnim, redno vzdrževanim in brezhibno opremljenim kamperjem. Primeren tako za krajše vikend izlete kot daljša družinska potovanja.</p>
+                        <div class="camper-chips">
+                            <span class="camper-chip"><i class="fas fa-check text-danger mr-1"></i> Popolna bivalna oprema</span>
+                            <span class="camper-chip"><i class="fas fa-check text-danger mr-1"></i> Kasko zavarovano</span>
+                            <span class="camper-chip"><i class="fas fa-check text-danger mr-1"></i> 24/7 asistenca</span>
+                            <span class="camper-chip"><i class="fas fa-check text-danger mr-1"></i> Brezhibna čistoča</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mt-3 mt-lg-0 text-lg-right">
+                        <a href="#camperForm" class="btn btn-red m-0">
+                            <i class="fas fa-calendar-check mr-2"></i> Rezerviraj termin
+                        </a>
+                    </div>
+                </div>
+            </div>
             <div class="os-animation" data-animation="fadeInUp">
                 <div class="row mt-4">
                     @foreach([13601011, 6945904, 33219213, 38212765, 4774659, 14924831, 8985295, 19995809, 12261472, 17719807] as $photo)
@@ -305,17 +337,4 @@
         </footer>
         @include('cookies')
     </div>
-    <!-- Tesla Modal -->
-    {{--<div class="modal fade" id="tesla-add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-                <img class="img-fluid" src="{{ asset('pictures/tesla-modal.jpg') }}" height="370" width="100%">
-                <div class="text-center space-top-bottom">
-                    <h3 class="mobile-size">Testna vožnja z <span class="text-red">novim</span> modelom Tesla 3 ?</h3>
-                    <a href="#contact" class="btn btn-red" data-dismiss="modal">Prijavite se</a>
-                </div>
-            </div>
-        </div>
-    </div>--}}
-
 @endsection
